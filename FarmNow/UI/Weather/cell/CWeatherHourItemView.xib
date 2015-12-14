@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZR-KC-vpg" customClass="CWeatherHourItemView">
+            <rect key="frame" x="0.0" y="0.0" width="54" height="113"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="e0v-w0-7PT">
+                    <rect key="frame" x="8.5" y="15" width="37.5" height="18"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1xx-tF-iMD">
+                    <rect key="frame" x="14" y="42.5" width="25" height="25"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="94E-fz-YtM"/>
+                        <constraint firstAttribute="height" constant="25" id="QhS-3z-Q31"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCF-Aj-bvt">
+                    <rect key="frame" x="6" y="77.5" width="42" height="20.5"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="WCF-Aj-bvt" firstAttribute="top" secondItem="1xx-tF-iMD" secondAttribute="bottom" priority="999" constant="10" id="3dY-cE-z6w"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="e0v-w0-7PT" secondAttribute="trailing" id="4pi-wB-SJk"/>
+                <constraint firstAttribute="bottom" secondItem="WCF-Aj-bvt" secondAttribute="bottom" constant="15" id="EO3-TJ-9bS"/>
+                <constraint firstItem="1xx-tF-iMD" firstAttribute="top" secondItem="e0v-w0-7PT" secondAttribute="bottom" constant="10" id="QDM-Xh-Axe"/>
+                <constraint firstAttribute="bottom" secondItem="WCF-Aj-bvt" secondAttribute="bottom" constant="15" id="QcA-vv-Bxv"/>
+                <constraint firstAttribute="height" constant="113" id="VKD-22-tjx"/>
+                <constraint firstAttribute="bottom" secondItem="WCF-Aj-bvt" secondAttribute="bottom" constant="9.5" id="Yee-N2-xoa"/>
+                <constraint firstItem="e0v-w0-7PT" firstAttribute="top" secondItem="oZR-KC-vpg" secondAttribute="top" constant="15" id="apD-kZ-bje"/>
+                <constraint firstItem="e0v-w0-7PT" firstAttribute="centerX" secondItem="oZR-KC-vpg" secondAttribute="centerX" id="cmh-kr-rcy"/>
+                <constraint firstAttribute="bottom" secondItem="WCF-Aj-bvt" secondAttribute="bottom" constant="15" id="gEU-OW-5BY"/>
+                <constraint firstAttribute="width" constant="54" id="goi-Rz-lQW"/>
+                <constraint firstItem="WCF-Aj-bvt" firstAttribute="centerX" secondItem="oZR-KC-vpg" secondAttribute="centerX" id="imo-ZR-jNJ"/>
+                <constraint firstItem="1xx-tF-iMD" firstAttribute="centerX" secondItem="oZR-KC-vpg" secondAttribute="centerX" id="lKS-Tb-7vt"/>
+                <constraint firstItem="e0v-w0-7PT" firstAttribute="top" secondItem="oZR-KC-vpg" secondAttribute="top" constant="10" id="qnx-Vk-bQC"/>
+                <constraint firstItem="e0v-w0-7PT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oZR-KC-vpg" secondAttribute="leading" id="tnf-u4-93O"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="VKD-22-tjx"/>
+                    <exclude reference="goi-Rz-lQW"/>
+                    <exclude reference="qnx-Vk-bQC"/>
+                    <exclude reference="EO3-TJ-9bS"/>
+                    <exclude reference="QcA-vv-Bxv"/>
+                    <exclude reference="Yee-N2-xoa"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="icon" destination="1xx-tF-iMD" id="cHc-QQ-Q5X"/>
+                <outlet property="tempLabel" destination="WCF-Aj-bvt" id="jGl-NS-LWE"/>
+                <outlet property="time" destination="e0v-w0-7PT" id="68e-cc-76B"/>
+            </connections>
+        </view>
+    </objects>
+</document>
