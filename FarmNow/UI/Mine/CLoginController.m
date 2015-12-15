@@ -17,6 +17,7 @@
 #import "CIsPassSetModel.h"
 #import "CPasswordViewController.h"
 #import "CSelectIdentityController.h"
+#import "Global.h"
 
 @interface CLoginController ()
 @property (weak, nonatomic) IBOutlet UIButton *qqLoginBtn;
@@ -37,6 +38,23 @@
 	[super viewDidLoad];
 	[self centerImageAndTitle:self.qqLoginBtn];
 	[self centerImageAndTitle:self.wxLoginBtn];
+	
+	if (SharedAPPDelegate.showQQLogin) {
+		self.qqLoginBtn.hidden = NO;
+	}
+	else
+	{
+		self.qqLoginBtn.hidden = YES;
+
+	}
+	
+	if (SharedAPPDelegate.showWXLogin) {
+		self.wxLoginBtn.hidden = NO;
+	}
+	else
+	{
+		self.wxLoginBtn.hidden = YES;
+	}
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccessed) name:kLoginSuccessed object:[sdkCall getinstance]];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginFailed) name:kLoginFailed object:[sdkCall getinstance]];

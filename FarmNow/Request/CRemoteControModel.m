@@ -8,6 +8,18 @@
 
 #import "CRemoteControModel.h"
 
+@implementation CRemoteControParams
+
++ (NSString *)path
+{
+	return @"gatekeepers";
+}
+
+@end
+
 @implementation CRemoteControModel
+
+
+
 
 @end

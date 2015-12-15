@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '1C77E5FD43C2DB7E485CA357'
+               BlueprintIdentifier = '8B277B005A68058276EDCE46'
                BlueprintName = 'HorizontalProgress'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libHorizontalProgress.a'>

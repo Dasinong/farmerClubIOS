@@ -13,7 +13,8 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, assign, readonly) UINavigationController *currentController;
 @property (nonatomic, strong) UITabBarController *tabBarController;
-
+@property (nonatomic, assign) BOOL showQQLogin;
+@property (nonatomic, assign) BOOL showWXLogin;
 
 @end
 

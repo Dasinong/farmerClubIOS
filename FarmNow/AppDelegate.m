@@ -11,6 +11,7 @@
 #import "WXApi.h"
 #import <SMS_SDK/SMSSDK.h>
 #import "CPersonalCache.h"
+#import "CRemoteControModel.h"
 
 @interface AppDelegate ()<WXApiDelegate>
 
@@ -21,10 +22,28 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
+	self.showQQLogin = YES;
+	self.showWXLogin = YES;
 	[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 	[[CPersonalCache defaultPersonalCache] reloadCookie];
 	[WXApi registerApp:kWXAPP_ID withDescription:@"weixin"];
 	[SMSSDK registerApp:kMOBSMSAPP_ID withSecret:kMOBSMSAPP_SECRET];
+	
+	NSString* version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+	CRemoteControParams* params = [CRemoteControParams new];
+	params.appId = version;
+	[CRemoteControModel requestWithParams:params completion:^(CRemoteControModel* model, JSONModelError *err) {
+		if (model && err == nil) {
+			if (model.qqLogin && model.weixinLogin) {
+				if ([model.qqLogin isEqualToString:@"false"]) {
+					self.showQQLogin = NO;
+				}
+				if ([model.weixinLogin isEqualToString:@"false"]) {
+					self.showWXLogin = NO;
+				}
+			}
+		}
+	}];
 	return YES;
 }
 -(UINavigationController*) currentController

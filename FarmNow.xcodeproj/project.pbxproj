@@ -19,6 +19,7 @@
 		9F03FAD71BE798EC00A3B1C7 /* CWeatherPOPCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F03FAD61BE798EC00A3B1C7 /* CWeatherPOPCell.m */; };
 		9F03FADA1BE7A19000A3B1C7 /* CWeatherDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F03FAD91BE7A19000A3B1C7 /* CWeatherDayCell.m */; };
 		9F03FADD1BE7C04000A3B1C7 /* CWeatherHourCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F03FADC1BE7C04000A3B1C7 /* CWeatherHourCell.m */; };
+		9F06C9B11C2049DA001FF390 /* CRemoteControModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F06C9B01C2049DA001FF390 /* CRemoteControModel.m */; };
 		9F09FA951C04A00A00D973A5 /* CInstitutionEmployeeApplicationsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F09FA941C04A00A00D973A5 /* CInstitutionEmployeeApplicationsModel.m */; };
 		9F09FA981C04A18300D973A5 /* CSetUserTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F09FA971C04A18300D973A5 /* CSetUserTypeModel.m */; };
 		9F09FA9B1C04BB4A00D973A5 /* CUploadAvaterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F09FA9A1C04BB4A00D973A5 /* CUploadAvaterModel.m */; };
@@ -239,6 +240,8 @@
 		9F03FAD91BE7A19000A3B1C7 /* CWeatherDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWeatherDayCell.m; sourceTree = "<group>"; };
 		9F03FADB1BE7C04000A3B1C7 /* CWeatherHourCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWeatherHourCell.h; sourceTree = "<group>"; };
 		9F03FADC1BE7C04000A3B1C7 /* CWeatherHourCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWeatherHourCell.m; sourceTree = "<group>"; };
+		9F06C9AF1C2049DA001FF390 /* CRemoteControModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRemoteControModel.h; sourceTree = "<group>"; };
+		9F06C9B01C2049DA001FF390 /* CRemoteControModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRemoteControModel.m; sourceTree = "<group>"; };
 		9F09FA931C04A00A00D973A5 /* CInstitutionEmployeeApplicationsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CInstitutionEmployeeApplicationsModel.h; sourceTree = "<group>"; };
 		9F09FA941C04A00A00D973A5 /* CInstitutionEmployeeApplicationsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CInstitutionEmployeeApplicationsModel.m; sourceTree = "<group>"; };
 		9F09FA961C04A18300D973A5 /* CSetUserTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSetUserTypeModel.h; sourceTree = "<group>"; };
@@ -810,6 +813,8 @@
 				9FFF682A1C089A3C00590604 /* CDeleteSubScribeListModel.m */,
 				9FFF682C1C089A8C00590604 /* CUpdateSubScribeListModel.h */,
 				9FFF682D1C089A8C00590604 /* CUpdateSubScribeListModel.m */,
+				9F06C9AF1C2049DA001FF390 /* CRemoteControModel.h */,
+				9F06C9B01C2049DA001FF390 /* CRemoteControModel.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1274,7 +1279,7 @@
 				TargetAttributes = {
 					9FEACDAA1BCFD5E1000722D8 = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = M8PE2WZ258;
+						DevelopmentTeam = JL46GNK529;
 					};
 					9FEACDC61BCFD5E1000722D8 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -1506,6 +1511,7 @@
 				9FB03B001C0F44640043C992 /* CSortItemByFirstLetter.m in Sources */,
 				9FD213281BD128A60063147D /* NSObject+Extra_Singleton.m in Sources */,
 				9F5EFD591BEA495B0003E31F /* CWebViewController.m in Sources */,
+				9F06C9B11C2049DA001FF390 /* CRemoteControModel.m in Sources */,
 				9FFF681F1C08971100590604 /* CGetSubScribeListsModel.m in Sources */,
 				9FB03AFD1C0F422E0043C992 /* RGIndexView.m in Sources */,
 				9FD2133F1BD128A60063147D /* UIViewController+BackButtonHandler.m in Sources */,
@@ -1678,7 +1684,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yunfeng Zhang (6SVM96JWM6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xiahong Gao (VWVKDZ69EX)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1708,8 +1714,6 @@
 					"-l\"HMSegmentedControl\"",
 					"-l\"JSONModel\"",
 					"-l\"MBProgressHUD\"",
-					"-l\"MZAppearance\"",
-					"-l\"MZFormSheetController\"",
 					"-l\"OpenUDID\"",
 					"-l\"SCLAlertView-Objective-C\"",
 					"-l\"SDWebImage\"",
@@ -1732,7 +1736,7 @@
 					"\"UIKit\"",
 					"-licucore",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dasinong.farm;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dasinong.FarmerClub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1743,7 +1747,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: DASINONG AGROTECH CO., LTD. (FVCN5LQT5Z)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1773,8 +1777,6 @@
 					"-l\"HMSegmentedControl\"",
 					"-l\"JSONModel\"",
 					"-l\"MBProgressHUD\"",
-					"-l\"MZAppearance\"",
-					"-l\"MZFormSheetController\"",
 					"-l\"OpenUDID\"",
 					"-l\"SCLAlertView-Objective-C\"",
 					"-l\"SDWebImage\"",
@@ -1797,7 +1799,7 @@
 					"\"UIKit\"",
 					"-licucore",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dasinong.farm;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dasinong.FarmerClub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
