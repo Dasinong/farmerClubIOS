@@ -10,6 +10,7 @@
 #import "CLoginModel.h"
 #import "CPersonalCache.h"
 #import "CSelectIdentityController.h"
+#import "CIdentifyingCodeController.h"
 
 @interface CPasswordViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *passwdField;
@@ -50,6 +51,7 @@
 	[CLoginModel requestWithParams:POST params:params completion:^(CLoginModel* model, JSONModelError *err) {
 		if (model && err == nil) {
 			[MBProgressHUD alert:@"登录成功" ];
+			[[CPersonalCache defaultPersonalCache] cacheCookie];
 			[[CPersonalCache defaultPersonalCache] saveCacheUserInfo:model.data];
 			if (model.data.userType == nil) {
 				CSelectIdentityController* controller = [self.storyboard controllerWithID:@"CSelectIdentityController"];
@@ -61,10 +63,24 @@
 			}
 		}
 		else{
+			if (model.message) {
+				[MBProgressHUD alert:model.message ];
+
+			}
+			else
 			[MBProgressHUD alert:@"登录失败" ];
+//			[self dismissViewControllerAnimated:NO completion:nil];
 
 		}
 	}];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	if ([segue.identifier isEqualToString:@"forgetPassword"]) {
+		CIdentifyingCodeController* controller = segue.destinationViewController;
+		controller.phoneNumber = self.cellphone;
+	}
 }
 
 @end

@@ -75,7 +75,7 @@
 				if (model.data == YES) {
 					CIsPassSetParams* param = [CIsPassSetParams new];
 					param.cellphone = weakSelf.phoneField.text;
-					[CIsPassSetModel requestWithParams:params completion:^(CIsPassSetModel* model, JSONModelError *err) {
+					[CIsPassSetModel requestWithParams:param completion:^(CIsPassSetModel* model, JSONModelError *err) {
 						if (model && err == nil) {
 							//设置了密码
 							if (model.data) {

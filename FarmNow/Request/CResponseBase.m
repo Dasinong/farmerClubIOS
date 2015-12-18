@@ -117,7 +117,7 @@ const NSString*    kResponseSuccess = @"200";
 		
 					CResponseModel* retModel = (CResponseModel*)model;
 
-					if ([retModel.respCode isEqualToString:@"100"] || [retModel.respCode isEqualToString:@"110"] ||[retModel.respCode isEqualToString:@"120"]) {
+					if ([retModel.respCode isEqualToString:@"100"] || [retModel.respCode isEqualToString:@"110"]) {
 						[[CPersonalCache defaultPersonalCache] clearUserInfo];
 						[MBProgressHUD alert:@"您没有登录或登录已过期，请重新登录"];
 						UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -135,6 +135,10 @@ const NSString*    kResponseSuccess = @"200";
 						[topController presentViewController:naviController animated:YES completion:nil];
 						
 					}
+					if (retModel.respCode == nil) {
+						completeBlock(model, nil);
+						return ;
+					}
 					if (![retModel.respCode isEqualToString:@"200"])
 					{
 						completeBlock(nil, nil);
@@ -151,7 +155,7 @@ const NSString*    kResponseSuccess = @"200";
 
                 dispatch_async( dispatch_get_main_queue(), ^{
 					CResponseModel* retModel = (CResponseModel*)errorModel;
-					if ([retModel.respCode isEqualToString:@"100"] || [retModel.respCode isEqualToString:@"110"] ||[retModel.respCode isEqualToString:@"120"]) {
+					if ([retModel.respCode isEqualToString:@"100"] || [retModel.respCode isEqualToString:@"110"] ) {
 						[[CPersonalCache defaultPersonalCache] clearUserInfo];
 
 						[MBProgressHUD alert:@"您没有登录或登录已过期，请重新登录"];

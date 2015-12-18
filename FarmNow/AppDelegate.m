@@ -31,17 +31,12 @@
 	
 	NSString* version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
 	CRemoteControParams* params = [CRemoteControParams new];
-	params.appId = version;
+	params.appId = @"2";
+	params.version = version;
 	[CRemoteControModel requestWithParams:params completion:^(CRemoteControModel* model, JSONModelError *err) {
 		if (model && err == nil) {
-			if (model.qqLogin && model.weixinLogin) {
-				if ([model.qqLogin isEqualToString:@"false"]) {
-					self.showQQLogin = NO;
-				}
-				if ([model.weixinLogin isEqualToString:@"false"]) {
-					self.showWXLogin = NO;
-				}
-			}
+					self.showQQLogin = model.qqLogin;
+					self.showWXLogin = model.weixinLogin;
 		}
 	}];
 	return YES;

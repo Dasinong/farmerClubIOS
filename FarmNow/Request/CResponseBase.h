@@ -21,8 +21,8 @@ typedef enum : NSUInteger {
  *    服务器交互数据
  */
 @interface CResponseModel : JSONModel
-@property (strong, nonatomic) NSString*         respCode;
-@property (nonatomic) NSString          *message;
+@property (strong, nonatomic) NSString<Optional>*         respCode;
+@property (nonatomic) NSString<Optional>          *message;
 
 @property (nonatomic) NSError<Ignore>   *error;
 + (void)requestWithParams:(CRequestBaseParams*)params completion:(JSONModelBlock)completeBlock;
