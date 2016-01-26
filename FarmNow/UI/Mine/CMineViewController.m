@@ -30,7 +30,11 @@
 	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"个人信息") forSection:0];
 	
 	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"扫一扫") forSection:1];
+	//审核时隐藏有奖推荐
+	if (SharedAPPDelegate.showWXLogin) {
+
 	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"有奖推荐") forSection:1];
+	}
 	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"免费短信订阅") forSection:1];
 	
 	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"帮助中心") forSection:2];
@@ -97,20 +101,27 @@
 		}
 		else if (indexPath.row == 1)
 		{
-			CUserObject* object = [[CPersonalCache defaultPersonalCache] cacheUserInfo];
-			if (object.institutionId != nil || object.refuid != nil)
-			{
-				CRecommendController1* controller  = [self.storyboard controllerWithID:@"CRecommendController1"];
-				controller.topViewHeight.constant = 0;
-				controller.title = @"有奖推荐";
-
+			if (SharedAPPDelegate.showWXLogin) {
+				CUserObject* object = [[CPersonalCache defaultPersonalCache] cacheUserInfo];
+				if (object.institutionId != nil || object.refuid != nil)
+				{
+					CRecommendController1* controller  = [self.storyboard controllerWithID:@"CRecommendController1"];
+					controller.topViewHeight.constant = 0;
+					controller.title = @"有奖推荐";
+					
+					[self.navigationController pushViewController:controller animated:YES];
+				}
+				else
+				{
+					CRecommendController* controller  = [self.storyboard controllerWithID:@"CRecommendController"];
+					[self.navigationController pushViewController:controller animated:YES];
+				}
+			}
+			else{
+				CSubScribeListController* controller = [self.storyboard controllerWithID:@"CSubScribeListController"];
 				[self.navigationController pushViewController:controller animated:YES];
 			}
-			else
-			{
-				CRecommendController* controller  = [self.storyboard controllerWithID:@"CRecommendController"];
-				[self.navigationController pushViewController:controller animated:YES];
-			}
+			
 
 		}
 		else if (indexPath.row == 2)

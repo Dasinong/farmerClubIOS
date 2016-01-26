@@ -2372,7 +2372,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">“大户俱乐部”服务协议条款
+                                <string key="text">“大户俱乐部”服务协议条款
 
 欢迎阅读“大户俱乐部”服务协议（下称“本协议”）。“大户俱乐部”是由北京大司农信息技术有限公司（以下简称“本公司”）运营的、为农业种植者提供农业天气、农事指导、植物保护信息（以下简称“服务”）的互联网平台。 
 
@@ -2496,7 +2496,7 @@ i) 不得为其他任何非法目的而使用服务。
 
 
 
-</mutableString>
+</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
