@@ -78,7 +78,7 @@
 {
 	CPetDisSpecBrowseObject* object = (CPetDisSpecBrowseObject*)data;
 	CWebViewController* webController = [self.storyboard controllerWithID:@"CWebViewController"];
-	webController.address = [NSString stringWithFormat:@"http://120.26.208.198:8080/ploughHelper/baike?id=%ld&type=%@",(long)object.petDisSpecId,@"pest"];
+	webController.address = [NSString stringWithFormat:@"%@/ploughHelper/baike?id=%ld&type=%@",kServer,(long)object.petDisSpecId,@"pest"];
 	webController.title = self.seedItem.cropName;
 	[self.navigationController pushViewController:webController animated:YES];
 }

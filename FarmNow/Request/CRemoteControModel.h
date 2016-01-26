@@ -10,8 +10,8 @@
 
 @interface CRemoteControParams : CRequestBaseParams
 
-@property (nonatomic, strong) NSString* appId;// http://120.26.208.198:8080/farmerClub/gatekeepers
-@property (nonatomic, strong) NSString* version;// http://120.26.208.198:8080/farmerClub/gatekeepers
+@property (nonatomic, strong) NSString* appId;// /gatekeepers
+@property (nonatomic, strong) NSString* version;// /gatekeepers
 
 @end
 

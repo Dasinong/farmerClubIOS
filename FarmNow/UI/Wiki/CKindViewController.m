@@ -117,7 +117,7 @@
 	if (self.type == ePinZhong) {
         CVarietyBrowseObjectModel* object       = (CVarietyBrowseObjectModel*)data;
         CWebViewController* webController       = [self.storyboard controllerWithID:@"CWebViewController"];
-        webController.address                       = [NSString stringWithFormat:@"http://120.26.208.198:8080/ploughHelper/baike?id=%ld&type=%@",(long)object.varietyId,@"variety"];
+        webController.address                       = [NSString stringWithFormat:@"%@/ploughHelper/baike?id=%ld&type=%@", kServer, (long)object.varietyId,@"variety"];
         webController.title                     = object.varietyName;
 		[self.navigationController pushViewController:webController animated:YES];
 	}

@@ -9,6 +9,7 @@
 #ifndef Global_h
 #define Global_h
 #import "AppDelegate.h"
+#import "Config.h"
 
 #define SharedAPPDelegate ((AppDelegate *)[[UIApplication sharedApplication] delegate])
 #define currentOSVersion (floor(NSFoundationVersionNumber))
@@ -138,16 +139,16 @@ typedef enum
 @99:@""}
 
 #define XIAOCHANGSHI_DICT @{\
-@"冷害":@"http://120.26.208.198:8080/ploughHelper/html/Cold.html",\
-@"寒潮":@"http://120.26.208.198:8080/ploughHelper/html/ColdWave.html",\
-@"干热风":@"http://120.26.208.198:8080/ploughHelper/html/DryHotWind.html",\
-@"洪涝":@"http://120.26.208.198:8080/ploughHelper/html/Flood.html",\
-@"霜":@"http://120.26.208.198:8080/ploughHelper/html/Frost.html",\
-@"梅雨":@"http://120.26.208.198:8080/ploughHelper/html/Rain.html",\
-@"沙尘暴":@"http://120.26.208.198:8080/ploughHelper/html/Sandstorm.html",\
-@"土壤湿度":@"http://120.26.208.198:8080/ploughHelper/html/Soil.html",\
-@"台风":@"http://120.26.208.198:8080/ploughHelper/html/Typhon.html",\
-@"大风":@"http://120.26.208.198:8080/ploughHelper/html/Wind.html",\
+@"冷害":[kServer stringByAppendingString:@"/ploughHelper/html/Cold.html"],\
+@"寒潮":[kServer stringByAppendingString:@"/ploughHelper/html/ColdWave.html"],\
+@"干热风":[kServer stringByAppendingString:@"/ploughHelper/html/DryHotWind.html"],\
+@"洪涝":[kServer stringByAppendingString:@"/ploughHelper/html/Flood.html"],\
+@"霜":[kServer stringByAppendingString:@"/ploughHelper/html/Frost.html"],\
+@"梅雨":[kServer stringByAppendingString:@"/ploughHelper/html/Rain.html"],\
+@"沙尘暴":[kServer stringByAppendingString:@"/ploughHelper/html/Sandstorm.html"],\
+@"土壤湿度":[kServer stringByAppendingString:@"/ploughHelper/html/Soil.html"],\
+@"台风":[kServer stringByAppendingString:@"/ploughHelper/html/Typhon.html"],\
+@"大风":[kServer stringByAppendingString:@"/ploughHelper/html/Wind.html"],\
 }
 
 #define SMS_Crop_Array @[\
