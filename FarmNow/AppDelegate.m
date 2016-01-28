@@ -22,6 +22,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorwithHexString:@"#2C9F27"]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
 	self.showQQLogin = YES;
 	self.showWXLogin = YES;
 	[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;

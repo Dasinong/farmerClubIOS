@@ -7,6 +7,91 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--关注中的作物-->
+        <scene sceneID="EPt-OV-QWM">
+            <objects>
+                <viewController storyboardIdentifier="CFieldHomeViewController" id="64d-LT-Sct" customClass="CFieldHomeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rls-bY-1tm"/>
+                        <viewControllerLayoutGuide type="bottom" id="QfO-F4-102"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="afj-fU-t0l">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKm-tA-vn7">
+                                <rect key="frame" x="131" y="311" width="60" height="30"/>
+                                <state key="normal" title="添加作物"/>
+                                <connections>
+                                    <segue destination="GMi-WD-wpl" kind="push" id="t8s-7u-T6R"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEN-kp-E4p">
+                                <rect key="frame" x="115" y="110" width="60" height="30"/>
+                                <state key="normal" title="某个作物"/>
+                                <connections>
+                                    <segue destination="3q9-sn-IgF" kind="push" id="7cO-Ny-Ihh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="关注中的作物" id="Lmw-OK-eoe"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sbo-X6-em8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="797" y="-1560"/>
+        </scene>
+        <!--请选择作物-->
+        <scene sceneID="J2k-DG-zFh">
+            <objects>
+                <viewController id="GMi-WD-wpl" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="S4v-Wn-rqP"/>
+                        <viewControllerLayoutGuide type="bottom" id="u6g-mb-kE7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="krC-rm-4tf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0h-lP-2Z6">
+                                <rect key="frame" x="145" y="221" width="30" height="30"/>
+                                <state key="normal" title="提交"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="请选择作物" id="vQY-8f-sIZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RBC-u8-4ix" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1144" y="-1560"/>
+        </scene>
+        <!--陇头水稻-->
+        <scene sceneID="JSZ-Mv-uSd">
+            <objects>
+                <viewController id="3q9-sn-IgF" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KWq-Xw-fFg"/>
+                        <viewControllerLayoutGuide type="bottom" id="9be-vz-ZD4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TaJ-aQ-Yid">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="陇头水稻" id="c9p-Yy-MZ7">
+                        <barButtonItem key="rightBarButtonItem" title="加田" id="zsb-gJ-uAZ">
+                            <connections>
+                                <segue destination="aKU-gQ-u6K" kind="push" id="VCq-e8-6cp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Pl-Ci-4Hn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1487" y="-1560"/>
+        </scene>
         <!--First View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
@@ -746,9 +831,6 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0qt-XS-XfA">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <segue destination="d1d-uC-0EB" kind="modal" id="iY9-dn-e1v"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -764,7 +846,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="932" y="-303"/>
+            <point key="canvasLocation" x="860" y="-303"/>
         </scene>
         <!--Add Weather Btn Controller-->
         <scene sceneID="1DA-aV-Ya8">
@@ -831,7 +913,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MaI-yt-RuW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="658" y="-1129"/>
+            <point key="canvasLocation" x="1694" y="-297"/>
         </scene>
         <!--添加农田-->
         <scene sceneID="JDv-sg-D2W">
@@ -905,18 +987,11 @@
                             <constraint firstAttribute="trailing" secondItem="rgZ-Ps-9Ic" secondAttribute="trailing" constant="20" id="q3Y-lR-I0l"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="添加农田" id="Yfl-IX-ayR">
-                        <barButtonItem key="leftBarButtonItem" title="取消" id="0Xf-WJ-DCc">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="cancle:" destination="aKU-gQ-u6K" id="GLa-Uc-P6O"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="添加农田" id="Yfl-IX-ayR"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3x3-5b-FuS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1840" y="-925"/>
+            <point key="canvasLocation" x="1846" y="-1560"/>
         </scene>
         <!--请选择地址-->
         <scene sceneID="UVA-vp-dvx">
@@ -1068,7 +1143,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JeI-hM-wae" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2224" y="-925"/>
+            <point key="canvasLocation" x="2230" y="-1560"/>
         </scene>
         <!--农药大全-->
         <scene sceneID="hbS-Ed-DLv">
@@ -1227,8 +1302,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="ccF-7k-pXY" kind="relationship" relationship="viewControllers" id="GMz-cK-HsG"/>
-                        <segue destination="EDd-To-zLi" kind="relationship" relationship="viewControllers" id="Bck-tR-qG4"/>
-                        <segue destination="Uu3-cC-sN5" kind="relationship" relationship="viewControllers" id="rt2-V1-DNd"/>
+                        <segue destination="Ssn-tV-Fb1" kind="relationship" relationship="viewControllers" id="I7G-Qj-euI"/>
+                        <segue destination="EDd-To-zLi" kind="relationship" relationship="viewControllers" id="0OB-69-KFZ"/>
+                        <segue destination="Uu3-cC-sN5" kind="relationship" relationship="viewControllers" id="fpf-Cs-dZ7"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -2969,7 +3045,7 @@ i) 不得为其他任何非法目的而使用服务。
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GCs-Iw-mnc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="414" y="2373"/>
+            <point key="canvasLocation" x="409" y="2543"/>
         </scene>
         <!--联系我们-->
         <scene sceneID="Nle-pR-vgu">
@@ -4212,7 +4288,7 @@ i) 不得为其他任何非法目的而使用服务。
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GCp-07-fXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="400" y="307"/>
+            <point key="canvasLocation" x="400" y="335"/>
         </scene>
         <!--Weather Left Controller-->
         <scene sceneID="8gh-hC-Z9G">
@@ -4382,7 +4458,6 @@ i) 不得为其他任何非法目的而使用服务。
                         <outlet property="naviItem" destination="c1O-dZ-3vM" id="c4d-5b-ErV"/>
                         <outlet property="rightItem" destination="lKQ-jH-WzY" id="KWm-QE-rdP"/>
                         <outlet property="tableView" destination="pn4-3E-K7F" id="Fwi-ej-8Le"/>
-                        <segue destination="d1d-uC-0EB" kind="modal" identifier="addWeather" id="rEd-nA-0Cj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7zz-Sc-72o" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4411,13 +4486,13 @@ i) 不得为其他任何非法目的而使用服务。
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oev-rL-ZvI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-363" y="0.0"/>
+            <point key="canvasLocation" x="-575" y="348"/>
         </scene>
-        <!--我的田-->
+        <!--天气-->
         <scene sceneID="IdD-PB-aPW">
             <objects>
                 <navigationController storyboardIdentifier="weatherNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="ccF-7k-pXY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我的田" image="icon_field_normal" selectedImage="icon_field_select" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="天气" image="icon_field_normal" selectedImage="icon_field_select" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="iud-mq-fnS"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="n1k-qc-wCe">
@@ -4437,29 +4512,6 @@ i) 不得为其他任何非法目的而使用服务。
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DKh-h5-boa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="400" y="-303"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="dHV-yo-x7g">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="d1d-uC-0EB" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BwI-mR-16l">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.1960784314" green="0.60392156860000001" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="aKU-gQ-u6K" kind="relationship" relationship="rootViewController" id="t5L-rZ-gQX"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cgh-u9-KRd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1308" y="-925"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IEI-m5-JzI">
@@ -4483,6 +4535,26 @@ i) 不得为其他任何非法目的而使用服务。
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cn1-lL-YyG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="805" y="1714"/>
+        </scene>
+        <!--我的田-->
+        <scene sceneID="j5k-G1-w19">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ssn-tV-Fb1" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="我的田" image="icon_field_normal" id="8EF-nS-M9z"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XCi-uz-XhN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.17254901959999999" green="0.62352941179999999" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="64d-LT-Sct" kind="relationship" relationship="rootViewController" id="l3c-37-NIq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RRH-sl-B44" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="414" y="-1560"/>
         </scene>
     </scenes>
     <resources>
@@ -4512,7 +4584,6 @@ i) 不得为其他任何非法目的而使用服务。
         <image name="wx_login_icon" width="55" height="55"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iY9-dn-e1v"/>
         <segue reference="xbl-w8-ADo"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.1529411765" green="0.57254901960000004" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>

@@ -200,6 +200,14 @@
 		9FFF68311C089B4500590604 /* CSubScribeListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF68301C089B4500590604 /* CSubScribeListController.m */; };
 		9FFF68341C089B6900590604 /* CSubScribeDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF68331C089B6900590604 /* CSubScribeDetailController.m */; };
 		9FFF68371C089CF900590604 /* CSubScribeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF68361C089CF900590604 /* CSubScribeListCell.m */; };
+		B0748DE61C5772A700513B4E /* CFieldHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0748DE51C5772A700513B4E /* CFieldHomeViewController.m */; };
+		B0748DF51C57738200513B4E /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B0748DE81C57738200513B4E /* NSDate+Extension.m */; };
+		B0748DF61C57738200513B4E /* NSDictionary+UrlEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = B0748DEA1C57738200513B4E /* NSDictionary+UrlEncoding.m */; };
+		B0748DF71C57738200513B4E /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B0748DEC1C57738200513B4E /* NSString+Extension.m */; };
+		B0748DF81C57738200513B4E /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = B0748DEE1C57738200513B4E /* NSString+Validation.m */; };
+		B0748DF91C57738200513B4E /* UIBarButtonItem+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = B0748DF01C57738200513B4E /* UIBarButtonItem+Badge.m */; };
+		B0748DFA1C57738200513B4E /* UIColor+hexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = B0748DF21C57738200513B4E /* UIColor+hexColor.m */; };
+		B0748DFB1C57738200513B4E /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B0748DF41C57738200513B4E /* UIImage+Extension.m */; };
 		D1168C8543D91AA1D725D8EA /* libPods-FarmNow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CA21F236831FCE6FB98510D /* libPods-FarmNow.a */; };
 /* End PBXBuildFile section */
 
@@ -572,6 +580,22 @@
 		9FFF68331C089B6900590604 /* CSubScribeDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSubScribeDetailController.m; sourceTree = "<group>"; };
 		9FFF68351C089CF900590604 /* CSubScribeListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSubScribeListCell.h; sourceTree = "<group>"; };
 		9FFF68361C089CF900590604 /* CSubScribeListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSubScribeListCell.m; sourceTree = "<group>"; };
+		B0748DE41C5772A700513B4E /* CFieldHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFieldHomeViewController.h; sourceTree = "<group>"; };
+		B0748DE51C5772A700513B4E /* CFieldHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFieldHomeViewController.m; sourceTree = "<group>"; };
+		B0748DE71C57738200513B4E /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
+		B0748DE81C57738200513B4E /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
+		B0748DE91C57738200513B4E /* NSDictionary+UrlEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+UrlEncoding.h"; sourceTree = "<group>"; };
+		B0748DEA1C57738200513B4E /* NSDictionary+UrlEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+UrlEncoding.m"; sourceTree = "<group>"; };
+		B0748DEB1C57738200513B4E /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		B0748DEC1C57738200513B4E /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		B0748DED1C57738200513B4E /* NSString+Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Validation.h"; sourceTree = "<group>"; };
+		B0748DEE1C57738200513B4E /* NSString+Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Validation.m"; sourceTree = "<group>"; };
+		B0748DEF1C57738200513B4E /* UIBarButtonItem+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Badge.h"; sourceTree = "<group>"; };
+		B0748DF01C57738200513B4E /* UIBarButtonItem+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Badge.m"; sourceTree = "<group>"; };
+		B0748DF11C57738200513B4E /* UIColor+hexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+hexColor.h"; sourceTree = "<group>"; };
+		B0748DF21C57738200513B4E /* UIColor+hexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+hexColor.m"; sourceTree = "<group>"; };
+		B0748DF31C57738200513B4E /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
+		B0748DF41C57738200513B4E /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -888,6 +912,7 @@
 		9FD212BE1BD127D30063147D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				B0748DE31C57728500513B4E /* Field */,
 				9F4336651BE11E42003C3B5D /* Weather */,
 				9FEACDBB1BCFD5E1000722D8 /* Main.storyboard */,
 				9FE6E8911BD669EE003A9D79 /* Wiki */,
@@ -901,6 +926,20 @@
 		9FD212C81BD128A60063147D /* Extra */ = {
 			isa = PBXGroup;
 			children = (
+				B0748DE71C57738200513B4E /* NSDate+Extension.h */,
+				B0748DE81C57738200513B4E /* NSDate+Extension.m */,
+				B0748DE91C57738200513B4E /* NSDictionary+UrlEncoding.h */,
+				B0748DEA1C57738200513B4E /* NSDictionary+UrlEncoding.m */,
+				B0748DEB1C57738200513B4E /* NSString+Extension.h */,
+				B0748DEC1C57738200513B4E /* NSString+Extension.m */,
+				B0748DED1C57738200513B4E /* NSString+Validation.h */,
+				B0748DEE1C57738200513B4E /* NSString+Validation.m */,
+				B0748DEF1C57738200513B4E /* UIBarButtonItem+Badge.h */,
+				B0748DF01C57738200513B4E /* UIBarButtonItem+Badge.m */,
+				B0748DF11C57738200513B4E /* UIColor+hexColor.h */,
+				B0748DF21C57738200513B4E /* UIColor+hexColor.m */,
+				B0748DF31C57738200513B4E /* UIImage+Extension.h */,
+				B0748DF41C57738200513B4E /* UIImage+Extension.m */,
 				9FB03AFE1C0F44640043C992 /* CSortItemByFirstLetter.h */,
 				9FB03AFF1C0F44640043C992 /* CSortItemByFirstLetter.m */,
 				9FCA08F21BEA3535003BB40C /* LunarCalendar.h */,
@@ -1195,6 +1234,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B0748DE31C57728500513B4E /* Field */ = {
+			isa = PBXGroup;
+			children = (
+				B0748DE41C5772A700513B4E /* CFieldHomeViewController.h */,
+				B0748DE51C5772A700513B4E /* CFieldHomeViewController.m */,
+			);
+			path = Field;
+			sourceTree = "<group>";
+		};
 		BA4E673B17A3F30B9B616FE2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1429,9 +1477,12 @@
 				9F09FA981C04A18300D973A5 /* CSetUserTypeModel.m in Sources */,
 				9FD213231BD128A60063147D /* NSAttributedString+Extra.m in Sources */,
 				9FD2131B1BD128A60063147D /* CAAniamtionFactory.m in Sources */,
+				B0748DFA1C57738200513B4E /* UIColor+hexColor.m in Sources */,
 				9F66BF831BE4D74E0047CE82 /* CForecastHourInfoModel.m in Sources */,
 				9F03FADD1BE7C04000A3B1C7 /* CWeatherHourCell.m in Sources */,
+				B0748DF91C57738200513B4E /* UIBarButtonItem+Badge.m in Sources */,
 				9FD213211BD128A60063147D /* DAFRunLoop.mm in Sources */,
+				B0748DF61C57738200513B4E /* NSDictionary+UrlEncoding.m in Sources */,
 				9F03FADA1BE7A19000A3B1C7 /* CWeatherDayCell.m in Sources */,
 				9F8FB7A91BEFA003003A7469 /* CAddWeatherBtnController.m in Sources */,
 				9FEED8511BEDBE220095A91B /* CRefappModel.m in Sources */,
@@ -1448,10 +1499,12 @@
 				9FD2131C1BD128A60063147D /* CAAnimation+Extra.m in Sources */,
 				9F92C2E21BDB5C8C0034DB3F /* CCPProductObject.m in Sources */,
 				9F03FAD11BE787BC00A3B1C7 /* CSearchLocationByLatAndLonModel.m in Sources */,
+				B0748DE61C5772A700513B4E /* CFieldHomeViewController.m in Sources */,
 				9FD213361BD128A60063147D /* UIImage+ValidCheck.m in Sources */,
 				9FFF68311C089B4500590604 /* CSubScribeListController.m in Sources */,
 				9FA4DBB31BDD0F20005ED3B5 /* CQQAuthRegLogModel.m in Sources */,
 				9FC425371BD544B800455A8C /* CMineViewController.m in Sources */,
+				B0748DF71C57738200513B4E /* NSString+Extension.m in Sources */,
 				9FD2131D1BD128A60063147D /* CAAnimationGroup+Extra.m in Sources */,
 				9FEACDB41BCFD5E1000722D8 /* AppDelegate.m in Sources */,
 				9FC4252B1BD5359500455A8C /* CMineHeadCell.m in Sources */,
@@ -1485,11 +1538,13 @@
 				9F0E196A1C03691400886E69 /* CStoresModel.m in Sources */,
 				9F68D8F61BDE664800F54627 /* CWeiXinAuthRegLogModel.m in Sources */,
 				9FD213241BD128A60063147D /* NSBundle+Extra.m in Sources */,
+				B0748DFB1C57738200513B4E /* UIImage+Extension.m in Sources */,
 				9FD2132C1BD128A60063147D /* NSString+MD5HexDigest.m in Sources */,
 				9F6121671BFA14C700E0B4D7 /* CLaonongsModel.m in Sources */,
 				9F98A9781BDFD48F0025B0BC /* CSearchSectionView.m in Sources */,
 				9FEED8481BECFEE90095A91B /* CGetLocationModel.m in Sources */,
 				9FC0E9C51BD0D0AB0096FD3D /* CRequest.m in Sources */,
+				B0748DF81C57738200513B4E /* NSString+Validation.m in Sources */,
 				9FA04E141BD93A56007E2951 /* CVarietyBrowseObjectModel.m in Sources */,
 				9FD213371BD128A60063147D /* UIImage+Extra.m in Sources */,
 				9FB03B001C0F44640043C992 /* CSortItemByFirstLetter.m in Sources */,
@@ -1506,6 +1561,7 @@
 				9F4336721BE1213F003C3B5D /* CWeatherLeftCell.m in Sources */,
 				9FCA08F01BEA2C2C003BB40C /* CWeatherSectionView.m in Sources */,
 				9F02DFC51BD93614001C223F /* CBrowseVarietyByCropIdModel.m in Sources */,
+				B0748DF51C57738200513B4E /* NSDate+Extension.m in Sources */,
 				9F92C2D81BDB36D80034DB3F /* CBrowseCPProductByModelModel.m in Sources */,
 				9FC4252E1BD535F800455A8C /* CMineContentCell.m in Sources */,
 				9FD2133B1BD128A60063147D /* MBProgressHUD+Express.m in Sources */,
