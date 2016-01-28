@@ -106,7 +106,7 @@
 			[tableModel addRow:TABLEVIEW_ROW(@"btncell", content) forSection:3];
 		}
 
-		NSDictionary* content  =  @{@"title":@"合作机构员工认证",@"color":COLOR(0x329A2A)};
+		NSDictionary* content  =  @{@"title":@"退出登录",@"color":COLOR(0x329A2A)};
 
 		[tableModel addRow:TABLEVIEW_ROW(@"btncell", content) forSection:3];
 
@@ -212,16 +212,21 @@
 	else if (indexPath.section == 3)
 	{
 		if (indexPath.row == 0) {
-			//data有时为选择用户类型
+			
 			if (data) {
-				CStoresViewController* controller = [self.storyboard controllerWithID:@"CStoresViewController"];
-				[self.navigationController pushViewController:controller animated:YES];
+				NSString* title = data[@"title"];
+				if ([title isEqualToString:@"退出登录"]) {
+					[self logout];
+
+				}
+				else
+				{
+					CStoresViewController* controller = [self.storyboard controllerWithID:@"CStoresViewController"];
+					[self.navigationController pushViewController:controller animated:YES];
+				}
+
 			}
-			//无值时代表只有登出
-			else
-			{
-				[self logout];
-			}
+
 
 			
 		}
