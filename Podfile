@@ -19,6 +19,7 @@ pod 'HorizontalProgress'
 pod 'TPKeyboardAvoiding'
 pod 'QBImagePickerController'
 pod 'PEPhotoCropEditor'
+pod 'MJRefresh'
 end
 
 target 'FarmNowTests' do

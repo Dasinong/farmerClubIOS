@@ -17,6 +17,7 @@
 #import "CPersonalCache.h"
 #import "CUserObject.h"
 #import "CLaonongsModel.h"
+#import "MJRefresh.h"
 
 #define SuitableColor COLOR(0XFFFFFF)
 #define SuitableTextColor COLOR(0X007AFF)
@@ -99,6 +100,9 @@ NSString*				gLocationName = nil;
 	self.yidayaoBtn.layer.masksToBounds = YES;
 	
 
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self getWeatherData:nil lat:gLatitude lon:gLongitude];
+    }];
 }
 
 - (void)notifyChangeLocation:(id)sender
@@ -266,7 +270,9 @@ NSString*				gLocationName = nil;
 
 - (void)getWeatherData:(NSNumber*)monitorLocationId lat:(double)lat lon:(double)lon
 {
-	[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    if (![self.tableView.mj_header isRefreshing]) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    }
 
 	CRequestBaseParams* params = nil;
 	if (monitorLocationId) {
@@ -286,8 +292,9 @@ NSString*				gLocationName = nil;
 
 	
 	[CLoadWeatherModel requestWithParams:params completion:^(CLoadWeatherModel* model, JSONModelError *err) {
-		[MBProgressHUD hideHUDForView:self.view animated:YES];
-		
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+		[self.tableView.mj_header endRefreshing];
+        
 		if (model && err == nil) {
 			//适宜下地
 			if (model.workable) {

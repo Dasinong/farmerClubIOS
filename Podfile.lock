@@ -37,6 +37,7 @@ PODS:
     - ARChromeActivity (= 1.0.4)
     - TUSafariActivity (= 1.0.4)
   - MBProgressHUD (0.9.1)
+  - MJRefresh (3.1.0)
   - MMDrawerController (0.6.0):
     - MMDrawerController/Core (= 0.6.0)
     - MMDrawerController/MMDrawerBarButtonItem (= 0.6.0)
@@ -70,6 +71,7 @@ DEPENDENCIES:
   - JSONModel
   - KINWebBrowser
   - MBProgressHUD
+  - MJRefresh
   - MMDrawerController
   - OpenUDID
   - PEPhotoCropEditor
@@ -100,6 +102,7 @@ SPEC CHECKSUMS:
   JSONModel: ec77e9865236a7a09d9cf7668df6b4b328d9ec1d
   KINWebBrowser: 5d519cb0f46f6bc79d3e35021f15466c0adaceb0
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
   PEPhotoCropEditor: 613292fce009efd085e7aed975f1ebb3fec8bb7b
