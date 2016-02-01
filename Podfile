@@ -20,6 +20,7 @@ pod 'TPKeyboardAvoiding'
 pod 'QBImagePickerController'
 pod 'PEPhotoCropEditor'
 pod 'MJRefresh'
+pod 'MZTimerLabel'
 end
 
 target 'FarmNowTests' do

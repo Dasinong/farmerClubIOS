@@ -2077,8 +2077,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuf-Ck-waZ">
-                                <rect key="frame" x="24" y="94" width="272" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuf-Ck-waZ">
+                                <rect key="frame" x="48" y="94" width="224" height="17"/>
                                 <attributedString key="attributedText">
                                     <fragment content="我们已经发送了">
                                         <attributes>
@@ -2104,38 +2104,38 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="13581667676" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aK6-Rn-qBu">
-                                <rect key="frame" x="48" y="148" width="225" height="43"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13581667676" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aK6-Rn-qBu">
+                                <rect key="frame" x="48" y="141" width="225" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="验证码：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pgu-Eg-Ehn">
-                                <rect key="frame" x="10" y="221" width="82" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="验证码：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pgu-Eg-Ehn">
+                                <rect key="frame" x="10" y="214" width="80" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yXp-RB-b2Z">
-                                <rect key="frame" x="100" y="221" width="210" height="24"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yXp-RB-b2Z">
+                                <rect key="frame" x="100" y="214" width="210" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vbA-mS-Ziv" userLabel="line">
-                                <rect key="frame" x="10" y="253" width="300" height="1"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbA-mS-Ziv" userLabel="line">
+                                <rect key="frame" x="10" y="246" width="300" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="m1j-Sy-gaU"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="接收短信大约需要59秒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vaf-ut-3UH">
-                                <rect key="frame" x="83" y="264" width="153.5" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="接收短信大约需要59秒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vaf-ut-3UH">
+                                <rect key="frame" x="83" y="257" width="153.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ga-ag-5Pi">
-                                <rect key="frame" x="10" y="302" width="300" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ga-ag-5Pi">
+                                <rect key="frame" x="10" y="295" width="300" height="50"/>
                                 <color key="backgroundColor" red="0.17254901959999999" green="0.62352941179999999" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Ryt-ZM-Llp"/>
@@ -2148,6 +2148,15 @@
                                     <action selector="nextBtnClick:" destination="cJw-AK-FdF" eventType="touchUpInside" id="LF1-kx-qsp"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0kx-s6-386">
+                                <rect key="frame" x="107" y="251" width="105" height="30"/>
+                                <state key="normal" title="重新发送验证码">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="getVerificationCodeBySMS:" destination="cJw-AK-FdF" eventType="touchUpInside" id="yhz-VL-N5a"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -2155,6 +2164,7 @@
                             <constraint firstItem="Pgu-Eg-Ehn" firstAttribute="centerY" secondItem="yXp-RB-b2Z" secondAttribute="centerY" id="8zx-Y2-tT3"/>
                             <constraint firstAttribute="trailing" secondItem="yXp-RB-b2Z" secondAttribute="trailing" constant="10" id="BtS-dy-BYQ"/>
                             <constraint firstItem="fuf-Ck-waZ" firstAttribute="top" secondItem="voV-GB-EWr" secondAttribute="bottom" constant="30" id="Ctl-hS-G4z"/>
+                            <constraint firstItem="0kx-s6-386" firstAttribute="centerY" secondItem="vaf-ut-3UH" secondAttribute="centerY" id="FTK-0A-Qjy"/>
                             <constraint firstItem="aK6-Rn-qBu" firstAttribute="top" secondItem="fuf-Ck-waZ" secondAttribute="bottom" constant="30" id="GRD-Wk-RWI"/>
                             <constraint firstItem="vaf-ut-3UH" firstAttribute="top" secondItem="vbA-mS-Ziv" secondAttribute="bottom" constant="10" id="KDv-ah-uX5"/>
                             <constraint firstItem="vbA-mS-Ziv" firstAttribute="leading" secondItem="Pgu-Eg-Ehn" secondAttribute="leading" id="OtA-kv-GNv"/>
@@ -2162,6 +2172,7 @@
                             <constraint firstAttribute="trailing" secondItem="4ga-ag-5Pi" secondAttribute="trailing" constant="10" id="TNo-rn-JD9"/>
                             <constraint firstItem="vbA-mS-Ziv" firstAttribute="trailing" secondItem="yXp-RB-b2Z" secondAttribute="trailing" id="UQC-mG-6O9"/>
                             <constraint firstItem="aK6-Rn-qBu" firstAttribute="centerX" secondItem="DHh-Gx-cY2" secondAttribute="centerX" id="V31-ke-8WU"/>
+                            <constraint firstItem="0kx-s6-386" firstAttribute="centerX" secondItem="vaf-ut-3UH" secondAttribute="centerX" id="XVG-5d-KnY"/>
                             <constraint firstItem="fuf-Ck-waZ" firstAttribute="centerX" secondItem="DHh-Gx-cY2" secondAttribute="centerX" id="c1H-gy-cwc"/>
                             <constraint firstItem="vbA-mS-Ziv" firstAttribute="top" secondItem="Pgu-Eg-Ehn" secondAttribute="bottom" constant="8" id="cT7-0q-qRh"/>
                             <constraint firstItem="4ga-ag-5Pi" firstAttribute="leading" secondItem="DHh-Gx-cY2" secondAttribute="leading" constant="10" id="qKJ-jg-4Sp"/>
@@ -2172,8 +2183,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="填写验证码" id="lOE-2H-32k"/>
                     <connections>
+                        <outlet property="countDownLabel" destination="vaf-ut-3UH" id="88Z-65-jaU"/>
                         <outlet property="identifyingCodeField" destination="yXp-RB-b2Z" id="oFe-lq-pTh"/>
                         <outlet property="phoneLabel" destination="aK6-Rn-qBu" id="9Qr-oF-r2y"/>
+                        <outlet property="resendBotton" destination="0kx-s6-386" id="vr4-ec-G2h"/>
                         <segue destination="s3u-Oy-Jr9" kind="push" id="f9h-H6-ZbX"/>
                     </connections>
                 </viewController>
