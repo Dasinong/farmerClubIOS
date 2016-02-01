@@ -44,17 +44,6 @@
 
 	
 	[self updateModel:tableModel];
-	
-	NSArray *types = @[AVMetadataObjectTypeQRCode];
-	self.reader        = [QRCodeReaderViewController readerWithMetadataObjectTypes:types];
-
-	// Using delegate methods
-		self.reader.delegate = self;
-	
-//	// Or use blocks
-//	[self.reader setCompletionWithBlock:^(NSString *resultAsString) {
-//		NSLog(@"%@", resultAsString);
-//	}];
 }
 
 
@@ -94,10 +83,7 @@
 	{
 		if (indexPath.row == 0) {
 			// Create the reader object
-
-
-			
-			[self presentViewController:_reader animated:YES completion:NULL];
+			[self presentViewController:self.reader animated:YES completion:NULL];
 		}
 		else if (indexPath.row == 1)
 		{
@@ -178,6 +164,18 @@
 - (IBAction)loginClick:(id)sender {
 	UINavigationController* naviController = [self.storyboard controllerWithID:@"loginNavigationController"];
 	[self presentViewController:naviController animated:YES completion:nil];
+}
+
+- (QRCodeReaderViewController *)reader {
+    if (_reader == nil) {
+        NSArray *types = @[AVMetadataObjectTypeQRCode];
+        _reader = [QRCodeReaderViewController readerWithMetadataObjectTypes:types];
+        
+        // Using delegate methods
+        _reader.delegate = self;
+    }
+    
+    return _reader;
 }
 
 #pragma mark - QRCodeReader Delegate Methods
