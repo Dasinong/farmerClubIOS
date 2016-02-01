@@ -64,6 +64,9 @@
 
 }
 - (IBAction)nextBtnClick:(id)sender {
+    UIButton *nextButton = (UIButton *)sender;
+    nextButton.enabled = NO;
+    
 	if (self.phoneField.text.length > 0) {
 		
 		__weak CLoginController* weakSelf = self;
@@ -76,6 +79,7 @@
 					CIsPassSetParams* param = [CIsPassSetParams new];
 					param.cellphone = weakSelf.phoneField.text;
 					[CIsPassSetModel requestWithParams:param completion:^(CIsPassSetModel* model, JSONModelError *err) {
+                        nextButton.enabled = YES;
 						if (model && err == nil) {
 							//设置了密码
 							if (model.data) {
@@ -93,12 +97,16 @@
 				//用户注册了
 				else
 				{
+                    nextButton.enabled = YES;
 					[weakSelf gotoIdentifyingController];
 				}
 			}
 		}];
-
 	}
+    else {
+        nextButton.enabled = YES;
+        [MBProgressHUD alert:@"请输入手机号！" ];
+    }
 }
 
 - (void)gotoIdentifyingController

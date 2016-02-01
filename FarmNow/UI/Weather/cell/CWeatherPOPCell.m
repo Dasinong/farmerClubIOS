@@ -39,7 +39,7 @@
         [self setImageView:self.morningImageView withPossibility:object.morning];
         [self setImageView:self.noonImageView withPossibility:object.noon];
         [self setImageView:self.nightImageView withPossibility:object.night];
-        [self setImageView:self.midNightImageView withPossibility:object.nextmidnight];        
+        [self setImageView:self.midNightImageView withPossibility:object.nextmidnight];
 	}
 }
 
@@ -47,10 +47,10 @@
     if (possibility <= 0) {
         [imageView setImage:[UIImage imageNamed:@"pop0"]];
     }
-    else if (possibility < 40) {
+    else if (possibility <= 40) {
         [imageView setImage:[UIImage imageNamed:@"pop1"]];
     }
-    else if (possibility < 80) {
+    else if (possibility <= 80) {
         [imageView setImage:[UIImage imageNamed:@"pop2"]];
     }
     else if (possibility < 100) {

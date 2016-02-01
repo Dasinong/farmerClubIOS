@@ -30,6 +30,7 @@
 	self.segement.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
 	self.segement.segmentWidthStyle = HMSegmentedControlSegmentWidthStyleFixed;
 	self.segement.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
+    self.segement.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
 //	self.segement.delegate = self;
 	self.segement.selectedSegmentIndex = self.selectedIndex;
 	[self selectedSegment:self.segement];
