@@ -97,6 +97,14 @@ const NSString*    kResponseSuccess = @"200";
         return;
     }
 	Info(@"result=%@",responseObject);
+    
+    if (responseObject[@"accessToken"]) {
+        // 在这里把AccessToken存入
+        NSUserDefaults *userDefaults = USER_DEFAULTS;
+        [userDefaults setObject:responseObject[@"accessToken"] forKey:@"accessToken"];
+        [userDefaults synchronize];
+    }
+    
     if (responseObject && [responseObject isKindOfClass:[NSDictionary class]])
     {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -209,9 +217,23 @@ const NSString*    kResponseSuccess = @"200";
     AFHTTPRequestOperationManager   *manager = [[self class] manager];
 //	manager
     NSString                        *URL     = [CRequest generatorGetRequestURLWithParams:params];
+    
+    
+    NSUserDefaults *userDefaults = USER_DEFAULTS;
+    if ([userDefaults objectForKey:@"accessToken"]) {
+        NSString *accessToken = [userDefaults objectForKey:@"accessToken"];
+        if ([URL containsString:@"?"]) {
+            URL = [NSString stringWithFormat:@"%@&accessToken=%@", URL, accessToken];
+        }
+        else {
+            URL = [NSString stringWithFormat:@"%@?accessToken=%@", URL, accessToken];
+        }
+    }
+    
 	manager.requestSerializer = [AFJSONRequestSerializer serializer];
 	manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    /* AFHTTPRequestOperation *operation      =*/ [manager GET:URL parameters:nil success: ^(AFHTTPRequestOperation *operation, id responseObject) {
+    /* AFHTTPRequestOperation *operation      =*/
+    [manager GET:URL parameters:nil success: ^(AFHTTPRequestOperation *operation, id responseObject) {
         [self success:operation object:responseObject completion:completeBlock];
     } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
         [self failed:operation error:error completion:completeBlock];
@@ -225,12 +247,26 @@ const NSString*    kResponseSuccess = @"200";
 	AFHTTPRequestOperationManager   *manager = [[self class] manager];
 	//	manager
 	NSString                        *URL     =  [NSString stringWithFormat:@"%@/%@",[CRequest generatorRequestURL:params],pathParams];
+    
+    NSUserDefaults *userDefaults = USER_DEFAULTS;
+    if ([userDefaults objectForKey:@"accessToken"]) {
+        NSString *accessToken = [userDefaults objectForKey:@"accessToken"];
+        if ([URL containsString:@"?"]) {
+            URL = [NSString stringWithFormat:@"%@&accessToken=%@", URL, accessToken];
+        }
+        else {
+            URL = [NSString stringWithFormat:@"%@?accessToken=%@", URL, accessToken];
+        }
+    }
+    
 	Info(@"URL:%@", URL);
+    
 	
 //	Info(@"parameters:%@", parameters);
 	manager.requestSerializer = [AFJSONRequestSerializer serializer];
 	manager.responseSerializer = [AFJSONResponseSerializer serializer];
-	/* AFHTTPRequestOperation *operation      =*/ [manager DELETE:URL parameters:nil success: ^(AFHTTPRequestOperation *operation, id responseObject) {
+	/* AFHTTPRequestOperation *operation      =*/
+    [manager DELETE:URL parameters:nil success: ^(AFHTTPRequestOperation *operation, id responseObject) {
 		[self success:operation object:responseObject completion:completeBlock];
 	} failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
 		[self failed:operation error:error completion:completeBlock];
@@ -247,10 +283,19 @@ const NSString*    kResponseSuccess = @"200";
 	NSDictionary* parameters = [params paramDictionary];
 	Info(@"URL:%@", URL);
 
+    NSUserDefaults *userDefaults = USER_DEFAULTS;
+    if ([userDefaults objectForKey:@"accessToken"]) {
+        NSString *accessToken = [userDefaults objectForKey:@"accessToken"];
+        NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:parameters];
+        [dict setObject:accessToken forKey:@"accessToken"];
+        parameters = dict;
+    }
+    
 	Info(@"parameters:%@", parameters);
 
 	
-	/*AFHTTPRequestOperation *operation      =*/ [manager POST:URL parameters:parameters constructingBodyWithBlock: ^(id < AFMultipartFormData > formData) {
+	/*AFHTTPRequestOperation *operation      =*/
+    [manager POST:URL parameters:parameters constructingBodyWithBlock: ^(id < AFMultipartFormData > formData) {
         for (NSDictionary * attachment in attachments)
         {
             NSURL *fileURL = [NSURL fileURLWithPath:attachment[@"path"]];
@@ -280,6 +325,17 @@ const NSString*    kResponseSuccess = @"200";
 {
     AFHTTPRequestOperationManager   *manager = [[self class] manager];
     NSString                        *URL     = [NSString stringWithFormat:@"%@%@", kAPIServer, path];
+    
+    
+    NSUserDefaults *userDefaults = USER_DEFAULTS;
+    if ([userDefaults objectForKey:@"accessToken"]) {
+        NSString *accessToken = [userDefaults objectForKey:@"accessToken"];
+        NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:params];
+        [dict setObject:accessToken forKey:@"accessToken"];
+        params = dict;
+    }
+    
+    
     /*AFHTTPRequestOperation *operation      =*/ [manager POST:URL parameters:params constructingBodyWithBlock: ^(id < AFMultipartFormData > formData) {
         for (NSDictionary * attachment in attachments)
         {

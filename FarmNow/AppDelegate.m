@@ -29,7 +29,6 @@
 	self.showQQLogin = YES;
 	self.showWXLogin = YES;
 	[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-	[[CPersonalCache defaultPersonalCache] reloadCookie];
 	[WXApi registerApp:kWXAPP_ID withDescription:@"weixin"];
 	[SMSSDK registerApp:kMOBSMSAPP_ID withSecret:kMOBSMSAPP_SECRET];
 	

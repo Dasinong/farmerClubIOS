@@ -168,7 +168,6 @@
 
 - (void)getWxUserInfo:(NSNotification*)sender
 {
-	[[CPersonalCache defaultPersonalCache] cacheCookie];
 	if (sender && [sender isKindOfClass:[NSNotification class]] && sender.object == nil) {
 		NSDictionary* userInfo = sender.userInfo;
 		if (userInfo && [userInfo isKindOfClass:[NSDictionary class]]) {
@@ -200,7 +199,6 @@
 
 - (void)loginSuccessed
 {
-	[[CPersonalCache defaultPersonalCache] cacheCookie];
 	[[[sdkCall getinstance] oauth] getUserInfo];
 //	if (NO == _isLogined)
 //	{

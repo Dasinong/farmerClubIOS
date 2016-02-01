@@ -11,8 +11,6 @@
 
 @interface CPersonalCache : NSObject
 + (CPersonalCache *)defaultPersonalCache;
-- (void)cacheCookie;
-- (void)reloadCookie;
 
 - (void)reloadCacheValueFromCacheFile;
 

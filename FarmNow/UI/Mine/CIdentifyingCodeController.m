@@ -64,8 +64,7 @@
 			[CAuthRegLogModel requestWithParams:POST params:params completion:^(CAuthRegLogModel* model, JSONModelError *err) {
 				if (model && err== nil) {
 					[MBProgressHUD alert:@"登录成功！" ];
-					[[CPersonalCache defaultPersonalCache] cacheCookie];
-
+					
 					[[CPersonalCache defaultPersonalCache] saveCacheUserInfo:model.data];
 					if (model.data.userType == nil) {
 						CSelectIdentityController* controller = [self.storyboard controllerWithID:@"CSelectIdentityController"];
