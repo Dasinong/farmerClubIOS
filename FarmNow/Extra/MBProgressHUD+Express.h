@@ -28,7 +28,7 @@
 
 
 + (MBProgressHUD* )alert:(NSString*)message;
-
++ (MBProgressHUD* )info:(NSString*)message;
 
 + (MBProgressHUD* )processing:(NSString*)message
                        inView:(UIView*)view

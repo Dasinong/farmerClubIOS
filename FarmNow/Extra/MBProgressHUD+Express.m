@@ -40,6 +40,11 @@
     return [MBProgressHUD alertMessage:message inView:nil duration:2  finishedBlock:nil];
 }
 
++ (MBProgressHUD* )info:(NSString*)message
+{
+    return [MBProgressHUD alertMessage:message inView:nil duration:0.8  finishedBlock:nil];
+}
+
 + (MBProgressHUD*)alert:(NSString*)message finishedBlock:(MBProgressHUDCompletionBlock)block
 {
     return [MBProgressHUD alert:message finishedBlock:block];

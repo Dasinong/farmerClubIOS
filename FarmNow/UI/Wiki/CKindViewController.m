@@ -14,14 +14,15 @@
 #import "CGetCpprductsByIngredientModel.h"
 
 @interface CKindViewController ()
-
+@property (nonatomic, strong) NSArray *sections;
 @end
 
 @implementation CKindViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.sections = @[@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z", @"#"];
+    
 	if (self.type == ePinZhong) {
         self.title                              = self.seedItem.cropName;
 
@@ -33,8 +34,8 @@
 
 			if (err == nil && model ) {
         UITableViewModel* talbeModel            = [UITableViewModel new];
-				for (CVarietyBrowseObjectModel* object in model.data) {
-					[talbeModel addRow:TABLEVIEW_ROW(@"titlecell", object) forSection:0];
+				for (CVarietyBrowseObjectModel* object in [self sortedArray:model.data]) {
+					[talbeModel addRow:TABLEVIEW_ROW(@"titlecell", object) forSection:[self sectionForString:object.varietyNamePY]];
 				}
 				[self updateModel:talbeModel];
 			}
@@ -50,8 +51,8 @@
 
 			if (err == nil && model ) {
         UITableViewModel* talbeModel            = [UITableViewModel new];
-				for (CIngredientBrowseObject* object in model.data) {
-					[talbeModel addRow:TABLEVIEW_ROW(@"titlecell", object) forSection:0];
+				for (CIngredientBrowseObject* object in [self sortedArray:model.data]) {
+                    [talbeModel addRow:TABLEVIEW_ROW(@"titlecell", object) forSection:[self sectionForString:object.activeIngredientPY]];
 				}
 				[self updateModel:talbeModel];
 			}
@@ -183,6 +184,90 @@
 		[self.navigationController pushViewController:webController animated:YES];
 	}
 
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if (self.type == ePinZhong || self.type == eIngredient) {
+        return 27;
+    }
+    else {
+        return 1;
+    }
+}
+
+
+- (BOOL)isAlphabet:(char)initialChar {
+    return (initialChar >= 'a' && initialChar <= 'z') || (initialChar >= 'A' && initialChar <= 'Z');
+}
+
+- (NSArray *)sortedArray:(NSArray *)data {
+    return [data sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        if ([obj1 isKindOfClass:[CVarietyBrowseObjectModel class]]) {
+            CVarietyBrowseObjectModel *m1 = (CVarietyBrowseObjectModel*)obj1;
+            CVarietyBrowseObjectModel *m2 = (CVarietyBrowseObjectModel*)obj2;
+            
+            char m1char = [[m1.varietyNamePY lowercaseString] characterAtIndex:0];
+            char m2char = [[m2.varietyNamePY lowercaseString] characterAtIndex:0];
+            
+            if ([self isAlphabet:m1char] && ![self isAlphabet:m2char]) {
+                return NSOrderedAscending;
+            }
+            
+            if (![self isAlphabet:m1char] && [self isAlphabet:m2char]) {
+                return NSOrderedDescending;
+            }
+            
+            return [[m1.varietyNamePY lowercaseString] compare:[m2.varietyNamePY lowercaseString]];
+        }
+        
+        if ([obj1 isKindOfClass:[CIngredientBrowseObject class]]) {
+            CIngredientBrowseObject *m1 = (CIngredientBrowseObject*)obj1;
+            CIngredientBrowseObject *m2 = (CIngredientBrowseObject*)obj2;
+            
+            char m1char = [[m1.activeIngredientPY lowercaseString] characterAtIndex:0];
+            char m2char = [[m2.activeIngredientPY lowercaseString] characterAtIndex:0];
+            
+            if ([self isAlphabet:m1char] && ![self isAlphabet:m2char]) {
+                return NSOrderedAscending;
+            }
+            
+            if (![self isAlphabet:m1char] && [self isAlphabet:m2char]) {
+                return NSOrderedDescending;
+            }
+            
+            return [[m1.activeIngredientPY lowercaseString] compare:[m2.activeIngredientPY lowercaseString]];
+        }
+        
+        return NSOrderedSame;
+    }];
+}
+
+- (NSInteger)sectionForString:(NSString *)titleString {
+    if (titleString.length > 0) {
+        if ([self isAlphabet:[titleString characterAtIndex:0]]) {
+            NSString *firstChar = [titleString substringToIndex:1];
+            
+            return [self.sections indexOfObject:[firstChar uppercaseString]];
+        }
+    }
+    
+    return [self.sections count] - 1;
+}
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    if (self.type == ePinZhong || self.type == eIngredient) {
+        return self.sections;
+    }
+    else {
+        return nil;
+    }
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+{
+    [MBProgressHUD info:title];
+    return [self sectionForString:title];
 }
 
 @end
