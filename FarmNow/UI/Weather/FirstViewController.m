@@ -330,9 +330,9 @@ NSString*				gLocationName = nil;
 			[talbeModel addRow:TABLEVIEW_ROW(@"hourcell", model) forSection:2];
 			[talbeModel setTitle:@"24小时天气" forSection:2];
 			
-			//未来七天天气
+			//未来一周天气
 			if (model.n7d.count > 0) {
-				[talbeModel setTitle:@"未来七天天气" forSection:3];
+				[talbeModel setTitle:@"未来一周天气" forSection:3];
 				
 				NSMutableArray* showDayWeathers = [[NSMutableArray alloc] initWithCapacity:0x1];
 				
