@@ -375,26 +375,18 @@
 	
 	cropController.delegate = self;
 	cropController.image    = original_image;
-	
-	UIImage *image  = original_image;
-	CGFloat  width  = image.size.width;
-	CGFloat  height = image.size.height;
-	CGFloat  length = 166;
-	cropController.imageCropRect          = CGRectMake( (width - length) / 2,
-													   (height - length) / 2,
-													   length,
-													   length );
+    
 	cropController.keepingCropAspectRatio = YES;
 	cropController.toolbarHidden          = YES;
-	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:cropController];
-	//
-	// if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-	// {
-	// navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
-	// }
-	cropController.cropAspectRatio = 1.0;
-	
-	[controller presentViewController:navigationController animated:YES completion:NULL];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:cropController];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
+    cropController.cropAspectRatio = 1.0;
+    
+    [controller presentViewController:navigationController animated:YES completion:NULL];
 } /* cropImage */
 
 - (void)saveAvatar:(UIImage*)avatar
@@ -436,16 +428,9 @@
 		controller.delegate = self;
 		controller.image = original_image;
 		
-		UIImage *image = original_image;
-		CGFloat width = image.size.width;
-		CGFloat height = image.size.height;
-		CGFloat length = 166;
-		
-		controller.imageCropRect = CGRectMake( (width - length) / 2,
-											  (height - length) / 2,
-											  length,
-											  length );
+        
 		controller.keepingCropAspectRatio = YES;
+        controller.cropAspectRatio = 1.0;
 		controller.toolbarHidden = YES;
 		UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
 		

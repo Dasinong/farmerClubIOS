@@ -25,4 +25,7 @@
 #define USER_DEFAULTS [NSUserDefaults standardUserDefaults]
 #define USER [[CPersonalCache defaultPersonalCache] cacheUserInfo]
 
+#define SCREEN_WIDTH [UIApplication sharedApplication].delegate.window.frame.size.width
+#define SCREEN_HEIGHT [UIApplication sharedApplication].delegate.window.frame.size.height
+
 #define __TencentDemoAppid_ @"1104698311"

@@ -15,6 +15,10 @@
 	return @"login";
 }
 
+- (NSString *)appId {
+    return @"2";
+}
+
 @end
 
 @implementation CLoginModel

@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) NSString* password;
 @property (strong, nonatomic) NSString* cellphone;
+@property (strong, nonatomic) NSString* appId;
 
 @end
 
