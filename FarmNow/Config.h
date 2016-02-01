@@ -23,5 +23,6 @@
 #define kMOBSMSAPP_SECRET @"3c1b73e6af8f059c2e6b25f7065d77a3"
 
 #define USER_DEFAULTS [NSUserDefaults standardUserDefaults]
+#define USER [[CPersonalCache defaultPersonalCache] cacheUserInfo]
 
 #define __TencentDemoAppid_ @"1104698311"

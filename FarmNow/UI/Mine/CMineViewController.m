@@ -77,43 +77,60 @@
 - (void)didSelect:(NSIndexPath *)indexPath identifier:(NSString*)identifier data:(id)data
 {
 	if (indexPath.section == 0) {
-		[self performSegueWithIdentifier:@"Personal" sender:self];
+        if (USER) {
+            [self performSegueWithIdentifier:@"Personal" sender:self];
+        }
+        else {
+            [self loginClick:nil];
+        }
 	}
 	else if (indexPath.section == 1)
 	{
 		if (indexPath.row == 0) {
-			// Create the reader object
-			[self presentViewController:self.reader animated:YES completion:NULL];
+            if (USER) {
+                [self presentViewController:self.reader animated:YES completion:NULL];
+            }
+            else {
+                [self loginClick:nil];
+            }
 		}
 		else if (indexPath.row == 1)
 		{
-			if (SharedAPPDelegate.showWXLogin) {
-				CUserObject* object = [[CPersonalCache defaultPersonalCache] cacheUserInfo];
-				if (object.institutionId != nil || object.refuid != nil)
-				{
-					CRecommendController1* controller  = [self.storyboard controllerWithID:@"CRecommendController1"];
-					controller.topViewHeight.constant = 0;
-					controller.title = @"有奖推荐";
-					
-					[self.navigationController pushViewController:controller animated:YES];
-				}
-				else
-				{
-					CRecommendController* controller  = [self.storyboard controllerWithID:@"CRecommendController"];
-					[self.navigationController pushViewController:controller animated:YES];
-				}
-			}
-			else{
-				CSubScribeListController* controller = [self.storyboard controllerWithID:@"CSubScribeListController"];
-				[self.navigationController pushViewController:controller animated:YES];
-			}
-			
-
+            if (USER) {
+                if (SharedAPPDelegate.showWXLogin) {
+                    CUserObject* object = [[CPersonalCache defaultPersonalCache] cacheUserInfo];
+                    if (object.institutionId != nil || object.refuid != nil)
+                    {
+                        CRecommendController1* controller  = [self.storyboard controllerWithID:@"CRecommendController1"];
+                        controller.topViewHeight.constant = 0;
+                        controller.title = @"有奖推荐";
+                        
+                        [self.navigationController pushViewController:controller animated:YES];
+                    }
+                    else
+                    {
+                        CRecommendController* controller  = [self.storyboard controllerWithID:@"CRecommendController"];
+                        [self.navigationController pushViewController:controller animated:YES];
+                    }
+                }
+                else{
+                    CSubScribeListController* controller = [self.storyboard controllerWithID:@"CSubScribeListController"];
+                    [self.navigationController pushViewController:controller animated:YES];
+                }
+            }
+            else {
+                [self loginClick:nil];
+            }
 		}
 		else if (indexPath.row == 2)
 		{
-			CSubScribeListController* controller = [self.storyboard controllerWithID:@"CSubScribeListController"];
-			[self.navigationController pushViewController:controller animated:YES];
+            if (USER) {
+                CSubScribeListController* controller = [self.storyboard controllerWithID:@"CSubScribeListController"];
+                [self.navigationController pushViewController:controller animated:YES];
+            }
+            else {
+                [self loginClick:nil];
+            }
 		}
 	}
 	else if (indexPath.section == 2){
