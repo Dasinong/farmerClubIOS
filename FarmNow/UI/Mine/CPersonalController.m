@@ -392,11 +392,11 @@
 - (void)saveAvatar:(UIImage*)avatar
 {
 	// 缩放图片
-//	avatar = [avatar scaleToSize:kDefaultAvatarSize];
+    avatar = [avatar scaleToSize:kDefaultAvatarSize];
 //	[self.avatarView setBackgroundImage:avatar forState:UIControlStateNormal];
 //	
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-		NSData *data = UIImageJPEGRepresentation(avatar, 70);
+		NSData *data = UIImageJPEGRepresentation(avatar, 0.7);
 		NSString* path = [NSString stringWithFormat:@"%@//avatar.jpg",[CPersonalController cacheDir]];
 		
 		[data writeToFile:path atomically:YES];
@@ -407,8 +407,16 @@
 		[self performSelectorOnMainThread:@selector(updateModel:) withObject:self.tableViewModel waitUntilDone:NO];
 //		CUploadAvaterParams* params = [CUploadAvaterParams new];
 		NSArray* contents =@[@{@"data":data, @"name":@"file" , @"filename":@"avatar.jpg"}];
-		[CUploadAvaterModel postWithPath:@"uploadAvater" attachments:contents params:nil completion:^(id model, JSONModelError *err) {
-			if (model && err == nil) {
+		[CUploadAvaterModel postWithPath:@"uploadAvater" attachments:contents params:nil completion:^(CUploadAvaterModel *uploadAvaterModel, JSONModelError *err) {
+			if (uploadAvaterModel && err == nil) {
+                
+                CUserObject* object = [[CPersonalCache defaultPersonalCache] cacheUserInfo];
+                object.pictureId = uploadAvaterModel.data;
+                
+                UITableViewRowModel* model = [self.tableViewModel modelForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+                model.data = uploadAvaterModel.data;
+                [self performSelectorOnMainThread:@selector(updateModel:) withObject:self.tableViewModel waitUntilDone:NO];
+                [[CPersonalCache defaultPersonalCache] saveCacheUserInfo:object];
 				[MBProgressHUD alert:@"上传成功"];
 			}
 		}];
