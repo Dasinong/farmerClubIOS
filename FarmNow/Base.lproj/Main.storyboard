@@ -1174,26 +1174,6 @@
                                             <outlet property="titleLabel" destination="ST5-TQ-NZr" id="SqO-YS-knc"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="baiducell" rowHeight="75" id="9RK-sK-49h" customClass="CSearchCell">
-                                        <rect key="frame" x="0.0" y="168" width="320" height="75"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9RK-sK-49h" id="xjR-pg-rMg">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="74.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="无结果，去百度搜索" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8p-eg-xYk">
-                                                    <rect key="frame" x="15" y="27" width="153" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="l8p-eg-xYk" firstAttribute="leading" secondItem="xjR-pg-rMg" secondAttribute="leading" constant="15" id="aZE-5f-KIs"/>
-                                                <constraint firstItem="l8p-eg-xYk" firstAttribute="centerY" secondItem="xjR-pg-rMg" secondAttribute="centerY" id="l8t-SN-kGb"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="A50-gt-vzp" id="ZeO-yq-KEq"/>

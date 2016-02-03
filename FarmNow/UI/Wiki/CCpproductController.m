@@ -100,6 +100,14 @@
 				
 				self.searchResult = @{params.type:model.data};
 				[self.searchDisplayController.searchResultsTableView reloadData];
+                
+                // 搜不到，去百度
+                if (model.data.count == 0) {
+                    CWebViewController* webController = [self.storyboard controllerWithID:@"CWebViewController"];
+                    webController.address = [NSString stringWithFormat:@"https://www.baidu.com/s?wd=%@", [key URLEncodedString]];
+                    webController.title = @"百度搜索";
+                    [self.navigationController pushViewController:webController animated:YES];
+                }
 			}
 		}];
 }
