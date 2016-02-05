@@ -86,11 +86,9 @@
 }
 - (void)search:(NSString*)key
 {
-	
-		
 		CSearchSingleWordParams* params = [CSearchSingleWordParams new];
 		params.key = key;
-		params.type = @"petdisspec";
+		params.type = @"cpproduct";
 	[MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
 		[CSearchSingleWordModel requestWithParams:params completion:^(CSearchSingleWordModel* model, JSONModelError *err) {
