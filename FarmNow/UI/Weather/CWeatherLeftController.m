@@ -50,9 +50,9 @@
     
     if ([[CPersonalCache defaultPersonalCache] cacheUserInfo] == nil) {
         // 登出
-//        [self.orderContens removeAllObjects];
-//        UITableViewModel* tableModel = [UITableViewModel new];
-//        [self updateModel:tableModel];
+        [self.orderContens removeAllObjects];
+        UITableViewModel* tableModel = [UITableViewModel new];
+        [self updateModel:tableModel];
     }
 }
 

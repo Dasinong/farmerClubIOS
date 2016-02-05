@@ -99,6 +99,11 @@
 	
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [MBProgressHUD hideHUDForView:self.view animated:NO];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -203,7 +208,7 @@
 		[MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
 		[CSearchAllWordModel requestWithParams:params completion:^(CSearchAllWordModel* model, JSONModelError *err) {
-			[MBProgressHUD hideHUDForView:self.view animated:YES];
+			[MBProgressHUD hideHUDForView:self.view animated:NO];
 
 			if (err == nil && model) {
 				NSMutableDictionary* dic = [[NSMutableDictionary alloc] initWithCapacity:0x1];
@@ -242,7 +247,7 @@
 		params.type = @"petdisspec";
 		
 		[CSearchSingleWordModel requestWithParams:params completion:^(CSearchSingleWordModel* model, JSONModelError *err) {
-			[MBProgressHUD hideHUDForView:self.view animated:YES];
+			[MBProgressHUD hideHUDForView:self.view animated:NO];
 
 			if (err == nil && model) {
 				

@@ -93,6 +93,12 @@
 - (void)viewDidUnload {
 	[super viewDidUnload];
 }
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [MBProgressHUD hideHUDForView:self.view animated:NO];
+}
+
 //- (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 //{
 //	return [_dataModel numberOfSections ];
@@ -335,7 +341,7 @@
 		[MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
 		[CSearchSingleWordModel requestWithParams:params completion:^(CSearchSingleWordModel* model, JSONModelError *err) {
-			[MBProgressHUD hideHUDForView:self.view animated:YES];
+			[MBProgressHUD hideHUDForView:self.view animated:NO];
 
 			if (err == nil && model) {
 				self.searchResult = @{params.type:model.data};
@@ -361,7 +367,7 @@
 		[MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
 		[CSearchSingleWordModel requestWithParams:params completion:^(CSearchSingleWordModel* model, JSONModelError *err) {
-			[MBProgressHUD hideHUDForView:self.view animated:YES];
+			[MBProgressHUD hideHUDForView:self.view animated:NO];
 
 			if (err == nil && model) {
 				

@@ -83,7 +83,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
-	
+    self.webVIew.delegate = nil;
 	[self.progressView removeFromSuperview];
 }
 /*

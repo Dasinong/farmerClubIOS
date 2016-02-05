@@ -46,7 +46,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [MBProgressHUD hideHUDForView:self.view animated:NO];
+}
+
 /*
+ 
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -89,10 +95,10 @@
 		CSearchSingleWordParams* params = [CSearchSingleWordParams new];
 		params.key = key;
 		params.type = @"cpproduct";
-	[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
 		[CSearchSingleWordModel requestWithParams:params completion:^(CSearchSingleWordModel* model, JSONModelError *err) {
-			[MBProgressHUD hideHUDForView:self.view animated:YES];
+			[MBProgressHUD hideHUDForView:self.view animated:NO];
 
 			if (err == nil && model) {
 				
@@ -117,8 +123,7 @@
 		return [super tableView:tableView heightForRowAtIndexPath:indexPath];
 	}
 	else{
-		return UITableViewAutomaticDimension;
-		
+		return 75;
 	}
 }
 
