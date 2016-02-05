@@ -14,6 +14,15 @@
 {
 	NSString    *paramsString       = [params paramString];
 	NSString    *fullURL            = nil;
+    
+    if (paramsString.length == 0) {
+        paramsString = @"appId=2";
+    }
+    else {
+        if (![paramsString containsString:@"appId=2"]) {
+            paramsString = [paramsString stringByAppendingString:@"&appId=2"];
+        }
+    }
 	
 	fullURL = [NSString stringWithFormat:@"%@?%@", [[self class] generatorRequestURL:params], paramsString];
 	

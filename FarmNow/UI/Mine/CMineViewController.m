@@ -144,18 +144,18 @@
 			EAIntroPage *page1 = [EAIntroPage page];
 			page1.bgImage = IMAGE(@"app001");
 			EAIntroPage *page2 = [EAIntroPage page];
-			page2.bgImage = IMAGE(@"app005");
+			page2.bgImage = IMAGE(@"app002");
 			
 			EAIntroPage *page3 = [EAIntroPage page];
 			page3.bgImage = IMAGE(@"app003");
 			EAIntroPage *page4 = [EAIntroPage page];
-			page4.bgImage = IMAGE(@"app006");
+			page4.bgImage = IMAGE(@"app004");
 			EAIntroPage *page5 = [EAIntroPage page];
-			page5.bgImage = IMAGE(@"app003");
+			page5.bgImage = IMAGE(@"app005");
 			EAIntroPage *page6 = [EAIntroPage page];
-			page6.bgImage = IMAGE(@"app007");
+			page6.bgImage = IMAGE(@"app006");
 			EAIntroPage *page7 = [EAIntroPage page];
-			page7.bgImage = IMAGE(@"app004");
+			page7.bgImage = IMAGE(@"app007");
 			
 			EAIntroView *intro = [[EAIntroView alloc] initWithFrame:CGRectMake(0, 0, HSScreenBounds().size.width, HSScreenBounds().size.height) andPages:@[page1,page2,page3,page4]];
 			[intro setDelegate:self];

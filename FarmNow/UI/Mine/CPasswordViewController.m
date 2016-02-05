@@ -31,6 +31,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.passwdField becomeFirstResponder];
+}
+
 /*
 #pragma mark - Navigation
 

@@ -60,8 +60,11 @@
 	[self.progressView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin];
 	if (self.address) {
 		[self loadURLString:self.address];
-
 	}
+    
+    if (self.title) {
+        self.title = [self.title stringByStrippingHTML];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -197,6 +200,7 @@
 		if(self.showsPageTitleInNavigationBar) {
 			if(self.webVIew) {
 				if (self.title == nil) {
+                    NSLog(@"%@",[self.webVIew stringByEvaluatingJavaScriptFromString:@"document.title"]);
 					self.navigationItem.title = [self.webVIew stringByEvaluatingJavaScriptFromString:@"document.title"];
 
 				}
@@ -340,6 +344,7 @@
 
 - (void)dealloc {
 	[self.webVIew setDelegate:nil];
+    self.progressView = nil;
 
 }
 @end

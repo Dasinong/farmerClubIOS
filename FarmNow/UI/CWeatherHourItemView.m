@@ -30,7 +30,7 @@
 	self.time.text = [date stringWithFormat:@"HH:mm"];
     
     if (model.icon == nil || model.icon.length == 0) {
-        Warning(@"What the fuck");
+        //Warning(@"Icon is nil");
     }
     else {
         self.icon.image = IMAGE(WEATHER_IMAGE_DICT[model.icon]);

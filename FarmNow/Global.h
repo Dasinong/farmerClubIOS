@@ -10,6 +10,7 @@
 #define Global_h
 #import "AppDelegate.h"
 #import "Config.h"
+#import "NSString+Extension.h"
 
 #define SharedAPPDelegate ((AppDelegate *)[[UIApplication sharedApplication] delegate])
 #define currentOSVersion (floor(NSFoundationVersionNumber))

@@ -10,4 +10,5 @@
 
 @interface NSString (Extension)
 - (NSString *)urlencode;
+- (NSString *) stringByStrippingHTML;
 @end
