@@ -13,8 +13,8 @@
 #define kAvaterServerAddress [kServer stringByAppendingString:@"/avater/"]
 
 #define kAPIServer kServerAddress
-#define kWXAPP_ID @"wx4d695a8b93857af1"
-#define kWXAPP_SECRET @"e4d2e28f0dc7123145aeacfb93e70ca7"
+#define kWXAPP_ID @"wxa7ebd13ec0f05131"
+#define kWXAPP_SECRET @"a0ef5bdab8c98792c06fe152ac3dce5c"
 #define kWXScope  @"snsapi_userinfo,snsapi_base";
 #define kWXAuthState  @"527";
 #define kWXGetUserInfoResponse @"getUserInfoResponse"

@@ -361,7 +361,6 @@ NSString*				gLocationName = nil;
 			
 			CLaonongsParams* paramLaonongs = [CLaonongsParams new];
 			if (monitorLocationId) {
-				
 				paramLaonongs.monitorLocationId = monitorLocationId;
 			}
 			else
@@ -419,4 +418,11 @@ NSString*				gLocationName = nil;
 	}
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (section == [self.tableView numberOfSections] - 1) {
+        return CGFLOAT_MIN;
+    }
+    
+    return 10;
+}
 @end

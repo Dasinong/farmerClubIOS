@@ -55,12 +55,12 @@
 	[CBrowsePetDisSpecByCropIdAndTypeModel requestWithParams:params completion:^(CBrowsePetDisSpecByCropIdAndTypeModel* model, JSONModelError *err) {
 		[MBProgressHUD hideHUDForView:self.view animated:YES];
 
-		if (err == nil && model ) {
-			UITableViewModel* talbeModel = [UITableViewModel new];
-			for (CPetDisSpecBrowseObject* object in model.data) {
-				[talbeModel addRow:TABLEVIEW_ROW(@"imagecell", object) forSection:0];
-			}
-			[self updateModel:talbeModel];
+		if (err == nil) {
+            UITableViewModel* talbeModel = [UITableViewModel new];
+            for (CPetDisSpecBrowseObject* object in model.data) {
+                [talbeModel addRow:TABLEVIEW_ROW(@"imagecell", object) forSection:0];
+            }
+            [self updateModel:talbeModel];
 		}
 	}];
 	

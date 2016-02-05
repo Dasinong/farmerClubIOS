@@ -18,7 +18,7 @@
 @property (strong, nonatomic) NSString* petDisSpecName;	//品种名称
 @property (strong, nonatomic) NSString* petDisSpecNamePY;	//品种名称拼音
 @property (strong, nonatomic) NSString* thumbnailId;
-@property (strong, nonatomic) NSString* sympthon;
+@property (strong, nonatomic) NSString<Optional>* sympthon;
 
 
 @end

@@ -26,13 +26,11 @@
 {
 	if (data && [data isKindOfClass:[NSString class]]) {
 		NSString* url = data;
-		if ([url hasPrefix:@"http://"]) {
-			[self.headIcon sd_setImageWithURL:[NSURL URLWithString:url]];
+		if (![url hasPrefix:@"http://"]) {
+            url = [NSString stringWithFormat:@"%@%@",kAvaterServerAddress, url];
 		}
-		else{
-			[self.headIcon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kAvaterServerAddress, url]]];
-
-		}
+        
+        [self.headIcon sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:IMAGE(@"default_avatar")];
 	}
 }
 @end
