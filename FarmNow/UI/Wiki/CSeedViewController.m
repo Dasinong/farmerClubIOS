@@ -176,7 +176,12 @@
 		return 0;
 	}
 	
-	return self.searchResult.count;
+    if (self.searchResult.count == 0) {
+        return 0;
+    }
+    else {
+        return [self.searchResult[self.searchResult.allKeys[0]] count];
+    }
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
@@ -238,10 +243,12 @@
 	if (tableView ==  self.righttable) {
 		return  55.f;
 	}
-	else
+	else if (tableView == self.leftTable)
 	{
 		return UITableViewAutomaticDimension;
 	}
+    
+    return 75;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

@@ -1509,14 +1509,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="187" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fj7-Ht-LYZ">
-                                                    <rect key="frame" x="10" y="37" width="267" height="29"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fj7-Ht-LYZ">
+                                                    <rect key="frame" x="10" y="38" width="167" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" priority="999" constant="28" id="YvW-Ga-I6g"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJ5-Ya-9t5">
-                                                    <rect key="frame" x="10" y="10" width="267" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJ5-Ya-9t5">
+                                                    <rect key="frame" x="10" y="10" width="167" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="ATK-5v-wM1"/>
+                                                    </constraints>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Label">
                                                             <attributes>
@@ -1539,7 +1545,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="subTitleLabel" destination="fj7-Ht-LYZ" id="NJg-1v-e5M"/>
+                                            <outlet property="subTitleLabel" destination="fj7-Ht-LYZ" id="wXN-iX-JzT"/>
                                             <outlet property="titleLabel" destination="qJ5-Ya-9t5" id="rcA-y1-XBn"/>
                                         </connections>
                                     </tableViewCell>
@@ -3402,14 +3408,14 @@ i) 不得为其他任何非法目的而使用服务。
                                             <outlet property="titleLabel" destination="5Xy-in-Oka" id="IRj-XR-Tgg"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="btncell" rowHeight="64" id="qCB-2h-dQD" customClass="CMineBtnCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="btncell" rowHeight="64" id="qCB-2h-dQD" customClass="CMineBtnCell">
                                         <rect key="frame" x="0.0" y="171.5" width="320" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="qCB-2h-dQD" id="TU3-HM-NPR">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="63.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CkW-j7-pWo">
+                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CkW-j7-pWo">
                                                     <rect key="frame" x="20" y="10" width="280" height="44"/>
                                                     <color key="backgroundColor" red="0.1960784314" green="0.60392156860000001" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>

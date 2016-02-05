@@ -20,7 +20,7 @@
 - (void)awakeFromNib
 {
 	[super awakeFromNib];
-	self.titleLabel.textColor = [UIColor blackColor];
+	//self.titleLabel.textColor = [UIColor blackColor];
 
 }
 - (void)setData:(id)data
@@ -28,7 +28,7 @@
 	if (data && [data isKindOfClass:[CSearchEntry class]]) {
 		CSearchEntry* entry = (CSearchEntry*)data;
 		[self.titleLabel setHtml:entry.name] ;
-		[self.subTitleLabel setHtml: entry.source];
+		[self.subTitleLabel setHtml: [NSString stringWithFormat:@"<font color=\"grey\">%@</font>", entry.source]];
 //		self.subTitleLabel.lin
 	}
 }
