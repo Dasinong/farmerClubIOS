@@ -432,16 +432,16 @@ typedef enum
 @99:@""}
 
 #define XIAOCHANGSHI_DICT @{\
-@"冷害":[kServer stringByAppendingString:@"/ploughHelper/html/Cold.html"],\
-@"寒潮":[kServer stringByAppendingString:@"/ploughHelper/html/ColdWave.html"],\
-@"干热风":[kServer stringByAppendingString:@"/ploughHelper/html/DryHotWind.html"],\
-@"洪涝":[kServer stringByAppendingString:@"/ploughHelper/html/Flood.html"],\
-@"霜":[kServer stringByAppendingString:@"/ploughHelper/html/Frost.html"],\
-@"梅雨":[kServer stringByAppendingString:@"/ploughHelper/html/Rain.html"],\
-@"沙尘暴":[kServer stringByAppendingString:@"/ploughHelper/html/Sandstorm.html"],\
-@"土壤湿度":[kServer stringByAppendingString:@"/ploughHelper/html/Soil.html"],\
-@"台风":[kServer stringByAppendingString:@"/ploughHelper/html/Typhon.html"],\
-@"大风":[kServer stringByAppendingString:@"/ploughHelper/html/Wind.html"],\
+@"冷害":[kServer stringByAppendingString:@"/farmerClub/html/Cold.html"],\
+@"寒潮":[kServer stringByAppendingString:@"/farmerClub/html/ColdWave.html"],\
+@"干热风":[kServer stringByAppendingString:@"/farmerClub/html/DryHotWind.html"],\
+@"洪涝":[kServer stringByAppendingString:@"/farmerClub/html/Flood.html"],\
+@"霜":[kServer stringByAppendingString:@"/farmerClub/html/Frost.html"],\
+@"梅雨":[kServer stringByAppendingString:@"/farmerClub/html/Rain.html"],\
+@"沙尘暴":[kServer stringByAppendingString:@"/farmerClub/html/Sandstorm.html"],\
+@"土壤湿度":[kServer stringByAppendingString:@"/farmerClub/html/Soil.html"],\
+@"台风":[kServer stringByAppendingString:@"/farmerClub/html/Typhon.html"],\
+@"大风":[kServer stringByAppendingString:@"/farmerClub/html/Wind.html"],\
 }
 
 #define SMS_Crop_Array @[\
