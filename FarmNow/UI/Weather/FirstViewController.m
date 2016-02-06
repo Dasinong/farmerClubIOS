@@ -31,6 +31,7 @@ NSNumber*				gLocationId = nil;
 NSString*				gLocationName = nil;
 
 @interface FirstViewController () <CLLocationManagerDelegate>
+@property (nonatomic, strong) NSNumber *monitorLocationId;
 
 @property (nonatomic, assign) BOOL bexpand;
 @property (nonatomic, assign) BOOL locationUpdated;
@@ -102,7 +103,7 @@ NSString*				gLocationName = nil;
 	
 
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self getWeatherData:nil lat:gLatitude lon:gLongitude];
+        [self getWeatherData:self.monitorLocationId lat:gLatitude lon:gLongitude];
     }];
 }
 
@@ -113,13 +114,12 @@ NSString*				gLocationName = nil;
 	if (userInfo) {
 		self.navigationItem.title = userInfo[@"name"];
 		[self getWeatherData:userInfo[@"monitorLocationId"] lat:0 lon:0];
-
+        self.monitorLocationId = userInfo[@"monitorLocationId"];
 	}
 	else
 	{
 		self.navigationItem.title = gLocationName;
 		[self getWeatherData:nil lat:gLatitude lon:gLongitude];
-
 	}
 }
 
@@ -133,8 +133,6 @@ NSString*				gLocationName = nil;
 	[super viewDidAppear:animated];
 	[self.mm_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
 	[self.mm_drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-
-
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -142,9 +140,8 @@ NSString*				gLocationName = nil;
 	[super viewDidDisappear:animated];
 	[self.mm_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
 	[self.mm_drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeNone];
-
-
 }
+
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
 	// Dispose of any resources that can be recreated.
@@ -152,8 +149,6 @@ NSString*				gLocationName = nil;
 - (IBAction)leftClick:(id)sender {
 	[self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:
 	 nil];
-
-
 }
 
 - (void) openGPS

@@ -160,6 +160,10 @@ const NSString*    kResponseSuccess = @"200";
                 // 解析失败,构建HSResponseModel对象获取信息
                 NSError *baseError = nil;
                 CResponseModel *errorModel = [[CResponseModel alloc] initWithDictionary:responseObject error:&baseError ];
+                
+                if (baseError) {
+                    Error(@"%@",[baseError localizedDescription]);
+                }
 
                 dispatch_async( dispatch_get_main_queue(), ^{
 					CResponseModel* retModel = (CResponseModel*)errorModel;
@@ -190,6 +194,11 @@ const NSString*    kResponseSuccess = @"200";
 //                        nc_post(SessionExpired, nil);
 //                        return;
 //                    }
+                    
+                    if (error) {
+                        Error(@"%@",[error localizedDescription]);
+                    }
+                    
                     completeBlock(errorModel, [self jsonModelError:error]);
                 });
             }

@@ -19,5 +19,5 @@
 @property (strong, nonatomic) NSString* locationName;
 @property (strong, nonatomic) NSString* type;
 @property (assign, nonatomic) NSInteger createdAt;//单位 millisecond
-@property (assign, nonatomic) NSInteger ordering;
+//@property (assign, nonatomic) NSInteger ordering;
 @end
