@@ -21,6 +21,8 @@ pod 'QBImagePickerController'
 pod 'PEPhotoCropEditor'
 pod 'MJRefresh'
 pod 'MZTimerLabel'
+pod 'XLPagerTabStrip'
+pod 'ZXingObjC’
 end
 
 target 'FarmNowTests' do
