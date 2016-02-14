@@ -9,5 +9,8 @@
 #import "CCouponCampaign.h"
 
 @implementation CCouponCampaign
-
++ (JSONKeyMapper *)keyMapper
+{
+    return [[JSONKeyMapper alloc] initWithDictionary:@{@"description":@"campaignDescription"}];
+}
 @end

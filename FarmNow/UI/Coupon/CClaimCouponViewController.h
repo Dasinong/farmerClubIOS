@@ -1,5 +1,5 @@
 //
-//  CCliamCouponViewController.h
+//  CClaimCouponViewController.h
 //  FarmNow
 //
 //  Created by 朱曦炽 on 16/2/14.
@@ -9,6 +9,6 @@
 #import "CBaseViewController.h"
 #import "CCouponCampaign.h"
 
-@interface CCliamCouponViewController : CBaseViewController
+@interface CClaimCouponViewController : CBaseViewController
 @property (nonatomic,strong) CCouponCampaign *couponCampaign;
 @end

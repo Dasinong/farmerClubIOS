@@ -1,18 +1,18 @@
 //
-//  CCliamCouponViewController.m
+//  CClaimCouponViewController.m
 //  FarmNow
 //
 //  Created by 朱曦炽 on 16/2/14.
 //  Copyright © 2016年 zheliang. All rights reserved.
 //
 
-#import "CCliamCouponViewController.h"
+#import "CClaimCouponViewController.h"
 
-@interface CCliamCouponViewController ()
+@interface CClaimCouponViewController ()
 
 @end
 
-@implementation CCliamCouponViewController
+@implementation CClaimCouponViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

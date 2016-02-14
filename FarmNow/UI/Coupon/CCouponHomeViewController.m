@@ -8,7 +8,7 @@
 
 #import "CCouponHomeViewController.h"
 #import "CCouponDetailViewController.h"
-#import "CCliamCouponViewController.h"
+#import "CClaimCouponViewController.h"
 #import "CCouponTableViewCell.h"
 #import "CCouponCampaign.h"
 #import "CCouponCampaignsModel.h"
@@ -97,7 +97,7 @@
 
 #pragma mark - CCouponTableViewCellDelegate
 - (void)claim:(CCouponCampaign*)couponCampaign {
-    CCliamCouponViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CCliamCouponViewController"];
+    CClaimCouponViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CClaimCouponViewController"];
     controller.hidesBottomBarWhenPushed = YES;
     controller.couponCampaign = couponCampaign;
     [self.navigationController pushViewController:controller animated:YES];
