@@ -7,6 +7,7 @@
 //
 
 #import "CCouponDetailViewController.h"
+#import "CCliamCouponViewController.h"
 
 @interface CCouponDetailViewController ()
 
@@ -22,6 +23,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)claim:(id)sender {
+    CCliamCouponViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CCliamCouponViewController"];
+    controller.hidesBottomBarWhenPushed = YES;
+    controller.coupon = self.coupon;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 /*

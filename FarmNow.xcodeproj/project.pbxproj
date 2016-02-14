@@ -11,6 +11,9 @@
 		275C4AFD1C706432002475B6 /* CCouponDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 275C4AFC1C706432002475B6 /* CCouponDetailViewController.m */; };
 		275C4B001C70646D002475B6 /* CCliamCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 275C4AFF1C70646D002475B6 /* CCliamCouponViewController.m */; };
 		275C4B061C706653002475B6 /* CMyCouponPagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 275C4B051C706653002475B6 /* CMyCouponPagerViewController.m */; };
+		275C4B0A1C7070B8002475B6 /* CCouponTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 275C4B091C7070B8002475B6 /* CCouponTableViewCell.m */; };
+		275C4B0D1C7075EB002475B6 /* CCoupon.m in Sources */ = {isa = PBXBuildFile; fileRef = 275C4B0C1C7075EB002475B6 /* CCoupon.m */; };
+		275C4B101C7075FE002475B6 /* CCouponCampaign.m in Sources */ = {isa = PBXBuildFile; fileRef = 275C4B0F1C7075FE002475B6 /* CCouponCampaign.m */; };
 		278491EE1C7056E8000F0D3E /* CCouponHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278491ED1C7056E8000F0D3E /* CCouponHomeViewController.m */; };
 		9F00C53E1C0DEE3400198FD1 /* CSelectIdentityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F00C53D1C0DEE3400198FD1 /* CSelectIdentityController.m */; };
 		9F010CAC1BE8E89C00358FD6 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F010CAB1BE8E89C00358FD6 /* NSDate+Utilities.m */; };
@@ -213,7 +216,7 @@
 		B0748DF91C57738200513B4E /* UIBarButtonItem+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = B0748DF01C57738200513B4E /* UIBarButtonItem+Badge.m */; };
 		B0748DFA1C57738200513B4E /* UIColor+hexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = B0748DF21C57738200513B4E /* UIColor+hexColor.m */; };
 		B0748DFB1C57738200513B4E /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B0748DF41C57738200513B4E /* UIImage+Extension.m */; };
-		D1168C8543D91AA1D725D8EA /* libPods-FarmNow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CA21F236831FCE6FB98510D /* libPods-FarmNow.a */; };
+		ED0A5513AC00B0E68FBC82F4 /* libPods-FarmNow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A484BAABB7BB41D7B618FB78 /* libPods-FarmNow.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -227,7 +230,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1CA21F236831FCE6FB98510D /* libPods-FarmNow.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FarmNow.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		275C4AF81C706274002475B6 /* CCouponCampaignsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCouponCampaignsModel.h; sourceTree = "<group>"; };
 		275C4AF91C706274002475B6 /* CCouponCampaignsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCouponCampaignsModel.m; sourceTree = "<group>"; };
 		275C4AFB1C706432002475B6 /* CCouponDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCouponDetailViewController.h; sourceTree = "<group>"; };
@@ -236,6 +238,12 @@
 		275C4AFF1C70646D002475B6 /* CCliamCouponViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCliamCouponViewController.m; sourceTree = "<group>"; };
 		275C4B041C706653002475B6 /* CMyCouponPagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMyCouponPagerViewController.h; sourceTree = "<group>"; };
 		275C4B051C706653002475B6 /* CMyCouponPagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMyCouponPagerViewController.m; sourceTree = "<group>"; };
+		275C4B081C7070B8002475B6 /* CCouponTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCouponTableViewCell.h; sourceTree = "<group>"; };
+		275C4B091C7070B8002475B6 /* CCouponTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCouponTableViewCell.m; sourceTree = "<group>"; };
+		275C4B0B1C7075EB002475B6 /* CCoupon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCoupon.h; sourceTree = "<group>"; };
+		275C4B0C1C7075EB002475B6 /* CCoupon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCoupon.m; sourceTree = "<group>"; };
+		275C4B0E1C7075FE002475B6 /* CCouponCampaign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCouponCampaign.h; sourceTree = "<group>"; };
+		275C4B0F1C7075FE002475B6 /* CCouponCampaign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCouponCampaign.m; sourceTree = "<group>"; };
 		278491EC1C7056E8000F0D3E /* CCouponHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCouponHomeViewController.h; sourceTree = "<group>"; };
 		278491ED1C7056E8000F0D3E /* CCouponHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCouponHomeViewController.m; sourceTree = "<group>"; };
 		58D6C33779B2D6D120434B6D /* Pods-FarmNow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarmNow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FarmNow/Pods-FarmNow.debug.xcconfig"; sourceTree = "<group>"; };
@@ -595,6 +603,7 @@
 		9FFF68331C089B6900590604 /* CSubScribeDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSubScribeDetailController.m; sourceTree = "<group>"; };
 		9FFF68351C089CF900590604 /* CSubScribeListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSubScribeListCell.h; sourceTree = "<group>"; };
 		9FFF68361C089CF900590604 /* CSubScribeListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSubScribeListCell.m; sourceTree = "<group>"; };
+		A484BAABB7BB41D7B618FB78 /* libPods-FarmNow.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FarmNow.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0748DE41C5772A700513B4E /* CFieldHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFieldHomeViewController.h; sourceTree = "<group>"; };
 		B0748DE51C5772A700513B4E /* CFieldHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFieldHomeViewController.m; sourceTree = "<group>"; };
 		B0748DE71C57738200513B4E /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
@@ -630,9 +639,9 @@
 				9F375FA21BDD29CD00000ACD /* libWeChatSDK.a in Frameworks */,
 				9F375FA71BDD2A1300000ACD /* TencentOpenAPI.framework in Frameworks */,
 				9F875FCD1BDCE8F400FA2549 /* MOBFoundation.framework in Frameworks */,
-				D1168C8543D91AA1D725D8EA /* libPods-FarmNow.a in Frameworks */,
 				9F875FCE1BDCE8F400FA2549 /* SMS_SDK.framework in Frameworks */,
 				9F875FD21BDCE90600FA2549 /* libUMessage_Sdk_1.2.0.a in Frameworks */,
+				ED0A5513AC00B0E68FBC82F4 /* libPods-FarmNow.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -646,9 +655,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		275C4B071C707087002475B6 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				275C4B081C7070B8002475B6 /* CCouponTableViewCell.h */,
+				275C4B091C7070B8002475B6 /* CCouponTableViewCell.m */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
 		278491EB1C705667000F0D3E /* Coupon */ = {
 			isa = PBXGroup;
 			children = (
+				275C4B071C707087002475B6 /* cell */,
 				278491EC1C7056E8000F0D3E /* CCouponHomeViewController.h */,
 				278491ED1C7056E8000F0D3E /* CCouponHomeViewController.m */,
 				275C4AFB1C706432002475B6 /* CCouponDetailViewController.h */,
@@ -694,6 +713,10 @@
 				9F6121691BFA161700E0B4D7 /* CBannerObject.m */,
 				9FFF68201C08974600590604 /* CSubscriptionObject.h */,
 				9FFF68211C08974600590604 /* CSubscriptionObject.m */,
+				275C4B0B1C7075EB002475B6 /* CCoupon.h */,
+				275C4B0C1C7075EB002475B6 /* CCoupon.m */,
+				275C4B0E1C7075FE002475B6 /* CCouponCampaign.h */,
+				275C4B0F1C7075FE002475B6 /* CCouponCampaign.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1302,7 +1325,7 @@
 				9F875FC61BDCE8F400FA2549 /* SMS_SDK */,
 				9F1860E61BDBD19D003F9A8C /* libz.1.2.5.tbd */,
 				9F1860E41BDBD143003F9A8C /* CoreTelephony.framework */,
-				1CA21F236831FCE6FB98510D /* libPods-FarmNow.a */,
+				A484BAABB7BB41D7B618FB78 /* libPods-FarmNow.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1319,6 +1342,7 @@
 				9FEACDA81BCFD5E1000722D8 /* Frameworks */,
 				9FEACDA91BCFD5E1000722D8 /* Resources */,
 				7B58CABA7C256546ACDFCFE6 /* Copy Pods Resources */,
+				01640A53DE3CB1B0DC9A266C /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1435,6 +1459,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		01640A53DE3CB1B0DC9A266C /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FarmNow/Pods-FarmNow-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		78196F577519D9B61D76E562 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1500,9 +1539,11 @@
 				9F66BF891BE4D9350047CE82 /* CForecastDayInfoObject.m in Sources */,
 				9FD2131F1BD128A60063147D /* CGGeometry+Extra.m in Sources */,
 				9F010CAF1BE9028400358FD6 /* CWeatherHourItemView.m in Sources */,
+				275C4B0D1C7075EB002475B6 /* CCoupon.m in Sources */,
 				9FEED8551BEE1C610095A91B /* CRecommendController1.m in Sources */,
 				9F6C9F801C0010E3002FE17F /* CMineBtnCell.m in Sources */,
 				9FA04E111BD93A16007E2951 /* CJSONModel.m in Sources */,
+				275C4B0A1C7070B8002475B6 /* CCouponTableViewCell.m in Sources */,
 				9FD2132A1BD128A60063147D /* NSString+Define.m in Sources */,
 				9FD2133A1BD128A60063147D /* UIView+Extra.m in Sources */,
 				9FD213321BD128A60063147D /* UIDevice+FontList.m in Sources */,
@@ -1621,6 +1662,7 @@
 				9F43366E1BE11EE5003C3B5D /* CWeatherLeftController.m in Sources */,
 				275C4AFD1C706432002475B6 /* CCouponDetailViewController.m in Sources */,
 				9FFBF4B91C01C1F1007C6D24 /* CStoresViewController.m in Sources */,
+				275C4B101C7075FE002475B6 /* CCouponCampaign.m in Sources */,
 				9FD213341BD128A60063147D /* UIImage+Extra.m in Sources */,
 				9F8873921BEBA97B00B267D2 /* CPersonalCache.m in Sources */,
 				9F66BF771BE4D29D0047CE82 /* CDeleteWeatherSubscriptionModel.m in Sources */,

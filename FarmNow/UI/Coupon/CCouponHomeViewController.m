@@ -7,10 +7,14 @@
 //
 
 #import "CCouponHomeViewController.h"
+#import "CCouponDetailViewController.h"
+#import "CCliamCouponViewController.h"
+#import "CCouponTableViewCell.h"
+#import "CCoupon.h"
 
-@interface CCouponHomeViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface CCouponHomeViewController () <UITableViewDataSource, UITableViewDelegate, CCouponTableViewCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (nonatomic, strong) NSArray *dataArray;
 @end
 
 @implementation CCouponHomeViewController
@@ -36,11 +40,39 @@
 */
 
 #pragma mark - UITableViewDataSource && UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 430;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    //CCoupon *coupon = self.dataArray[indexPath.row];
+    
+    CCouponTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    cell.delegate = self;
+    [cell setupWithModel:[[CCoupon alloc] init]];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    //CCoupon *coupon = self.dataArray[indexPath.row];
+    
+    CCouponDetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CCouponDetailViewController"];
+    controller.hidesBottomBarWhenPushed = YES;
+    controller.coupon = nil;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark - CCouponTableViewCellDelegate
+- (void)claim:(CCoupon*)coupon {
+    CCliamCouponViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CCliamCouponViewController"];
+    controller.hidesBottomBarWhenPushed = YES;
+    controller.coupon = coupon;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 @end
