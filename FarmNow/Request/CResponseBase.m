@@ -230,7 +230,7 @@ const NSString*    kResponseSuccess = @"200";
     
     NSUserDefaults *userDefaults = USER_DEFAULTS;
     if ([userDefaults objectForKey:@"accessToken"]) {
-        NSString *accessToken = [userDefaults objectForKey:@"accessToken"];
+        NSString *accessToken = [[userDefaults objectForKey:@"accessToken"] urlencode];
         if ([URL containsString:@"?"]) {
             URL = [NSString stringWithFormat:@"%@&accessToken=%@", URL, accessToken];
         }
@@ -259,7 +259,7 @@ const NSString*    kResponseSuccess = @"200";
     
     NSUserDefaults *userDefaults = USER_DEFAULTS;
     if ([userDefaults objectForKey:@"accessToken"]) {
-        NSString *accessToken = [userDefaults objectForKey:@"accessToken"];
+        NSString *accessToken = [[userDefaults objectForKey:@"accessToken"] urlencode];
         if ([URL containsString:@"?"]) {
             URL = [NSString stringWithFormat:@"%@&accessToken=%@", URL, accessToken];
         }
@@ -294,7 +294,7 @@ const NSString*    kResponseSuccess = @"200";
 
     NSUserDefaults *userDefaults = USER_DEFAULTS;
     if ([userDefaults objectForKey:@"accessToken"]) {
-        NSString *accessToken = [userDefaults objectForKey:@"accessToken"];
+        NSString *accessToken = [[userDefaults objectForKey:@"accessToken"] urlencode];
         NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:parameters];
         [dict setObject:accessToken forKey:@"accessToken"];
         parameters = dict;
@@ -338,7 +338,7 @@ const NSString*    kResponseSuccess = @"200";
     
     NSUserDefaults *userDefaults = USER_DEFAULTS;
     if ([userDefaults objectForKey:@"accessToken"]) {
-        NSString *accessToken = [userDefaults objectForKey:@"accessToken"];
+        NSString *accessToken = [[userDefaults objectForKey:@"accessToken"] urlencode];
         NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:params];
         [dict setObject:accessToken forKey:@"accessToken"];
         params = dict;

@@ -806,8 +806,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jL6-en-c8c">
-                                <rect key="frame" x="175" y="144" width="115" height="115"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jL6-en-c8c">
+                                <rect key="frame" x="175" y="100" width="115" height="115"/>
                                 <state key="normal" image="weather"/>
                                 <state key="selected" image="weather_selected"/>
                                 <state key="highlighted" image="weather_selected"/>
@@ -815,20 +815,20 @@
                                     <action selector="weatherClick:" destination="S1r-Zu-4Cb" eventType="touchUpInside" id="yFw-ro-QeK"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="我有田" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HqD-eB-0KV">
-                                <rect key="frame" x="62" y="279" width="51" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我有田" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HqD-eB-0KV">
+                                <rect key="frame" x="62" y="235" width="51" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="只看天气" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fb-PV-m5x">
-                                <rect key="frame" x="199" y="279" width="68" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="只看天气" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fb-PV-m5x">
+                                <rect key="frame" x="199" y="235" width="68" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VaY-cM-Now">
-                                <rect key="frame" x="30" y="144" width="115" height="115"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VaY-cM-Now">
+                                <rect key="frame" x="30" y="100" width="115" height="115"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="VaY-cM-Now" secondAttribute="height" multiplier="1:1" id="Qru-2J-GBV"/>
                                 </constraints>
@@ -1434,8 +1434,8 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aHx-jL-GPQ" userLabel="leftTable">
-                                <rect key="frame" x="0.0" y="44" width="100" height="460"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aHx-jL-GPQ" userLabel="leftTable">
+                                <rect key="frame" x="0.0" y="55" width="100" height="449"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="Vdr-s8-xk2"/>
@@ -1482,8 +1482,8 @@
                                     <outlet property="delegate" destination="j0i-ZE-E1O" id="yfm-3M-QuO"/>
                                 </connections>
                             </tableView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nRb-6x-gJp" userLabel="rightTable">
-                                <rect key="frame" x="100" y="44" width="220" height="460"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nRb-6x-gJp" userLabel="rightTable">
+                                <rect key="frame" x="100" y="55" width="220" height="449"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="contentcell" textLabel="QjA-9o-D8q" rowHeight="60" style="IBUITableViewCellStyleDefault" id="QEq-Bh-Gi2">
@@ -1557,8 +1557,8 @@
                                     <outlet property="delegate" destination="j0i-ZE-E1O" id="gm1-wc-EjS"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xvv-KO-beT" customClass="RGIndexView">
-                                <rect key="frame" x="300" y="44" width="20" height="460"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xvv-KO-beT" customClass="RGIndexView">
+                                <rect key="frame" x="300" y="55" width="20" height="449"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="cLW-9b-EF0"/>
@@ -4594,7 +4594,7 @@ i) 不得为其他任何非法目的而使用服务。
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="429.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tAC-Dy-Ycj">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tAC-Dy-Ycj">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="286"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="286" id="EfY-l3-0Ky"/>
@@ -4650,6 +4650,12 @@ i) 不得为其他任何非法目的而使用服务。
                                                 <constraint firstItem="nLe-UQ-vVo" firstAttribute="leading" secondItem="3A7-jg-MNE" secondAttribute="leading" constant="-3" id="yAD-LR-MSR"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="amountLabel" destination="nLe-UQ-vVo" id="4iN-dc-zit"/>
+                                            <outlet property="campaignImageView" destination="tAC-Dy-Ycj" id="aom-Cc-ntR"/>
+                                            <outlet property="claimLabel" destination="a3E-xY-Lnv" id="tm6-PJ-I4S"/>
+                                            <outlet property="titleLabel" destination="3A7-jg-MNE" id="mUM-gA-NV6"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

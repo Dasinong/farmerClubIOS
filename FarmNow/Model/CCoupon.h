@@ -8,6 +8,9 @@
 
 #import "CJSONModel.h"
 
+@protocol CCoupon
+@end
+
 @interface CCoupon : CJSONModel
 
 @end

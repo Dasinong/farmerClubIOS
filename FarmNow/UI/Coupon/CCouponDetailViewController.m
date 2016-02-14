@@ -28,7 +28,7 @@
 - (IBAction)claim:(id)sender {
     CCliamCouponViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CCliamCouponViewController"];
     controller.hidesBottomBarWhenPushed = YES;
-    controller.coupon = self.coupon;
+    controller.couponCampaign = self.couponCampaign;
     [self.navigationController pushViewController:controller animated:YES];
 }
 

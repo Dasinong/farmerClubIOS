@@ -10,7 +10,10 @@
 #import "CCouponDetailViewController.h"
 #import "CCliamCouponViewController.h"
 #import "CCouponTableViewCell.h"
-#import "CCoupon.h"
+#import "CCouponCampaign.h"
+#import "CCouponCampaignsModel.h"
+#import "CPersonalCache.h"
+#import "MJRefresh.h"
 
 @interface CCouponHomeViewController () <UITableViewDataSource, UITableViewDelegate, CCouponTableViewCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -22,6 +25,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+ 
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self requestData];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,6 +36,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self requestData];
+}
 /*
 #pragma mark - Navigation
 
@@ -39,40 +51,55 @@
 }
 */
 
+- (void)requestData {
+    
+    if ([CPersonalCache defaultPersonalCache].cacheUserInfo != nil) {
+        CCouponCampaignsParam *param = [CCouponCampaignsParam new];
+        
+        [CCouponCampaignsModel requestWithParams:param completion:^(CCouponCampaignsModel *model, JSONModelError *err) {
+            if (model && model.campaigns) {
+                self.dataArray = model.campaigns;
+                [self.tableView.mj_header endRefreshing];
+                [self.tableView reloadData];
+            }
+        }];
+    }
+}
+
 #pragma mark - UITableViewDataSource && UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 430;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return [self.dataArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    //CCoupon *coupon = self.dataArray[indexPath.row];
+    CCouponCampaign *couponCampaign = self.dataArray[indexPath.row];
     
     CCouponTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     cell.delegate = self;
-    [cell setupWithModel:[[CCoupon alloc] init]];
+    [cell setupWithModel:couponCampaign];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    //CCoupon *coupon = self.dataArray[indexPath.row];
+    CCouponCampaign *couponCampaign = self.dataArray[indexPath.row];
     
     CCouponDetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CCouponDetailViewController"];
     controller.hidesBottomBarWhenPushed = YES;
-    controller.coupon = nil;
+    controller.couponCampaign = couponCampaign;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark - CCouponTableViewCellDelegate
-- (void)claim:(CCoupon*)coupon {
+- (void)claim:(CCouponCampaign*)couponCampaign {
     CCliamCouponViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CCliamCouponViewController"];
     controller.hidesBottomBarWhenPushed = YES;
-    controller.coupon = coupon;
+    controller.couponCampaign = couponCampaign;
     [self.navigationController pushViewController:controller animated:YES];
 }
 @end

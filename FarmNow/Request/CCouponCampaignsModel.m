@@ -9,9 +9,16 @@
 #import "CCouponCampaignsModel.h"
 
 @implementation CCouponCampaignsParam
++ (NSString *)path
+{
+    return @"couponCampaigns";
+}
 
 @end
 
 @implementation CCouponCampaignsModel
-
++ (JSONKeyMapper *)keyMapper
+{
+    return [[JSONKeyMapper alloc] initWithDictionary:@{@"data.campaigns":@"campaigns"}];
+}
 @end

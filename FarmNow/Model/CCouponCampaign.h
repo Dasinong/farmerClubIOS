@@ -8,6 +8,13 @@
 
 #import "CJSONModel.h"
 
-@interface CCouponCampaign : CJSONModel
+@protocol CCouponCampaign
+@end
 
+@interface CCouponCampaign : CJSONModel
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic) float amount;
+@property (nonatomic, strong) NSArray<Optional> *pictureUrls;
+@property (assign, nonatomic) NSTimeInterval claimTimeStart;
+@property (assign, nonatomic) NSTimeInterval claimTimeEnd;
 @end

@@ -7,11 +7,12 @@
 //
 
 #import "CResponseBase.h"
+#import "CCouponCampaign.h"
 
 @interface CCouponCampaignsParam : CRequestBaseParams
 
 @end
 
 @interface CCouponCampaignsModel : CResponseModel
-
+@property (strong, nonatomic) NSArray<CCouponCampaign, Optional>* campaigns;
 @end

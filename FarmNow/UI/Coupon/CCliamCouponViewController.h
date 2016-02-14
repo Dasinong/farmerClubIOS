@@ -7,8 +7,8 @@
 //
 
 #import "CBaseViewController.h"
-#import "CCoupon.h"
+#import "CCouponCampaign.h"
 
 @interface CCliamCouponViewController : CBaseViewController
-@property (nonatomic,strong) CCoupon *coupon;
+@property (nonatomic,strong) CCouponCampaign *couponCampaign;
 @end

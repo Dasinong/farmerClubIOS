@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CCoupon.h"
+#import "CCouponCampaign.h"
 
 @protocol CCouponTableViewCellDelegate <NSObject>
-- (void)claim:(CCoupon*)coupon;
+- (void)claim:(CCouponCampaign*)couponCampaign;
 @end
 
 @interface CCouponTableViewCell : UITableViewCell
