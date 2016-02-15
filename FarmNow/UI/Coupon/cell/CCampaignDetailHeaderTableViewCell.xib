@@ -7,15 +7,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="153" id="KGk-i7-Jjw" customClass="CCampaignDetailHeaderTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="153"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="121" id="KGk-i7-Jjw" customClass="CCampaignDetailHeaderTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="121"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="152.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="120.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D5L-DG-iJg" userLabel="BG">
-                        <rect key="frame" x="0.0" y="10" width="320" height="142.5"/>
+                        <rect key="frame" x="0.0" y="10" width="320" height="110.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="活动详情" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSv-cz-tD6">
@@ -50,29 +50,18 @@
                         <color key="textColor" red="1" green="0.51764705882352935" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpO-ja-Qnk">
-                        <rect key="frame" x="12" y="125" width="296" height="17"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="17" id="LmV-CK-gVe"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" red="1" green="0.51764705879999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="SSv-cz-tD6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="4My-BX-nG7"/>
+                    <constraint firstAttribute="bottom" secondItem="n4h-nj-NAI" secondAttribute="bottom" priority="999" constant="10.5" id="5pu-Ny-Rna"/>
                     <constraint firstAttribute="trailing" secondItem="D5L-DG-iJg" secondAttribute="trailing" id="7pu-6V-mwh"/>
                     <constraint firstAttribute="bottom" secondItem="D5L-DG-iJg" secondAttribute="bottom" id="8Uh-dc-nv8"/>
-                    <constraint firstAttribute="bottom" secondItem="xpO-ja-Qnk" secondAttribute="bottom" priority="999" constant="10" id="8c5-vS-lyo"/>
                     <constraint firstAttribute="trailing" secondItem="SSv-cz-tD6" secondAttribute="trailing" id="Igj-bE-de4"/>
                     <constraint firstItem="zB9-Xv-4Cu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="K4f-yp-9OB"/>
                     <constraint firstItem="D5L-DG-iJg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="KUU-eD-Own"/>
-                    <constraint firstItem="xpO-ja-Qnk" firstAttribute="top" secondItem="n4h-nj-NAI" secondAttribute="bottom" constant="15" id="TKq-8g-Rpl"/>
                     <constraint firstItem="n4h-nj-NAI" firstAttribute="trailing" secondItem="952-Gk-tty" secondAttribute="trailing" id="ckt-og-W2Y"/>
                     <constraint firstItem="zB9-Xv-4Cu" firstAttribute="top" secondItem="SSv-cz-tD6" secondAttribute="bottom" id="dHC-pW-1kH"/>
-                    <constraint firstItem="xpO-ja-Qnk" firstAttribute="leading" secondItem="n4h-nj-NAI" secondAttribute="leading" id="f0q-Zq-VWl"/>
                     <constraint firstItem="952-Gk-tty" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="geS-6W-83I"/>
                     <constraint firstItem="n4h-nj-NAI" firstAttribute="leading" secondItem="952-Gk-tty" secondAttribute="leading" id="gwq-h7-0rm"/>
                     <constraint firstItem="D5L-DG-iJg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="h5p-MM-orl"/>
@@ -81,12 +70,12 @@
                     <constraint firstItem="952-Gk-tty" firstAttribute="top" secondItem="zB9-Xv-4Cu" secondAttribute="bottom" constant="15" id="mPw-Az-ycs"/>
                     <constraint firstItem="n4h-nj-NAI" firstAttribute="top" secondItem="952-Gk-tty" secondAttribute="bottom" constant="13" id="qyo-vT-ETV"/>
                     <constraint firstItem="SSv-cz-tD6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="uYg-iy-2kU"/>
-                    <constraint firstItem="xpO-ja-Qnk" firstAttribute="trailing" secondItem="n4h-nj-NAI" secondAttribute="trailing" id="y0T-b3-ozX"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="descriptionLabel" destination="952-Gk-tty" id="22z-Wy-yyI"/>
+                <outlet property="redeemLabel" destination="n4h-nj-NAI" id="L2T-MV-Jgk"/>
             </connections>
             <point key="canvasLocation" x="309" y="274"/>
         </tableViewCell>

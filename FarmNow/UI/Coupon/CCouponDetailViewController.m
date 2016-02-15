@@ -12,11 +12,14 @@
 #import "CCouponCampaignDetailModel.h"
 #import "CCouponTableViewCell.h"
 #import "CCampaignDetailHeaderTableViewCell.h"
+#import "CStoreTableViewCell.h"
 #import "CPictureTableViewCell.h"
+#import "CStore.h"
 
-@interface CCouponDetailViewController ()
+@interface CCouponDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableDictionary *downloadedPictures;
+@property (nonatomic, strong) NSMutableDictionary *storeDict;
 @end
 
 @implementation CCouponDetailViewController
@@ -32,6 +35,7 @@
         [self requestData];
     }];
     
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CStoreTableViewCell class]) bundle:nil] forCellReuseIdentifier:@"CStoreTableViewCell"];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CCampaignDetailHeaderTableViewCell class]) bundle:nil] forCellReuseIdentifier:@"CCampaignDetailHeaderTableViewCell"];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CPictureTableViewCell class]) bundle:nil] forCellReuseIdentifier:@"CPictureTableViewCell"];
 }
@@ -48,13 +52,55 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
+- (void)groupStoreWithProvince {
+    self.storeDict = [NSMutableDictionary dictionary];
+    
+    for (CStore *store in self.couponCampaign.stores) {
+        if(self.storeDict[store.province]) {
+            NSMutableArray *stores = self.storeDict[store.province];
+            [stores addObject:store];
+        }
+        else {
+            NSMutableArray *stores = [NSMutableArray array];
+            [stores addObject:store];
+            [self.storeDict setObject:stores forKey:store.province];
+        }
+    }
+}
+
+// 返回key或者store
+- (id)getStoreOrKeyInRow:(NSInteger)row {
+    
+    //for (int i=0; i<self.storeDict.allKeys.count; i++) {
+    // NSString *key = self.storeDict.allKeys[i];
+    for (NSString *key in self.storeDict.allKeys) {
+        
+        if (row == 0) {
+            return key;
+        }
+        
+        row--;
+        NSArray *stores = self.storeDict[key];
+        if (row < stores.count) {
+            return stores[row];
+        }
+        
+        row -= stores.count;
+    }
+    
+    return nil;
+}
+
 - (void)requestData {
     CCouponCampaignDetailParam *param = [CCouponCampaignDetailParam shared_];
     param.couponCampaignId = self.couponCampaign.id;
+    param.lat = gLatitude;
+    param.lon = gLongitude;
+    
     [CCouponCampaignDetailModel requestWithParams:param completion:^(CCouponCampaignDetailModel *model, JSONModelError *err) {
         if (model && model.campaign) {
             self.couponCampaign = model.campaign;
-            
+            [self groupStoreWithProvince];
             [self.tableView.mj_header endRefreshing];
             [self.tableView reloadData];
             
@@ -92,12 +138,36 @@
     else if(indexPath.row < 2 + self.couponCampaign.pictureUrls.count) {
         return UITableViewAutomaticDimension;
     }
+    else {
+        NSInteger newRow = indexPath.row - (2 + self.couponCampaign.pictureUrls.count);
+        
+        if (newRow == 0) {
+            return 45;
+        }
+        
+        id keyOrStore = [self getStoreOrKeyInRow:newRow-1];
+        if ([keyOrStore isKindOfClass:[NSString class]]) {
+            return 33;
+        }
+        else {
+            return UITableViewAutomaticDimension;
+        }
+    }
     
     return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2 + self.couponCampaign.pictureUrls.count;
+    
+    NSInteger storeRowCount = 0;
+    for (NSString *key in self.storeDict.allKeys) {
+        storeRowCount++;
+        
+        NSArray *stores = self.storeDict[key];
+        storeRowCount += stores.count;
+    }
+    
+    return 3 + self.couponCampaign.pictureUrls.count + storeRowCount;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -123,11 +193,66 @@
         
         return cell;
     }
+    else {
+        NSInteger newRow = indexPath.row - (2 + self.couponCampaign.pictureUrls.count);
+        
+        if (newRow == 0) {
+            return [tableView dequeueReusableCellWithIdentifier:@"RedeemCell" forIndexPath:indexPath];
+        }
+        
+        id keyOrStore = [self getStoreOrKeyInRow:newRow-1];
+        if ([keyOrStore isKindOfClass:[NSString class]]) {
+            UITableViewCell *locationCell = [tableView dequeueReusableCellWithIdentifier:@"LocationCell" forIndexPath:indexPath];
+            
+            UILabel *locationLabel = (UILabel *)[locationCell.contentView viewWithTag:1];
+            locationLabel.text = (NSString*)keyOrStore;
+            return locationCell;
+        }
+        else {
+            CStoreTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CStoreTableViewCell" forIndexPath:indexPath];
+            [cell setupWithModel:keyOrStore];
+            return cell;
+        }
+    }
     
     return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 300;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.row > 3 + self.couponCampaign.pictureUrls.count) {
+        NSInteger newRow = indexPath.row - (3 + self.couponCampaign.pictureUrls.count);
+        
+        id keyOrStore = [self getStoreOrKeyInRow:newRow];
+        
+        if ([keyOrStore isKindOfClass:[CStore class]]) {
+            CStore *store = (CStore*)keyOrStore;
+            
+            if (store.phone.length > 0) {
+                
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"联系商家" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+                
+                [alertController addAction:[UIAlertAction actionWithTitle:store.phone style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    NSString *phoneNum = [NSString stringWithFormat:@"tel://%@" , store.phone];
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNum]];
+                }]];
+                
+                if (store.cellphone.length > 0) {
+                    [alertController addAction:[UIAlertAction actionWithTitle:store.cellphone style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        NSString *phoneNum = [NSString stringWithFormat:@"tel://%@" , store.cellphone];
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNum]];
+                    }]];
+                }
+                
+                [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+                [self presentViewController:alertController animated:YES completion:nil];
+            }
+        }
+    }
 }
 @end

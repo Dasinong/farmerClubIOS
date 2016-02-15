@@ -7,6 +7,7 @@
 //
 
 #import "CJSONModel.h"
+#import "CStore.h"
 
 @protocol CCouponCampaign
 @end
@@ -19,4 +20,8 @@
 @property (nonatomic, strong) NSArray<Optional> *pictureUrls;
 @property (assign, nonatomic) NSTimeInterval claimTimeStart;
 @property (assign, nonatomic) NSTimeInterval claimTimeEnd;
+@property (assign, nonatomic) NSTimeInterval redeemTimeStart;
+@property (assign, nonatomic) NSTimeInterval redeemTimeEnd;
+
+@property (nonatomic, strong) NSArray<Optional, CStore> *stores;
 @end

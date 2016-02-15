@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -4771,6 +4772,63 @@ i) 不得为其他任何非法目的而使用服务。
                                             <outlet property="claimLabel" destination="IFa-RZ-CBB" id="fAS-Q3-o71"/>
                                             <outlet property="titleLabel" destination="2nC-yp-NVb" id="PAS-NX-LId"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RedeemCell" rowHeight="45" id="gw2-ne-RlE" customClass="CCouponTableViewCell">
+                                        <rect key="frame" x="0.0" y="403" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gw2-ne-RlE" id="ZiK-bP-jzd">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbS-u5-P0H">
+                                                    <rect key="frame" x="0.0" y="10" width="320" height="35"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="兑换地点" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tW-P6-xUE">
+                                                            <rect key="frame" x="12" y="9" width="56" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="6tW-P6-xUE" firstAttribute="centerY" secondItem="vbS-u5-P0H" secondAttribute="centerY" id="WXi-i4-BCX"/>
+                                                        <constraint firstItem="6tW-P6-xUE" firstAttribute="leading" secondItem="vbS-u5-P0H" secondAttribute="leading" constant="12" id="fl6-sZ-fJl"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="vbS-u5-P0H" firstAttribute="leading" secondItem="ZiK-bP-jzd" secondAttribute="leading" id="A1e-KQ-BJZ"/>
+                                                <constraint firstItem="vbS-u5-P0H" firstAttribute="top" secondItem="ZiK-bP-jzd" secondAttribute="top" constant="10" id="FkN-yt-YQk"/>
+                                                <constraint firstAttribute="trailing" secondItem="vbS-u5-P0H" secondAttribute="trailing" id="Hdd-F4-xYF"/>
+                                                <constraint firstAttribute="bottom" secondItem="vbS-u5-P0H" secondAttribute="bottom" id="l5W-w8-EKM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocationCell" rowHeight="33" id="0p7-Vm-x8j" customClass="CCouponTableViewCell">
+                                        <rect key="frame" x="0.0" y="448" width="320" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0p7-Vm-x8j" id="OW3-GK-cHD">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="33"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cK-fb-TS0">
+                                                    <rect key="frame" x="12" y="8" width="296" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="1cK-fb-TS0" secondAttribute="trailing" constant="12" id="O5L-cF-3cF"/>
+                                                <constraint firstItem="1cK-fb-TS0" firstAttribute="centerY" secondItem="OW3-GK-cHD" secondAttribute="centerYWithinMargins" id="OEk-1e-d2I"/>
+                                                <constraint firstItem="1cK-fb-TS0" firstAttribute="leading" secondItem="OW3-GK-cHD" secondAttribute="leading" constant="12" id="WsO-y0-bav"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

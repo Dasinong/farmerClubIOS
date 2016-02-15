@@ -20,6 +20,9 @@
 		275C4B1C1C70B5E0002475B6 /* CPictureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 275C4B1A1C70B5E0002475B6 /* CPictureTableViewCell.m */; };
 		275C4B1D1C70B5E0002475B6 /* CPictureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275C4B1B1C70B5E0002475B6 /* CPictureTableViewCell.xib */; };
 		278491EE1C7056E8000F0D3E /* CCouponHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278491ED1C7056E8000F0D3E /* CCouponHomeViewController.m */; };
+		27A8C9E71C71A35500441C27 /* CStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A8C9E61C71A35500441C27 /* CStore.m */; };
+		27A8C9EB1C71AD1900441C27 /* CStoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A8C9E91C71AD1900441C27 /* CStoreTableViewCell.m */; };
+		27A8C9EC1C71AD1900441C27 /* CStoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27A8C9EA1C71AD1900441C27 /* CStoreTableViewCell.xib */; };
 		9F00C53E1C0DEE3400198FD1 /* CSelectIdentityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F00C53D1C0DEE3400198FD1 /* CSelectIdentityController.m */; };
 		9F010CAC1BE8E89C00358FD6 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F010CAB1BE8E89C00358FD6 /* NSDate+Utilities.m */; };
 		9F010CAF1BE9028400358FD6 /* CWeatherHourItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F010CAE1BE9028400358FD6 /* CWeatherHourItemView.m */; };
@@ -259,6 +262,11 @@
 		275C4B1B1C70B5E0002475B6 /* CPictureTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPictureTableViewCell.xib; sourceTree = "<group>"; };
 		278491EC1C7056E8000F0D3E /* CCouponHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCouponHomeViewController.h; sourceTree = "<group>"; };
 		278491ED1C7056E8000F0D3E /* CCouponHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCouponHomeViewController.m; sourceTree = "<group>"; };
+		27A8C9E51C71A35500441C27 /* CStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CStore.h; sourceTree = "<group>"; };
+		27A8C9E61C71A35500441C27 /* CStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CStore.m; sourceTree = "<group>"; };
+		27A8C9E81C71AD1900441C27 /* CStoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CStoreTableViewCell.h; sourceTree = "<group>"; };
+		27A8C9E91C71AD1900441C27 /* CStoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CStoreTableViewCell.m; sourceTree = "<group>"; };
+		27A8C9EA1C71AD1900441C27 /* CStoreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CStoreTableViewCell.xib; sourceTree = "<group>"; };
 		58D6C33779B2D6D120434B6D /* Pods-FarmNow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarmNow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FarmNow/Pods-FarmNow.debug.xcconfig"; sourceTree = "<group>"; };
 		892B13CBF05E214972F8EFDB /* Pods-FarmNow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarmNow.release.xcconfig"; path = "Pods/Target Support Files/Pods-FarmNow/Pods-FarmNow.release.xcconfig"; sourceTree = "<group>"; };
 		9F00C53C1C0DEE3400198FD1 /* CSelectIdentityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSelectIdentityController.h; sourceTree = "<group>"; };
@@ -679,6 +687,9 @@
 				275C4B191C70B5E0002475B6 /* CPictureTableViewCell.h */,
 				275C4B1A1C70B5E0002475B6 /* CPictureTableViewCell.m */,
 				275C4B1B1C70B5E0002475B6 /* CPictureTableViewCell.xib */,
+				27A8C9E81C71AD1900441C27 /* CStoreTableViewCell.h */,
+				27A8C9E91C71AD1900441C27 /* CStoreTableViewCell.m */,
+				27A8C9EA1C71AD1900441C27 /* CStoreTableViewCell.xib */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -736,6 +747,8 @@
 				275C4B0C1C7075EB002475B6 /* CCoupon.m */,
 				275C4B0E1C7075FE002475B6 /* CCouponCampaign.h */,
 				275C4B0F1C7075FE002475B6 /* CCouponCampaign.m */,
+				27A8C9E51C71A35500441C27 /* CStore.h */,
+				27A8C9E61C71A35500441C27 /* CStore.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1454,6 +1467,7 @@
 				9FE6E9491BD69327003A9D79 /* agreement.css in Resources */,
 				9FE6E9571BD69327003A9D79 /* DisasterLevel.html in Resources */,
 				9FE6E9561BD69327003A9D79 /* dns.db in Resources */,
+				27A8C9EC1C71AD1900441C27 /* CStoreTableViewCell.xib in Resources */,
 				9F010CB11BE902AC00358FD6 /* CWeatherHourItemView.xib in Resources */,
 				9FE6E9501BD69327003A9D79 /* levelthree.png in Resources */,
 				9F4336601BE0F3E1003C3B5D /* searchSectionView.xib in Resources */,
@@ -1549,6 +1563,7 @@
 				9FA93D171BDEFD5D00F7101A /* CSearchWordModel.m in Sources */,
 				9F120E531BE2681100928695 /* UITabBarController+HideTabBar.m in Sources */,
 				9F66BF6B1BE4CF1C0047CE82 /* CWeatherSubscriptionModel.m in Sources */,
+				27A8C9EB1C71AD1900441C27 /* CStoreTableViewCell.m in Sources */,
 				9F1860CF1BDBC8A2003F9A8C /* CLoginController.m in Sources */,
 				9F8D8F431BE50BA5004253FD /* CCurrentWeatherCell.m in Sources */,
 				9FEED8451BECF2230095A91B /* CSelectAddressViewController.m in Sources */,
@@ -1633,6 +1648,7 @@
 				9FE6E8981BD66FD7003A9D79 /* CWikiCell.m in Sources */,
 				9FD213221BD128A60063147D /* NSArray+Extra.m in Sources */,
 				9FC425271BD5355600455A8C /* CPersonalController.m in Sources */,
+				27A8C9E71C71A35500441C27 /* CStore.m in Sources */,
 				9FD213331BD128A60063147D /* UIImage+Additional.m in Sources */,
 				275C4B171C709CA5002475B6 /* CCampaignDetailHeaderTableViewCell.m in Sources */,
 				9FD213391BD128A60063147D /* UIView+AddSubview.m in Sources */,

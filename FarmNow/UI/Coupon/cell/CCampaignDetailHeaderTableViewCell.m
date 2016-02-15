@@ -11,6 +11,7 @@
 
 @interface CCampaignDetailHeaderTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *redeemLabel;
 @end
 
 @implementation CCampaignDetailHeaderTableViewCell
@@ -23,6 +24,14 @@
     CCouponCampaign *campaign = (CCouponCampaign*)model;
     
     self.descriptionLabel.text = campaign.campaignDescription;
+    
+    NSDate* redeemTimeStart = [NSDate dateWithTimeIntervalSince1970:campaign.redeemTimeStart / 1000];
+    NSDate* redeemTimeEnd = [NSDate dateWithTimeIntervalSince1970:campaign.redeemTimeEnd / 1000];
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"MM月dd日"];
+    
+    self.redeemLabel.text = [NSString stringWithFormat:@"兑换期限：%@ - %@", [df stringFromDate:redeemTimeStart], [df stringFromDate:redeemTimeEnd]];
     
     [self setNeedsUpdateConstraints];
     [self updateConstraintsIfNeeded];

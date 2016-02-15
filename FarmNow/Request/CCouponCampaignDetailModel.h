@@ -11,6 +11,8 @@
 
 @interface CCouponCampaignDetailParam : CRequestBaseParams
 @property (assign, nonatomic) NSInteger couponCampaignId;
+@property (assign, nonatomic) double lat;
+@property (assign, nonatomic) double lon;
 @end
 
 @interface CCouponCampaignDetailModel : CResponseModel

@@ -8,6 +8,10 @@
 
 #import "CBaseViewController.h"
 #import "CCouponCampaign.h"
+#import <CoreLocation/CoreLocation.h>
+
+extern CLLocationDegrees gLatitude;
+extern CLLocationDegrees gLongitude;
 
 @interface CCouponDetailViewController : CBaseViewController
 @property (nonatomic,strong) CCouponCampaign *couponCampaign;
