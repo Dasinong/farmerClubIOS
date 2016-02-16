@@ -150,6 +150,8 @@ const NSString*    kResponseSuccess = @"200";
 					if (![retModel.respCode isEqualToString:@"200"])
 					{
 						completeBlock(nil, nil);
+                        [MBProgressHUD alert:[model errorMessage]];
+
 						return ;
 					}
                     completeBlock(model, nil);
@@ -294,7 +296,7 @@ const NSString*    kResponseSuccess = @"200";
 
     NSUserDefaults *userDefaults = USER_DEFAULTS;
     if ([userDefaults objectForKey:@"accessToken"]) {
-        NSString *accessToken = [[userDefaults objectForKey:@"accessToken"] urlencode];
+        NSString *accessToken = [userDefaults objectForKey:@"accessToken"];
         NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:parameters];
         [dict setObject:accessToken forKey:@"accessToken"];
         parameters = dict;
@@ -338,7 +340,7 @@ const NSString*    kResponseSuccess = @"200";
     
     NSUserDefaults *userDefaults = USER_DEFAULTS;
     if ([userDefaults objectForKey:@"accessToken"]) {
-        NSString *accessToken = [[userDefaults objectForKey:@"accessToken"] urlencode];
+        NSString *accessToken = [userDefaults objectForKey:@"accessToken"];
         NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:params];
         [dict setObject:accessToken forKey:@"accessToken"];
         params = dict;

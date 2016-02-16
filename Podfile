@@ -22,6 +22,7 @@ pod 'PEPhotoCropEditor'
 pod 'MJRefresh'
 pod 'MZTimerLabel'
 pod 'ZXingObjC’
+pod 'XLPagerTabStrip', '~> 3.0.0'
 end
 
 target 'FarmNowTests' do
