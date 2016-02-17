@@ -60,10 +60,7 @@
 
 - (NSString*)paramString
 {
-	
-	
-	
-	if ([self respondsToSelector:@selector(updateDynamicValue)])
+    if ([self respondsToSelector:@selector(updateDynamicValue)])
 	{
 		[self updateDynamicValue];
 	}

@@ -270,10 +270,10 @@ const NSString*    kResponseSuccess = @"200";
     if ([userDefaults objectForKey:@"accessToken"]) {
         NSString *accessToken = [[userDefaults objectForKey:@"accessToken"] urlencode];
         if ([URL containsString:@"?"]) {
-            URL = [NSString stringWithFormat:@"%@&accessToken=%@", URL, accessToken];
+            URL = [NSString stringWithFormat:@"%@&accessToken=%@&appId=2", URL, accessToken];
         }
         else {
-            URL = [NSString stringWithFormat:@"%@?accessToken=%@", URL, accessToken];
+            URL = [NSString stringWithFormat:@"%@?accessToken=%@&appId=2", URL, accessToken];
         }
     }
     
@@ -306,6 +306,7 @@ const NSString*    kResponseSuccess = @"200";
         NSString *accessToken = [userDefaults objectForKey:@"accessToken"];
         NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:parameters];
         [dict setObject:accessToken forKey:@"accessToken"];
+        [dict setObject:@(2) forKey:@"appId"];
         parameters = dict;
     }
     
@@ -350,6 +351,7 @@ const NSString*    kResponseSuccess = @"200";
         NSString *accessToken = [userDefaults objectForKey:@"accessToken"];
         NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:params];
         [dict setObject:accessToken forKey:@"accessToken"];
+        [dict setObject:@(2) forKey:@"appId"];
         params = dict;
     }
     

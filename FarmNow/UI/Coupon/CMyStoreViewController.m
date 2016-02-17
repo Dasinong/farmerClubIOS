@@ -39,7 +39,7 @@
     CScannableCampaignsParam *params = [CScannableCampaignsParam new];
     
     [CScannableCampaignsModel requestWithParams:GET params:params completion:^(CScannableCampaignsModel *model, JSONModelError *err) {
-        if (model) {
+        if (err == nil && model) {
             self.dataArray = model.campaigns;
             [self.tableView.mj_header endRefreshing];
             [self.tableView reloadData];

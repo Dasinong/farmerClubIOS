@@ -37,6 +37,7 @@
 		27CC912A1C74999400696995 /* CScannableCampaignsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CC91291C74999400696995 /* CScannableCampaignsModel.m */; };
 		27CC912D1C749C1900696995 /* CScannedCouponDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CC912C1C749C1900696995 /* CScannedCouponDetailViewController.m */; };
 		27CC91301C74A98800696995 /* CScannedCouponsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CC912F1C74A98800696995 /* CScannedCouponsModel.m */; };
+		27CC91331C74B45B00696995 /* CRedeemCouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CC91321C74B45B00696995 /* CRedeemCouponModel.m */; };
 		9F00C53E1C0DEE3400198FD1 /* CSelectIdentityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F00C53D1C0DEE3400198FD1 /* CSelectIdentityController.m */; };
 		9F010CAC1BE8E89C00358FD6 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F010CAB1BE8E89C00358FD6 /* NSDate+Utilities.m */; };
 		9F010CAF1BE9028400358FD6 /* CWeatherHourItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F010CAE1BE9028400358FD6 /* CWeatherHourItemView.m */; };
@@ -308,6 +309,8 @@
 		27CC912C1C749C1900696995 /* CScannedCouponDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CScannedCouponDetailViewController.m; sourceTree = "<group>"; };
 		27CC912E1C74A98800696995 /* CScannedCouponsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CScannedCouponsModel.h; sourceTree = "<group>"; };
 		27CC912F1C74A98800696995 /* CScannedCouponsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CScannedCouponsModel.m; sourceTree = "<group>"; };
+		27CC91311C74B45B00696995 /* CRedeemCouponModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRedeemCouponModel.h; sourceTree = "<group>"; };
+		27CC91321C74B45B00696995 /* CRedeemCouponModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRedeemCouponModel.m; sourceTree = "<group>"; };
 		58D6C33779B2D6D120434B6D /* Pods-FarmNow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarmNow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FarmNow/Pods-FarmNow.debug.xcconfig"; sourceTree = "<group>"; };
 		892B13CBF05E214972F8EFDB /* Pods-FarmNow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarmNow.release.xcconfig"; path = "Pods/Target Support Files/Pods-FarmNow/Pods-FarmNow.release.xcconfig"; sourceTree = "<group>"; };
 		9F00C53C1C0DEE3400198FD1 /* CSelectIdentityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSelectIdentityController.h; sourceTree = "<group>"; };
@@ -1002,6 +1005,8 @@
 				27CC91291C74999400696995 /* CScannableCampaignsModel.m */,
 				27CC912E1C74A98800696995 /* CScannedCouponsModel.h */,
 				27CC912F1C74A98800696995 /* CScannedCouponsModel.m */,
+				27CC91311C74B45B00696995 /* CRedeemCouponModel.h */,
+				27CC91321C74B45B00696995 /* CRedeemCouponModel.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1716,6 +1721,7 @@
 				9FA93D1A1BDEFDD900F7101A /* CSearchEntry.m in Sources */,
 				9F8FB7971BEF8950003A7469 /* CPasswordViewController.m in Sources */,
 				9FD213301BD128A60063147D /* UIColor+Extra.m in Sources */,
+				27CC91331C74B45B00696995 /* CRedeemCouponModel.m in Sources */,
 				9F92C2DF1BDB5BEC0034DB3F /* CGetCpprductsByIngredientModel.m in Sources */,
 				9F43365E1BE0F1ED003C3B5D /* UILabel+Extra.m in Sources */,
 				9FFF68341C089B6900590604 /* CSubScribeDetailController.m in Sources */,
