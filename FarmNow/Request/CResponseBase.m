@@ -105,6 +105,13 @@ const NSString*    kResponseSuccess = @"200";
         [userDefaults synchronize];
     }
     
+    if (responseObject[@"clientConfig"]) {
+        // 客户端配置
+        NSUserDefaults *userDefaults = USER_DEFAULTS;
+        [userDefaults setObject:responseObject[@"clientConfig"] forKey:@"clientConfig"];
+        [userDefaults synchronize];
+    }
+    
     if (responseObject && [responseObject isKindOfClass:[NSDictionary class]])
     {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{

@@ -1,30 +1,29 @@
 //
-//  CCouponListViewController.m
+//  CMyStoreViewController.m
 //  FarmNow
 //
 //  Created by 朱曦炽 on 16/2/17.
 //  Copyright © 2016年 zheliang. All rights reserved.
 //
 
-#import "CCouponListViewController.h"
-#import "CCouponTableViewCell.h"
+#import "CMyStoreViewController.h"
+#import "CScannableCampaignsModel.h"
 #import "MJRefresh.h"
-#import "CCouponModel.h"
-#import "CMyCouponDetailViewController.h"
+#import "CCouponTableViewCell.h"
+#import "CScannedCouponDetailViewController.h"
 
-@interface CCouponListViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@interface CMyStoreViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataArray;
 @end
 
-@implementation CCouponListViewController
+@implementation CMyStoreViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CCouponTableViewCell class]) bundle:nil] forCellReuseIdentifier:@"CCouponTableViewCell"];
-
+    
     [self requestData];
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self requestData];
@@ -37,29 +36,11 @@
 }
 
 - (void)requestData {
-    CCouponParam *params = [CCouponParam new];
+    CScannableCampaignsParam *params = [CScannableCampaignsParam new];
     
-    [CCouponModel requestWithParams:GET params:params completion:^(CCouponModel *model, JSONModelError *err) {
+    [CScannableCampaignsModel requestWithParams:GET params:params completion:^(CScannableCampaignsModel *model, JSONModelError *err) {
         if (model) {
-            NSMutableArray *array = [NSMutableArray array];
-            
-            for (CCoupon *coupon in model.coupons) {
-                if (self.type == CouponTypeMyUnused) {
-                    if (![coupon expired]) {
-                        [array addObject:coupon];
-                    }
-                }
-                else if (self.type == CouponTypeMyExpired) {
-                    if ([coupon expired]) {
-                        [array addObject:coupon];
-                    }
-                }
-                else {
-                    [array addObject:coupon];
-                }
-            }
-            
-            self.dataArray = array;
+            self.dataArray = model.campaigns;
             [self.tableView.mj_header endRefreshing];
             [self.tableView reloadData];
         }
@@ -76,36 +57,21 @@
 }
 */
 
-#pragma mark - XLPagerTabStripViewControllerDelegate
-
--(NSString *)titleForPagerTabStripViewController:(XLPagerTabStripViewController *)pagerTabStripViewController
-{
-    switch (self.type) {
-        case CouponTypeMyUnused:
-            return @"未使用";
-        case CouponTypeMyExpired:
-            return @"已失效";
-            
-        default:
-            return @"";
-            break;
-    }
-}
-
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 105;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataArray.count;
+    return [self.dataArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     CCouponTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CCouponTableViewCell" forIndexPath:indexPath];
     
-    CCoupon *coupon = self.dataArray[indexPath.row];
-    [cell setupWithModel:coupon.campaign];
+    CCouponCampaign *couponCampaign = self.dataArray[indexPath.row];
+    [cell setupWithModel:couponCampaign];
     
     return cell;
 }
@@ -113,10 +79,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    CCoupon *coupon = self.dataArray[indexPath.row];
+    CCouponCampaign *couponCampaign = self.dataArray[indexPath.row];
     
-    CMyCouponDetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CMyCouponDetailViewController"];
-    controller.coupon = coupon;
+    CScannedCouponDetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CScannedCouponDetailViewController"];
+    controller.couponCampaign = couponCampaign;
+    controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
 }
 @end

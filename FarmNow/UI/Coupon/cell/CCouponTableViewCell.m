@@ -8,7 +8,7 @@
 
 #import "CCouponTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "CCoupon.h"
+#import "CCouponCampaign.h"
 
 @interface CCouponTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *couponImageView;
@@ -29,17 +29,17 @@
 }
 
 - (void)setupWithModel:(id)model {
-    CCoupon *coupon = (CCoupon *)model;
+    CCouponCampaign *couponCampaign = (CCouponCampaign *)model;
     
-    if (coupon.campaign.pictureUrls.count > 0) {
-        NSString *picUrlString = [NSString stringWithFormat:@"%@/pic/couponCampaign/%@", kServer, coupon.campaign.pictureUrls[0]];
+    if (couponCampaign.pictureUrls.count > 0) {
+        NSString *picUrlString = [NSString stringWithFormat:@"%@/pic/couponCampaign/%@", kServer, couponCampaign.pictureUrls[0]];
         [self.couponImageView sd_setImageWithURL:[NSURL URLWithString:picUrlString]];
     }
     
-    self.campaignNameLabel.text = coupon.campaign.name;
+    self.campaignNameLabel.text = couponCampaign.name;
     
-    NSDate* redeemTimeStart = [NSDate dateWithTimeIntervalSince1970:coupon.campaign.redeemTimeStart / 1000];
-    NSDate* redeemTimeEnd = [NSDate dateWithTimeIntervalSince1970:coupon.campaign.redeemTimeEnd / 1000];
+    NSDate* redeemTimeStart = [NSDate dateWithTimeIntervalSince1970:couponCampaign.redeemTimeStart / 1000];
+    NSDate* redeemTimeEnd = [NSDate dateWithTimeIntervalSince1970:couponCampaign.redeemTimeEnd / 1000];
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"MM月dd日"];

@@ -44,6 +44,18 @@
 	}];
 	return YES;
 }
+
+- (BOOL)enableWelfare {
+    NSUserDefaults *userDefaults = USER_DEFAULTS;
+    if ([userDefaults objectForKey:@"clientConfig"]) {
+        NSDictionary *clientConfig = [userDefaults objectForKey:@"clientConfig"];
+        
+        return [clientConfig[@"enableWelfare"] boolValue];
+    }
+    
+    return NO;
+}
+
 -(UINavigationController*) currentController
 {
 	UIViewController *selectViewCtrl = self.tabBarController.selectedViewController;

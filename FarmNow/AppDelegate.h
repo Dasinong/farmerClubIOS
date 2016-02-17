@@ -16,5 +16,6 @@
 @property (nonatomic, assign) BOOL showQQLogin;
 @property (nonatomic, assign) BOOL showWXLogin;
 
+- (BOOL)enableWelfare; // 是否要显示福利社
 @end
 

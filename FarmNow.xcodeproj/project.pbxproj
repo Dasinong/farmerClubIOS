@@ -32,6 +32,11 @@
 		27A8C9EF1C71BDF000441C27 /* CClaimCouponTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A8C9EE1C71BDF000441C27 /* CClaimCouponTableViewCell.m */; };
 		27A8C9F21C71CD4A00441C27 /* CRequestCouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A8C9F11C71CD4A00441C27 /* CRequestCouponModel.m */; };
 		27A8C9F51C71D12700441C27 /* CClaimCouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A8C9F41C71D12700441C27 /* CClaimCouponModel.m */; };
+		27CC91241C74920600696995 /* CMyStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CC91231C74920600696995 /* CMyStoreViewController.m */; };
+		27CC91271C74925B00696995 /* CTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CC91261C74925B00696995 /* CTabBarViewController.m */; };
+		27CC912A1C74999400696995 /* CScannableCampaignsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CC91291C74999400696995 /* CScannableCampaignsModel.m */; };
+		27CC912D1C749C1900696995 /* CScannedCouponDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CC912C1C749C1900696995 /* CScannedCouponDetailViewController.m */; };
+		27CC91301C74A98800696995 /* CScannedCouponsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CC912F1C74A98800696995 /* CScannedCouponsModel.m */; };
 		9F00C53E1C0DEE3400198FD1 /* CSelectIdentityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F00C53D1C0DEE3400198FD1 /* CSelectIdentityController.m */; };
 		9F010CAC1BE8E89C00358FD6 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F010CAB1BE8E89C00358FD6 /* NSDate+Utilities.m */; };
 		9F010CAF1BE9028400358FD6 /* CWeatherHourItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F010CAE1BE9028400358FD6 /* CWeatherHourItemView.m */; };
@@ -293,6 +298,16 @@
 		27A8C9F11C71CD4A00441C27 /* CRequestCouponModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRequestCouponModel.m; sourceTree = "<group>"; };
 		27A8C9F31C71D12700441C27 /* CClaimCouponModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CClaimCouponModel.h; sourceTree = "<group>"; };
 		27A8C9F41C71D12700441C27 /* CClaimCouponModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CClaimCouponModel.m; sourceTree = "<group>"; };
+		27CC91221C74920600696995 /* CMyStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMyStoreViewController.h; sourceTree = "<group>"; };
+		27CC91231C74920600696995 /* CMyStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMyStoreViewController.m; sourceTree = "<group>"; };
+		27CC91251C74925B00696995 /* CTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTabBarViewController.h; sourceTree = "<group>"; };
+		27CC91261C74925B00696995 /* CTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTabBarViewController.m; sourceTree = "<group>"; };
+		27CC91281C74999400696995 /* CScannableCampaignsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CScannableCampaignsModel.h; sourceTree = "<group>"; };
+		27CC91291C74999400696995 /* CScannableCampaignsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CScannableCampaignsModel.m; sourceTree = "<group>"; };
+		27CC912B1C749C1900696995 /* CScannedCouponDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CScannedCouponDetailViewController.h; sourceTree = "<group>"; };
+		27CC912C1C749C1900696995 /* CScannedCouponDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CScannedCouponDetailViewController.m; sourceTree = "<group>"; };
+		27CC912E1C74A98800696995 /* CScannedCouponsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CScannedCouponsModel.h; sourceTree = "<group>"; };
+		27CC912F1C74A98800696995 /* CScannedCouponsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CScannedCouponsModel.m; sourceTree = "<group>"; };
 		58D6C33779B2D6D120434B6D /* Pods-FarmNow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarmNow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FarmNow/Pods-FarmNow.debug.xcconfig"; sourceTree = "<group>"; };
 		892B13CBF05E214972F8EFDB /* Pods-FarmNow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarmNow.release.xcconfig"; path = "Pods/Target Support Files/Pods-FarmNow/Pods-FarmNow.release.xcconfig"; sourceTree = "<group>"; };
 		9F00C53C1C0DEE3400198FD1 /* CSelectIdentityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSelectIdentityController.h; sourceTree = "<group>"; };
@@ -728,6 +743,7 @@
 		278491EB1C705667000F0D3E /* Coupon */ = {
 			isa = PBXGroup;
 			children = (
+				27CC91211C74919200696995 /* Owner */,
 				275C4B071C707087002475B6 /* cell */,
 				278491EC1C7056E8000F0D3E /* CCouponHomeViewController.h */,
 				278491ED1C7056E8000F0D3E /* CCouponHomeViewController.m */,
@@ -745,6 +761,17 @@
 				279A5E9F1C744E2600C3D697 /* CMyCouponDetailViewController.m */,
 			);
 			path = Coupon;
+			sourceTree = "<group>";
+		};
+		27CC91211C74919200696995 /* Owner */ = {
+			isa = PBXGroup;
+			children = (
+				27CC91221C74920600696995 /* CMyStoreViewController.h */,
+				27CC91231C74920600696995 /* CMyStoreViewController.m */,
+				27CC912B1C749C1900696995 /* CScannedCouponDetailViewController.h */,
+				27CC912C1C749C1900696995 /* CScannedCouponDetailViewController.m */,
+			);
+			name = Owner;
 			sourceTree = "<group>";
 		};
 		9F02DFC61BD9380B001C223F /* Model */ = {
@@ -971,6 +998,10 @@
 				27A8C9F41C71D12700441C27 /* CClaimCouponModel.m */,
 				279A5E9B1C7423C400C3D697 /* CCouponModel.h */,
 				279A5E9C1C7423C400C3D697 /* CCouponModel.m */,
+				27CC91281C74999400696995 /* CScannableCampaignsModel.h */,
+				27CC91291C74999400696995 /* CScannableCampaignsModel.m */,
+				27CC912E1C74A98800696995 /* CScannedCouponsModel.h */,
+				27CC912F1C74A98800696995 /* CScannedCouponsModel.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1052,6 +1083,8 @@
 				9FC425241BD5353700455A8C /* Mine */,
 				9F5EFD571BEA495B0003E31F /* CWebViewController.h */,
 				9F5EFD581BEA495B0003E31F /* CWebViewController.m */,
+				27CC91251C74925B00696995 /* CTabBarViewController.h */,
+				27CC91261C74925B00696995 /* CTabBarViewController.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1605,6 +1638,7 @@
 				9FD213291BD128A60063147D /* NSObject+TypeCheck.m in Sources */,
 				9FFF682E1C089A8C00590604 /* CUpdateSubScribeListModel.m in Sources */,
 				9FA93D171BDEFD5D00F7101A /* CSearchWordModel.m in Sources */,
+				27CC91271C74925B00696995 /* CTabBarViewController.m in Sources */,
 				9F120E531BE2681100928695 /* UITabBarController+HideTabBar.m in Sources */,
 				9F66BF6B1BE4CF1C0047CE82 /* CWeatherSubscriptionModel.m in Sources */,
 				27A8C9EB1C71AD1900441C27 /* CStoreTableViewCell.m in Sources */,
@@ -1614,6 +1648,7 @@
 				9F8D8F431BE50BA5004253FD /* CCurrentWeatherCell.m in Sources */,
 				9FEED8451BECF2230095A91B /* CSelectAddressViewController.m in Sources */,
 				9F375FAD1BDD2A3800000ACD /* sdkCall.m in Sources */,
+				27CC912D1C749C1900696995 /* CScannedCouponDetailViewController.m in Sources */,
 				275C4B001C70646D002475B6 /* CClaimCouponViewController.m in Sources */,
 				9FD213251BD128A60063147D /* NSLog+Extra.m in Sources */,
 				9F66BF7A1BE4D35B0047CE82 /* CReorderWeatherSubscriptionsModel.m in Sources */,
@@ -1636,6 +1671,7 @@
 				9F09FA981C04A18300D973A5 /* CSetUserTypeModel.m in Sources */,
 				9FD213231BD128A60063147D /* NSAttributedString+Extra.m in Sources */,
 				9FD2131B1BD128A60063147D /* CAAniamtionFactory.m in Sources */,
+				27CC91301C74A98800696995 /* CScannedCouponsModel.m in Sources */,
 				B0748DFA1C57738200513B4E /* UIColor+hexColor.m in Sources */,
 				9F66BF831BE4D74E0047CE82 /* CForecastHourInfoModel.m in Sources */,
 				9F03FADD1BE7C04000A3B1C7 /* CWeatherHourCell.m in Sources */,
@@ -1690,6 +1726,7 @@
 				9F68D8F91BDE72B800F54627 /* CIdentifyingCodeController.m in Sources */,
 				9FA04E1A1BD94819007E2951 /* CTitleCell.m in Sources */,
 				9F8FB79D1BEF8B9A003A7469 /* CLoginModel.m in Sources */,
+				27CC912A1C74999400696995 /* CScannableCampaignsModel.m in Sources */,
 				9FC0E9D41BD0D1E10096FD3D /* CBaseViewController.m in Sources */,
 				9F03FAD71BE798EC00A3B1C7 /* CWeatherPOPCell.m in Sources */,
 				275C4B061C706653002475B6 /* CMyCouponPagerViewController.m in Sources */,
@@ -1758,6 +1795,7 @@
 				9FFBF4B91C01C1F1007C6D24 /* CStoresViewController.m in Sources */,
 				275C4B101C7075FE002475B6 /* CCouponCampaign.m in Sources */,
 				9FD213341BD128A60063147D /* UIImage+Extra.m in Sources */,
+				27CC91241C74920600696995 /* CMyStoreViewController.m in Sources */,
 				9F8873921BEBA97B00B267D2 /* CPersonalCache.m in Sources */,
 				9F66BF771BE4D29D0047CE82 /* CDeleteWeatherSubscriptionModel.m in Sources */,
 				9FD2132F1BD128A60063147D /* NSString+Valid.m in Sources */,
