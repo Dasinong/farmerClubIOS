@@ -9,13 +9,13 @@
 #import "CCouponHomeViewController.h"
 #import "CCouponDetailViewController.h"
 #import "CClaimCouponViewController.h"
-#import "CCouponTableViewCell.h"
+#import "CCouponCampaignTableViewCell.h"
 #import "CCouponCampaign.h"
 #import "CCouponCampaignsModel.h"
 #import "CPersonalCache.h"
 #import "MJRefresh.h"
 
-@interface CCouponHomeViewController () <UITableViewDataSource, UITableViewDelegate, CCouponTableViewCellDelegate>
+@interface CCouponHomeViewController () <UITableViewDataSource, UITableViewDelegate, CCouponCampaignTableViewCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataArray;
 @end
@@ -78,7 +78,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CCouponCampaign *couponCampaign = self.dataArray[indexPath.row];
     
-    CCouponTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    CCouponCampaignTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     cell.delegate = self;
     [cell setupWithModel:couponCampaign];
     return cell;
@@ -95,7 +95,7 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-#pragma mark - CCouponTableViewCellDelegate
+#pragma mark - CCouponCampaignTableViewCellDelegate
 - (void)claim:(CCouponCampaign*)couponCampaign {
     CClaimCouponViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CClaimCouponViewController"];
     controller.hidesBottomBarWhenPushed = YES;

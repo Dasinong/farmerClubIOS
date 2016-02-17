@@ -9,5 +9,16 @@
 #import "CCoupon.h"
 
 @implementation CCoupon
+- (BOOL)expired {
+    return ![self.displayStatus isEqualToString:@"NOT_USED"];
+}
 
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    if ([propertyName isEqualToString: @"sannerId"]) return YES;
+    if ([propertyName isEqualToString: @"claimedAt"]) return YES;
+    if ([propertyName isEqualToString: @"redeemedAt"]) return YES;
+    
+    return NO;
+}
 @end

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XLButtonBarPagerTabStripViewController.h"
 
-@interface CMyCouponPagerViewController : UIViewController
+@interface CMyCouponPagerViewController : XLButtonBarPagerTabStripViewController
 
 @end

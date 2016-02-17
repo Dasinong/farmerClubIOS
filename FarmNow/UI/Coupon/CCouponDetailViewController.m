@@ -10,7 +10,7 @@
 #import "CClaimCouponViewController.h"
 #import "MJRefresh.h"
 #import "CCouponCampaignDetailModel.h"
-#import "CCouponTableViewCell.h"
+#import "CCouponCampaignTableViewCell.h"
 #import "CCampaignDetailHeaderTableViewCell.h"
 #import "CStoreTableViewCell.h"
 #import "CPictureTableViewCell.h"
@@ -173,7 +173,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == 0) {
-        CCouponTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+        CCouponCampaignTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         [cell setupWithModel:self.couponCampaign];
         return cell;
     }

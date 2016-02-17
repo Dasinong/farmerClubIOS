@@ -4588,7 +4588,7 @@ i) 不得为其他任何非法目的而使用服务。
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="430" id="6iT-tJ-Lhl" customClass="CCouponTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="430" id="6iT-tJ-Lhl" customClass="CCouponCampaignTableViewCell">
                                         <rect key="frame" x="0.0" y="92" width="320" height="430"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6iT-tJ-Lhl" id="VbO-x2-HVv">
@@ -4719,7 +4719,7 @@ i) 不得为其他任何非法目的而使用服务。
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
                                 <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="375" id="1Gi-dQ-hLi" customClass="CCouponTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="375" id="1Gi-dQ-hLi" customClass="CCouponCampaignTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="320" height="375"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Gi-dQ-hLi" id="bTp-ns-ybR">
@@ -4773,7 +4773,7 @@ i) 不得为其他任何非法目的而使用服务。
                                             <outlet property="titleLabel" destination="2nC-yp-NVb" id="PAS-NX-LId"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RedeemCell" rowHeight="45" id="gw2-ne-RlE" customClass="CCouponTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RedeemCell" rowHeight="45" id="gw2-ne-RlE" customClass="CCouponCampaignTableViewCell">
                                         <rect key="frame" x="0.0" y="403" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gw2-ne-RlE" id="ZiK-bP-jzd">
@@ -4807,7 +4807,7 @@ i) 不得为其他任何非法目的而使用服务。
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocationCell" rowHeight="33" id="0p7-Vm-x8j" customClass="CCouponTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocationCell" rowHeight="33" id="0p7-Vm-x8j" customClass="CCouponCampaignTableViewCell">
                                         <rect key="frame" x="0.0" y="448" width="320" height="33"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0p7-Vm-x8j" id="OW3-GK-cHD">
@@ -5014,6 +5014,156 @@ i) 不得为其他任何非法目的而使用服务。
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OV9-AS-HGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1119" y="5189"/>
+        </scene>
+        <!--我的福利-->
+        <scene sceneID="Q4l-Ki-Fjd">
+            <objects>
+                <viewController storyboardIdentifier="CMyCouponContainerViewController" id="tV0-vB-bF1" customClass="CMyCouponContainerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ijd-oh-uea"/>
+                        <viewControllerLayoutGuide type="bottom" id="Yur-6Q-a6d"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EU0-Kb-Ubd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KvZ-sU-BLc">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <connections>
+                                    <segue destination="Xdu-sD-Nv0" kind="embed" id="g7b-iG-6AR"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="KvZ-sU-BLc" secondAttribute="bottom" id="In8-2v-JiH"/>
+                            <constraint firstAttribute="trailing" secondItem="KvZ-sU-BLc" secondAttribute="trailing" id="PVI-X8-eFa"/>
+                            <constraint firstItem="KvZ-sU-BLc" firstAttribute="top" secondItem="EU0-Kb-Ubd" secondAttribute="topMargin" id="f9U-ce-hw4"/>
+                            <constraint firstItem="KvZ-sU-BLc" firstAttribute="leading" secondItem="EU0-Kb-Ubd" secondAttribute="leading" id="rgR-sn-Shf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="我的福利" id="52q-QW-gSh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oNg-Od-iNf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1517" y="5189"/>
+        </scene>
+        <!--我的福利-->
+        <scene sceneID="D7E-fn-mih">
+            <objects>
+                <viewController storyboardIdentifier="CMyCouponPagerViewController" id="Xdu-sD-Nv0" customClass="CMyCouponPagerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uVS-ur-Tmx"/>
+                        <viewControllerLayoutGuide type="bottom" id="hfa-c1-DiX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aD0-W6-Yah">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iV5-01-XQZ" customClass="XLButtonBarView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Z0I-Jw-23o"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LJI-Dx-MW5">
+                                    <size key="itemSize" width="181" height="47.5"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Nlc-qX-Jrg">
+                                        <rect key="frame" x="0.0" y="-1.5" width="181" height="47.5"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="181" height="47.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SK-KY-Wtq">
+                                                    <rect key="frame" x="71" y="14" width="39.5" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.1764705882352941" green="0.6705882352941176" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="3SK-KY-Wtq" firstAttribute="centerX" secondItem="Nlc-qX-Jrg" secondAttribute="centerX" id="CyA-kB-Daa"/>
+                                            <constraint firstItem="3SK-KY-Wtq" firstAttribute="centerY" secondItem="Nlc-qX-Jrg" secondAttribute="centerY" id="Qay-cU-ax4"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iV5-01-XQZ" firstAttribute="leading" secondItem="aD0-W6-Yah" secondAttribute="leading" id="Fru-xZ-Co9"/>
+                            <constraint firstAttribute="trailing" secondItem="iV5-01-XQZ" secondAttribute="trailing" id="Z0N-hw-eb1"/>
+                            <constraint firstItem="iV5-01-XQZ" firstAttribute="top" secondItem="aD0-W6-Yah" secondAttribute="topMargin" id="e7y-Ca-Fem"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="我的福利" id="Mex-tj-zNm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cZh-Tg-GKw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1895" y="5189"/>
+        </scene>
+        <!--Coupon List View Controller-->
+        <scene sceneID="atZ-1r-gIE">
+            <objects>
+                <viewController storyboardIdentifier="CCouponListViewController" id="MyV-mz-FDP" customClass="CCouponListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RLm-Aw-qjh"/>
+                        <viewControllerLayoutGuide type="bottom" id="BAN-1C-wbe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yiw-io-JXb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iTj-eW-tCe">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="MyV-mz-FDP" id="Oqj-2h-Luh"/>
+                                    <outlet property="delegate" destination="MyV-mz-FDP" id="4Nt-pf-0Dn"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="iTj-eW-tCe" secondAttribute="trailing" id="65D-CH-VOP"/>
+                            <constraint firstItem="iTj-eW-tCe" firstAttribute="leading" secondItem="yiw-io-JXb" secondAttribute="leading" id="Bn3-yB-AFo"/>
+                            <constraint firstItem="iTj-eW-tCe" firstAttribute="top" secondItem="yiw-io-JXb" secondAttribute="topMargin" id="OUm-8e-Gcy"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="iTj-eW-tCe" secondAttribute="bottom" id="ob4-Iy-6bp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="iTj-eW-tCe" id="a1n-tB-9E4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cC8-Mb-gMM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2265" y="5189"/>
+        </scene>
+        <!--福利券详情-->
+        <scene sceneID="8HW-7A-NWJ">
+            <objects>
+                <viewController storyboardIdentifier="CMyCouponDetailViewController" id="zqb-kT-LzQ" customClass="CMyCouponDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IlB-MC-zu3"/>
+                        <viewControllerLayoutGuide type="bottom" id="OfV-PJ-qDj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4uj-ZV-JaV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="福利券详情" id="RdK-4F-ecs"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ukz-rh-fgr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2616" y="5189"/>
         </scene>
         <!--福利社-->
         <scene sceneID="GcC-Gw-AaM">

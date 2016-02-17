@@ -7,10 +7,21 @@
 //
 
 #import "CJSONModel.h"
+#import "CCouponCampaign.h"
 
 @protocol CCoupon
 @end
 
 @interface CCoupon : CJSONModel
+@property (assign, nonatomic) NSInteger id;
+@property (assign, nonatomic) NSInteger amount;
+@property (nonatomic, strong) NSString *type;
+@property (assign, nonatomic) NSInteger sannerId;
+@property (nonatomic, strong) NSString *displayStatus;
+@property (assign, nonatomic) NSTimeInterval redeemedAt;
+@property (assign, nonatomic) NSTimeInterval claimedAt;
+@property (assign, nonatomic) NSTimeInterval createdAt;
+@property (nonatomic, strong) CCouponCampaign *campaign;
 
+- (BOOL)expired;
 @end

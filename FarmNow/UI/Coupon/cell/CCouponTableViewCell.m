@@ -2,19 +2,18 @@
 //  CCouponTableViewCell.m
 //  FarmNow
 //
-//  Created by 朱曦炽 on 16/2/14.
+//  Created by 朱曦炽 on 16/2/17.
 //  Copyright © 2016年 zheliang. All rights reserved.
 //
 
 #import "CCouponTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "CCoupon.h"
 
 @interface CCouponTableViewCell ()
-@property (nonatomic,strong) CCouponCampaign *couponCampaign;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *amountLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *campaignImageView;
-@property (weak, nonatomic) IBOutlet UILabel *claimLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *couponImageView;
+@property (weak, nonatomic) IBOutlet UILabel *campaignNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *redeemTimeLabel;
 @end
 
 @implementation CCouponTableViewCell
@@ -23,29 +22,28 @@
     // Initialization code
 }
 
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
 - (void)setupWithModel:(id)model {
-    self.couponCampaign = model;
+    CCoupon *coupon = (CCoupon *)model;
     
-    self.titleLabel.text = self.couponCampaign.name;
-    self.amountLabel.text = [NSString stringWithFormat:@"￥%.2f", self.couponCampaign.amount];
-    
-    if (self.couponCampaign.pictureUrls.count > 0) {
-        NSString *picUrlString = [NSString stringWithFormat:@"%@/pic/couponCampaign/%@", kServer, self.couponCampaign.pictureUrls[0]];
-        [self.campaignImageView sd_setImageWithURL:[NSURL URLWithString:picUrlString]];
+    if (coupon.campaign.pictureUrls.count > 0) {
+        NSString *picUrlString = [NSString stringWithFormat:@"%@/pic/couponCampaign/%@", kServer, coupon.campaign.pictureUrls[0]];
+        [self.couponImageView sd_setImageWithURL:[NSURL URLWithString:picUrlString]];
     }
     
-    NSDate* claimTimeStart = [NSDate dateWithTimeIntervalSince1970:self.couponCampaign.claimTimeStart / 1000];
-    NSDate* claimTimeEnd = [NSDate dateWithTimeIntervalSince1970:self.couponCampaign.claimTimeEnd / 1000];
+    self.campaignNameLabel.text = coupon.campaign.name;
+    
+    NSDate* redeemTimeStart = [NSDate dateWithTimeIntervalSince1970:coupon.campaign.redeemTimeStart / 1000];
+    NSDate* redeemTimeEnd = [NSDate dateWithTimeIntervalSince1970:coupon.campaign.redeemTimeEnd / 1000];
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"MM月dd日"];
     
-    self.claimLabel.text = [NSString stringWithFormat:@"申领时间：%@ - %@", [df stringFromDate:claimTimeStart], [df stringFromDate:claimTimeEnd]];
-}
-
-- (IBAction)claim:(id)sender {
-    if (self.couponCampaign && [self.delegate respondsToSelector:@selector(claim:)]) {
-        [self.delegate claim:self.couponCampaign];
-    }
+    self.redeemTimeLabel.text = [NSString stringWithFormat:@"使用时间：%@ - %@", [df stringFromDate:redeemTimeStart], [df stringFromDate:redeemTimeEnd]];
 }
 @end

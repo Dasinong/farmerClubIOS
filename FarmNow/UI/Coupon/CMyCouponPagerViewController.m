@@ -7,6 +7,7 @@
 //
 
 #import "CMyCouponPagerViewController.h"
+#import "CCouponListViewController.h"
 
 @interface CMyCouponPagerViewController ()
 
@@ -17,8 +18,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.buttonBarView.shouldCellsFillAvailableWidth = YES;
+    self.isProgressiveIndicator = NO;
+    self.isElasticIndicatorLimit = YES;
+    self.buttonBarView.selectedBar.backgroundColor = [UIColor colorwithHexString:@"#2bad29"];
+    [self.buttonBarView setSelectedBarHeight:2.0];
+    [self.buttonBarView setSelectedBarAlignment:XLSelectedBarAlignmentCenter];
+    self.buttonBarView.backgroundColor = [UIColor colorwithHexString:@"#f7fcff"];
+    
+    UICollectionViewFlowLayout *flowlayout = (UICollectionViewFlowLayout *)self.buttonBarView.collectionViewLayout;
+    flowlayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    
+    UIView *seperator = [[UIView alloc] initWithFrame:CGRectMake(0, 44, SCREEN_WIDTH, 1)];
+    [seperator setBackgroundColor:[UIColor colorwithHexString:@"#dbe3e5"]];
+    [self.view addSubview:seperator];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -34,4 +53,18 @@
 }
 */
 
+
+#pragma mark - XLPagerTabStripViewControllerDataSource
+
+-(NSArray *)childViewControllersForPagerTabStripViewController:(XLPagerTabStripViewController *)pagerTabStripViewController
+{
+    // create child view controllers that will be managed by XLPagerTabStripViewController
+    CCouponListViewController * child_1 = [self.storyboard instantiateViewControllerWithIdentifier:@"CCouponListViewController"];
+    child_1.type = CouponTypeMyUnused;
+    
+    CCouponListViewController * child_2 = [self.storyboard instantiateViewControllerWithIdentifier:@"CCouponListViewController"];
+    child_2.type = CouponTypeMyExpired;
+    
+    return @[child_1, child_2];
+}
 @end

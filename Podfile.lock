@@ -61,6 +61,7 @@ PODS:
   - SDWebImage/Core (3.7.3)
   - TPKeyboardAvoiding (1.2.10)
   - TUSafariActivity (1.0.4)
+  - XLPagerTabStrip (3.0.0)
   - ZXingObjC (3.1.0):
     - ZXingObjC/All (= 3.1.0)
   - ZXingObjC/All (3.1.0)
@@ -85,6 +86,7 @@ DEPENDENCIES:
   - SCLAlertView-Objective-C
   - SDWebImage
   - TPKeyboardAvoiding
+  - XLPagerTabStrip (~> 3.0.0)
   - ZXingObjC
 
 EXTERNAL SOURCES:
@@ -119,6 +121,7 @@ SPEC CHECKSUMS:
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   TPKeyboardAvoiding: 614ebec846ec28b83d548769297fa5fb56468904
   TUSafariActivity: afc55a00965377939107ce4fdc7f951f62454546
+  XLPagerTabStrip: 0f9f94246c84e7cb60a06ca435da68ac75c8b56e
   ZXingObjC: bf15b3814f7a105b6d99f47da2333c93a063650a
 
 COCOAPODS: 0.39.0

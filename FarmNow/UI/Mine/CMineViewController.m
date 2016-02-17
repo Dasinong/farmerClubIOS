@@ -14,6 +14,7 @@
 #import "CPersonalCache.h"
 #import "CSubScribeListController.h"
 #import "CRecommendController1.h"
+#import "CMyCouponContainerViewController.h"
 
 @interface CMineViewController () <QRCodeReaderDelegate>
 @property (strong, nonatomic) QRCodeReaderViewController* reader;
@@ -30,19 +31,15 @@
 	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"个人信息") forSection:0];
 	
 	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"扫一扫") forSection:1];
-	//审核时隐藏有奖推荐
-	if (SharedAPPDelegate.showWXLogin) {
-
-	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"有奖推荐") forSection:1];
-	}
+    [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"有奖推荐") forSection:1];
+    [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"我的福利") forSection:1];
 	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"免费短信订阅") forSection:1];
 	
 	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"帮助中心") forSection:2];
 	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"使用教程") forSection:2];
 
 	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"联系我们") forSection:3];
-
-	
+    
 	[self updateModel:tableModel];
 }
 
@@ -74,6 +71,14 @@
 }
 */
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    //审核时隐藏有奖推荐
+    if (!SharedAPPDelegate.showWXLogin && indexPath.section == 1 && indexPath.row == 1) {
+        return 0;
+    }
+    
+    return 44;
+}
 - (void)didSelect:(NSIndexPath *)indexPath identifier:(NSString*)identifier data:(id)data
 {
 	if (indexPath.section == 0) {
@@ -97,24 +102,18 @@
 		else if (indexPath.row == 1)
 		{
             if (USER) {
-                if (SharedAPPDelegate.showWXLogin) {
-                    CUserObject* object = [[CPersonalCache defaultPersonalCache] cacheUserInfo];
-                    if (object.institutionId != nil || object.refuid != nil)
-                    {
-                        CRecommendController1* controller  = [self.storyboard controllerWithID:@"CRecommendController1"];
-                        controller.topViewHeight.constant = 0;
-                        controller.title = @"有奖推荐";
-                        
-                        [self.navigationController pushViewController:controller animated:YES];
-                    }
-                    else
-                    {
-                        CRecommendController* controller  = [self.storyboard controllerWithID:@"CRecommendController"];
-                        [self.navigationController pushViewController:controller animated:YES];
-                    }
+                CUserObject* object = [[CPersonalCache defaultPersonalCache] cacheUserInfo];
+                if (object.institutionId != nil || object.refuid != nil)
+                {
+                    CRecommendController1* controller  = [self.storyboard controllerWithID:@"CRecommendController1"];
+                    controller.topViewHeight.constant = 0;
+                    controller.title = @"有奖推荐";
+                    
+                    [self.navigationController pushViewController:controller animated:YES];
                 }
-                else{
-                    CSubScribeListController* controller = [self.storyboard controllerWithID:@"CSubScribeListController"];
+                else
+                {
+                    CRecommendController* controller  = [self.storyboard controllerWithID:@"CRecommendController"];
                     [self.navigationController pushViewController:controller animated:YES];
                 }
             }
@@ -125,13 +124,24 @@
 		else if (indexPath.row == 2)
 		{
             if (USER) {
+                CMyCouponContainerViewController *controller = [self.storyboard controllerWithID:@"CMyCouponContainerViewController"];
+                controller.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:controller animated:YES];
+            }
+            else {
+                [self loginClick:nil];
+            }
+        }
+        else if (indexPath.row == 3)
+        {
+            if (USER) {
                 CSubScribeListController* controller = [self.storyboard controllerWithID:@"CSubScribeListController"];
                 [self.navigationController pushViewController:controller animated:YES];
             }
             else {
                 [self loginClick:nil];
             }
-		}
+        }
 	}
 	else if (indexPath.section == 2){
 		if (indexPath.row == 0) {
