@@ -148,12 +148,16 @@ const NSString*    kResponseSuccess = @"200";
 						
 						
 						[topController presentViewController:naviController animated:YES completion:nil];
-						
+                        
+                        completeBlock(model, nil);
+                        return;
 					}
+                    
 					if (retModel.respCode == nil) {
 						completeBlock(model, nil);
 						return ;
 					}
+                    
 					if (![retModel.respCode isEqualToString:@"200"])
 					{
 						completeBlock(nil, nil);
@@ -161,6 +165,7 @@ const NSString*    kResponseSuccess = @"200";
 
 						return ;
 					}
+                    
                     completeBlock(model, nil);
                 });
             }

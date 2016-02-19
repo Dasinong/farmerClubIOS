@@ -17,11 +17,11 @@
                         <viewControllerLayoutGuide type="bottom" id="1zC-1Q-bwH"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="F4h-bX-AA8">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="2We-DV-I5x">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="158"/>
@@ -1254,13 +1254,6 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBar>
-                    <connections>
-                        <segue destination="ccF-7k-pXY" kind="relationship" relationship="viewControllers" id="GMz-cK-HsG"/>
-                        <segue destination="SN9-cG-UAc" kind="relationship" relationship="viewControllers" id="un9-Be-vzb"/>
-                        <segue destination="EDd-To-zLi" kind="relationship" relationship="viewControllers" id="xxU-VV-IZX"/>
-                        <segue destination="Uu3-cC-sN5" kind="relationship" relationship="viewControllers" id="Wwu-bm-naO"/>
-                        <segue destination="HVk-Ep-tvv" kind="relationship" relationship="viewControllers" id="XPi-Gg-pWk"/>
-                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
@@ -1909,7 +1902,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="3GN-C1-7bC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="3GN-C1-7bC">
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -2757,7 +2750,7 @@ i) 不得为其他任何非法目的而使用服务。
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WET-ZP-1xM" customClass="TPKeyboardAvoidingScrollView">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WET-ZP-1xM" customClass="TPKeyboardAvoidingScrollView">
                                 <rect key="frame" x="0.0" y="64" width="320" height="887"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择地区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qkw-Qc-n5d">
@@ -3502,7 +3495,7 @@ i) 不得为其他任何非法目的而使用服务。
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7U9-tr-WBd" customClass="TPKeyboardAvoidingScrollView">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7U9-tr-WBd" customClass="TPKeyboardAvoidingScrollView">
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jqN-er-DsC">
@@ -4236,7 +4229,7 @@ i) 不得为其他任何非法目的而使用服务。
         <!--我-->
         <scene sceneID="RwF-Jb-cAl">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Uu3-cC-sN5" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mineNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Uu3-cC-sN5" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="我" image="icon_me_normal" id="fef-w0-Uqp"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1X7-OT-Vrl">
@@ -4261,7 +4254,7 @@ i) 不得为其他任何非法目的而使用服务。
         <!--农事百科-->
         <scene sceneID="Yzo-eM-SUE">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EDd-To-zLi" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="wikiNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EDd-To-zLi" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="农事百科" image="icon_baike_normal" id="EaM-70-u2w"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kCH-UI-lLm">
@@ -4482,11 +4475,11 @@ i) 不得为其他任何非法目的而使用服务。
             </objects>
             <point key="canvasLocation" x="-711" y="588"/>
         </scene>
-        <!--我的田-->
+        <!--天气-->
         <scene sceneID="IdD-PB-aPW">
             <objects>
-                <navigationController storyboardIdentifier="weatherNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="ccF-7k-pXY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我的田" image="icon_field_normal" selectedImage="icon_field_select" id="acW-dT-cKf"/>
+                <navigationController storyboardIdentifier="weatherNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ccF-7k-pXY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="天气" image="icon_weather_normal" selectedImage="icon_weather_select" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="iud-mq-fnS"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="n1k-qc-wCe">
@@ -4556,7 +4549,7 @@ i) 不得为其他任何非法目的而使用服务。
         <!--我的田-->
         <scene sceneID="gG6-Rr-Zpf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SN9-cG-UAc" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="fieldNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SN9-cG-UAc" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="我的田" image="icon_field_normal" selectedImage="icon_field_select" id="YaD-24-k22"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9zq-It-1DD">
@@ -5634,8 +5627,8 @@ i) 不得为其他任何非法目的而使用服务。
         <!--福利社-->
         <scene sceneID="GcC-Gw-AaM">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uny-XO-fmI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="福利社" id="CD6-A2-UAw"/>
+                <navigationController storyboardIdentifier="couponNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uny-XO-fmI" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="福利社" image="icon_coupon_normal" selectedImage="icon_coupon_select" id="CD6-A2-UAw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="u6J-J3-g7Q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -5650,11 +5643,11 @@ i) 不得为其他任何非法目的而使用服务。
             </objects>
             <point key="canvasLocation" x="48" y="5189"/>
         </scene>
-        <!--Item-->
+        <!--店铺-->
         <scene sceneID="Wks-Lx-44d">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HVk-Ep-tvv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="aIk-rV-z86"/>
+                <navigationController storyboardIdentifier="storeNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HVk-Ep-tvv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="店铺" image="icon_store_normal" selectedImage="icon_store_select" id="aIk-rV-z86"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jIa-R2-Bhg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -5680,9 +5673,15 @@ i) 不得为其他任何非法目的而使用服务。
         <image name="first" width="30" height="30"/>
         <image name="hightemp" width="13" height="16"/>
         <image name="icon_baike_normal" width="26" height="26"/>
+        <image name="icon_coupon_normal" width="27" height="27"/>
+        <image name="icon_coupon_select" width="27" height="27"/>
         <image name="icon_field_normal" width="27" height="25"/>
         <image name="icon_field_select" width="27" height="25"/>
         <image name="icon_me_normal" width="25" height="24"/>
+        <image name="icon_store_normal" width="27" height="27"/>
+        <image name="icon_store_select" width="27" height="27"/>
+        <image name="icon_weather_normal" width="27" height="27"/>
+        <image name="icon_weather_select" width="27" height="27"/>
         <image name="location" width="21" height="23"/>
         <image name="lowtemp" width="13" height="16"/>
         <image name="menu" width="14" height="11"/>

@@ -39,7 +39,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self requestData];
+    if ([CPersonalCache defaultPersonalCache].cacheUserInfo != nil) {
+        [self requestData];
+    }
+    else {
+        self.dataArray = nil;
+        [self.tableView reloadData];
+    }
 }
 /*
 #pragma mark - Navigation
@@ -52,18 +58,15 @@
 */
 
 - (void)requestData {
+    CCouponCampaignsParam *param = [CCouponCampaignsParam new];
     
-    if ([CPersonalCache defaultPersonalCache].cacheUserInfo != nil) {
-        CCouponCampaignsParam *param = [CCouponCampaignsParam new];
-        
-        [CCouponCampaignsModel requestWithParams:param completion:^(CCouponCampaignsModel *model, JSONModelError *err) {
-            if (model && model.campaigns) {
-                self.dataArray = model.campaigns;
-                [self.tableView.mj_header endRefreshing];
-                [self.tableView reloadData];
-            }
-        }];
-    }
+    [CCouponCampaignsModel requestWithParams:param completion:^(CCouponCampaignsModel *model, JSONModelError *err) {
+        [self.tableView.mj_header endRefreshing];
+        if (model && model.campaigns) {
+            self.dataArray = model.campaigns;
+            [self.tableView reloadData];
+        }
+    }];
 }
 
 #pragma mark - UITableViewDataSource && UITableViewDelegate

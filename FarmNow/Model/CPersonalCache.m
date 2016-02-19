@@ -139,6 +139,9 @@ static CPersonalCache * _defaultPersonalCache = nil;
 	self.userObject = nil;
 	[_cacheValueDict removeObjectForKey:kUSER_INFO];
 	[_cacheValueDict writeToFile:[CPersonalCache cachePathForCacheKeyValue] atomically:YES];
+    
+    // 发送注销成功通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"notification_signout" object:nil];
 }
 
 - (CUserObject *)cacheUserInfo
@@ -167,5 +170,8 @@ static CPersonalCache * _defaultPersonalCache = nil;
 	
 	[_cacheValueDict setValue:[value toJSONData] forKey:kUSER_INFO];
 	[_cacheValueDict writeToFile:[CPersonalCache cachePathForCacheKeyValue] atomically:YES];
+    
+    // 发送登录成功通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"notification_signin" object:nil];
 }
 @end
