@@ -134,6 +134,7 @@ static CPersonalCache * _defaultPersonalCache = nil;
 {
     NSUserDefaults *userDefaults = USER_DEFAULTS;
     [userDefaults removeObjectForKey:@"accessToken"];
+    [userDefaults removeObjectForKey:@"clientConfig"];
     [userDefaults synchronize];
     
 	self.userObject = nil;

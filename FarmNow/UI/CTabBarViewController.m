@@ -26,31 +26,38 @@
         self.viewControllers = @[
                                  [self.storyboard instantiateViewControllerWithIdentifier:@"weatherNavigationController"],
                                  [self.storyboard instantiateViewControllerWithIdentifier:@"fieldNavigationController"],
-                                 [self.storyboard instantiateViewControllerWithIdentifier:@"couponNavigationController"],
                                  [self.storyboard instantiateViewControllerWithIdentifier:@"wikiNavigationController"],
                                  [self.storyboard instantiateViewControllerWithIdentifier:@"mineNavigationController"],
                                  ];
     }
     else {
+        NSMutableArray *vcArray = [NSMutableArray array];
+        [vcArray addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"weatherNavigationController"]];
+        [vcArray addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"fieldNavigationController"]];
         
-        if ([[USER.userType lowercaseString] isEqualToString:@"retailer"]) {
-            self.viewControllers = @[
-                                     [self.storyboard instantiateViewControllerWithIdentifier:@"weatherNavigationController"],
-                                     [self.storyboard instantiateViewControllerWithIdentifier:@"fieldNavigationController"],
-                                     [self.storyboard instantiateViewControllerWithIdentifier:@"storeNavigationController"],
-                                     [self.storyboard instantiateViewControllerWithIdentifier:@"wikiNavigationController"],
-                                     [self.storyboard instantiateViewControllerWithIdentifier:@"mineNavigationController"],
-                                     ];
+        BOOL enableWelfare = NO;
+        if ([USER_DEFAULTS objectForKey:@"clientConfig"]) {
+            NSDictionary *clientConfig = [USER_DEFAULTS objectForKey:@"clientConfig"];
+            if (clientConfig[@"enableWelfare"]) {
+                if ([clientConfig[@"enableWelfare"] boolValue]) {
+                    enableWelfare = YES;
+                }
+            }
         }
-        else {
-            self.viewControllers = @[
-                                     [self.storyboard instantiateViewControllerWithIdentifier:@"weatherNavigationController"],
-                                     [self.storyboard instantiateViewControllerWithIdentifier:@"fieldNavigationController"],
-                                     [self.storyboard instantiateViewControllerWithIdentifier:@"couponNavigationController"],
-                                     [self.storyboard instantiateViewControllerWithIdentifier:@"wikiNavigationController"],
-                                     [self.storyboard instantiateViewControllerWithIdentifier:@"mineNavigationController"],
-                                     ];
+        
+        if (enableWelfare) {
+            if ([[USER.userType lowercaseString] isEqualToString:@"retailer"]) {
+                [vcArray addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"storeNavigationController"]];
+            }
+            else {
+                [vcArray addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"couponNavigationController"]];
+            }
         }
+        
+        [vcArray addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"wikiNavigationController"]];
+        [vcArray addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"mineNavigationController"]];
+        
+        self.viewControllers = vcArray;
     }
 }
 
@@ -64,30 +71,33 @@
 }
 
 - (void)signinNotification:(NSNotification *)notification {
-    if ([[USER.userType lowercaseString] isEqualToString:@"retailer"]) {
-        if (![self.viewControllers[2].restorationIdentifier isEqualToString:@"storeNavigationController"]) {
-            UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"storeNavigationController"];
-            self.viewControllers = @[
-                                     self.viewControllers[0],
-                                     self.viewControllers[1],
-                                     controller,
-                                     self.viewControllers[3],
-                                     self.viewControllers[4],
-                                     ];
+    BOOL enableWelfare = NO;
+    if ([USER_DEFAULTS objectForKey:@"clientConfig"]) {
+        NSDictionary *clientConfig = [USER_DEFAULTS objectForKey:@"clientConfig"];
+        if (clientConfig[@"enableWelfare"]) {
+            if ([clientConfig[@"enableWelfare"] boolValue]) {
+                enableWelfare = YES;
+            }
         }
     }
-    else {
-        if (![self.viewControllers[2].restorationIdentifier isEqualToString:@"couponNavigationController"]) {
-            UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"couponNavigationController"];
-            self.viewControllers = @[
-                                     self.viewControllers[0],
-                                     self.viewControllers[1],
-                                     controller,
-                                     self.viewControllers[3],
-                                     self.viewControllers[4],
-                                     ];
+    
+    NSMutableArray *vcArray = [NSMutableArray array];
+    [vcArray addObject:self.viewControllers[0]];
+    [vcArray addObject:self.viewControllers[1]];
+    
+    if (enableWelfare) {
+        if ([[USER.userType lowercaseString] isEqualToString:@"retailer"]) {
+            [vcArray addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"storeNavigationController"]];
+        }
+        else {
+            [vcArray addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"couponNavigationController"]];
         }
     }
+    
+    [vcArray addObject:self.viewControllers[self.viewControllers.count - 2]];
+    [vcArray addObject:self.viewControllers[self.viewControllers.count - 1]];
+    
+    self.viewControllers = vcArray;
 }
 
 - (void)signoutNotification:(NSNotification *)notification {

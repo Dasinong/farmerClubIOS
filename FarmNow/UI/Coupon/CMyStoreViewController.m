@@ -11,6 +11,7 @@
 #import "MJRefresh.h"
 #import "CCouponTableViewCell.h"
 #import "CScannedCouponDetailViewController.h"
+#import "CPersonalCache.h"
 
 @interface CMyStoreViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -35,13 +36,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (USER == nil) {
+        self.dataArray = nil;
+        [self.tableView reloadData];
+    }
+}
+
 - (void)requestData {
     CScannableCampaignsParam *params = [CScannableCampaignsParam new];
     
     [CScannableCampaignsModel requestWithParams:GET params:params completion:^(CScannableCampaignsModel *model, JSONModelError *err) {
+        [self.tableView.mj_header endRefreshing];
         if (err == nil && model) {
             self.dataArray = model.campaigns;
-            [self.tableView.mj_header endRefreshing];
             [self.tableView reloadData];
         }
     }];
