@@ -263,11 +263,13 @@
                 if (model) {
                     CScannedCouponDetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CScannedCouponDetailViewController"];
                     controller.hidesBottomBarWhenPushed = YES;
-                    controller.couponCampaign = model.coupon.campaign;
+                    CCouponCampaign *campaign = [[CCouponCampaign alloc] init];
+                    campaign.id = model.coupon.campaignId;
+                    controller.couponCampaign = campaign;
                     [self.navigationController pushViewController:controller animated:YES];
                 }
                 else {
-                    [MBProgressHUD alert:@"没有权限"];
+                    //[MBProgressHUD alert:@"没有权限"];
                 }
             }];
         }

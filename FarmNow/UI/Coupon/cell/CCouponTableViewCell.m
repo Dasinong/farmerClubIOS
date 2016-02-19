@@ -38,12 +38,14 @@
     
     self.campaignNameLabel.text = couponCampaign.name;
     
-    NSDate* redeemTimeStart = [NSDate dateWithTimeIntervalSince1970:couponCampaign.redeemTimeStart / 1000];
-    NSDate* redeemTimeEnd = [NSDate dateWithTimeIntervalSince1970:couponCampaign.redeemTimeEnd / 1000];
-    
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"MM月dd日"];
-    
-    self.redeemTimeLabel.text = [NSString stringWithFormat:@"使用时间：%@ - %@", [df stringFromDate:redeemTimeStart], [df stringFromDate:redeemTimeEnd]];
+    if (couponCampaign.redeemTimeStart > 0 && couponCampaign.redeemTimeEnd > 0) {
+        NSDate* redeemTimeStart = [NSDate dateWithTimeIntervalSince1970:couponCampaign.redeemTimeStart / 1000];
+        NSDate* redeemTimeEnd = [NSDate dateWithTimeIntervalSince1970:couponCampaign.redeemTimeEnd / 1000];
+        
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        [df setDateFormat:@"MM月dd日"];
+        
+        self.redeemTimeLabel.text = [NSString stringWithFormat:@"使用时间：%@ - %@", [df stringFromDate:redeemTimeStart], [df stringFromDate:redeemTimeEnd]];
+    }
 }
 @end
