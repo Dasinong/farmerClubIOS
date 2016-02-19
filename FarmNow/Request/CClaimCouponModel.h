@@ -14,5 +14,5 @@
 @end
 
 @interface CClaimCouponModel : CResponseModel
-@property (strong, nonatomic) CCoupon* coupon;
+@property (strong, nonatomic) CCoupon<Optional>* coupon;
 @end

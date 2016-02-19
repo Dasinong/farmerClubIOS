@@ -111,7 +111,7 @@
     
     [CClaimCouponModel requestWithParams:POST params:claimParams completion:^(CClaimCouponModel *claimModel, JSONModelError *err) {
         
-        if (claimModel) {
+        if (err == nil && claimModel) {
             CRequestCouponParams *params = [CRequestCouponParams new];
             params.name = cleanName;
             params.company = cleanCompany;
@@ -127,6 +127,7 @@
                 
                 // 跳转到我的优惠券页面
                 claimModel.coupon.campaign = self.couponCampaign;
+                [self.navigationController popViewControllerAnimated:NO];
                 if ([self.delegate respondsToSelector:@selector(couponGet:)]) {
                     [self.delegate couponGet:claimModel.coupon];
                 }
