@@ -129,8 +129,6 @@
 
 - (NSDictionary *)paramDictionary
 {
-	
-	
 	if ([self respondsToSelector:@selector(updateDynamicValue)])
 	{
 		[self updateDynamicValue];

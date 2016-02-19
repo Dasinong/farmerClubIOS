@@ -22,6 +22,7 @@
 @property (assign, nonatomic) NSTimeInterval claimedAt;
 @property (assign, nonatomic) NSTimeInterval createdAt;
 @property (nonatomic, strong) CCouponCampaign<Optional> *campaign;
+@property (nonatomic, assign) NSInteger campaignId;
 @property (nonatomic, strong) NSString<Optional> *claimerCell;
 
 - (BOOL)expired;

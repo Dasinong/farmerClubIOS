@@ -140,6 +140,12 @@ static CPersonalCache * _defaultPersonalCache = nil;
 	[_cacheValueDict removeObjectForKey:kUSER_INFO];
 	[_cacheValueDict writeToFile:[CPersonalCache cachePathForCacheKeyValue] atomically:YES];
     
+    NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:kServerAddress]];
+    for (NSHTTPCookie *cookie in cookies)
+    {
+        [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+    }
+    
     // 发送注销成功通知
     [[NSNotificationCenter defaultCenter] postNotificationName:@"notification_signout" object:nil];
 }

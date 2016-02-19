@@ -14,8 +14,9 @@
 #import "CCouponCampaignsModel.h"
 #import "CPersonalCache.h"
 #import "MJRefresh.h"
+#import "CMyCouponDetailViewController.h"
 
-@interface CCouponHomeViewController () <UITableViewDataSource, UITableViewDelegate, CCouponCampaignTableViewCellDelegate>
+@interface CCouponHomeViewController () <UITableViewDataSource, UITableViewDelegate, CCouponCampaignTableViewCellDelegate, CClaimCouponViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataArray;
 @end
@@ -102,7 +103,16 @@
 - (void)claim:(CCouponCampaign*)couponCampaign {
     CClaimCouponViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CClaimCouponViewController"];
     controller.hidesBottomBarWhenPushed = YES;
+    controller.delegate = self;
     controller.couponCampaign = couponCampaign;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark - CClaimCouponViewControllerDelegate
+- (void)couponGet:(CCoupon *)coupon {
+    CMyCouponDetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CMyCouponDetailViewController"];
+    controller.hidesBottomBarWhenPushed = YES;
+    controller.coupon = coupon;
     [self.navigationController pushViewController:controller animated:YES];
 }
 @end

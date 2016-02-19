@@ -8,7 +8,14 @@
 
 #import "CBaseViewController.h"
 #import "CCouponCampaign.h"
+#import "CCoupon.h"
+
+@protocol CClaimCouponViewControllerDelegate <NSObject>
+- (void)couponGet:(CCoupon *)coupon;
+@end
 
 @interface CClaimCouponViewController : CBaseViewController
 @property (nonatomic,strong) CCouponCampaign *couponCampaign;
+
+@property (nonatomic,weak) id<CClaimCouponViewControllerDelegate> delegate;
 @end

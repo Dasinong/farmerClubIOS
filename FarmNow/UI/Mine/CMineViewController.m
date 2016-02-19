@@ -57,6 +57,8 @@
 	{
 		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"登录" style:UIBarButtonItemStylePlain target:self action:@selector(loginClick:)];
 	}
+    
+    [self.tableView reloadData];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -72,10 +74,23 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (BOOL)showMyCoupons {
+    if (USER != nil) {
+        if ([[USER.userType lowercaseString] isEqualToString:@"retailer"]) {
+            return NO;
+        }
+    }
+    
+    return YES;
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     //审核时隐藏有奖推荐
     if (!SharedAPPDelegate.showWXLogin && indexPath.section == 1 && indexPath.row == 1) {
+        return 0;
+    }
+    
+    if (![self showMyCoupons] && indexPath.section == 1 && indexPath.row == 2) {
         return 0;
     }
     
@@ -110,12 +125,13 @@
                     CRecommendController1* controller  = [self.storyboard controllerWithID:@"CRecommendController1"];
                     controller.topViewHeight.constant = 0;
                     controller.title = @"有奖推荐";
-                    
+                    controller.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:controller animated:YES];
                 }
                 else
                 {
                     CRecommendController* controller  = [self.storyboard controllerWithID:@"CRecommendController"];
+                    controller.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:controller animated:YES];
                 }
             }
@@ -138,6 +154,7 @@
         {
             if (USER) {
                 CSubScribeListController* controller = [self.storyboard controllerWithID:@"CSubScribeListController"];
+                controller.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:controller animated:YES];
             }
             else {
@@ -149,7 +166,8 @@
 		if (indexPath.row == 0) {
 			CWebViewController* webController  = [self.storyboard controllerWithID:@"CWebViewController"];
 			webController.title                     = data;
-			webController.address = [NSString stringWithFormat:@"%@html/HelpCenter.html", kAPIServer];
+            webController.address = [NSString stringWithFormat:@"%@html/HelpCenter.html", kAPIServer];
+            webController.hidesBottomBarWhenPushed = YES;
 			[self.navigationController pushViewController:webController animated:YES];
 		}
 		else if (indexPath.row == 1){
@@ -258,6 +276,7 @@
             //		webController.title                     = data;
             webController.address = result;
             webController.hideToolbar = NO;
+            webController.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:webController animated:YES];
         }
 	}];

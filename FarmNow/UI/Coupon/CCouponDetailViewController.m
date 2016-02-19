@@ -15,8 +15,9 @@
 #import "CStoreTableViewCell.h"
 #import "CPictureTableViewCell.h"
 #import "CStore.h"
+#import "CMyCouponDetailViewController.h"
 
-@interface CCouponDetailViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface CCouponDetailViewController () <UITableViewDataSource, UITableViewDelegate, CClaimCouponViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableDictionary *downloadedPictures;
 @property (nonatomic, strong) NSMutableDictionary *storeDict;
@@ -48,6 +49,7 @@
 - (IBAction)claim:(id)sender {
     CClaimCouponViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CClaimCouponViewController"];
     controller.hidesBottomBarWhenPushed = YES;
+    controller.delegate = self;
     controller.couponCampaign = self.couponCampaign;
     [self.navigationController pushViewController:controller animated:YES];
 }
@@ -254,5 +256,13 @@
             }
         }
     }
+}
+
+#pragma mark - CClaimCouponViewControllerDelegate
+- (void)couponGet:(CCoupon *)coupon {
+    CMyCouponDetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CMyCouponDetailViewController"];
+    controller.hidesBottomBarWhenPushed = YES;
+    controller.coupon = coupon;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 @end

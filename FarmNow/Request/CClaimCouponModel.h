@@ -7,11 +7,12 @@
 //
 
 #import "CResponseBase.h"
+#import "CCoupon.h"
 
 @interface CClaimCouponParams : CRequestBaseParams
 @property (assign, nonatomic) NSInteger campaignId;
 @end
 
 @interface CClaimCouponModel : CResponseModel
-
+@property (strong, nonatomic) CCoupon* coupon;
 @end

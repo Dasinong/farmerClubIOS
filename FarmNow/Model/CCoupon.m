@@ -18,6 +18,7 @@
     if ([propertyName isEqualToString: @"sannerId"]) return YES;
     if ([propertyName isEqualToString: @"claimedAt"]) return YES;
     if ([propertyName isEqualToString: @"redeemedAt"]) return YES;
+    if ([propertyName isEqualToString: @"campaignId"]) return YES;
     
     return NO;
 }

@@ -124,6 +124,12 @@
             
             [CRequestCouponModel requestWithParams:POST params:params completion:^(CRequestCouponModel *model, JSONModelError *err) {
                 [MBProgressHUD hideHUDForView:self.view animated:NO];
+                
+                // 跳转到我的优惠券页面
+                claimModel.coupon.campaign = self.couponCampaign;
+                if ([self.delegate respondsToSelector:@selector(couponGet:)]) {
+                    [self.delegate couponGet:claimModel.coupon];
+                }
             }];
         }
         else {

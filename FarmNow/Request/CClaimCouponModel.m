@@ -18,5 +18,8 @@
 @end
 
 @implementation CClaimCouponModel
-
++ (JSONKeyMapper *)keyMapper
+{
+    return [[JSONKeyMapper alloc] initWithDictionary:@{@"data.coupon":@"coupon"}];
+}
 @end
