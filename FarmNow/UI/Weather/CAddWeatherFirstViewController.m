@@ -116,7 +116,13 @@
 	
 }
 - (IBAction)cancle:(id)sender {
-	[self dismissViewControllerAnimated:YES completion:nil];
+    if (self.presentingViewController) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+	
 }
 
 @end

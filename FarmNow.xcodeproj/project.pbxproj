@@ -21,6 +21,13 @@
 		275C4B1D1C70B5E0002475B6 /* CPictureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275C4B1B1C70B5E0002475B6 /* CPictureTableViewCell.xib */; };
 		278491EE1C7056E8000F0D3E /* CCouponHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278491ED1C7056E8000F0D3E /* CCouponHomeViewController.m */; };
 		278704B11C7AA31D007E45BF /* CSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278704B01C7AA31D007E45BF /* CSplashViewController.m */; };
+		278704B61C7AB1E7007E45BF /* CCropSubscriptionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 278704B51C7AB1E7007E45BF /* CCropSubscriptionsModel.m */; };
+		278704B91C7AB341007E45BF /* CCropSubscription.m in Sources */ = {isa = PBXBuildFile; fileRef = 278704B81C7AB341007E45BF /* CCropSubscription.m */; };
+		278704BC1C7AB4C0007E45BF /* CCrop.m in Sources */ = {isa = PBXBuildFile; fileRef = 278704BB1C7AB4C0007E45BF /* CCrop.m */; };
+		278704BF1C7ABA9E007E45BF /* CAddCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278704BE1C7ABA9E007E45BF /* CAddCropViewController.m */; };
+		278704C21C7ADC46007E45BF /* CFieldInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278704C11C7ADC46007E45BF /* CFieldInfoViewController.m */; };
+		278704C51C7B06DB007E45BF /* CCropStageSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278704C41C7B06DB007E45BF /* CCropStageSelectionViewController.m */; };
+		278704C81C7B0D92007E45BF /* CCropDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278704C71C7B0D92007E45BF /* CCropDetailViewController.m */; };
 		279A5E921C740CC500C3D697 /* CCouponListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279A5E911C740CC500C3D697 /* CCouponListViewController.m */; };
 		279A5E961C7418B800C3D697 /* CCouponTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 279A5E941C7418B800C3D697 /* CCouponTableViewCell.m */; };
 		279A5E971C7418B800C3D697 /* CCouponTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279A5E951C7418B800C3D697 /* CCouponTableViewCell.xib */; };
@@ -280,6 +287,20 @@
 		278491ED1C7056E8000F0D3E /* CCouponHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCouponHomeViewController.m; sourceTree = "<group>"; };
 		278704AF1C7AA31D007E45BF /* CSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSplashViewController.h; sourceTree = "<group>"; };
 		278704B01C7AA31D007E45BF /* CSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSplashViewController.m; sourceTree = "<group>"; };
+		278704B41C7AB1E7007E45BF /* CCropSubscriptionsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCropSubscriptionsModel.h; sourceTree = "<group>"; };
+		278704B51C7AB1E7007E45BF /* CCropSubscriptionsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCropSubscriptionsModel.m; sourceTree = "<group>"; };
+		278704B71C7AB341007E45BF /* CCropSubscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCropSubscription.h; sourceTree = "<group>"; };
+		278704B81C7AB341007E45BF /* CCropSubscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCropSubscription.m; sourceTree = "<group>"; };
+		278704BA1C7AB4C0007E45BF /* CCrop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCrop.h; sourceTree = "<group>"; };
+		278704BB1C7AB4C0007E45BF /* CCrop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCrop.m; sourceTree = "<group>"; };
+		278704BD1C7ABA9E007E45BF /* CAddCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAddCropViewController.h; sourceTree = "<group>"; };
+		278704BE1C7ABA9E007E45BF /* CAddCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAddCropViewController.m; sourceTree = "<group>"; };
+		278704C01C7ADC46007E45BF /* CFieldInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFieldInfoViewController.h; sourceTree = "<group>"; };
+		278704C11C7ADC46007E45BF /* CFieldInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFieldInfoViewController.m; sourceTree = "<group>"; };
+		278704C31C7B06DB007E45BF /* CCropStageSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCropStageSelectionViewController.h; sourceTree = "<group>"; };
+		278704C41C7B06DB007E45BF /* CCropStageSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCropStageSelectionViewController.m; sourceTree = "<group>"; };
+		278704C61C7B0D92007E45BF /* CCropDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCropDetailViewController.h; sourceTree = "<group>"; };
+		278704C71C7B0D92007E45BF /* CCropDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCropDetailViewController.m; sourceTree = "<group>"; };
 		279A5E901C740CC500C3D697 /* CCouponListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCouponListViewController.h; sourceTree = "<group>"; };
 		279A5E911C740CC500C3D697 /* CCouponListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCouponListViewController.m; sourceTree = "<group>"; };
 		279A5E931C7418B800C3D697 /* CCouponTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCouponTableViewCell.h; sourceTree = "<group>"; };
@@ -769,6 +790,38 @@
 			path = Coupon;
 			sourceTree = "<group>";
 		};
+		278704B21C7AB1B9007E45BF /* Coupon */ = {
+			isa = PBXGroup;
+			children = (
+				275C4AF81C706274002475B6 /* CCouponCampaignsModel.h */,
+				275C4AF91C706274002475B6 /* CCouponCampaignsModel.m */,
+				275C4B111C709665002475B6 /* CCouponCampaignDetailModel.h */,
+				275C4B121C709665002475B6 /* CCouponCampaignDetailModel.m */,
+				27A8C9F01C71CD4A00441C27 /* CRequestCouponModel.h */,
+				27A8C9F11C71CD4A00441C27 /* CRequestCouponModel.m */,
+				27A8C9F31C71D12700441C27 /* CClaimCouponModel.h */,
+				27A8C9F41C71D12700441C27 /* CClaimCouponModel.m */,
+				279A5E9B1C7423C400C3D697 /* CCouponModel.h */,
+				279A5E9C1C7423C400C3D697 /* CCouponModel.m */,
+				27CC91281C74999400696995 /* CScannableCampaignsModel.h */,
+				27CC91291C74999400696995 /* CScannableCampaignsModel.m */,
+				27CC912E1C74A98800696995 /* CScannedCouponsModel.h */,
+				27CC912F1C74A98800696995 /* CScannedCouponsModel.m */,
+				27CC91311C74B45B00696995 /* CRedeemCouponModel.h */,
+				27CC91321C74B45B00696995 /* CRedeemCouponModel.m */,
+			);
+			name = Coupon;
+			sourceTree = "<group>";
+		};
+		278704B31C7AB1C7007E45BF /* Field */ = {
+			isa = PBXGroup;
+			children = (
+				278704B41C7AB1E7007E45BF /* CCropSubscriptionsModel.h */,
+				278704B51C7AB1E7007E45BF /* CCropSubscriptionsModel.m */,
+			);
+			name = Field;
+			sourceTree = "<group>";
+		};
 		27CC91211C74919200696995 /* Owner */ = {
 			isa = PBXGroup;
 			children = (
@@ -819,6 +872,10 @@
 				275C4B0F1C7075FE002475B6 /* CCouponCampaign.m */,
 				27A8C9E51C71A35500441C27 /* CStore.h */,
 				27A8C9E61C71A35500441C27 /* CStore.m */,
+				278704B71C7AB341007E45BF /* CCropSubscription.h */,
+				278704B81C7AB341007E45BF /* CCropSubscription.m */,
+				278704BA1C7AB4C0007E45BF /* CCrop.h */,
+				278704BB1C7AB4C0007E45BF /* CCrop.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -922,6 +979,8 @@
 		9FC0E9C01BD0D0AB0096FD3D /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				278704B31C7AB1C7007E45BF /* Field */,
+				278704B21C7AB1B9007E45BF /* Coupon */,
 				9FC0E9C11BD0D0AB0096FD3D /* CRequest.h */,
 				9FC0E9C21BD0D0AB0096FD3D /* CRequest.m */,
 				9FC0E9C31BD0D0AB0096FD3D /* CResponseBase.h */,
@@ -994,22 +1053,6 @@
 				9FFF682D1C089A8C00590604 /* CUpdateSubScribeListModel.m */,
 				9F06C9AF1C2049DA001FF390 /* CRemoteControModel.h */,
 				9F06C9B01C2049DA001FF390 /* CRemoteControModel.m */,
-				275C4AF81C706274002475B6 /* CCouponCampaignsModel.h */,
-				275C4AF91C706274002475B6 /* CCouponCampaignsModel.m */,
-				275C4B111C709665002475B6 /* CCouponCampaignDetailModel.h */,
-				275C4B121C709665002475B6 /* CCouponCampaignDetailModel.m */,
-				27A8C9F01C71CD4A00441C27 /* CRequestCouponModel.h */,
-				27A8C9F11C71CD4A00441C27 /* CRequestCouponModel.m */,
-				27A8C9F31C71D12700441C27 /* CClaimCouponModel.h */,
-				27A8C9F41C71D12700441C27 /* CClaimCouponModel.m */,
-				279A5E9B1C7423C400C3D697 /* CCouponModel.h */,
-				279A5E9C1C7423C400C3D697 /* CCouponModel.m */,
-				27CC91281C74999400696995 /* CScannableCampaignsModel.h */,
-				27CC91291C74999400696995 /* CScannableCampaignsModel.m */,
-				27CC912E1C74A98800696995 /* CScannedCouponsModel.h */,
-				27CC912F1C74A98800696995 /* CScannedCouponsModel.m */,
-				27CC91311C74B45B00696995 /* CRedeemCouponModel.h */,
-				27CC91321C74B45B00696995 /* CRedeemCouponModel.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1415,6 +1458,14 @@
 			children = (
 				B0748DE41C5772A700513B4E /* CFieldHomeViewController.h */,
 				B0748DE51C5772A700513B4E /* CFieldHomeViewController.m */,
+				278704BD1C7ABA9E007E45BF /* CAddCropViewController.h */,
+				278704BE1C7ABA9E007E45BF /* CAddCropViewController.m */,
+				278704C01C7ADC46007E45BF /* CFieldInfoViewController.h */,
+				278704C11C7ADC46007E45BF /* CFieldInfoViewController.m */,
+				278704C31C7B06DB007E45BF /* CCropStageSelectionViewController.h */,
+				278704C41C7B06DB007E45BF /* CCropStageSelectionViewController.m */,
+				278704C61C7B0D92007E45BF /* CCropDetailViewController.h */,
+				278704C71C7B0D92007E45BF /* CCropDetailViewController.m */,
 			);
 			path = Field;
 			sourceTree = "<group>";
@@ -1687,6 +1738,7 @@
 				9F03FADD1BE7C04000A3B1C7 /* CWeatherHourCell.m in Sources */,
 				27A8C9F21C71CD4A00441C27 /* CRequestCouponModel.m in Sources */,
 				B0748DF91C57738200513B4E /* UIBarButtonItem+Badge.m in Sources */,
+				278704C81C7B0D92007E45BF /* CCropDetailViewController.m in Sources */,
 				9FD213211BD128A60063147D /* DAFRunLoop.mm in Sources */,
 				B0748DF61C57738200513B4E /* NSDictionary+UrlEncoding.m in Sources */,
 				9F03FADA1BE7A19000A3B1C7 /* CWeatherDayCell.m in Sources */,
@@ -1717,6 +1769,7 @@
 				278491EE1C7056E8000F0D3E /* CCouponHomeViewController.m in Sources */,
 				B0748DF71C57738200513B4E /* NSString+Extension.m in Sources */,
 				27A8C9EF1C71BDF000441C27 /* CClaimCouponTableViewCell.m in Sources */,
+				278704C51C7B06DB007E45BF /* CCropStageSelectionViewController.m in Sources */,
 				9FD2131D1BD128A60063147D /* CAAnimationGroup+Extra.m in Sources */,
 				9FEACDB41BCFD5E1000722D8 /* AppDelegate.m in Sources */,
 				9FC4252B1BD5359500455A8C /* CMineHeadCell.m in Sources */,
@@ -1769,6 +1822,7 @@
 				9FD213281BD128A60063147D /* NSObject+Extra_Singleton.m in Sources */,
 				9F5EFD591BEA495B0003E31F /* CWebViewController.m in Sources */,
 				9F06C9B11C2049DA001FF390 /* CRemoteControModel.m in Sources */,
+				278704BF1C7ABA9E007E45BF /* CAddCropViewController.m in Sources */,
 				9FFF681F1C08971100590604 /* CGetSubScribeListsModel.m in Sources */,
 				9FB03AFD1C0F422E0043C992 /* RGIndexView.m in Sources */,
 				9FD2133F1BD128A60063147D /* UIViewController+BackButtonHandler.m in Sources */,
@@ -1783,6 +1837,7 @@
 				B0748DF51C57738200513B4E /* NSDate+Extension.m in Sources */,
 				9F92C2D81BDB36D80034DB3F /* CBrowseCPProductByModelModel.m in Sources */,
 				9FC4252E1BD535F800455A8C /* CMineContentCell.m in Sources */,
+				278704BC1C7AB4C0007E45BF /* CCrop.m in Sources */,
 				279A5E961C7418B800C3D697 /* CCouponTableViewCell.m in Sources */,
 				9FD2133B1BD128A60063147D /* MBProgressHUD+Express.m in Sources */,
 				9FD2132E1BD128A60063147D /* NSString+UrlEncode.m in Sources */,
@@ -1792,6 +1847,7 @@
 				275C4AFA1C706274002475B6 /* CCouponCampaignsModel.m in Sources */,
 				9F00C53E1C0DEE3400198FD1 /* CSelectIdentityController.m in Sources */,
 				9FE6E89B1BD677E2003A9D79 /* CSeedViewController.m in Sources */,
+				278704C21C7ADC46007E45BF /* CFieldInfoViewController.m in Sources */,
 				9F686C691BDFAE5700A13E86 /* CSearchCell.m in Sources */,
 				9F66BF861BE4D8D10047CE82 /* CPOPObject.m in Sources */,
 				9FCA08F41BEA3535003BB40C /* LunarCalendar.m in Sources */,
@@ -1803,6 +1859,7 @@
 				9F92C2DB1BDB37120034DB3F /* CIngredientBrowseObject.m in Sources */,
 				9FD2132B1BD128A60063147D /* NSString+Extra.m in Sources */,
 				9F43366E1BE11EE5003C3B5D /* CWeatherLeftController.m in Sources */,
+				278704B91C7AB341007E45BF /* CCropSubscription.m in Sources */,
 				275C4AFD1C706432002475B6 /* CCouponDetailViewController.m in Sources */,
 				9FFBF4B91C01C1F1007C6D24 /* CStoresViewController.m in Sources */,
 				275C4B101C7075FE002475B6 /* CCouponCampaign.m in Sources */,
@@ -1813,6 +1870,7 @@
 				9FD2132F1BD128A60063147D /* NSString+Valid.m in Sources */,
 				9FB40FD51C1115E600994C5D /* CLaoNongcell.m in Sources */,
 				9F8FB7A61BEF9606003A7469 /* CChangePasswordController.m in Sources */,
+				278704B61C7AB1E7007E45BF /* CCropSubscriptionsModel.m in Sources */,
 				9FFF68371C089CF900590604 /* CSubScribeListCell.m in Sources */,
 				9FD2133E1BD128A60063147D /* UIImage+Compress.m in Sources */,
 				9FD213311BD128A60063147D /* UIDevice+Extra.m in Sources */,

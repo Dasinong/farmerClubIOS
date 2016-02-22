@@ -11,6 +11,7 @@
 #import <FMDatabase.h>
 #import "CGetLocationModel.h"
 #import "CWeatherSubscriptionModel.h"
+#import "CFieldInfoViewController.h"
 
 @interface CSelectAddressViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *shengBtn;
@@ -184,17 +185,19 @@
 
 - (IBAction)commit:(id)sender {
 	if (self.cun) {
-		CWeatherSubscriptionParams* params = [CWeatherSubscriptionParams new];
-		params.locationId =self.cunDic[self.cun];;//[self.cun integerValue];
-		[CWeatherSubscriptionModel requestWithParams:POST params:params completion:^(CWeatherSubscriptionModel* model, JSONModelError *err) {
-			if (model && err == nil) {
-				NSDictionary* info = @{@"name":model.data.locationName,
-									   @"monitorLocationId":[NSNumber numberWithInteger:model.data.monitorLocationId]};
-				nc_post(ChangeLocation, info);
-				[MBProgressHUD alert:@"成功"];
-				[self dismissViewControllerAnimated:YES completion:nil];
-			}
-		}];
+//		CWeatherSubscriptionParams* params = [CWeatherSubscriptionParams new];
+//		params.locationId =self.cunDic[self.cun];;//[self.cun integerValue];
+//		[CWeatherSubscriptionModel requestWithParams:POST params:params completion:^(CWeatherSubscriptionModel* model, JSONModelError *err) {
+//			if (model && err == nil) {
+//				NSDictionary* info = @{@"name":model.data.locationName,
+//									   @"monitorLocationId":[NSNumber numberWithInteger:model.data.monitorLocationId]};
+//				nc_post(ChangeLocation, info);
+//				[MBProgressHUD alert:@"成功"];
+//				[self dismissViewControllerAnimated:YES completion:nil];
+//			}
+//		}];
+        CFieldInfoViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CFieldInfoViewController"];
+        [self.navigationController pushViewController:controller animated:YES];
 	}
 }
 
