@@ -20,6 +20,7 @@
 		275C4B1C1C70B5E0002475B6 /* CPictureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 275C4B1A1C70B5E0002475B6 /* CPictureTableViewCell.m */; };
 		275C4B1D1C70B5E0002475B6 /* CPictureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275C4B1B1C70B5E0002475B6 /* CPictureTableViewCell.xib */; };
 		278491EE1C7056E8000F0D3E /* CCouponHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278491ED1C7056E8000F0D3E /* CCouponHomeViewController.m */; };
+		278704B11C7AA31D007E45BF /* CSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278704B01C7AA31D007E45BF /* CSplashViewController.m */; };
 		279A5E921C740CC500C3D697 /* CCouponListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279A5E911C740CC500C3D697 /* CCouponListViewController.m */; };
 		279A5E961C7418B800C3D697 /* CCouponTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 279A5E941C7418B800C3D697 /* CCouponTableViewCell.m */; };
 		279A5E971C7418B800C3D697 /* CCouponTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279A5E951C7418B800C3D697 /* CCouponTableViewCell.xib */; };
@@ -277,6 +278,8 @@
 		275C4B1B1C70B5E0002475B6 /* CPictureTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPictureTableViewCell.xib; sourceTree = "<group>"; };
 		278491EC1C7056E8000F0D3E /* CCouponHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCouponHomeViewController.h; sourceTree = "<group>"; };
 		278491ED1C7056E8000F0D3E /* CCouponHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCouponHomeViewController.m; sourceTree = "<group>"; };
+		278704AF1C7AA31D007E45BF /* CSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSplashViewController.h; sourceTree = "<group>"; };
+		278704B01C7AA31D007E45BF /* CSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSplashViewController.m; sourceTree = "<group>"; };
 		279A5E901C740CC500C3D697 /* CCouponListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCouponListViewController.h; sourceTree = "<group>"; };
 		279A5E911C740CC500C3D697 /* CCouponListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCouponListViewController.m; sourceTree = "<group>"; };
 		279A5E931C7418B800C3D697 /* CCouponTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCouponTableViewCell.h; sourceTree = "<group>"; };
@@ -1090,6 +1093,8 @@
 				9F5EFD581BEA495B0003E31F /* CWebViewController.m */,
 				27CC91251C74925B00696995 /* CTabBarViewController.h */,
 				27CC91261C74925B00696995 /* CTabBarViewController.m */,
+				278704AF1C7AA31D007E45BF /* CSplashViewController.h */,
+				278704B01C7AA31D007E45BF /* CSplashViewController.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1693,6 +1698,7 @@
 				9FFF68251C08991100590604 /* CLoadSubScribeListModel.m in Sources */,
 				279A5E921C740CC500C3D697 /* CCouponListViewController.m in Sources */,
 				9FFBF4BC1C01C2AC007C6D24 /* CSalesViewController.m in Sources */,
+				278704B11C7AA31D007E45BF /* CSplashViewController.m in Sources */,
 				9FB948441BDA90B300F1F3A6 /* CBrowsePetDisSpecByCropIdAndTypeModel.m in Sources */,
 				9F4336681BE11E42003C3B5D /* FirstViewController.m in Sources */,
 				9FEED84E1BEDBDB30095A91B /* CSetRefModel.m in Sources */,
