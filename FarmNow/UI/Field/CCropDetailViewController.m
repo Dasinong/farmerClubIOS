@@ -8,16 +8,40 @@
 
 #import "CCropDetailViewController.h"
 #import "CWeatherSectionView.h"
+#import "CGetFieldModel.h"
+#import "CCropDetailHeaderCell.h"
 
 @interface CCropDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic, strong) CField *field;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation CCropDetailViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    if (self.subscription.fields.count > 0) {
+        CGetFieldParam *param = [CGetFieldParam new];
+        NSString *fieldId = [self.subscription.fields allKeys][0];
+        param.id = [fieldId integerValue];
+        [CGetFieldModel requestWithParams:param completion:^(CGetFieldModel *model, JSONModelError *err) {
+            
+            if (model) {
+                self.field = model.field;
+                [self.tableView reloadData];
+            }
+        }];
+    }
+}
+
 - (IBAction)goToWiki:(id)sender {
     NSLog(@"goToWiki");
+}
+
+- (IBAction)changeStage:(id)sender {
+    NSLog(@"KDK");
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
@@ -86,7 +110,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return [tableView dequeueReusableCellWithIdentifier:@"HeaderCell" forIndexPath:indexPath];
+        CCropDetailHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HeaderCell" forIndexPath:indexPath];
+        [cell setupWithModel:self.field];
+        return cell;
     }
     
     if (indexPath.section == 1) {

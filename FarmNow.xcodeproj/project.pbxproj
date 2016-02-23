@@ -48,6 +48,12 @@
 		27CC91331C74B45B00696995 /* CRedeemCouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CC91321C74B45B00696995 /* CRedeemCouponModel.m */; };
 		27D0F03F1C7C83BC00215FCC /* CSubscriableCropsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F03E1C7C83BC00215FCC /* CSubscriableCropsModel.m */; };
 		27D0F0421C7C87E000215FCC /* CCreateCropSubscriptionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F0411C7C87E000215FCC /* CCreateCropSubscriptionModel.m */; };
+		27D0F0451C7C92AB00215FCC /* CGetFieldModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F0441C7C92AB00215FCC /* CGetFieldModel.m */; };
+		27D0F0481C7C95F800215FCC /* CField.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F0471C7C95F800215FCC /* CField.m */; };
+		27D0F04B1C7C980700215FCC /* CSubStage.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F04A1C7C980700215FCC /* CSubStage.m */; };
+		27D0F04E1C7C9A7000215FCC /* CPetDisSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F04D1C7C9A7000215FCC /* CPetDisSpec.m */; };
+		27D0F0511C7C9D2B00215FCC /* CPetSolution.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F0501C7C9D2B00215FCC /* CPetSolution.m */; };
+		27D0F0551C7CA0E000215FCC /* CCropDetailHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F0541C7CA0E000215FCC /* CCropDetailHeaderCell.m */; };
 		9F00C53E1C0DEE3400198FD1 /* CSelectIdentityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F00C53D1C0DEE3400198FD1 /* CSelectIdentityController.m */; };
 		9F010CAC1BE8E89C00358FD6 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F010CAB1BE8E89C00358FD6 /* NSDate+Utilities.m */; };
 		9F010CAF1BE9028400358FD6 /* CWeatherHourItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F010CAE1BE9028400358FD6 /* CWeatherHourItemView.m */; };
@@ -341,6 +347,18 @@
 		27D0F03E1C7C83BC00215FCC /* CSubscriableCropsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSubscriableCropsModel.m; sourceTree = "<group>"; };
 		27D0F0401C7C87E000215FCC /* CCreateCropSubscriptionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCreateCropSubscriptionModel.h; sourceTree = "<group>"; };
 		27D0F0411C7C87E000215FCC /* CCreateCropSubscriptionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCreateCropSubscriptionModel.m; sourceTree = "<group>"; };
+		27D0F0431C7C92AB00215FCC /* CGetFieldModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGetFieldModel.h; sourceTree = "<group>"; };
+		27D0F0441C7C92AB00215FCC /* CGetFieldModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGetFieldModel.m; sourceTree = "<group>"; };
+		27D0F0461C7C95F800215FCC /* CField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CField.h; sourceTree = "<group>"; };
+		27D0F0471C7C95F800215FCC /* CField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CField.m; sourceTree = "<group>"; };
+		27D0F0491C7C980700215FCC /* CSubStage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSubStage.h; sourceTree = "<group>"; };
+		27D0F04A1C7C980700215FCC /* CSubStage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSubStage.m; sourceTree = "<group>"; };
+		27D0F04C1C7C9A7000215FCC /* CPetDisSpec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPetDisSpec.h; sourceTree = "<group>"; };
+		27D0F04D1C7C9A7000215FCC /* CPetDisSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPetDisSpec.m; sourceTree = "<group>"; };
+		27D0F04F1C7C9D2B00215FCC /* CPetSolution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPetSolution.h; sourceTree = "<group>"; };
+		27D0F0501C7C9D2B00215FCC /* CPetSolution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPetSolution.m; sourceTree = "<group>"; };
+		27D0F0531C7CA0E000215FCC /* CCropDetailHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCropDetailHeaderCell.h; sourceTree = "<group>"; };
+		27D0F0541C7CA0E000215FCC /* CCropDetailHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCropDetailHeaderCell.m; sourceTree = "<group>"; };
 		58D6C33779B2D6D120434B6D /* Pods-FarmNow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarmNow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FarmNow/Pods-FarmNow.debug.xcconfig"; sourceTree = "<group>"; };
 		892B13CBF05E214972F8EFDB /* Pods-FarmNow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarmNow.release.xcconfig"; path = "Pods/Target Support Files/Pods-FarmNow/Pods-FarmNow.release.xcconfig"; sourceTree = "<group>"; };
 		9F00C53C1C0DEE3400198FD1 /* CSelectIdentityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSelectIdentityController.h; sourceTree = "<group>"; };
@@ -828,6 +846,8 @@
 				27D0F03E1C7C83BC00215FCC /* CSubscriableCropsModel.m */,
 				27D0F0401C7C87E000215FCC /* CCreateCropSubscriptionModel.h */,
 				27D0F0411C7C87E000215FCC /* CCreateCropSubscriptionModel.m */,
+				27D0F0431C7C92AB00215FCC /* CGetFieldModel.h */,
+				27D0F0441C7C92AB00215FCC /* CGetFieldModel.m */,
 			);
 			name = Field;
 			sourceTree = "<group>";
@@ -841,6 +861,15 @@
 				27CC912C1C749C1900696995 /* CScannedCouponDetailViewController.m */,
 			);
 			name = Owner;
+			sourceTree = "<group>";
+		};
+		27D0F0521C7CA06400215FCC /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				27D0F0531C7CA0E000215FCC /* CCropDetailHeaderCell.h */,
+				27D0F0541C7CA0E000215FCC /* CCropDetailHeaderCell.m */,
+			);
+			path = cell;
 			sourceTree = "<group>";
 		};
 		9F02DFC61BD9380B001C223F /* Model */ = {
@@ -886,6 +915,14 @@
 				278704B81C7AB341007E45BF /* CCropSubscription.m */,
 				278704BA1C7AB4C0007E45BF /* CCrop.h */,
 				278704BB1C7AB4C0007E45BF /* CCrop.m */,
+				27D0F0461C7C95F800215FCC /* CField.h */,
+				27D0F0471C7C95F800215FCC /* CField.m */,
+				27D0F0491C7C980700215FCC /* CSubStage.h */,
+				27D0F04A1C7C980700215FCC /* CSubStage.m */,
+				27D0F04C1C7C9A7000215FCC /* CPetDisSpec.h */,
+				27D0F04D1C7C9A7000215FCC /* CPetDisSpec.m */,
+				27D0F04F1C7C9D2B00215FCC /* CPetSolution.h */,
+				27D0F0501C7C9D2B00215FCC /* CPetSolution.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1466,6 +1503,7 @@
 		B0748DE31C57728500513B4E /* Field */ = {
 			isa = PBXGroup;
 			children = (
+				27D0F0521C7CA06400215FCC /* cell */,
 				B0748DE41C5772A700513B4E /* CFieldHomeViewController.h */,
 				B0748DE51C5772A700513B4E /* CFieldHomeViewController.m */,
 				278704BD1C7ABA9E007E45BF /* CAddCropViewController.h */,
@@ -1715,6 +1753,7 @@
 				27A8C9EB1C71AD1900441C27 /* CStoreTableViewCell.m in Sources */,
 				9F1860CF1BDBC8A2003F9A8C /* CLoginController.m in Sources */,
 				279A5EA01C744E2600C3D697 /* CMyCouponDetailViewController.m in Sources */,
+				27D0F0481C7C95F800215FCC /* CField.m in Sources */,
 				279A5E9D1C7423C400C3D697 /* CCouponModel.m in Sources */,
 				9F8D8F431BE50BA5004253FD /* CCurrentWeatherCell.m in Sources */,
 				9FEED8451BECF2230095A91B /* CSelectAddressViewController.m in Sources */,
@@ -1765,6 +1804,7 @@
 				9FB948441BDA90B300F1F3A6 /* CBrowsePetDisSpecByCropIdAndTypeModel.m in Sources */,
 				9F4336681BE11E42003C3B5D /* FirstViewController.m in Sources */,
 				9FEED84E1BEDBDB30095A91B /* CSetRefModel.m in Sources */,
+				27D0F04B1C7C980700215FCC /* CSubStage.m in Sources */,
 				9F2E4E0D1BF396E6007F4657 /* CAuthRegLogModel.m in Sources */,
 				9FE6E89E1BD67EB1003A9D79 /* CKindCell.m in Sources */,
 				27D0F0421C7C87E000215FCC /* CCreateCropSubscriptionModel.m in Sources */,
@@ -1791,6 +1831,7 @@
 				9FFF68221C08974600590604 /* CSubscriptionObject.m in Sources */,
 				9FA93D1A1BDEFDD900F7101A /* CSearchEntry.m in Sources */,
 				9F8FB7971BEF8950003A7469 /* CPasswordViewController.m in Sources */,
+				27D0F04E1C7C9A7000215FCC /* CPetDisSpec.m in Sources */,
 				9FD213301BD128A60063147D /* UIColor+Extra.m in Sources */,
 				27CC91331C74B45B00696995 /* CRedeemCouponModel.m in Sources */,
 				9F92C2DF1BDB5BEC0034DB3F /* CGetCpprductsByIngredientModel.m in Sources */,
@@ -1817,6 +1858,7 @@
 				275C4B171C709CA5002475B6 /* CCampaignDetailHeaderTableViewCell.m in Sources */,
 				9FD213391BD128A60063147D /* UIView+AddSubview.m in Sources */,
 				9FEED84B1BEDAB100095A91B /* CUpdateProfileModel.m in Sources */,
+				27D0F0451C7C92AB00215FCC /* CGetFieldModel.m in Sources */,
 				9F0E196A1C03691400886E69 /* CStoresModel.m in Sources */,
 				9F68D8F61BDE664800F54627 /* CWeiXinAuthRegLogModel.m in Sources */,
 				9FD213241BD128A60063147D /* NSBundle+Extra.m in Sources */,
@@ -1834,6 +1876,7 @@
 				9FD213281BD128A60063147D /* NSObject+Extra_Singleton.m in Sources */,
 				9F5EFD591BEA495B0003E31F /* CWebViewController.m in Sources */,
 				9F06C9B11C2049DA001FF390 /* CRemoteControModel.m in Sources */,
+				27D0F0511C7C9D2B00215FCC /* CPetSolution.m in Sources */,
 				278704BF1C7ABA9E007E45BF /* CAddCropViewController.m in Sources */,
 				9FFF681F1C08971100590604 /* CGetSubScribeListsModel.m in Sources */,
 				9FB03AFD1C0F422E0043C992 /* RGIndexView.m in Sources */,
@@ -1876,6 +1919,7 @@
 				9FFBF4B91C01C1F1007C6D24 /* CStoresViewController.m in Sources */,
 				275C4B101C7075FE002475B6 /* CCouponCampaign.m in Sources */,
 				9FD213341BD128A60063147D /* UIImage+Extra.m in Sources */,
+				27D0F0551C7CA0E000215FCC /* CCropDetailHeaderCell.m in Sources */,
 				27CC91241C74920600696995 /* CMyStoreViewController.m in Sources */,
 				9F8873921BEBA97B00B267D2 /* CPersonalCache.m in Sources */,
 				9F66BF771BE4D29D0047CE82 /* CDeleteWeatherSubscriptionModel.m in Sources */,

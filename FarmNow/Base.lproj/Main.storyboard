@@ -3186,7 +3186,7 @@ i) 不得为其他任何非法目的而使用服务。
                                     </connections>
                                 </button>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HeaderCell" rowHeight="152" id="tpr-tv-U78">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HeaderCell" rowHeight="152" id="tpr-tv-U78" customClass="CCropDetailHeaderCell">
                                         <rect key="frame" x="0.0" y="49.5" width="320" height="152"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tpr-tv-U78" id="mS6-DW-hmF">
@@ -3222,7 +3222,7 @@ i) 不得为其他任何非法目的而使用服务。
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="addCorp:" destination="CAR-HD-tRE" eventType="touchUpInside" id="s5o-t5-9ku"/>
+                                                        <action selector="changeStage:" destination="5ZU-Ob-h3M" eventType="touchUpInside" id="Kv6-uC-Wj4"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -3239,6 +3239,12 @@ i) 不得为其他任何非法目的而使用服务。
                                                 <constraint firstAttribute="trailing" secondItem="KDR-c7-lAm" secondAttribute="trailing" constant="15" id="qud-KM-46W"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="areaLabel" destination="sQy-4a-3ME" id="bvw-BE-rFi"/>
+                                            <outlet property="cropImageView" destination="Qrq-co-gYc" id="d3r-a0-BbM"/>
+                                            <outlet property="cropNameLabel" destination="rHv-ln-ewq" id="qUA-vU-tpX"/>
+                                            <outlet property="stageButton" destination="KDR-c7-lAm" id="idA-RE-XmD"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TaskCell" rowHeight="107" id="A57-fi-Ec1">
                                         <rect key="frame" x="0.0" y="201.5" width="320" height="107"/>

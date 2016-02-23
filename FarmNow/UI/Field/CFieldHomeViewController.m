@@ -70,8 +70,9 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)goToDetail {
+- (void)goToDetail:(CCropSubscription *)cropSubscription {
     CCropDetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CCropDetailViewController"];
+    controller.subscription = cropSubscription;
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
 }
@@ -114,7 +115,7 @@
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"正在种植" message:@"加田后能收到更多针对这块田的种植指导哦！" preferredStyle:UIAlertControllerStyleAlert];
         
         [alert addAction:[UIAlertAction actionWithTitle:@"暂时没种" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self goToDetail];
+            [self goToDetail:subscription];
         }]];
         [alert addAction:[UIAlertAction actionWithTitle:@"马上加田" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             CAddWeatherFirstViewController* controller = [self.storyboard controllerWithID:@"CAddWeatherFirstViewController"];
@@ -124,7 +125,7 @@
         [self presentViewController:alert animated:YES completion:nil];
     }
     else {
-        [self goToDetail];
+        [self goToDetail:subscription];
     }
 }
 

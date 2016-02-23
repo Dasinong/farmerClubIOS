@@ -7,7 +7,8 @@
 //
 
 #import "CBaseViewController.h"
+#import "CCropSubscription.h"
 
 @interface CCropDetailViewController : CBaseViewController
-
+@property (nonatomic, strong) CCropSubscription *subscription;
 @end
