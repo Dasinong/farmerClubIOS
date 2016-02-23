@@ -8,6 +8,8 @@
 
 #import "CAddCropViewController.h"
 #import "CCrop.h"
+#import "CSubscriableCropsModel.h"
+#import "CCreateCropSubscriptionModel.h"
 
 @interface CAddCropViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -24,15 +26,46 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.dataArray = @[@"K"];
-    self.selectedArray = [@[@(NO)] mutableCopy];
+    self.dataArray = @[];
+    self.selectedArray = [NSMutableArray array];
+    
+    // Request Data
+    CSubscriableCropsParam *param = [CSubscriableCropsParam new];
+    [CSubscriableCropsModel requestWithParams:param completion:^(CSubscriableCropsModel *model, JSONModelError *err) {
+        self.dataArray = model.crops;
+        [self.selectedArray removeAllObjects];
+        for (int i=0; i<self.dataArray.count; i++) {
+            [self.selectedArray addObject:@(NO)];
+        }
+        [self.tableView reloadData];
+    }];
 }
 
 - (IBAction)submit:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(addCropCompelted)]) {
-        [self.delegate addCropCompelted];
+    NSMutableArray *selectedCrops = [NSMutableArray array];
+    for (int i=0; i<self.dataArray.count; i++) {
+        CCrop *crop = self.dataArray[i];
+        BOOL selected = [self.selectedArray[i] boolValue];
+        
+        if (selected) {
+            [selectedCrops addObject:[NSString stringWithFormat:@"%d", (int)crop.cropId]];
+        }
     }
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    CCreateCropSubscriptionParam *param = [CCreateCropSubscriptionParam new];
+    param.cropId = [selectedCrops componentsJoinedByString:@","];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [CCreateCropSubscriptionModel requestWithParams:POST params:param completion:^(CCreateCropSubscriptionModel *model, JSONModelError *err) {
+        [MBProgressHUD hideHUDForView:self.view animated:NO];
+        
+        if (model) {
+            if ([self.delegate respondsToSelector:@selector(addCropCompelted)]) {
+                [self.delegate addCropCompelted];
+            }
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }];
 }
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
@@ -56,7 +89,7 @@
         checkbox.image = [UIImage image_s:@"crop_checkbox"];
     }
     
-    cropNameLabel.text = @"作物名";
+    cropNameLabel.text = crop.cropName;
     return cell;
 }
 

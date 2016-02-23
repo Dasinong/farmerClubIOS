@@ -46,6 +46,8 @@
 		27CC912D1C749C1900696995 /* CScannedCouponDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CC912C1C749C1900696995 /* CScannedCouponDetailViewController.m */; };
 		27CC91301C74A98800696995 /* CScannedCouponsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CC912F1C74A98800696995 /* CScannedCouponsModel.m */; };
 		27CC91331C74B45B00696995 /* CRedeemCouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CC91321C74B45B00696995 /* CRedeemCouponModel.m */; };
+		27D0F03F1C7C83BC00215FCC /* CSubscriableCropsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F03E1C7C83BC00215FCC /* CSubscriableCropsModel.m */; };
+		27D0F0421C7C87E000215FCC /* CCreateCropSubscriptionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F0411C7C87E000215FCC /* CCreateCropSubscriptionModel.m */; };
 		9F00C53E1C0DEE3400198FD1 /* CSelectIdentityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F00C53D1C0DEE3400198FD1 /* CSelectIdentityController.m */; };
 		9F010CAC1BE8E89C00358FD6 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F010CAB1BE8E89C00358FD6 /* NSDate+Utilities.m */; };
 		9F010CAF1BE9028400358FD6 /* CWeatherHourItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F010CAE1BE9028400358FD6 /* CWeatherHourItemView.m */; };
@@ -335,6 +337,10 @@
 		27CC912F1C74A98800696995 /* CScannedCouponsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CScannedCouponsModel.m; sourceTree = "<group>"; };
 		27CC91311C74B45B00696995 /* CRedeemCouponModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRedeemCouponModel.h; sourceTree = "<group>"; };
 		27CC91321C74B45B00696995 /* CRedeemCouponModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRedeemCouponModel.m; sourceTree = "<group>"; };
+		27D0F03D1C7C83BC00215FCC /* CSubscriableCropsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSubscriableCropsModel.h; sourceTree = "<group>"; };
+		27D0F03E1C7C83BC00215FCC /* CSubscriableCropsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSubscriableCropsModel.m; sourceTree = "<group>"; };
+		27D0F0401C7C87E000215FCC /* CCreateCropSubscriptionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCreateCropSubscriptionModel.h; sourceTree = "<group>"; };
+		27D0F0411C7C87E000215FCC /* CCreateCropSubscriptionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCreateCropSubscriptionModel.m; sourceTree = "<group>"; };
 		58D6C33779B2D6D120434B6D /* Pods-FarmNow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarmNow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FarmNow/Pods-FarmNow.debug.xcconfig"; sourceTree = "<group>"; };
 		892B13CBF05E214972F8EFDB /* Pods-FarmNow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarmNow.release.xcconfig"; path = "Pods/Target Support Files/Pods-FarmNow/Pods-FarmNow.release.xcconfig"; sourceTree = "<group>"; };
 		9F00C53C1C0DEE3400198FD1 /* CSelectIdentityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSelectIdentityController.h; sourceTree = "<group>"; };
@@ -818,6 +824,10 @@
 			children = (
 				278704B41C7AB1E7007E45BF /* CCropSubscriptionsModel.h */,
 				278704B51C7AB1E7007E45BF /* CCropSubscriptionsModel.m */,
+				27D0F03D1C7C83BC00215FCC /* CSubscriableCropsModel.h */,
+				27D0F03E1C7C83BC00215FCC /* CSubscriableCropsModel.m */,
+				27D0F0401C7C87E000215FCC /* CCreateCropSubscriptionModel.h */,
+				27D0F0411C7C87E000215FCC /* CCreateCropSubscriptionModel.m */,
 			);
 			name = Field;
 			sourceTree = "<group>";
@@ -1715,6 +1725,7 @@
 				9F66BF7A1BE4D35B0047CE82 /* CReorderWeatherSubscriptionsModel.m in Sources */,
 				9F820C381BDA83DA004223BB /* CZaiHaiViewController.m in Sources */,
 				9FEED8421BECEE570095A91B /* CAddWeatherFirstViewController.m in Sources */,
+				27D0F03F1C7C83BC00215FCC /* CSubscriableCropsModel.m in Sources */,
 				9FD2132D1BD128A60063147D /* NSString+Path.m in Sources */,
 				9F66BF891BE4D9350047CE82 /* CForecastDayInfoObject.m in Sources */,
 				9FD2131F1BD128A60063147D /* CGGeometry+Extra.m in Sources */,
@@ -1756,6 +1767,7 @@
 				9FEED84E1BEDBDB30095A91B /* CSetRefModel.m in Sources */,
 				9F2E4E0D1BF396E6007F4657 /* CAuthRegLogModel.m in Sources */,
 				9FE6E89E1BD67EB1003A9D79 /* CKindCell.m in Sources */,
+				27D0F0421C7C87E000215FCC /* CCreateCropSubscriptionModel.m in Sources */,
 				275C4B1C1C70B5E0002475B6 /* CPictureTableViewCell.m in Sources */,
 				9FD2131C1BD128A60063147D /* CAAnimation+Extra.m in Sources */,
 				9F92C2E21BDB5C8C0034DB3F /* CCPProductObject.m in Sources */,

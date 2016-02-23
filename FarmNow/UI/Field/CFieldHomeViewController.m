@@ -28,6 +28,12 @@
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self requestData];
     }];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(signoutNotification:) name:@"notification_signout" object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -41,6 +47,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)signoutNotification:(NSNotification *)notification {
+    self.dataArray = nil;
 }
 
 - (void)requestData {
