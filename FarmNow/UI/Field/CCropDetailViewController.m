@@ -15,6 +15,7 @@
 #import "CTaskCell.h"
 #import "CPetDisCell.h"
 #import "CTaskListViewController.h"
+#import "CPetDisListViewController.h"
 
 @interface CCropDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -203,7 +204,7 @@
     if (indexPath.section == 2) {
         CPetDisCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CPetDisCell" forIndexPath:indexPath];
         
-        CPetDisCell *petDis;
+        CPetDisSpec *petDis;
         if (self.field) {
             petDis = self.field.petdisspecws[indexPath.row];
         }
@@ -239,5 +240,21 @@
         controller.taskSpec = task;
         [self.navigationController pushViewController:controller animated:YES];
     }
+    else if (indexPath.section == 2) {
+        
+        CPetDisSpec *petDis;
+        if (self.field) {
+            petDis = self.field.petdisspecws[indexPath.row];
+        }
+        
+        if (self.cropDetail) {
+            petDis = self.cropDetail.petdisspecws[indexPath.row];
+        }
+        
+        CPetDisListViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CPetDisListViewController"];
+        controller.petDis = petDis;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    
 }
 @end

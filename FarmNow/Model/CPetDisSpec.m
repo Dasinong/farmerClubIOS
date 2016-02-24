@@ -14,8 +14,13 @@
     return YES;
 }
 
-- (NSString *)imageForIndex:(NSInteger)index {
-    NSString *imagePath = self.imagesPath[index];
-    return [NSString stringWithFormat:@"%@/pic/%@", kServer, imagePath];
+- (NSArray *)imagesPath {
+    NSMutableArray *array = [NSMutableArray array];
+    
+    for (NSString *imagePath in _imagesPath) {
+        [array addObject:[NSString stringWithFormat:@"%@/pic/%@", kServer, imagePath]];
+    }
+    
+    return array;
 }
 @end

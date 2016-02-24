@@ -23,6 +23,7 @@ pod 'MJRefresh'
 pod 'MZTimerLabel'
 pod 'ZXingObjC’
 pod 'XLPagerTabStrip', '~> 3.0.0'
+pod 'SDCycleScrollView'
 end
 
 target 'FarmNowTests' do

@@ -56,6 +56,8 @@ PODS:
   - QBImagePickerController (3.2.0)
   - QRCodeReaderViewController (3.5.2)
   - SCLAlertView-Objective-C (0.7.9)
+  - SDCycleScrollView (1.61):
+    - SDWebImage (~> 3.7)
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
@@ -84,6 +86,7 @@ DEPENDENCIES:
   - QBImagePickerController
   - QRCodeReaderViewController (from `https://github.com/zhengjinghua/MQRCodeReaderViewController.git`)
   - SCLAlertView-Objective-C
+  - SDCycleScrollView
   - SDWebImage
   - TPKeyboardAvoiding
   - XLPagerTabStrip (~> 3.0.0)
@@ -118,6 +121,7 @@ SPEC CHECKSUMS:
   QBImagePickerController: 75b3857b1307a3c01ce486559bc294f802ddec6c
   QRCodeReaderViewController: 557e3291d8fe8adf20d62b7f6bd79a3941f8ec31
   SCLAlertView-Objective-C: e36ab12dc1ec4ff6f932888083b21d71a3a1ad23
+  SDCycleScrollView: a002d85b30cfa9d0ac74069cd3973ca19ff4f22f
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   TPKeyboardAvoiding: 614ebec846ec28b83d548769297fa5fb56468904
   TUSafariActivity: afc55a00965377939107ce4fdc7f951f62454546

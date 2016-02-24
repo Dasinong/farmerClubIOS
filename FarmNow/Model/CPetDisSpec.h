@@ -24,6 +24,4 @@
 @property (nonatomic, strong) NSArray<CPetSolution> *solutions;
 @property (nonatomic, strong) NSString *sympton;
 @property (nonatomic, strong) NSString *type;
-
-- (NSString *)imageForIndex:(NSInteger)index;
 @end
