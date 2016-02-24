@@ -9,6 +9,9 @@
 #import "CJSONModel.h"
 #import "CPetSolution.h"
 
+@protocol CPetDisSpec
+@end
+
 @interface CPetDisSpec : CJSONModel
 @property (nonatomic, strong) NSString *alias;
 @property (nonatomic, strong) NSString *form;
@@ -21,4 +24,6 @@
 @property (nonatomic, strong) NSArray<CPetSolution> *solutions;
 @property (nonatomic, strong) NSString *sympton;
 @property (nonatomic, strong) NSString *type;
+
+- (NSString *)imageForIndex:(NSInteger)index;
 @end

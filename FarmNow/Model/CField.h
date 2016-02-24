@@ -9,6 +9,8 @@
 #import "CJSONModel.h"
 #import "CCrop.h"
 #import "CSubStage.h"
+#import "CPetDisSpec.h"
+#import "CTaskSpec.h"
 
 @protocol CField
 @end
@@ -23,4 +25,7 @@
 @property (assign, nonatomic) NSInteger locationId;
 @property (assign, nonatomic) NSInteger monitorLocationId;
 @property (nonatomic, strong) NSArray<CSubStage> *stagelist;
+@property (nonatomic, strong) NSArray<CPetDisSpec> *petdisspecws;
+@property (nonatomic, strong) NSArray<CTaskSpec> *taskspecws;
+
 @end

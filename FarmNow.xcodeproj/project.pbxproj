@@ -54,6 +54,16 @@
 		27D0F04E1C7C9A7000215FCC /* CPetDisSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F04D1C7C9A7000215FCC /* CPetDisSpec.m */; };
 		27D0F0511C7C9D2B00215FCC /* CPetSolution.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F0501C7C9D2B00215FCC /* CPetSolution.m */; };
 		27D0F0551C7CA0E000215FCC /* CCropDetailHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F0541C7CA0E000215FCC /* CCropDetailHeaderCell.m */; };
+		27D0F0581C7CA55200215FCC /* CTaskSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F0571C7CA55200215FCC /* CTaskSpec.m */; };
+		27D0F05B1C7CA60C00215FCC /* CTaskStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F05A1C7CA60C00215FCC /* CTaskStep.m */; };
+		27D0F05E1C7D3F5500215FCC /* CGetCropDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F05D1C7D3F5500215FCC /* CGetCropDetailsModel.m */; };
+		27D0F0611C7D402A00215FCC /* CCropDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F0601C7D402A00215FCC /* CCropDetail.m */; };
+		27D0F0641C7D5C9700215FCC /* CTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F0631C7D5C9700215FCC /* CTaskCell.m */; };
+		27D0F0661C7D5E7500215FCC /* CTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27D0F0651C7D5E7500215FCC /* CTaskCell.xib */; };
+		27D0F06A1C7D74A300215FCC /* CPetDisCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F0681C7D74A300215FCC /* CPetDisCell.m */; };
+		27D0F06B1C7D74A300215FCC /* CPetDisCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27D0F0691C7D74A300215FCC /* CPetDisCell.xib */; };
+		27D0F06E1C7D79AF00215FCC /* CDataRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F06D1C7D79AF00215FCC /* CDataRequestViewController.m */; };
+		27D0F0711C7D7D3D00215FCC /* CTaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F0701C7D7D3D00215FCC /* CTaskListViewController.m */; };
 		9F00C53E1C0DEE3400198FD1 /* CSelectIdentityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F00C53D1C0DEE3400198FD1 /* CSelectIdentityController.m */; };
 		9F010CAC1BE8E89C00358FD6 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F010CAB1BE8E89C00358FD6 /* NSDate+Utilities.m */; };
 		9F010CAF1BE9028400358FD6 /* CWeatherHourItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F010CAE1BE9028400358FD6 /* CWeatherHourItemView.m */; };
@@ -359,6 +369,24 @@
 		27D0F0501C7C9D2B00215FCC /* CPetSolution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPetSolution.m; sourceTree = "<group>"; };
 		27D0F0531C7CA0E000215FCC /* CCropDetailHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCropDetailHeaderCell.h; sourceTree = "<group>"; };
 		27D0F0541C7CA0E000215FCC /* CCropDetailHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCropDetailHeaderCell.m; sourceTree = "<group>"; };
+		27D0F0561C7CA55200215FCC /* CTaskSpec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTaskSpec.h; sourceTree = "<group>"; };
+		27D0F0571C7CA55200215FCC /* CTaskSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTaskSpec.m; sourceTree = "<group>"; };
+		27D0F0591C7CA60C00215FCC /* CTaskStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTaskStep.h; sourceTree = "<group>"; };
+		27D0F05A1C7CA60C00215FCC /* CTaskStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTaskStep.m; sourceTree = "<group>"; };
+		27D0F05C1C7D3F5500215FCC /* CGetCropDetailsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGetCropDetailsModel.h; sourceTree = "<group>"; };
+		27D0F05D1C7D3F5500215FCC /* CGetCropDetailsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGetCropDetailsModel.m; sourceTree = "<group>"; };
+		27D0F05F1C7D402A00215FCC /* CCropDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCropDetail.h; sourceTree = "<group>"; };
+		27D0F0601C7D402A00215FCC /* CCropDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCropDetail.m; sourceTree = "<group>"; };
+		27D0F0621C7D5C9700215FCC /* CTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTaskCell.h; sourceTree = "<group>"; };
+		27D0F0631C7D5C9700215FCC /* CTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTaskCell.m; sourceTree = "<group>"; };
+		27D0F0651C7D5E7500215FCC /* CTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CTaskCell.xib; sourceTree = "<group>"; };
+		27D0F0671C7D74A300215FCC /* CPetDisCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPetDisCell.h; sourceTree = "<group>"; };
+		27D0F0681C7D74A300215FCC /* CPetDisCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPetDisCell.m; sourceTree = "<group>"; };
+		27D0F0691C7D74A300215FCC /* CPetDisCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPetDisCell.xib; sourceTree = "<group>"; };
+		27D0F06C1C7D79AF00215FCC /* CDataRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDataRequestViewController.h; sourceTree = "<group>"; };
+		27D0F06D1C7D79AF00215FCC /* CDataRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDataRequestViewController.m; sourceTree = "<group>"; };
+		27D0F06F1C7D7D3D00215FCC /* CTaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTaskListViewController.h; sourceTree = "<group>"; };
+		27D0F0701C7D7D3D00215FCC /* CTaskListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTaskListViewController.m; sourceTree = "<group>"; };
 		58D6C33779B2D6D120434B6D /* Pods-FarmNow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarmNow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FarmNow/Pods-FarmNow.debug.xcconfig"; sourceTree = "<group>"; };
 		892B13CBF05E214972F8EFDB /* Pods-FarmNow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarmNow.release.xcconfig"; path = "Pods/Target Support Files/Pods-FarmNow/Pods-FarmNow.release.xcconfig"; sourceTree = "<group>"; };
 		9F00C53C1C0DEE3400198FD1 /* CSelectIdentityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSelectIdentityController.h; sourceTree = "<group>"; };
@@ -848,6 +876,8 @@
 				27D0F0411C7C87E000215FCC /* CCreateCropSubscriptionModel.m */,
 				27D0F0431C7C92AB00215FCC /* CGetFieldModel.h */,
 				27D0F0441C7C92AB00215FCC /* CGetFieldModel.m */,
+				27D0F05C1C7D3F5500215FCC /* CGetCropDetailsModel.h */,
+				27D0F05D1C7D3F5500215FCC /* CGetCropDetailsModel.m */,
 			);
 			name = Field;
 			sourceTree = "<group>";
@@ -868,6 +898,12 @@
 			children = (
 				27D0F0531C7CA0E000215FCC /* CCropDetailHeaderCell.h */,
 				27D0F0541C7CA0E000215FCC /* CCropDetailHeaderCell.m */,
+				27D0F0621C7D5C9700215FCC /* CTaskCell.h */,
+				27D0F0631C7D5C9700215FCC /* CTaskCell.m */,
+				27D0F0651C7D5E7500215FCC /* CTaskCell.xib */,
+				27D0F0671C7D74A300215FCC /* CPetDisCell.h */,
+				27D0F0681C7D74A300215FCC /* CPetDisCell.m */,
+				27D0F0691C7D74A300215FCC /* CPetDisCell.xib */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -923,6 +959,12 @@
 				27D0F04D1C7C9A7000215FCC /* CPetDisSpec.m */,
 				27D0F04F1C7C9D2B00215FCC /* CPetSolution.h */,
 				27D0F0501C7C9D2B00215FCC /* CPetSolution.m */,
+				27D0F0561C7CA55200215FCC /* CTaskSpec.h */,
+				27D0F0571C7CA55200215FCC /* CTaskSpec.m */,
+				27D0F0591C7CA60C00215FCC /* CTaskStep.h */,
+				27D0F05A1C7CA60C00215FCC /* CTaskStep.m */,
+				27D0F05F1C7D402A00215FCC /* CCropDetail.h */,
+				27D0F0601C7D402A00215FCC /* CCropDetail.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1113,6 +1155,8 @@
 				9FC0E9CF1BD0D1650096FD3D /* CTableViewController_StoryBoard.m */,
 				9FC0E9D21BD0D1E10096FD3D /* CBaseViewController.h */,
 				9FC0E9D31BD0D1E10096FD3D /* CBaseViewController.m */,
+				27D0F06C1C7D79AF00215FCC /* CDataRequestViewController.h */,
+				27D0F06D1C7D79AF00215FCC /* CDataRequestViewController.m */,
 			);
 			path = BaseController;
 			sourceTree = "<group>";
@@ -1514,6 +1558,8 @@
 				278704C41C7B06DB007E45BF /* CCropStageSelectionViewController.m */,
 				278704C61C7B0D92007E45BF /* CCropDetailViewController.h */,
 				278704C71C7B0D92007E45BF /* CCropDetailViewController.m */,
+				27D0F06F1C7D7D3D00215FCC /* CTaskListViewController.h */,
+				27D0F0701C7D7D3D00215FCC /* CTaskListViewController.m */,
 			);
 			path = Field;
 			sourceTree = "<group>";
@@ -1647,6 +1693,7 @@
 				9FCA08ED1BEA2BFD003BB40C /* CWeatherSectionView.xib in Resources */,
 				9F875FCC1BDCE8F400FA2549 /* SMS_SDKLocalizable.strings in Resources */,
 				9FE6E9581BD69327003A9D79 /* HelpCenter.html in Resources */,
+				27D0F06B1C7D74A300215FCC /* CPetDisCell.xib in Resources */,
 				9FE6E94C1BD69327003A9D79 /* faq.css in Resources */,
 				275C4B1D1C70B5E0002475B6 /* CPictureTableViewCell.xib in Resources */,
 				9FE6E95A1BD69327003A9D79 /* image002.png in Resources */,
@@ -1656,6 +1703,7 @@
 				27A8C9EC1C71AD1900441C27 /* CStoreTableViewCell.xib in Resources */,
 				9F010CB11BE902AC00358FD6 /* CWeatherHourItemView.xib in Resources */,
 				9FE6E9501BD69327003A9D79 /* levelthree.png in Resources */,
+				27D0F0661C7D5E7500215FCC /* CTaskCell.xib in Resources */,
 				9F4336601BE0F3E1003C3B5D /* searchSectionView.xib in Resources */,
 				275C4B181C709CA5002475B6 /* CCampaignDetailHeaderTableViewCell.xib in Resources */,
 				9FE6E94A1BD69327003A9D79 /* bootstrap.css in Resources */,
@@ -1737,6 +1785,7 @@
 				9FD213351BD128A60063147D /* UIImage+Operation.m in Sources */,
 				9F03FAD41BE7886700A3B1C7 /* CSearchLocationByLatAndLonObject.m in Sources */,
 				9FC0E9CD1BD0D1220096FD3D /* CTableViewCell_StoryBoard.m in Sources */,
+				27D0F05E1C7D3F5500215FCC /* CGetCropDetailsModel.m in Sources */,
 				9F61216A1BFA161700E0B4D7 /* CBannerObject.m in Sources */,
 				9F4113E81BDA91D800F7B34F /* CPetDisSpecBrowseObject.m in Sources */,
 				9F09FA9B1C04BB4A00D973A5 /* CUploadAvaterModel.m in Sources */,
@@ -1765,6 +1814,8 @@
 				9F820C381BDA83DA004223BB /* CZaiHaiViewController.m in Sources */,
 				9FEED8421BECEE570095A91B /* CAddWeatherFirstViewController.m in Sources */,
 				27D0F03F1C7C83BC00215FCC /* CSubscriableCropsModel.m in Sources */,
+				27D0F0641C7D5C9700215FCC /* CTaskCell.m in Sources */,
+				27D0F0581C7CA55200215FCC /* CTaskSpec.m in Sources */,
 				9FD2132D1BD128A60063147D /* NSString+Path.m in Sources */,
 				9F66BF891BE4D9350047CE82 /* CForecastDayInfoObject.m in Sources */,
 				9FD2131F1BD128A60063147D /* CGGeometry+Extra.m in Sources */,
@@ -1785,6 +1836,7 @@
 				27CC91301C74A98800696995 /* CScannedCouponsModel.m in Sources */,
 				B0748DFA1C57738200513B4E /* UIColor+hexColor.m in Sources */,
 				9F66BF831BE4D74E0047CE82 /* CForecastHourInfoModel.m in Sources */,
+				27D0F06E1C7D79AF00215FCC /* CDataRequestViewController.m in Sources */,
 				9F03FADD1BE7C04000A3B1C7 /* CWeatherHourCell.m in Sources */,
 				27A8C9F21C71CD4A00441C27 /* CRequestCouponModel.m in Sources */,
 				B0748DF91C57738200513B4E /* UIBarButtonItem+Badge.m in Sources */,
@@ -1822,6 +1874,7 @@
 				B0748DF71C57738200513B4E /* NSString+Extension.m in Sources */,
 				27A8C9EF1C71BDF000441C27 /* CClaimCouponTableViewCell.m in Sources */,
 				278704C51C7B06DB007E45BF /* CCropStageSelectionViewController.m in Sources */,
+				27D0F0711C7D7D3D00215FCC /* CTaskListViewController.m in Sources */,
 				9FD2131D1BD128A60063147D /* CAAnimationGroup+Extra.m in Sources */,
 				9FEACDB41BCFD5E1000722D8 /* AppDelegate.m in Sources */,
 				9FC4252B1BD5359500455A8C /* CMineHeadCell.m in Sources */,
@@ -1830,6 +1883,7 @@
 				9F315D501BF0EFBD0036EB82 /* CImageTitleCell.m in Sources */,
 				9FFF68221C08974600590604 /* CSubscriptionObject.m in Sources */,
 				9FA93D1A1BDEFDD900F7101A /* CSearchEntry.m in Sources */,
+				27D0F0611C7D402A00215FCC /* CCropDetail.m in Sources */,
 				9F8FB7971BEF8950003A7469 /* CPasswordViewController.m in Sources */,
 				27D0F04E1C7C9A7000215FCC /* CPetDisSpec.m in Sources */,
 				9FD213301BD128A60063147D /* UIColor+Extra.m in Sources */,
@@ -1890,6 +1944,7 @@
 				9FCA08F01BEA2C2C003BB40C /* CWeatherSectionView.m in Sources */,
 				9F02DFC51BD93614001C223F /* CBrowseVarietyByCropIdModel.m in Sources */,
 				B0748DF51C57738200513B4E /* NSDate+Extension.m in Sources */,
+				27D0F06A1C7D74A300215FCC /* CPetDisCell.m in Sources */,
 				9F92C2D81BDB36D80034DB3F /* CBrowseCPProductByModelModel.m in Sources */,
 				9FC4252E1BD535F800455A8C /* CMineContentCell.m in Sources */,
 				278704BC1C7AB4C0007E45BF /* CCrop.m in Sources */,
@@ -1930,6 +1985,7 @@
 				9FFF68371C089CF900590604 /* CSubScribeListCell.m in Sources */,
 				9FD2133E1BD128A60063147D /* UIImage+Compress.m in Sources */,
 				9FD213311BD128A60063147D /* UIDevice+Extra.m in Sources */,
+				27D0F05B1C7CA60C00215FCC /* CTaskStep.m in Sources */,
 				9F8FB79A1BEF8AC9003A7469 /* CIsPassSetModel.m in Sources */,
 				9FD2131A1BD128A60063147D /* Defines.m in Sources */,
 				9F66BF741BE4D2010047CE82 /* CAllWeatherSubscriptionModel.m in Sources */,

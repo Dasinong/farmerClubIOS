@@ -13,4 +13,9 @@
 {
     return YES;
 }
+
+- (NSString *)imageForIndex:(NSInteger)index {
+    NSString *imagePath = self.imagesPath[index];
+    return [NSString stringWithFormat:@"%@/pic/%@", kServer, imagePath];
+}
 @end
