@@ -10,4 +10,12 @@
 
 @implementation CSubStage
 
+- (NSString *)stageDisplayName {
+    if ([self.stageName isEqualToString:self.subStageName]) {
+        return self.stageName;
+    }
+    else {
+        return [NSString stringWithFormat:@"%@-%@", self.stageName, self.subStageName];
+    }
+}
 @end

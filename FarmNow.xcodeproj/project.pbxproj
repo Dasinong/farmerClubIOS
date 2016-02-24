@@ -66,6 +66,7 @@
 		27D0F0711C7D7D3D00215FCC /* CTaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F0701C7D7D3D00215FCC /* CTaskListViewController.m */; };
 		27D0F0741C7D876400215FCC /* CPetDisListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F0731C7D876400215FCC /* CPetDisListViewController.m */; };
 		27D0F0771C7D96CD00215FCC /* CPetDisSolutionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F0761C7D96CD00215FCC /* CPetDisSolutionViewController.m */; };
+		27D0F07A1C7DA8EB00215FCC /* CChangeFieldStageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F0791C7DA8EB00215FCC /* CChangeFieldStageModel.m */; };
 		9F00C53E1C0DEE3400198FD1 /* CSelectIdentityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F00C53D1C0DEE3400198FD1 /* CSelectIdentityController.m */; };
 		9F010CAC1BE8E89C00358FD6 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F010CAB1BE8E89C00358FD6 /* NSDate+Utilities.m */; };
 		9F010CAF1BE9028400358FD6 /* CWeatherHourItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F010CAE1BE9028400358FD6 /* CWeatherHourItemView.m */; };
@@ -393,6 +394,8 @@
 		27D0F0731C7D876400215FCC /* CPetDisListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPetDisListViewController.m; sourceTree = "<group>"; };
 		27D0F0751C7D96CD00215FCC /* CPetDisSolutionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPetDisSolutionViewController.h; sourceTree = "<group>"; };
 		27D0F0761C7D96CD00215FCC /* CPetDisSolutionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPetDisSolutionViewController.m; sourceTree = "<group>"; };
+		27D0F0781C7DA8EB00215FCC /* CChangeFieldStageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CChangeFieldStageModel.h; sourceTree = "<group>"; };
+		27D0F0791C7DA8EB00215FCC /* CChangeFieldStageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CChangeFieldStageModel.m; sourceTree = "<group>"; };
 		58D6C33779B2D6D120434B6D /* Pods-FarmNow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarmNow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FarmNow/Pods-FarmNow.debug.xcconfig"; sourceTree = "<group>"; };
 		892B13CBF05E214972F8EFDB /* Pods-FarmNow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarmNow.release.xcconfig"; path = "Pods/Target Support Files/Pods-FarmNow/Pods-FarmNow.release.xcconfig"; sourceTree = "<group>"; };
 		9F00C53C1C0DEE3400198FD1 /* CSelectIdentityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSelectIdentityController.h; sourceTree = "<group>"; };
@@ -884,6 +887,8 @@
 				27D0F0441C7C92AB00215FCC /* CGetFieldModel.m */,
 				27D0F05C1C7D3F5500215FCC /* CGetCropDetailsModel.h */,
 				27D0F05D1C7D3F5500215FCC /* CGetCropDetailsModel.m */,
+				27D0F0781C7DA8EB00215FCC /* CChangeFieldStageModel.h */,
+				27D0F0791C7DA8EB00215FCC /* CChangeFieldStageModel.m */,
 			);
 			name = Field;
 			sourceTree = "<group>";
@@ -1861,6 +1866,7 @@
 				9FD213201BD128A60063147D /* CGRect+Extra.m in Sources */,
 				9FFF68251C08991100590604 /* CLoadSubScribeListModel.m in Sources */,
 				279A5E921C740CC500C3D697 /* CCouponListViewController.m in Sources */,
+				27D0F07A1C7DA8EB00215FCC /* CChangeFieldStageModel.m in Sources */,
 				9FFBF4BC1C01C2AC007C6D24 /* CSalesViewController.m in Sources */,
 				278704B11C7AA31D007E45BF /* CSplashViewController.m in Sources */,
 				9FB948441BDA90B300F1F3A6 /* CBrowsePetDisSpecByCropIdAndTypeModel.m in Sources */,

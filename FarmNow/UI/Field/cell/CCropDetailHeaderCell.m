@@ -33,8 +33,17 @@
         [self.cropImageView sd_setImageWithURL:[NSURL URLWithString:field.crop.iconUrl]];
         self.cropNameLabel.text = field.crop.cropName;
         self.areaLabel.text = [NSString stringWithFormat:@"%.1f亩", (double)field.area];
-        CSubStage *subStage = field.stagelist[field.currentStageId];
-        [self.stageButton setTitle:[NSString stringWithFormat:@"%@ >",subStage.subStageName] forState:UIControlStateNormal];
+        
+        CSubStage *subStage;
+        for (CSubStage *stage in field.stagelist) {
+            if (stage.subStageId == field.currentStageID) {
+                subStage = stage;
+                break;
+            }
+        }
+        
+        
+        [self.stageButton setTitle:[NSString stringWithFormat:@"%@ >",subStage.stageDisplayName] forState:UIControlStateNormal];
     }
     else if ([model isKindOfClass:[CCropDetail class]]){
         CCropDetail *cropDetail = (CCropDetail *)model;
@@ -42,8 +51,15 @@
         self.cropNameLabel.text = cropDetail.crop.cropName;
         self.areaLabel.text = @"";
         
-        CSubStage *subStage = cropDetail.substagews[cropDetail.subStageId];
-        [self.stageButton setTitle:[NSString stringWithFormat:@"%@ >",subStage.subStageName] forState:UIControlStateNormal];
+        CSubStage *subStage;
+        for (CSubStage *stage in cropDetail.substagews) {
+            if (stage.subStageId == cropDetail.currentStageID) {
+                subStage = stage;
+                break;
+            }
+        }
+        
+        [self.stageButton setTitle:[NSString stringWithFormat:@"%@ >",subStage.stageDisplayName] forState:UIControlStateNormal];
         
     }
     else {

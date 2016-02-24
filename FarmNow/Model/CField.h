@@ -19,7 +19,7 @@
 @property (assign, nonatomic) NSInteger cropId;
 @property (assign, nonatomic) NSInteger fieldId;
 @property (assign, nonatomic) NSInteger area;
-@property (assign, nonatomic) NSInteger currentStageId;
+@property (assign, nonatomic) NSInteger currentStageID;
 @property (nonatomic, strong) CCrop *crop;
 @property (nonatomic, strong) NSString *fieldName;
 @property (assign, nonatomic) NSInteger locationId;

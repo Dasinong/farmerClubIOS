@@ -16,4 +16,6 @@
 @property (nonatomic, strong) NSString *stageName;
 @property (nonatomic, assign) NSInteger subStageId;
 @property (nonatomic, strong) NSString *subStageName;
+
+- (NSString *)stageDisplayName;
 @end

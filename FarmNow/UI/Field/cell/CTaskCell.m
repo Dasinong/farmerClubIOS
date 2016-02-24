@@ -21,10 +21,13 @@
 @implementation CTaskCell
 - (void)setupWithModel:(id)model {
     CTaskSpec *taskSpec = (CTaskSpec *)model;
-    CTaskStep *taskStep = taskSpec.steps[0];
     
-    [self.taskImageView sd_setImageWithURL:[NSURL URLWithString:taskStep.thumbnailPicture]];
-    self.taskNameLabel.text = taskStep.stepName;
-    self.taskDescriptionLabel.text = taskStep.desc;
+    if (taskSpec.steps.count > 0) {
+        CTaskStep *taskStep = taskSpec.steps[0];
+        [self.taskImageView sd_setImageWithURL:[NSURL URLWithString:taskStep.thumbnailPicture] placeholderImage:[UIImage image_s:@"task_default"]];
+        self.taskDescriptionLabel.text = taskStep.desc;
+    }
+    
+    self.taskNameLabel.text = taskSpec.taskSpecName;
 }
 @end

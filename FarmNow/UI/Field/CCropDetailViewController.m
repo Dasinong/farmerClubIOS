@@ -16,12 +16,18 @@
 #import "CPetDisCell.h"
 #import "CTaskListViewController.h"
 #import "CPetDisListViewController.h"
+#import <ActionSheetPicker.h>
+#import "CChangeFieldStageModel.h"
 
-@interface CCropDetailViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface CCropDetailViewController () <UITableViewDataSource, UITableViewDelegate> {
+    NSInteger currentFieldIndex;
+    NSInteger currentStageID;
+    NSInteger currentStageSelectionIndex;
+}
 
 @property (nonatomic, strong) CField *field;
 @property (nonatomic, strong) CCropDetail *cropDetail;
-
+@property (nonatomic, strong) UIButton *navigatoinTitleButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
@@ -37,18 +43,60 @@
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self requestData];
     }];
+    
+    if (self.subscription.fields.allKeys.count > 0) {
+        self.navigatoinTitleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [self.navigatoinTitleButton addTarget:self
+                   action:@selector(changeField:)
+         forControlEvents:UIControlEventTouchUpInside];
+        
+        NSString *firstField = [self.subscription.fields allValues][0];
+        
+        [self.navigatoinTitleButton setTitle:firstField forState:UIControlStateNormal];
+        self.navigatoinTitleButton.frame = CGRectMake(0, 0, SCREEN_WIDTH - 90, 44.0);
+        
+        self.navigationItem.titleView = self.navigatoinTitleButton;
+    }
+    else {
+        self.title = self.subscription.crop.cropName;
+    }
+}
+
+- (void)changeField:(id)sender {
+    [ActionSheetStringPicker showPickerWithTitle:@"请选择田" rows:self.subscription.fields.allValues initialSelection:currentFieldIndex doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+        currentFieldIndex = selectedIndex;
+        NSString *field = [self.subscription.fields allValues][currentFieldIndex];
+        [self.navigatoinTitleButton setTitle:field forState:UIControlStateNormal];
+        [self requestData];
+    } cancelBlock:^(ActionSheetStringPicker *picker) {
+        
+    } origin:sender];
 }
 
 - (void)requestData {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     if (self.subscription.fields.count > 0) {
         CGetFieldParam *param = [CGetFieldParam new];
-        NSString *fieldId = [self.subscription.fields allKeys][0];
+        NSString *fieldId = [self.subscription.fields allKeys][currentFieldIndex];
         param.id = [fieldId integerValue];
         [CGetFieldModel requestWithParams:param completion:^(CGetFieldModel *model, JSONModelError *err) {
+            
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             
             [self.tableView.mj_header endRefreshing];
             if (model) {
                 self.field = model.field;
+                
+                for (int i=0; i<self.field.stagelist.count; i++) {
+                    CSubStage *stage = self.field.stagelist[i];
+                    
+                    if (stage.subStageId == self.field.currentStageID) {
+                        currentStageSelectionIndex = i;
+                        break;
+                    }
+                }
+                
                 [self.tableView reloadData];
             }
         }];
@@ -57,17 +105,46 @@
         // 暂时没种
         CGetCropDetailsParam *param = [CGetCropDetailsParam new];
         param.id = self.subscription.crop.cropId;
+        if (currentStageID > 0) {
+            param.subStageId = [NSString stringWithFormat:@"%d", (int)currentStageID];
+        }
         
         // 没有stageId
         [CGetCropDetailsModel requestWithParams:param completion:^(CGetCropDetailsModel *model, JSONModelError *err) {
             
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            
             [self.tableView.mj_header endRefreshing];
             if (model) {
                 self.cropDetail = model.cropDetail;
+                
+                if (currentStageID == 0 && self.cropDetail.substagews.count > 0) {
+                    CSubStage *stage = self.cropDetail.substagews[0];
+                    currentStageID = stage.subStageId;
+                }
+                
+                self.cropDetail.currentStageID = currentStageID;
+                
                 [self.tableView reloadData];
             }
         }];
     }
+}
+
+- (void)changeFieldStage {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    CChangeFieldStageParam *param = [CChangeFieldStageParam new];
+    param.fieldId = self.field.fieldId;
+    param.subStageId = currentStageID;
+    
+    [CChangeFieldStageModel requestWithParams:param completion:^(CChangeFieldStageModel *model, JSONModelError *err) {
+        if (!err) {
+            [self requestData];
+        }
+        else {
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        }
+    }];
 }
 
 - (IBAction)goToWiki:(id)sender {
@@ -75,7 +152,40 @@
 }
 
 - (IBAction)changeStage:(id)sender {
-    NSLog(@"KDK");
+    __block NSArray *subStageList = nil;
+    
+    if (self.field) {
+        subStageList = self.field.stagelist;
+        currentStageID = self.field.currentStageID;
+    }
+    else if (self.cropDetail) {
+        subStageList = self.cropDetail.substagews;
+        currentStageID = self.cropDetail.currentStageID;
+    }
+    
+    if (subStageList) {
+        NSMutableArray *stageNameList = [NSMutableArray array];
+        
+        for (CSubStage *stage in subStageList) {
+            [stageNameList addObject:[stage stageDisplayName]];
+        }
+        
+        [ActionSheetStringPicker showPickerWithTitle:@"请选择当前阶段" rows:stageNameList initialSelection:currentStageSelectionIndex doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+            currentStageSelectionIndex = selectedIndex;
+            CSubStage *stage = subStageList[selectedIndex];
+            currentStageID = stage.subStageId;
+            
+            if (self.field) {
+                [self changeFieldStage];
+            }
+            else {
+                [self requestData];
+            }
+            
+        } cancelBlock:^(ActionSheetStringPicker *picker) {
+            
+        } origin:sender];
+    }
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate

@@ -10,13 +10,16 @@
 
 @implementation CTaskStep
 - (NSString *)picture {
-    return [NSString stringWithFormat:@"%@/nongshi/%@.jpg", kServer, _picture];
+    
+    NSArray *pics = [_picture componentsSeparatedByString:@","];
+    return [NSString stringWithFormat:@"%@/nongshi/%@.jpg", kServer, pics[0]];
 }
 
 - (NSString *)thumbnailPicture {
     
     if (_thumbnailPicture.length > 0) {
-        return [NSString stringWithFormat:@"%@/nongshi/%@.jpg", kServer, _thumbnailPicture];
+        NSArray *pics = [_thumbnailPicture componentsSeparatedByString:@","];
+        return [NSString stringWithFormat:@"%@/nongshi/%@.jpg", kServer,pics[0]];
     }
     else {
         return self.picture;

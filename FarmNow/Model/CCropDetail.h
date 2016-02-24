@@ -21,5 +21,5 @@
 @property (nonatomic, strong) NSArray<CPetDisSpec> *petdisspecws;
 @property (nonatomic, strong) NSArray<CTaskSpec> *taskspecws;
 
-@property (nonatomic, assign) NSInteger subStageId;
+@property (nonatomic, assign) NSInteger currentStageID;
 @end
