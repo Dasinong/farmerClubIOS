@@ -11,8 +11,6 @@
 @implementation CWeatherSubscriptionItem
 +(BOOL)propertyIsOptional:(NSString*)propertyName
 {
-    if ([propertyName isEqualToString: @"createdAt"]) return YES;
-    
-    return NO;
+    return YES;
 }
 @end

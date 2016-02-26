@@ -13,6 +13,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "CAddWeatherFirstViewController.h"
 #import "CCropDetailViewController.h"
+#import "CCropStageSelectionViewController.h"
 
 @interface CFieldHomeViewController () <UITableViewDataSource, UITableViewDelegate, CAddCropViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -40,6 +41,11 @@
     [super viewWillAppear:animated];
     
     if (self.dataArray.count == 0) {
+        [self requestData];
+    }
+    
+    if ([CCropStageSelectionViewController shared_].cropId > 0) {
+        [CCropStageSelectionViewController shared_].cropId = 0;
         [self requestData];
     }
 }
@@ -111,6 +117,9 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     CCropSubscription *subscription = self.dataArray[indexPath.row];
+    [CCropStageSelectionViewController shared_].cropId = subscription.crop.cropId;
+    [CCropStageSelectionViewController shared_].cropName = subscription.crop.cropName;
+    
     if (subscription.fields.count == 0) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"正在种植" message:@"加田后能收到更多针对这块田的种植指导哦！" preferredStyle:UIAlertControllerStyleAlert];
         

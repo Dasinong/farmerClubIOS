@@ -963,14 +963,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smirklook" translatesAutoresizingMaskIntoConstraints="NO" id="OMT-dU-X36">
-                                        <rect key="frame" x="20" y="150" width="120" height="94"/>
+                                        <rect key="frame" x="20" y="120" width="120" height="94"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="94" id="ElX-Lz-1ma"/>
                                             <constraint firstAttribute="width" constant="120" id="GDV-6z-4tk"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Rb-0X-qlr">
-                                        <rect key="frame" x="140" y="150" width="160" height="94"/>
+                                        <rect key="frame" x="140" y="120" width="160" height="94"/>
                                         <string key="text">啊呀，你附近有414个用户
 也在使用我们服务哦</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -978,27 +978,27 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你的农田有多大？" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBk-rq-82l">
-                                        <rect key="frame" x="20" y="254" width="112" height="17"/>
+                                        <rect key="frame" x="20" y="224" width="112" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="亩" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsq-KZ-fg4">
-                                        <rect key="frame" x="253" y="291" width="17" height="20"/>
+                                        <rect key="frame" x="253" y="261" width="17" height="20"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="农田多大呀？例如100" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vCi-Xe-OuW">
-                                        <rect key="frame" x="20" y="286" width="228" height="30"/>
+                                        <rect key="frame" x="20" y="251" width="228" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="Ih4-1H-haP"/>
+                                            <constraint firstAttribute="height" constant="40" id="Ih4-1H-haP"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJ4-oQ-BcI">
-                                        <rect key="frame" x="20" y="336" width="280" height="42"/>
+                                        <rect key="frame" x="20" y="311" width="280" height="42"/>
                                         <color key="backgroundColor" red="0.17254901959999999" green="0.62352941179999999" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="280" id="IwX-Mc-TyH"/>
@@ -1029,7 +1029,7 @@
                                     <constraint firstAttribute="trailing" secondItem="lJ4-oQ-BcI" secondAttribute="trailing" constant="20" id="XOh-EE-yB1"/>
                                     <constraint firstItem="hBk-rq-82l" firstAttribute="leading" secondItem="OMT-dU-X36" secondAttribute="leading" id="cjL-sW-7mf"/>
                                     <constraint firstItem="vCi-Xe-OuW" firstAttribute="centerY" secondItem="tsq-KZ-fg4" secondAttribute="centerY" id="hoZ-cs-QC8"/>
-                                    <constraint firstItem="OMT-dU-X36" firstAttribute="top" secondItem="42p-KZ-AZ2" secondAttribute="top" constant="150" id="pKH-5u-Djh"/>
+                                    <constraint firstItem="OMT-dU-X36" firstAttribute="top" secondItem="42p-KZ-AZ2" secondAttribute="top" constant="120" id="pKH-5u-Djh"/>
                                     <constraint firstItem="tsq-KZ-fg4" firstAttribute="leading" secondItem="vCi-Xe-OuW" secondAttribute="trailing" constant="5" id="xWl-wx-nCd"/>
                                 </constraints>
                             </scrollView>
@@ -1046,6 +1046,8 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="400"/>
                     <connections>
+                        <outlet property="infoLabel" destination="4Rb-0X-qlr" id="LBb-Xy-Tbo"/>
+                        <outlet property="inputTextField" destination="vCi-Xe-OuW" id="qex-5G-RhI"/>
                         <outlet property="scrollContentWidth" destination="IwX-Mc-TyH" id="Zt8-HA-D7h"/>
                         <outlet property="topConstraint" destination="pKH-5u-Djh" id="Kyf-r1-ilS"/>
                     </connections>
@@ -3262,7 +3264,11 @@ i) 不得为其他任何非法目的而使用服务。
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="作物名" id="N5o-gI-802">
-                        <barButtonItem key="rightBarButtonItem" title="加田" id="wo7-dL-Mxh"/>
+                        <barButtonItem key="rightBarButtonItem" title="加田" id="wo7-dL-Mxh">
+                            <connections>
+                                <action selector="addField:" destination="5ZU-Ob-h3M" id="dai-UH-Mym"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Xun-BO-Avv" id="5Cv-sn-CcM"/>

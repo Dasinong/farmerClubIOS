@@ -18,6 +18,10 @@
 #import "CPetDisListViewController.h"
 #import <ActionSheetPicker.h>
 #import "CChangeFieldStageModel.h"
+#import "CCropStageSelectionViewController.h"
+#import "CAddWeatherFirstViewController.h"
+#import "CWikiViewController.h"
+#import "CSeedViewController.h"
 
 @interface CCropDetailViewController () <UITableViewDataSource, UITableViewDelegate> {
     NSInteger currentFieldIndex;
@@ -137,7 +141,7 @@
     param.fieldId = self.field.fieldId;
     param.subStageId = currentStageID;
     
-    [CChangeFieldStageModel requestWithParams:param completion:^(CChangeFieldStageModel *model, JSONModelError *err) {
+    [CChangeFieldStageModel requestWithParams:POST params:param completion:^(CChangeFieldStageModel *model, JSONModelError *err) {
         if (!err) {
             [self requestData];
         }
@@ -148,7 +152,23 @@
 }
 
 - (IBAction)goToWiki:(id)sender {
-    NSLog(@"goToWiki");
+    CSeedContentItem *item = [[CSeedContentItem alloc] init];
+    item.cropId = self.subscription.crop.cropId;
+    item.cropName = self.subscription.crop.cropName;
+    
+    CWikiViewController* controller = [self.storyboard controllerWithID:@"CWikiViewController"];
+    controller.seedItem = item;
+    controller.type = eChongHai;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (IBAction)addField:(id)sender {
+    [CCropStageSelectionViewController shared_].cropId = self.subscription.crop.cropId;
+    [CCropStageSelectionViewController shared_].cropName = self.subscription.crop.cropName;
+    
+    CAddWeatherFirstViewController* controller = [self.storyboard controllerWithID:@"CAddWeatherFirstViewController"];
+    controller.type = eFarm;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (IBAction)changeStage:(id)sender {

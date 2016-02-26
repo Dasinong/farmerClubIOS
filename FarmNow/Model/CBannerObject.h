@@ -20,9 +20,9 @@ typedef enum NSInteger {
 @interface CBannerObject : CJSONModel
 @property (assign, nonatomic) NSInteger id;
 @property (assign, nonatomic) EBannerType type;
-@property (strong, nonatomic) NSString* picName;
+@property (strong, nonatomic) NSString<Optional>* picName;
 @property (strong, nonatomic) NSString* title;
-@property (strong, nonatomic) NSString* content;
+@property (strong, nonatomic) NSString<Optional>* content;
 @property (strong, nonatomic) NSString* url;
 
 @end

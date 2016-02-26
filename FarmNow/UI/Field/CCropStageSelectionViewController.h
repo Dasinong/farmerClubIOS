@@ -9,5 +9,12 @@
 #import "CBaseViewController.h"
 
 @interface CCropStageSelectionViewController : CBaseViewController
+@property (nonatomic, assign) NSInteger cropId;
+@property (nonatomic, assign) double area;
+@property (nonatomic, assign) NSNumber *locationId;
+@property (nonatomic, strong) NSString *fieldName;
+@property (nonatomic, assign) NSInteger currentStageId;
 
+@property (nonatomic, strong) NSString *cropName;
+@property (nonatomic, strong) NSString *cunName;
 @end
