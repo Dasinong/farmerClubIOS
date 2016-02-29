@@ -34,4 +34,5 @@
 
 @property (strong, nonatomic) NSArray<NSNumber,Optional  > * fields;//加过的农田的ID
 
+- (BOOL)isBASF;
 @end

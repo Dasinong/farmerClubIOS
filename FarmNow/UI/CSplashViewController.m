@@ -7,8 +7,27 @@
 //
 
 #import "CSplashViewController.h"
+#import "CPersonalCache.h"
+
+@interface CSplashViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *versionLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *splashImageView;
+
+@end
 
 @implementation CSplashViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    [self.versionLabel setText:[NSString stringWithFormat:@"当前版本：%@",[infoDictionary objectForKey:@"CFBundleShortVersionString"]]];
+    
+    if ([USER isBASF]) {
+        [self.splashImageView setImage:[UIImage image_s:@"DefaultBASF"]];
+    }
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     

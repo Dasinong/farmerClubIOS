@@ -14,6 +14,8 @@
 #import "CSearchSectionView.h"
 #import "CWebViewController.h"
 #import "CZaiHaiViewController.h"
+#import "CUserObject.h"
+#import "CPersonalCache.h"
 
 #define TYPE_DIC @{@"variety":@"品种",\
 					@"disease":@"病害",\
@@ -73,21 +75,44 @@
 	}
 	else{
 		self.searchBar.placeholder = @"搜索种子、病虫草害、药物信息";
-		contents = @[@{@"icon":@"pinzhong",
-					   @"title":@"品种大全",
-					   @"sub":@"找到最适合您的优良品种"},
-					 @{@"icon":@"nongyao",
-					   @"title":@"农药大全",
-					   @"sub":@"上万种农药和使用方法"},
-					 @{@"icon":@"chonghai",
-					   @"title":@"病虫草害大全",
-					   @"sub":@"植物保护的必备大全"},
-					 @{@"icon":@"zhishi",
-					   @"title":@"农业气象小常识",
-					   @"sub":@"更好利用气象数据指导种植"},
-					 @{@"icon":@"cetu",
-					   @"title":@"测土配方必读",
-					   @"sub":@"了解土地才能科学施肥"},];
+        
+        if ([USER isBASF]) {
+            contents = @[@{@"icon":@"pinzhong",
+                           @"title":@"品种大全",
+                           @"sub":@"找到最适合您的优良品种"},
+                         @{@"icon":@"nongyao",
+                           @"title":@"农药大全",
+                           @"sub":@"上万种农药和使用方法"},
+                         @{@"icon":@"chonghai",
+                           @"title":@"病虫草害大全",
+                           @"sub":@"植物保护的必备大全"},
+                         @{@"icon":@"chonghai",
+                           @"title":@"巴斯夫产品介绍",
+                           @"sub":@"巴斯夫产品介绍"},
+                         @{@"icon":@"zhishi",
+                           @"title":@"农业气象小常识",
+                           @"sub":@"更好利用气象数据指导种植"},
+                         @{@"icon":@"cetu",
+                           @"title":@"测土配方必读",
+                           @"sub":@"了解土地才能科学施肥"},];
+        }
+        else {
+            contents = @[@{@"icon":@"pinzhong",
+                           @"title":@"品种大全",
+                           @"sub":@"找到最适合您的优良品种"},
+                         @{@"icon":@"nongyao",
+                           @"title":@"农药大全",
+                           @"sub":@"上万种农药和使用方法"},
+                         @{@"icon":@"chonghai",
+                           @"title":@"病虫草害大全",
+                           @"sub":@"植物保护的必备大全"},
+                         @{@"icon":@"zhishi",
+                           @"title":@"农业气象小常识",
+                           @"sub":@"更好利用气象数据指导种植"},
+                         @{@"icon":@"cetu",
+                           @"title":@"测土配方必读",
+                           @"sub":@"了解土地才能科学施肥"},];
+        }
 
 	}
 	UITableViewModel* tableModel = [UITableViewModel new];
@@ -137,18 +162,29 @@
 			controller.type = eChongHai;
 			[self.navigationController pushViewController:controller animated:YES];
 		}
-		else if (indexPath.row == 3){
-			CKindViewController* controller = [self.storyboard controllerWithID:@"CKindViewController"];
-			controller.title = @"农业气象小常识";
-			controller.type = eXiaoChangShi;
-			[self.navigationController pushViewController:controller animated:YES];
-		}
-		else if (indexPath.row == 4){
-			CKindViewController* controller = [self.storyboard controllerWithID:@"CKindViewController"];
-			controller.title = @"测土配方必读";
-			controller.type = eSoil;
-			[self.navigationController pushViewController:controller animated:YES];
-		}
+        else {
+            NSInteger row = indexPath.row;
+            if (![USER isBASF]) {
+                row++;
+            }
+            
+            if (row == 3){
+                CCpproductController* controller = [self.storyboard controllerWithID:@"CCpproductController"];
+                [self.navigationController pushViewController:controller animated:YES];
+            }
+            else if (row == 4){
+                CKindViewController* controller = [self.storyboard controllerWithID:@"CKindViewController"];
+                controller.title = @"农业气象小常识";
+                controller.type = eXiaoChangShi;
+                [self.navigationController pushViewController:controller animated:YES];
+            }
+            else if (row == 5){
+                CKindViewController* controller = [self.storyboard controllerWithID:@"CKindViewController"];
+                controller.title = @"测土配方必读";
+                controller.type = eSoil;
+                [self.navigationController pushViewController:controller animated:YES];
+            }
+        }
 	}
 	else{
 		switch (indexPath.row) {

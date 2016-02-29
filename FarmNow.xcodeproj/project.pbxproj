@@ -68,6 +68,7 @@
 		27D0F0771C7D96CD00215FCC /* CPetDisSolutionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F0761C7D96CD00215FCC /* CPetDisSolutionViewController.m */; };
 		27D0F07A1C7DA8EB00215FCC /* CChangeFieldStageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F0791C7DA8EB00215FCC /* CChangeFieldStageModel.m */; };
 		27D0F07D1C7DB42300215FCC /* CGetStagesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F07C1C7DB42300215FCC /* CGetStagesModel.m */; };
+		27D2489D1C814022002D4CAF /* CGetPetSoluModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D2489C1C814022002D4CAF /* CGetPetSoluModel.m */; };
 		27EF629A1C7E9B3600BB5266 /* CCreateFieldModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EF62991C7E9B3600BB5266 /* CCreateFieldModel.m */; };
 		27EF629D1C7FE5DF00BB5266 /* CSearchNearUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EF629C1C7FE5DF00BB5266 /* CSearchNearUserModel.m */; };
 		9F00C53E1C0DEE3400198FD1 /* CSelectIdentityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F00C53D1C0DEE3400198FD1 /* CSelectIdentityController.m */; };
@@ -401,6 +402,8 @@
 		27D0F0791C7DA8EB00215FCC /* CChangeFieldStageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CChangeFieldStageModel.m; sourceTree = "<group>"; };
 		27D0F07B1C7DB42300215FCC /* CGetStagesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGetStagesModel.h; sourceTree = "<group>"; };
 		27D0F07C1C7DB42300215FCC /* CGetStagesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGetStagesModel.m; sourceTree = "<group>"; };
+		27D2489B1C814022002D4CAF /* CGetPetSoluModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGetPetSoluModel.h; sourceTree = "<group>"; };
+		27D2489C1C814022002D4CAF /* CGetPetSoluModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGetPetSoluModel.m; sourceTree = "<group>"; };
 		27EF62981C7E9B3600BB5266 /* CCreateFieldModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCreateFieldModel.h; sourceTree = "<group>"; };
 		27EF62991C7E9B3600BB5266 /* CCreateFieldModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCreateFieldModel.m; sourceTree = "<group>"; };
 		27EF629B1C7FE5DF00BB5266 /* CSearchNearUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSearchNearUserModel.h; sourceTree = "<group>"; };
@@ -904,6 +907,8 @@
 				27EF62991C7E9B3600BB5266 /* CCreateFieldModel.m */,
 				27EF629B1C7FE5DF00BB5266 /* CSearchNearUserModel.h */,
 				27EF629C1C7FE5DF00BB5266 /* CSearchNearUserModel.m */,
+				27D2489B1C814022002D4CAF /* CGetPetSoluModel.h */,
+				27D2489C1C814022002D4CAF /* CGetPetSoluModel.m */,
 			);
 			name = Field;
 			sourceTree = "<group>";
@@ -2007,6 +2012,7 @@
 				278704B91C7AB341007E45BF /* CCropSubscription.m in Sources */,
 				275C4AFD1C706432002475B6 /* CCouponDetailViewController.m in Sources */,
 				9FFBF4B91C01C1F1007C6D24 /* CStoresViewController.m in Sources */,
+				27D2489D1C814022002D4CAF /* CGetPetSoluModel.m in Sources */,
 				275C4B101C7075FE002475B6 /* CCouponCampaign.m in Sources */,
 				9FD213341BD128A60063147D /* UIImage+Extra.m in Sources */,
 				27D0F0551C7CA0E000215FCC /* CCropDetailHeaderCell.m in Sources */,

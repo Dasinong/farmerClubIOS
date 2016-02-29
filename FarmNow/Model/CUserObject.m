@@ -9,5 +9,7 @@
 #import "CUserObject.h"
 
 @implementation CUserObject
-
+- (BOOL)isBASF {
+    return [self.institutionId integerValue] == 3;
+}
 @end
