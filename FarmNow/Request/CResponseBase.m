@@ -9,6 +9,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import <objc/runtime.h>
 #import "CPersonalCache.h"
+#import "MBProgressHUD+Express.h"
 
 const NSString*    kResponseSuccess = @"200";
 
@@ -259,6 +260,10 @@ const NSString*    kResponseSuccess = @"200";
     [manager GET:URL parameters:nil success: ^(AFHTTPRequestOperation *operation, id responseObject) {
         [self success:operation object:responseObject completion:completeBlock];
     } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (error) {
+            // 网络系统的error
+            [MBProgressHUD alert:[error localizedDescription]];
+        }
         [self failed:operation error:error completion:completeBlock];
     }];
 

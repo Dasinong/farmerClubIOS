@@ -12,6 +12,9 @@
 #import "CWebViewController.h"
 #import "CBrowseCPProductByModelModel.h"
 #import "CGetCpprductsByIngredientModel.h"
+#import "CBrowseCustomizedCPProductModel.h"
+#import "CIngredientDetailObject.h"
+#import "CCpproductDetailController.h"
 
 @interface CKindViewController ()
 @property (nonatomic, strong) NSArray *sections;
@@ -23,79 +26,104 @@
     // Do any additional setup after loading the view.
     self.sections = @[@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z", @"#"];
     
-	if (self.type == ePinZhong) {
+    if (self.type == ePinZhong) {
         self.title                              = self.seedItem.cropName;
-
+        
         CBrowseVarietyByCropIdParams* params    = [CBrowseVarietyByCropIdParams new];
         params.cropId                           = self.seedItem.cropId ;
-		[MBProgressHUD showHUDAddedTo:self.view animated:YES];
-		[CBrowseVarietyByCropIdModel requestWithParams:params completion:^(CBrowseVarietyByCropIdModel* model, JSONModelError *err) {
-			[MBProgressHUD hideHUDForView:self.view animated:YES];
-
-			if (err == nil && model ) {
-        UITableViewModel* talbeModel            = [UITableViewModel new];
-				for (CVarietyBrowseObjectModel* object in [self sortedArray:model.data]) {
-					[talbeModel addRow:TABLEVIEW_ROW(@"titlecell", object) forSection:[self sectionForString:object.varietyNamePY]];
-				}
-				[self updateModel:talbeModel];
-			}
-		}];
-	}
-	else if (self.type == eIngredient){
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [CBrowseVarietyByCropIdModel requestWithParams:params completion:^(CBrowseVarietyByCropIdModel* model, JSONModelError *err) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            if (err == nil && model ) {
+                UITableViewModel* talbeModel            = [UITableViewModel new];
+                for (CVarietyBrowseObjectModel* object in [self sortedArray:model.data]) {
+                    [talbeModel addRow:TABLEVIEW_ROW(@"titlecell", object) forSection:[self sectionForString:object.varietyNamePY]];
+                }
+                [self updateModel:talbeModel];
+            }
+        }];
+    }
+    else if (self.type == eIngredient){
         CBrowseCPProductByModelParams* params   = [CBrowseCPProductByModelParams new];
         params.model                            = self.title;
-		[MBProgressHUD showHUDAddedTo:self.view animated:YES];
-
-		[CBrowseCPProductByModelModel requestWithParams:params completion:^(CBrowseCPProductByModelModel* model, JSONModelError *err) {
-			[MBProgressHUD hideHUDForView:self.view animated:YES];
-
-			if (err == nil && model ) {
-        UITableViewModel* talbeModel            = [UITableViewModel new];
-				for (CIngredientBrowseObject* object in [self sortedArray:model.data]) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        [CBrowseCPProductByModelModel requestWithParams:params completion:^(CBrowseCPProductByModelModel* model, JSONModelError *err) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            if (err == nil && model ) {
+                UITableViewModel* talbeModel            = [UITableViewModel new];
+                for (CIngredientBrowseObject* object in [self sortedArray:model.data]) {
                     [talbeModel addRow:TABLEVIEW_ROW(@"titlecell", object) forSection:[self sectionForString:object.activeIngredientPY]];
-				}
-				[self updateModel:talbeModel];
-			}
-		}];
-	}
-	else if (self.type == eCpproduct)
-	{
+                }
+                [self updateModel:talbeModel];
+            }
+        }];
+    }
+    else if (self.type == eCpproduct)
+    {
         CGetCpprductsByIngredientParams* params = [CGetCpprductsByIngredientParams new];
         params.ingredient                       = self.title;
-		[MBProgressHUD showHUDAddedTo:self.view animated:YES];
-
-		[CGetCpprductsByIngredientModel requestWithParams:params completion:^(CGetCpprductsByIngredientModel* model, JSONModelError *err) {
-			[MBProgressHUD hideHUDForView:self.view animated:YES];
-
-			if (err == nil && model ) {
-        UITableViewModel* talbeModel            = [UITableViewModel new];
-				for (CCPProductObject* object in model.data) {
-					[talbeModel addRow:TABLEVIEW_ROW(@"titlecell", object) forSection:0];
-				}
-				[self updateModel:talbeModel];
-			}
-		}];
-	}
-	else if (self.type == eSoil){
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        [CGetCpprductsByIngredientModel requestWithParams:params completion:^(CGetCpprductsByIngredientModel* model, JSONModelError *err) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            if (err == nil && model ) {
+                UITableViewModel* talbeModel            = [UITableViewModel new];
+                for (CCPProductObject* object in model.data) {
+                    [talbeModel addRow:TABLEVIEW_ROW(@"titlecell", object) forSection:0];
+                }
+                [self updateModel:talbeModel];
+            }
+        }];
+    }
+    else if (self.type == eSoil){
         NSArray* items                          = @[@"为什么要测土",
-						   @"采样须知",
-						   @"测土报告解读",
-						   @"哪里可以测土?"];
+                                                    @"采样须知",
+                                                    @"测土报告解读",
+                                                    @"哪里可以测土?"];
         UITableViewModel* talbeModel            = [UITableViewModel new];
-		for (NSString* title in items) {
-			[talbeModel addRow:TABLEVIEW_ROW(@"titlecell", title) forSection:0];
-		}
-		[self updateModel:talbeModel];
-	}
-	else if (self.type == eXiaoChangShi){
-
-		UITableViewModel* talbeModel            = [UITableViewModel new];
-		for (NSString* title in XIAOCHANGSHI_DICT.allKeys) {
-			[talbeModel addRow:TABLEVIEW_ROW(@"titlecell", title) forSection:0];
-		}
-		[self updateModel:talbeModel];
-	}
-
+        for (NSString* title in items) {
+            [talbeModel addRow:TABLEVIEW_ROW(@"titlecell", title) forSection:0];
+        }
+        [self updateModel:talbeModel];
+    }
+    else if (self.type == eXiaoChangShi){
+        
+        UITableViewModel* talbeModel            = [UITableViewModel new];
+        for (NSString* title in XIAOCHANGSHI_DICT.allKeys) {
+            [talbeModel addRow:TABLEVIEW_ROW(@"titlecell", title) forSection:0];
+        }
+        [self updateModel:talbeModel];
+    }
+    else if (self.type == eBASF){
+        
+        CBrowseCustomizedCPProductParams* params = [CBrowseCustomizedCPProductParams new];
+        params.manufacturer = @"巴斯夫";
+        
+        if ([self.title isEqualToString:@"公共卫生"]) {
+            params.model = @"专业解决方案 有害生物控制";
+        }
+        else {
+            params.model = self.title;
+        }
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        [CBrowseCustomizedCPProductModel requestWithParams:params completion:^(CBrowseCustomizedCPProductModel* model, JSONModelError *err) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            if (err == nil && model ) {
+                UITableViewModel* talbeModel            = [UITableViewModel new];
+                for (CIngredientDetailObject* object in model.data) {
+                    [talbeModel addRow:TABLEVIEW_ROW(@"titlecell", object) forSection:0];
+                }
+                [self updateModel:talbeModel];
+            }
+        }];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -104,86 +132,92 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (void)didSelect:(NSIndexPath *)indexPath identifier:(NSString*)identifier data:(id)data
 {
-	if (self.type == ePinZhong) {
+    if (self.type == ePinZhong) {
         CVarietyBrowseObjectModel* object       = (CVarietyBrowseObjectModel*)data;
         CWebViewController* webController       = [self.storyboard controllerWithID:@"CWebViewController"];
         webController.address                       = [NSString stringWithFormat:@"%@/ploughHelper/baike?id=%ld&type=%@", kServer, (long)object.varietyId,@"variety"];
         webController.title                     = object.varietyName;
-		[self.navigationController pushViewController:webController animated:YES];
-	}
-	else if (self.type == eIngredient)
-	{
+        [self.navigationController pushViewController:webController animated:YES];
+    }
+    else if (self.type == eIngredient)
+    {
         CIngredientBrowseObject* object         = (CIngredientBrowseObject*)data;
         CKindViewController* controller         = [self.storyboard controllerWithID:@"CKindViewController"];
         controller.title                        = object.activeIngredient;
         controller.type                         = eCpproduct;
-		[self.navigationController pushViewController:controller animated:YES];
-	}
-	else if (self.type == eCpproduct){
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    else if (self.type == eCpproduct){
         CCPProductObject* object                = (CCPProductObject*)data;
         CWebViewController* webController       = [self.storyboard controllerWithID:@"CWebViewController"];
         webController.address                       = [NSString stringWithFormat:@"%@baike?id=%ld&type=%@",kServerAddress, (long)object.id,@"pesticide"];
         webController.title                     = object.name;
-		[self.navigationController pushViewController:webController animated:YES];
-	}
-	else if (self.type == eSoil){
-		
-		switch (indexPath.row) {
-			case 0:
-			{
-				CWebViewController* webController  = [self.storyboard controllerWithID:@"CWebViewController"];
-				webController.title                     = data;
-				webController.address = [NSString stringWithFormat:@"%@html/SamplingImportance.html", kAPIServer];
-				[self.navigationController pushViewController:webController animated:YES];
-			}
-    break;
-			case 1:
-			{
-				CWebViewController* webController  = [self.storyboard controllerWithID:@"CWebViewController"];
-				webController.title                     = data;
-				webController.address = [NSString stringWithFormat:@"%@html/SamplingNotice.html", kAPIServer];
-				[self.navigationController pushViewController:webController animated:YES];
-			}
-    break;
-			case 2:
-			{
-				CWebViewController* webController  = [self.storyboard controllerWithID:@"CWebViewController"];
-				webController.title                     = data;
-				webController.address = [NSString stringWithFormat:@"%@html/soiltest-sample.html", kAPIServer];
-				[self.navigationController pushViewController:webController animated:YES];
-			}
-    break;
-			case 3:
-			{
-				SCLAlertView *alert = [[SCLAlertView alloc] init];
-				[alert showNotice:self title:@"测土服务即将上线" subTitle:@"我们的全国免费测土点,会在近期开放,敬请期待" closeButtonTitle:@"确定" duration:0];
-			}
-				break;
-			default:
-    break;
-		}
-
-	}
-	else if (self.type == eXiaoChangShi)
-	{
-		NSString* url = XIAOCHANGSHI_DICT[data];
-		CWebViewController* webController       = [self.storyboard controllerWithID:@"CWebViewController"];
-		webController.address                       = url;
-		webController.title                     = data;
-		[self.navigationController pushViewController:webController animated:YES];
-	}
-
+        [self.navigationController pushViewController:webController animated:YES];
+    }
+    else if (self.type == eSoil){
+        
+        switch (indexPath.row) {
+            case 0:
+            {
+                CWebViewController* webController  = [self.storyboard controllerWithID:@"CWebViewController"];
+                webController.title                     = data;
+                webController.address = [NSString stringWithFormat:@"%@html/SamplingImportance.html", kAPIServer];
+                [self.navigationController pushViewController:webController animated:YES];
+            }
+                break;
+            case 1:
+            {
+                CWebViewController* webController  = [self.storyboard controllerWithID:@"CWebViewController"];
+                webController.title                     = data;
+                webController.address = [NSString stringWithFormat:@"%@html/SamplingNotice.html", kAPIServer];
+                [self.navigationController pushViewController:webController animated:YES];
+            }
+                break;
+            case 2:
+            {
+                CWebViewController* webController  = [self.storyboard controllerWithID:@"CWebViewController"];
+                webController.title                     = data;
+                webController.address = [NSString stringWithFormat:@"%@html/soiltest-sample.html", kAPIServer];
+                [self.navigationController pushViewController:webController animated:YES];
+            }
+                break;
+            case 3:
+            {
+                SCLAlertView *alert = [[SCLAlertView alloc] init];
+                [alert showNotice:self title:@"测土服务即将上线" subTitle:@"我们的全国免费测土点,会在近期开放,敬请期待" closeButtonTitle:@"确定" duration:0];
+            }
+                break;
+            default:
+                break;
+        }
+        
+    }
+    else if (self.type == eXiaoChangShi)
+    {
+        NSString* url = XIAOCHANGSHI_DICT[data];
+        CWebViewController* webController       = [self.storyboard controllerWithID:@"CWebViewController"];
+        webController.address                       = url;
+        webController.title                     = data;
+        [self.navigationController pushViewController:webController animated:YES];
+    }
+    else if (self.type == eBASF)
+    {
+        CCpproductDetailController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CCpproductDetailController"];
+        controller.detailObject = data;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

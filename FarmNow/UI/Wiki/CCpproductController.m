@@ -24,16 +24,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-	self.items = @[@{@"title":@"杀菌剂",
-					 @"sub":@"治疗细菌、真菌等菌类疾病"},
-				   @{@"title":@"杀虫剂",
-					 @"sub":@"防治害虫的药物"},
-				   @{@"title":@"除草剂",
-					 @"sub":@"消除或抑制杂草的药物"},
-				   @{@"title":@"植物生长调节剂",
-					 @"sub":@"抑制剂等药物"},
-				   @{@"title":@"杀螨剂",
-					 @"sub":@"治疗螨虫类疾病的药物"}];
+    
+    if (self.isBASF) {
+        self.title = @"巴斯夫产品介绍";
+        self.searchbar.placeholder = @"搜索巴斯夫产品";
+        self.items = @[@{@"title":@"杀菌剂",
+                         @"sub":@"治疗细菌、真菌等菌类疾病"},
+                       @{@"title":@"杀虫剂",
+                         @"sub":@"防治害虫的药物"},
+                       @{@"title":@"除草剂",
+                         @"sub":@"消除或抑制杂草的药物"},
+                       @{@"title":@"种衣剂",
+                         @"sub":@"对种子形成包膜保护的农药制品"},
+                       @{@"title":@"公共卫生",
+                         @"sub":@"防治城市害虫的药物"}];
+    }
+    else {
+        self.items = @[@{@"title":@"杀菌剂",
+                         @"sub":@"治疗细菌、真菌等菌类疾病"},
+                       @{@"title":@"杀虫剂",
+                         @"sub":@"防治害虫的药物"},
+                       @{@"title":@"除草剂",
+                         @"sub":@"消除或抑制杂草的药物"},
+                       @{@"title":@"植物生长调节剂",
+                         @"sub":@"抑制剂等药物"},
+                       @{@"title":@"杀螨剂",
+                         @"sub":@"治疗螨虫类疾病的药物"}];
+    }
+	
 	UITableViewModel* model = [UITableViewModel new];
 	for (NSDictionary* dict in self.items) {
 		[model addRow:TABLEVIEW_ROW(@"kindcell", dict) forSection:0];
@@ -66,7 +84,14 @@
 {
 	CKindViewController* controller = [self.storyboard controllerWithID:@"CKindViewController"];
 	NSString* title = [[self.items objectAtIndex_s:indexPath.row] valueForKey:@"title"];
-	controller.type = eIngredient;
+    
+    if (self.isBASF) {
+        controller.type = eBASF;
+    }
+    else {
+        controller.type = eIngredient;
+    }
+	
 	controller.title = title;
 	[self.navigationController pushViewController:controller animated:YES];
 }

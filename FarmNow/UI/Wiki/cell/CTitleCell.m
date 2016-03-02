@@ -11,6 +11,7 @@
 #import "CPetDisSpecBrowseObject.h"
 #import "CIngredientBrowseObject.h"
 #import "CCPProductObject.h"
+#import "CIngredientDetailObject.h"
 
 @interface CTitleCell ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -47,7 +48,12 @@
 	{
 		CCPProductObject* item = (CCPProductObject*)data;
 		self.titleLabel.text = item.name;
-	}
+    }
+    else if (data && [data isKindOfClass:[CIngredientDetailObject class]])
+    {
+        CIngredientDetailObject* item = (CIngredientDetailObject*)data;
+        self.titleLabel.text = item.name;
+    }
 	else if (data && [data isKindOfClass:[NSString class]]){
 		self.titleLabel.text = data;
 	}

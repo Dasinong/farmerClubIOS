@@ -9,5 +9,5 @@
 #import "CTableViewController_StoryBoard.h"
 
 @interface CCpproductController : CTableViewController_StoryBoard
-
+@property (nonatomic) BOOL isBASF;
 @end

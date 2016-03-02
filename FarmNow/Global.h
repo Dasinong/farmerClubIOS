@@ -26,7 +26,8 @@ typedef enum
  eIngredient,//农药成分
  eSoil,       //测土
  eWiki,
- eXiaoChangShi
+ eXiaoChangShi,
+ eBASF
 }       EType;
 
 typedef enum

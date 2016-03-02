@@ -86,7 +86,7 @@
                          @{@"icon":@"chonghai",
                            @"title":@"病虫草害大全",
                            @"sub":@"植物保护的必备大全"},
-                         @{@"icon":@"chonghai",
+                         @{@"icon":@"basf",
                            @"title":@"巴斯夫产品介绍",
                            @"sub":@"巴斯夫产品介绍"},
                          @{@"icon":@"zhishi",
@@ -170,6 +170,7 @@
             
             if (row == 3){
                 CCpproductController* controller = [self.storyboard controllerWithID:@"CCpproductController"];
+                controller.isBASF = YES;
                 [self.navigationController pushViewController:controller animated:YES];
             }
             else if (row == 4){
