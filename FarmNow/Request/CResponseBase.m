@@ -261,8 +261,29 @@ const NSString*    kResponseSuccess = @"200";
         [self success:operation object:responseObject completion:completeBlock];
     } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
         if (error) {
-            // 网络系统的error
-            [MBProgressHUD alert:[error localizedDescription]];
+            if (operation.response.statusCode == 403) {
+                if (![URL containsString:@"/gatekeepers?"]) {
+                    [[CPersonalCache defaultPersonalCache] clearUserInfo];
+                    [MBProgressHUD alert:@"您登录已过期，请重新登录"];
+                    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    UINavigationController* naviController = [storyboard controllerWithID:@"loginNavigationController"];
+                    UINavigationController* currentNavController = SharedAPPDelegate.currentController;
+                    UIViewController* topController = currentNavController;
+                    if (currentNavController.presentedViewController) {
+                        topController = currentNavController.presentedViewController;
+                    }
+                    else if ([currentNavController isKindOfClass:[UINavigationController class]]) {
+                        topController = [currentNavController topViewController];
+                    }
+                    
+                    
+                    [topController presentViewController:naviController animated:YES completion:nil];
+                }
+            }
+            else {
+                // 网络系统的error
+                [MBProgressHUD alert:[error localizedDescription]];
+            }
         }
         [self failed:operation error:error completion:completeBlock];
     }];

@@ -22,7 +22,9 @@
 - (NSArray *)pictures {
     NSMutableArray *array = [NSMutableArray array];
     for (NSString *pic in _pictures) {
-        [array addObject:[kServer stringByAppendingString:pic]];
+        if (pic.length > 0) {
+            [array addObject:[kServer stringByAppendingString:pic]];
+        }
     }
     
     return array;

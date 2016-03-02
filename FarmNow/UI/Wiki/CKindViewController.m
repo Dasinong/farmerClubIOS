@@ -72,7 +72,7 @@
             
             if (err == nil && model ) {
                 UITableViewModel* talbeModel            = [UITableViewModel new];
-                for (CCPProductObject* object in model.data) {
+                for (CIngredientDetailObject* object in model.data) {
                     [talbeModel addRow:TABLEVIEW_ROW(@"titlecell", object) forSection:0];
                 }
                 [self updateModel:talbeModel];
@@ -159,11 +159,9 @@
         [self.navigationController pushViewController:controller animated:YES];
     }
     else if (self.type == eCpproduct){
-        CCPProductObject* object                = (CCPProductObject*)data;
-        CWebViewController* webController       = [self.storyboard controllerWithID:@"CWebViewController"];
-        webController.address                       = [NSString stringWithFormat:@"%@baike?id=%ld&type=%@",kServerAddress, (long)object.id,@"pesticide"];
-        webController.title                     = object.name;
-        [self.navigationController pushViewController:webController animated:YES];
+        CCpproductDetailController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CCpproductDetailController"];
+        controller.detailObject = data;
+        [self.navigationController pushViewController:controller animated:YES];
     }
     else if (self.type == eSoil){
         

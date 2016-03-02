@@ -12,7 +12,7 @@
 
 + (NSString *)path
 {
-	return @"getCPProdcutsByIngredient";
+	return @"getFormattedCPProductByIngredient";
 }
 
 @end

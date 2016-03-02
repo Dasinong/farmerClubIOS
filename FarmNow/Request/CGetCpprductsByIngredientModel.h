@@ -7,7 +7,7 @@
 //
 
 #import "CResponseBase.h"
-#import "CCPProductObject.h"
+#import "CIngredientDetailObject.h"
 
 @interface CGetCpprductsByIngredientParams : CRequestBaseParams
 @property (strong, nonatomic) NSString* ingredient;	//有效成分
@@ -15,6 +15,6 @@
 @end
 
 @interface CGetCpprductsByIngredientModel : CResponseModel
-@property (strong, nonatomic) NSArray<CCPProductObject, Optional>* data;
+@property (strong, nonatomic) NSArray<CIngredientDetailObject, Optional>* data;
 
 @end

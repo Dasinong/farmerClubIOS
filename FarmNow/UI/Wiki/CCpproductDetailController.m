@@ -57,8 +57,10 @@
     }
     
     if (section >= 9) {
-        NSDictionary *instruction = self.detailObject.instructions[section - 9];
-        return instruction.allKeys.count;
+        //NSDictionary *instruction = self.detailObject.instructions[section - 9];
+        //return instruction.allKeys.count;
+        
+        return 5;
     }
     
     return 1;
@@ -140,7 +142,7 @@
             }
             
             if (indexPath.row == 1) {
-                if (self.detailObject.feature.length > 0) {
+                if (self.detailObject.feature.length > 0 || self.detailObject.guideline.length > 0) {
                     return UITableViewAutomaticDimension;
                 }
                 else {
@@ -162,7 +164,34 @@
             return 0;
         }
         
-        return UITableViewAutomaticDimension;
+        NSDictionary *instruction = self.detailObject.instructions[indexPath.section - 9];
+        if (indexPath.row == 0) {
+            if (instruction[@"crop"] && ![instruction[@"crop"] isKindOfClass:[NSNull class]]) {
+                return UITableViewAutomaticDimension;
+            }
+        }
+        else if (indexPath.row == 1) {
+            if (instruction[@"disease"] && ![instruction[@"disease"] isKindOfClass:[NSNull class]]) {
+                return UITableViewAutomaticDimension;
+            }
+        }
+        else if (indexPath.row == 2) {
+            if (instruction[@"volume"] && ![instruction[@"volume"] isKindOfClass:[NSNull class]]) {
+                return UITableViewAutomaticDimension;
+            }
+        }
+        else if (indexPath.row == 3) {
+            if (instruction[@"method"] && ![instruction[@"method"] isKindOfClass:[NSNull class]]) {
+                return UITableViewAutomaticDimension;
+            }
+        }
+        else if (indexPath.row == 4) {
+            if (instruction[@"guideline"] && ![instruction[@"guideline"] isKindOfClass:[NSNull class]]) {
+                return UITableViewAutomaticDimension;
+            }
+        }
+        
+        return 0;
     }
     
     return 0;
@@ -282,6 +311,14 @@
     }
     else if (indexPath.section == 7) { // SegementCell
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SegementCell" forIndexPath:indexPath];
+        
+        UISegmentedControl *segmentedControl = (UISegmentedControl *)[cell.contentView viewWithTag:1];
+        if (self.detailObject.guideline.length > 0) {
+            [segmentedControl setTitle:@"用药指导" forSegmentAtIndex:1];
+        }
+        else {
+            [segmentedControl setTitle:@"产品特点" forSegmentAtIndex:1];
+        }
         return cell;
     }
     else if (indexPath.section == 8) { // 长label
@@ -296,8 +333,14 @@
                 contentLabel.text = self.detailObject.desc;
             }
             else if (indexPath.row == 1) {
-                titleLabel.text = @"产品特性";
-                contentLabel.text = self.detailObject.feature;
+                if (self.detailObject.guideline.length > 0) {
+                    titleLabel.text = @"用药指导";
+                    contentLabel.text = self.detailObject.guideline;
+                }
+                else {
+                    titleLabel.text = @"产品特性";
+                    contentLabel.text = self.detailObject.feature;
+                }
             }
         }
         else if (currentSegmentIndex == 2) {
@@ -345,7 +388,10 @@
         }
         else if (indexPath.row == 4) {
             titleLabel.text = @"施药指导";
-            contentLabel.text = instruction[@"guideline"];
+            
+            if (instruction[@"guideline"] && ![instruction[@"guideline"] isKindOfClass:[NSNull class]]) {
+                contentLabel.text = instruction[@"guideline"];
+            }
         }
         
         [cell setNeedsLayout];

@@ -7,7 +7,7 @@
 //
 
 //#define kServer @"http://120.55.85.23"
-#define kServer @"http://120.26.208.198:8080"
+#define kServer @"http://120.26.208.198"
 #define kServerAddress [kServer stringByAppendingString:@"/farmerClub/"]
 #define kImageServerAddress [kServer stringByAppendingString:@"/pic/"]
 #define kAvaterServerAddress [kServer stringByAppendingString:@"/avater/"]
