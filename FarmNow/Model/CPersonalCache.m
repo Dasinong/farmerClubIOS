@@ -174,7 +174,14 @@ static CPersonalCache * _defaultPersonalCache = nil;
 	{
 		return;
 	}
-	
+    
+    if ([value.weixintoken isKindOfClass:[NSNull class]]) {
+        value.weixintoken = nil;
+    }
+    if ([value.qqtoken isKindOfClass:[NSNull class]]) {
+        value.qqtoken = nil;
+    }
+    
 	[_cacheValueDict setValue:[value toJSONData] forKey:kUSER_INFO];
 	[_cacheValueDict writeToFile:[CPersonalCache cachePathForCacheKeyValue] atomically:YES];
     
