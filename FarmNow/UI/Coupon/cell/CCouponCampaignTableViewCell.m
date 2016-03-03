@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *campaignImageView;
 @property (weak, nonatomic) IBOutlet UILabel *claimLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *amountLabelHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *claimButtonHeightConstraint; // Default: 40
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint; // Defualt 48
 @end
 
 @implementation CCouponCampaignTableViewCell
@@ -56,6 +58,15 @@
     [df setDateFormat:@"MM月dd日"];
     
     self.claimLabel.text = [NSString stringWithFormat:@"申领时间：%@ - %@", [df stringFromDate:claimTimeStart], [df stringFromDate:claimTimeEnd]];
+    
+    if (self.hideClaimButton) {
+        self.claimButtonHeightConstraint.constant = 0;
+        self.bottomConstraint.constant = 0;
+    }
+    else {
+        self.claimButtonHeightConstraint.constant = 40;
+        self.bottomConstraint.constant = 48;
+    }
 }
 
 - (IBAction)claim:(id)sender {

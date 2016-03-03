@@ -7,17 +7,15 @@
 //
 
 #import "CMyCouponDetailViewController.h"
-//#import <ZXingObjC.h>
+#import "CCouponCampaignTableViewCell.h"
+#import "CStoreTableViewCell.h"
 
-@interface CMyCouponDetailViewController ()
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewWidthConstaints;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIImageView *campaignImageView;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *amountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *claimLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *QRView;
-@property (weak, nonatomic) IBOutlet UILabel *couponIdLabel;
+@interface CMyCouponDetailViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSMutableDictionary *storeDict;
+
+//@property (weak, nonatomic) IBOutlet UILabel *couponIdLabel;
+//@property (weak, nonatomic) IBOutlet UIImageView *QRView;
 
 @end
 
@@ -27,28 +25,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.scrollViewWidthConstaints.constant = SCREEN_WIDTH;
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CCouponCampaignTableViewCell class]) bundle:nil] forCellReuseIdentifier:@"CCouponCampaignTableViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CStoreTableViewCell class]) bundle:nil] forCellReuseIdentifier:@"CStoreTableViewCell"];
     
-    
-    if (self.coupon.campaign.pictureUrls.count > 0) {
-        NSString *picUrlString = [NSString stringWithFormat:@"%@/pic/couponCampaign/%@", kServer, self.coupon.campaign.pictureUrls[0]];
-        [self.campaignImageView sd_setImageWithURL:[NSURL URLWithString:picUrlString]];
-    }
-    
-    self.nameLabel.text = self.coupon.campaign.name;
-    self.amountLabel.text = [NSString stringWithFormat:@"￥%.2f", self.coupon.campaign.amount];
-
-    NSDate* claimDate = [NSDate dateWithTimeIntervalSince1970:self.coupon.claimedAt / 1000];
-    
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"申领时间：MM月dd日"];
-    
-    self.claimLabel.text = [df stringFromDate:claimDate];
-    
-    self.couponIdLabel.text = [NSString stringWithFormat:@"券号：%d", (int)self.coupon.id];
-    
-     NSString *QRString = [NSString stringWithFormat:@"%@/pic/couponCampaign/QRCode/%d.png", kServer, (int)self.coupon.id];
-    [self.QRView sd_setImageWithURL:[NSURL URLWithString:QRString]];
+    [self groupStoreWithProvince];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -80,6 +60,45 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)groupStoreWithProvince {
+    self.storeDict = [NSMutableDictionary dictionary];
+    
+    for (CStore *store in self.coupon.campaign.stores) {
+        if(self.storeDict[store.province]) {
+            NSMutableArray *stores = self.storeDict[store.province];
+            [stores addObject:store];
+        }
+        else {
+            NSMutableArray *stores = [NSMutableArray array];
+            [stores addObject:store];
+            [self.storeDict setObject:stores forKey:store.province];
+        }
+    }
+}
+
+// 返回key或者store
+- (id)getStoreOrKeyInRow:(NSInteger)row {
+    
+    //for (int i=0; i<self.storeDict.allKeys.count; i++) {
+    // NSString *key = self.storeDict.allKeys[i];
+    for (NSString *key in self.storeDict.allKeys) {
+        
+        if (row == 0) {
+            return key;
+        }
+        
+        row--;
+        NSArray *stores = self.storeDict[key];
+        if (row < stores.count) {
+            return stores[row];
+        }
+        
+        row -= stores.count;
+    }
+    
+    return nil;
+}
+
 /*
 #pragma mark - Navigation
 
@@ -90,4 +109,97 @@
 }
 */
 
+#pragma mark - UITableViewDataSource, UITableViewDelegate
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 4;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        return UITableViewAutomaticDimension;
+    }
+    else if (indexPath.section == 1) {
+        return 280;
+    }
+    else if (indexPath.section == 2) {
+        return 33;
+    }
+    else {
+        id keyOrStore = [self getStoreOrKeyInRow:indexPath.row];
+        if ([keyOrStore isKindOfClass:[NSString class]]) {
+            return 33;
+        }
+        else {
+            return UITableViewAutomaticDimension;
+        }
+    }
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (section == 3) {
+        NSInteger storeRowCount = 0;
+        for (NSString *key in self.storeDict.allKeys) {
+            storeRowCount++;
+            
+            NSArray *stores = self.storeDict[key];
+            storeRowCount += stores.count;
+        }
+        
+        return storeRowCount;
+    }
+    
+    return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 400;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        CCouponCampaignTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CCouponCampaignTableViewCell" forIndexPath:indexPath];
+        cell.hideClaimButton = YES;
+        [cell setupWithModel:self.coupon.campaign];
+        
+        [cell setNeedsLayout];
+        [cell layoutIfNeeded];
+
+        return cell;
+    }
+    else if (indexPath.section == 1) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"QRCell" forIndexPath:indexPath];
+        
+        UIImageView *QRView = (UIImageView *)[cell.contentView viewWithTag:1];
+        UILabel *couponIdLabel = (UILabel *)[cell.contentView viewWithTag:2];
+        
+        NSString *QRString = [NSString stringWithFormat:@"%@/pic/couponCampaign/QRCode/%d.png", kServer, (int)self.coupon.id];
+        [QRView sd_setImageWithURL:[NSURL URLWithString:QRString]];
+        
+        couponIdLabel.text = [NSString stringWithFormat:@"券号：%d", (int)self.coupon.id];
+        
+        return cell;
+    }
+    else if (indexPath.section == 2) {
+        return [tableView dequeueReusableCellWithIdentifier:@"RedeemCell" forIndexPath:indexPath];
+    }
+    else {
+        id keyOrStore = [self getStoreOrKeyInRow:indexPath.row];
+        if ([keyOrStore isKindOfClass:[NSString class]]) {
+            UITableViewCell *locationCell = [tableView dequeueReusableCellWithIdentifier:@"LocationCell" forIndexPath:indexPath];
+            
+            UILabel *locationLabel = (UILabel *)[locationCell.contentView viewWithTag:1];
+            locationLabel.text = (NSString*)keyOrStore;
+            return locationCell;
+        }
+        else {
+            CStoreTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CStoreTableViewCell" forIndexPath:indexPath];
+            [cell setupWithModel:keyOrStore];
+            return cell;
+        }
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 @end

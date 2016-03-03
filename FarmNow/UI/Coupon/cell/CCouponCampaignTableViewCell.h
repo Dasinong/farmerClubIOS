@@ -16,5 +16,6 @@
 @interface CCouponCampaignTableViewCell : UITableViewCell
 @property (nonatomic, weak) id<CCouponCampaignTableViewCellDelegate> delegate;
 
+@property (nonatomic, assign) BOOL hideClaimButton;
 - (void)setupWithModel:(id)model;
 @end
