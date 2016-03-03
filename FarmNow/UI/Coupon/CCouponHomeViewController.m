@@ -72,6 +72,10 @@
 
 #pragma mark - UITableViewDataSource && UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewAutomaticDimension;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 465;
 }
 
@@ -85,6 +89,10 @@
     CCouponCampaignTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     cell.delegate = self;
     [cell setupWithModel:couponCampaign];
+    
+    [cell setNeedsLayout];
+    [cell layoutIfNeeded];
+    
     return cell;
 }
 

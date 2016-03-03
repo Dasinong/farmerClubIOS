@@ -5711,11 +5711,11 @@ i) 不得为其他任何非法目的而使用服务。
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="430" id="6iT-tJ-Lhl" customClass="CCouponCampaignTableViewCell">
-                                        <rect key="frame" x="0.0" y="92" width="320" height="430"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="465" id="6iT-tJ-Lhl" customClass="CCouponCampaignTableViewCell">
+                                        <rect key="frame" x="0.0" y="92" width="320" height="465"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6iT-tJ-Lhl" id="VbO-x2-HVv">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="430"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="465"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tAC-Dy-Ycj">
@@ -5726,18 +5726,27 @@ i) 不得为其他任何非法目的而使用服务。
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BASF百润代金券" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3A7-jg-MNE">
                                                     <rect key="frame" x="12" y="296" width="296" height="19.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="19.5" id="Ks5-AG-JH4"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                     <color key="textColor" white="0.29776400862068964" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥30.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLe-UQ-vVo">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥30.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLe-UQ-vVo">
                                                     <rect key="frame" x="9" y="319" width="299" height="19.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="19.5" id="wow-YO-kJf"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="申领时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3E-xY-Lnv">
                                                     <rect key="frame" x="12" y="346" width="296" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="16" id="ZrZ-f6-1h7"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -5762,6 +5771,7 @@ i) 不得为其他任何非法目的而使用服务。
                                                 <constraint firstAttribute="trailing" secondItem="tAC-Dy-Ycj" secondAttribute="trailing" id="KRo-zx-Uyj"/>
                                                 <constraint firstItem="nLe-UQ-vVo" firstAttribute="trailing" secondItem="3A7-jg-MNE" secondAttribute="trailing" id="OB1-PV-dGf"/>
                                                 <constraint firstAttribute="trailing" secondItem="0Nr-0l-wS2" secondAttribute="trailing" constant="12" id="PJj-Kt-RT7"/>
+                                                <constraint firstAttribute="bottom" secondItem="0Nr-0l-wS2" secondAttribute="bottom" priority="999" constant="48" id="UnW-oY-a1d"/>
                                                 <constraint firstItem="3A7-jg-MNE" firstAttribute="leading" secondItem="VbO-x2-HVv" secondAttribute="leading" constant="12" id="ZyW-nj-gcA"/>
                                                 <constraint firstItem="a3E-xY-Lnv" firstAttribute="trailing" secondItem="3A7-jg-MNE" secondAttribute="trailing" id="aEZ-71-scq"/>
                                                 <constraint firstItem="3A7-jg-MNE" firstAttribute="top" secondItem="tAC-Dy-Ycj" secondAttribute="bottom" constant="10" id="bES-dX-x2O"/>
@@ -5776,6 +5786,7 @@ i) 不得为其他任何非法目的而使用服务。
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="amountLabel" destination="nLe-UQ-vVo" id="4iN-dc-zit"/>
+                                            <outlet property="amountLabelHeightConstraint" destination="wow-YO-kJf" id="LrN-64-cUI"/>
                                             <outlet property="campaignImageView" destination="tAC-Dy-Ycj" id="aom-Cc-ntR"/>
                                             <outlet property="claimLabel" destination="a3E-xY-Lnv" id="tm6-PJ-I4S"/>
                                             <outlet property="titleLabel" destination="3A7-jg-MNE" id="mUM-gA-NV6"/>

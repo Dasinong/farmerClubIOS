@@ -30,6 +30,7 @@
     // Do any additional setup after loading the view.
     
     self.downloadedPictures = [NSMutableDictionary dictionary];
+    self.title = self.couponCampaign.name;
     
     [self requestData];
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{

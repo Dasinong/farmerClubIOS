@@ -35,12 +35,12 @@
 	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"扫一扫") forSection:1];
     [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"有奖推荐") forSection:1];
     [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"我的福利") forSection:1];
-	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"免费短信订阅") forSection:1];
+	//[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"免费短信订阅") forSection:1];
 	
 	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"帮助中心") forSection:2];
 	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"使用教程") forSection:2];
 
-	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"联系我们") forSection:3];
+	//[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"联系我们") forSection:3];
     
 	[self updateModel:tableModel];
 }

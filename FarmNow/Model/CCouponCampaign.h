@@ -22,6 +22,6 @@
 @property (assign, nonatomic) NSTimeInterval claimTimeEnd;
 @property (assign, nonatomic) NSTimeInterval redeemTimeStart;
 @property (assign, nonatomic) NSTimeInterval redeemTimeEnd;
-
+@property (nonatomic, strong) NSDictionary<Optional> *institution;
 @property (nonatomic, strong) NSArray<Optional, CStore> *stores;
 @end

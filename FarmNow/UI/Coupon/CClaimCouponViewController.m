@@ -44,8 +44,8 @@
     NSString *cleanCompany = [self.company stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     NSString *cleanCrop = [self.crop stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     NSString *cleanArea = [self.area stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    NSString *cleanYield = [self.yield stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    NSString *cleanContact = [self.contactNumber stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    //NSString *cleanYield = [self.yield stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    //NSString *cleanContact = [self.contactNumber stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     
     
     if (cleanName.length == 0) {
@@ -60,14 +60,14 @@
         [MBProgressHUD alert:@"请填写面积"];
         return;
     }
-    if (cleanYield.length == 0) {
-        [MBProgressHUD alert:@"请填写去年产量"];
-        return;
-    }
-    if (cleanContact.length == 0) {
-        [MBProgressHUD alert:@"请填写联系电话"];
-        return;
-    }
+//    if (cleanYield.length == 0) {
+//        [MBProgressHUD alert:@"请填写去年产量"];
+//        return;
+//    }
+//    if (cleanContact.length == 0) {
+//        [MBProgressHUD alert:@"请填写联系电话"];
+//        return;
+//    }
     
     if (self.experience.length == 0) {
         [MBProgressHUD alert:@"请选择种植经验"];
@@ -78,32 +78,31 @@
         cleanCompany = @"";
     }
     
-    if (![cleanContact validatePhoneNumber]) {
-        [MBProgressHUD alert:@"联系电话格式不正确"];
-        return;
-    }
+//    if (![cleanContact validatePhoneNumber]) {
+//        [MBProgressHUD alert:@"联系电话格式不正确"];
+//        return;
+//    }
     
     if (![cleanArea validateNumeric]) {
         [MBProgressHUD alert:@"面积格式不正确"];
         return;
     }
     
-    if (![cleanYield validateNumeric]) {
-        [MBProgressHUD alert:@"去年产量格式不正确"];
-        return;
-    }
+//    if (![cleanYield validateNumeric]) {
+//        [MBProgressHUD alert:@"去年产量格式不正确"];
+//        return;
+//    }
     
     if ([cleanArea doubleValue] <= 0) {
         [MBProgressHUD alert:@"面积必须大于0"];
         return;
     }
     
-    if ([cleanYield doubleValue] < 0) {
-        [MBProgressHUD alert:@"去年产量必须大于等于0"];
-        return;
-    }
-    
-    
+//    if ([cleanYield doubleValue] < 0) {
+//        [MBProgressHUD alert:@"去年产量必须大于等于0"];
+//        return;
+//    }
+//    
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     CClaimCouponParams *claimParams = [CClaimCouponParams new];
@@ -114,12 +113,12 @@
         if (err == nil && claimModel) {
             CRequestCouponParams *params = [CRequestCouponParams new];
             params.name = cleanName;
-            params.company = cleanCompany;
+            params.company = @"";
             params.crop = cleanCrop;
             params.area = [cleanArea doubleValue];
-            params.yield = [cleanYield doubleValue];
+            params.yield = 0;
             params.experience = self.experience;
-            params.contactNumber = cleanContact;
+            params.contactNumber = @"";
             params.productUseHistory = @"";
             
             [CRequestCouponModel requestWithParams:POST params:params completion:^(CRequestCouponModel *model, JSONModelError *err) {
@@ -167,7 +166,7 @@
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 8; //多一个为keyboard空出位子
+    return 5; //多一个为keyboard空出位子
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -195,17 +194,12 @@
         cell.fieldLabel.attributedText = attriString;
     }
     else if (indexPath.row == 1) {
-        NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:@"单位"];
-        [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#666666"] range:NSMakeRange(0, 2)];
-        cell.fieldLabel.attributedText = attriString;
-    }
-    else if (indexPath.row == 2) {
         NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:@"作物 *"];
         [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#666666"] range:NSMakeRange(0, 3)];
         [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#ff8400"] range:NSMakeRange(3, 1)];
         cell.fieldLabel.attributedText = attriString;
     }
-    else if (indexPath.row == 3) {
+    else if (indexPath.row == 2) {
         NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:@"面积 *"];
         [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#666666"] range:NSMakeRange(0, 3)];
         [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#ff8400"] range:NSMakeRange(3, 1)];
@@ -213,15 +207,7 @@
         
         cell.valueTextField.keyboardType = UIKeyboardTypeDecimalPad;
     }
-    else if (indexPath.row == 4) {
-        NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:@"去年产量 *"];
-        [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#666666"] range:NSMakeRange(0, 5)];
-        [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#ff8400"] range:NSMakeRange(5, 1)];
-        cell.fieldLabel.attributedText = attriString;
-        
-        cell.valueTextField.keyboardType = UIKeyboardTypeDecimalPad;
-    }
-    else if (indexPath.row == 5) {
+    else if (indexPath.row == 3) {
         NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:@"种植经验 *"];
         [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#666666"] range:NSMakeRange(0, 5)];
         [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#ff8400"] range:NSMakeRange(5, 1)];
@@ -233,14 +219,6 @@
         if (self.experience) {
             [cell.pickerButton setTitle:self.experience forState:UIControlStateNormal];
         }
-    }
-    else if (indexPath.row == 6) {
-        NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:@"联系电话 *"];
-        [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#666666"] range:NSMakeRange(0, 5)];
-        [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#ff8400"] range:NSMakeRange(5, 1)];
-        cell.fieldLabel.attributedText = attriString;
-        
-        cell.valueTextField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
     }
     else {
         cell.valueTextField.hidden = YES;
@@ -263,19 +241,10 @@
         self.name = textField.text;
     }
     else if (textField.tag == 1) {
-        self.company = textField.text;
-    }
-    else if (textField.tag == 2) {
         self.crop = textField.text;
     }
-    else if (textField.tag == 3) {
+    else if (textField.tag == 2) {
         self.area = textField.text;
-    }
-    else if (textField.tag == 4) {
-        self.yield = textField.text;
-    }
-    else if (textField.tag == 6) {
-        self.contactNumber = textField.text;
     }
 }
 @end
