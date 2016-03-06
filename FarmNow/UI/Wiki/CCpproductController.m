@@ -10,6 +10,7 @@
 #import "CKindViewController.h"
 #import "CSearchWordModel.h"
 #import "CWebViewController.h"
+#import "CCpproductDetailController.h"
 
 @interface CCpproductController ()
 @property (strong, nonatomic) NSArray* items;
@@ -213,12 +214,13 @@
 		return [super tableView:tableView didSelectRowAtIndexPath:indexPath];
 	}
 	else{
-		NSArray* values = [self.searchResult.allValues objectAtIndex_s:indexPath.section];
-		CSearchEntry* entry = [values objectAtIndex_s:indexPath.row];
-		CWebViewController* webController       = [self.storyboard controllerWithID:@"CWebViewController"];
-		webController.address                       = [NSString stringWithFormat:@"%@baike?id=%ld&type=%@",kServerAddress, (long)entry.id,entry.type];
-		webController.title                     = entry.name;
-		[self.navigationController pushViewController:webController animated:YES];
+        NSArray* values = [self.searchResult.allValues objectAtIndex_s:indexPath.section];
+        CSearchEntry* entry = [values objectAtIndex_s:indexPath.row];
+        
+        CCpproductDetailController *controller = [self.storyboard controllerWithID:@"CCpproductDetailController"];
+        controller.type = entry.type;
+        controller.id = entry.id;
+        [self.navigationController pushViewController:controller animated:YES];
 	}
 }
 

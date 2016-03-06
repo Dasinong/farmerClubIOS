@@ -11,4 +11,6 @@
 
 @interface CCpproductDetailController : CBaseViewController
 @property (nonatomic, strong) CIngredientDetailObject *detailObject;
+@property (nonatomic, assign) NSInteger id;
+@property (nonatomic, strong) NSString *type;
 @end

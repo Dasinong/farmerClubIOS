@@ -8,6 +8,7 @@
 
 #import "CCpproductDetailController.h"
 #import "SDCycleScrollView.h"
+#import "CGetFormattedCPProductByIdModel.h"
 
 @interface CCpproductDetailController ()  <UITableViewDataSource, UITableViewDelegate>  {
     NSInteger currentSegmentIndex;
@@ -23,6 +24,21 @@
     // Do any additional setup after loading the view.
     
     self.title = self.detailObject.name;
+    
+    if (self.detailObject == nil) {
+        NSLog(@"%@",self.type); // pesticide
+        
+        CGetFormattedCPProductByIdParams *param = [CGetFormattedCPProductByIdParams new];
+        param.id = self.id;
+        
+        [CGetFormattedCPProductByIdModel requestWithParams:param completion:^(CGetFormattedCPProductByIdModel *model, JSONModelError *err) {
+            if (err == nil) {
+                self.detailObject = model.data;
+                self.title = self.detailObject.name;
+                [self.tableView reloadData];
+            }
+        }];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

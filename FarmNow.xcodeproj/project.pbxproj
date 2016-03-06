@@ -20,6 +20,7 @@
 		275C4B181C709CA5002475B6 /* CCampaignDetailHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275C4B161C709CA5002475B6 /* CCampaignDetailHeaderTableViewCell.xib */; };
 		275C4B1C1C70B5E0002475B6 /* CPictureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 275C4B1A1C70B5E0002475B6 /* CPictureTableViewCell.m */; };
 		275C4B1D1C70B5E0002475B6 /* CPictureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275C4B1B1C70B5E0002475B6 /* CPictureTableViewCell.xib */; };
+		2776450C1C8BB5C100E75491 /* CGetFormattedCPProductByIdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2776450B1C8BB5C100E75491 /* CGetFormattedCPProductByIdModel.m */; };
 		278491EE1C7056E8000F0D3E /* CCouponHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278491ED1C7056E8000F0D3E /* CCouponHomeViewController.m */; };
 		278704B11C7AA31D007E45BF /* CSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278704B01C7AA31D007E45BF /* CSplashViewController.m */; };
 		278704B61C7AB1E7007E45BF /* CCropSubscriptionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 278704B51C7AB1E7007E45BF /* CCropSubscriptionsModel.m */; };
@@ -313,6 +314,8 @@
 		275C4B191C70B5E0002475B6 /* CPictureTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPictureTableViewCell.h; sourceTree = "<group>"; };
 		275C4B1A1C70B5E0002475B6 /* CPictureTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPictureTableViewCell.m; sourceTree = "<group>"; };
 		275C4B1B1C70B5E0002475B6 /* CPictureTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPictureTableViewCell.xib; sourceTree = "<group>"; };
+		2776450A1C8BB5C100E75491 /* CGetFormattedCPProductByIdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGetFormattedCPProductByIdModel.h; sourceTree = "<group>"; };
+		2776450B1C8BB5C100E75491 /* CGetFormattedCPProductByIdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGetFormattedCPProductByIdModel.m; sourceTree = "<group>"; };
 		278491EC1C7056E8000F0D3E /* CCouponHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCouponHomeViewController.h; sourceTree = "<group>"; };
 		278491ED1C7056E8000F0D3E /* CCouponHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCouponHomeViewController.m; sourceTree = "<group>"; };
 		278704AF1C7AA31D007E45BF /* CSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSplashViewController.h; sourceTree = "<group>"; };
@@ -1127,6 +1130,8 @@
 				9F92C2D71BDB36D80034DB3F /* CBrowseCPProductByModelModel.m */,
 				9F92C2DD1BDB5BEC0034DB3F /* CGetCpprductsByIngredientModel.h */,
 				9F92C2DE1BDB5BEC0034DB3F /* CGetCpprductsByIngredientModel.m */,
+				2776450A1C8BB5C100E75491 /* CGetFormattedCPProductByIdModel.h */,
+				2776450B1C8BB5C100E75491 /* CGetFormattedCPProductByIdModel.m */,
 				9FA4DBB11BDD0F20005ED3B5 /* CQQAuthRegLogModel.h */,
 				9FA4DBB21BDD0F20005ED3B5 /* CQQAuthRegLogModel.m */,
 				9F68D8F41BDE664800F54627 /* CWeiXinAuthRegLogModel.h */,
@@ -1918,6 +1923,7 @@
 				9FE6E89E1BD67EB1003A9D79 /* CKindCell.m in Sources */,
 				27D0F0421C7C87E000215FCC /* CCreateCropSubscriptionModel.m in Sources */,
 				275C4B1C1C70B5E0002475B6 /* CPictureTableViewCell.m in Sources */,
+				2776450C1C8BB5C100E75491 /* CGetFormattedCPProductByIdModel.m in Sources */,
 				9FD2131C1BD128A60063147D /* CAAnimation+Extra.m in Sources */,
 				9F92C2E21BDB5C8C0034DB3F /* CCPProductObject.m in Sources */,
 				9F03FAD11BE787BC00A3B1C7 /* CSearchLocationByLatAndLonModel.m in Sources */,
