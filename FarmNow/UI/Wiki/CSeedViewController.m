@@ -15,6 +15,7 @@
 #import "CWebViewController.h"
 #import "RGIndexView.h"
 #import "CSortItemByFirstLetter.h"
+#import "CCpproductDetailController.h"
 
 @implementation CSeedContentItem
 - (NSString*)getSortString
@@ -300,10 +301,12 @@
 	{
 		NSArray* values = [self.searchResult.allValues objectAtIndex_s:indexPath.section];
 		CSearchEntry* entry = [values objectAtIndex_s:indexPath.row];
-		CWebViewController* webController       = [self.storyboard controllerWithID:@"CWebViewController"];
-		webController.address                       = [NSString stringWithFormat:@"%@baike?id=%ld&type=%@",kServerAddress, (long)entry.id,entry.type];
-		webController.title                     = entry.name;
-		[self.navigationController pushViewController:webController animated:YES];
+        
+        CCpproductDetailController *controller = [self.storyboard controllerWithID:@"CCpproductDetailController"];
+        controller.type = entry.type;
+        controller.id = entry.id;
+        controller.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:controller animated:YES];
 	}
 }
 

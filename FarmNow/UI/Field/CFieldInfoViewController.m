@@ -38,7 +38,7 @@
     CSearchNearUserParam *param = [CSearchNearUserParam new];
     [CSearchNearUserModel requestWithParams:param completion:^(CSearchNearUserModel *model, JSONModelError *err) {
         if (model && model.data > 0) {
-            self.infoLabel.text = [NSString stringWithFormat:@"啊呀，你附近有%d个用户\n也在使用我们服务哦", (int)model.data];
+            self.infoLabel.text = [NSString stringWithFormat:@"啊呀，你附近有%d个用户也在使用我们服务哦", (int)model.data];
         }
     }];
 }

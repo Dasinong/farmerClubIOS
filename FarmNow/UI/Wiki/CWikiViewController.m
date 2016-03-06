@@ -16,6 +16,7 @@
 #import "CZaiHaiViewController.h"
 #import "CUserObject.h"
 #import "CPersonalCache.h"
+#import "CCpproductDetailController.h"
 
 #define TYPE_DIC @{@"variety":@"品种",\
 					@"disease":@"病害",\
@@ -408,10 +409,14 @@
 	else{
 		NSArray* values = [self.searchResult.allValues objectAtIndex_s:indexPath.section];
 		CSearchEntry* entry = [values objectAtIndex_s:indexPath.row];
-		CWebViewController* webController       = [self.storyboard controllerWithID:@"CWebViewController"];
-		webController.address                       = [NSString stringWithFormat:@"%@baike?id=%ld&type=%@",kServerAddress, (long)entry.id,entry.type];
-		webController.title                     = entry.name;
-		[self.navigationController pushViewController:webController animated:YES];
+        
+        //NSLog(@"%@",entry.type);
+        
+        CCpproductDetailController *controller = [self.storyboard controllerWithID:@"CCpproductDetailController"];
+        controller.type = entry.type;
+        controller.id = entry.id;
+        controller.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:controller animated:YES];
 	}
 }
 @end
