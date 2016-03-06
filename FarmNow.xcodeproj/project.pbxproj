@@ -21,6 +21,8 @@
 		275C4B1C1C70B5E0002475B6 /* CPictureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 275C4B1A1C70B5E0002475B6 /* CPictureTableViewCell.m */; };
 		275C4B1D1C70B5E0002475B6 /* CPictureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275C4B1B1C70B5E0002475B6 /* CPictureTableViewCell.xib */; };
 		2776450C1C8BB5C100E75491 /* CGetFormattedCPProductByIdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2776450B1C8BB5C100E75491 /* CGetFormattedCPProductByIdModel.m */; };
+		2776450F1C8BBAB200E75491 /* CGetVarietyBaiKeByIdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2776450E1C8BBAB200E75491 /* CGetVarietyBaiKeByIdModel.m */; };
+		277645121C8BF46C00E75491 /* CGetPetDisSpecBaiKeByIdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 277645111C8BF46C00E75491 /* CGetPetDisSpecBaiKeByIdModel.m */; };
 		278491EE1C7056E8000F0D3E /* CCouponHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278491ED1C7056E8000F0D3E /* CCouponHomeViewController.m */; };
 		278704B11C7AA31D007E45BF /* CSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278704B01C7AA31D007E45BF /* CSplashViewController.m */; };
 		278704B61C7AB1E7007E45BF /* CCropSubscriptionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 278704B51C7AB1E7007E45BF /* CCropSubscriptionsModel.m */; };
@@ -316,6 +318,10 @@
 		275C4B1B1C70B5E0002475B6 /* CPictureTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPictureTableViewCell.xib; sourceTree = "<group>"; };
 		2776450A1C8BB5C100E75491 /* CGetFormattedCPProductByIdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGetFormattedCPProductByIdModel.h; sourceTree = "<group>"; };
 		2776450B1C8BB5C100E75491 /* CGetFormattedCPProductByIdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGetFormattedCPProductByIdModel.m; sourceTree = "<group>"; };
+		2776450D1C8BBAB200E75491 /* CGetVarietyBaiKeByIdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGetVarietyBaiKeByIdModel.h; sourceTree = "<group>"; };
+		2776450E1C8BBAB200E75491 /* CGetVarietyBaiKeByIdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGetVarietyBaiKeByIdModel.m; sourceTree = "<group>"; };
+		277645101C8BF46C00E75491 /* CGetPetDisSpecBaiKeByIdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGetPetDisSpecBaiKeByIdModel.h; sourceTree = "<group>"; };
+		277645111C8BF46C00E75491 /* CGetPetDisSpecBaiKeByIdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGetPetDisSpecBaiKeByIdModel.m; sourceTree = "<group>"; };
 		278491EC1C7056E8000F0D3E /* CCouponHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCouponHomeViewController.h; sourceTree = "<group>"; };
 		278491ED1C7056E8000F0D3E /* CCouponHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCouponHomeViewController.m; sourceTree = "<group>"; };
 		278704AF1C7AA31D007E45BF /* CSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSplashViewController.h; sourceTree = "<group>"; };
@@ -1132,6 +1138,10 @@
 				9F92C2DE1BDB5BEC0034DB3F /* CGetCpprductsByIngredientModel.m */,
 				2776450A1C8BB5C100E75491 /* CGetFormattedCPProductByIdModel.h */,
 				2776450B1C8BB5C100E75491 /* CGetFormattedCPProductByIdModel.m */,
+				2776450D1C8BBAB200E75491 /* CGetVarietyBaiKeByIdModel.h */,
+				2776450E1C8BBAB200E75491 /* CGetVarietyBaiKeByIdModel.m */,
+				277645101C8BF46C00E75491 /* CGetPetDisSpecBaiKeByIdModel.h */,
+				277645111C8BF46C00E75491 /* CGetPetDisSpecBaiKeByIdModel.m */,
 				9FA4DBB11BDD0F20005ED3B5 /* CQQAuthRegLogModel.h */,
 				9FA4DBB21BDD0F20005ED3B5 /* CQQAuthRegLogModel.m */,
 				9F68D8F41BDE664800F54627 /* CWeiXinAuthRegLogModel.h */,
@@ -1870,6 +1880,7 @@
 				275C4B001C70646D002475B6 /* CClaimCouponViewController.m in Sources */,
 				9FD213251BD128A60063147D /* NSLog+Extra.m in Sources */,
 				9F66BF7A1BE4D35B0047CE82 /* CReorderWeatherSubscriptionsModel.m in Sources */,
+				277645121C8BF46C00E75491 /* CGetPetDisSpecBaiKeByIdModel.m in Sources */,
 				9F820C381BDA83DA004223BB /* CZaiHaiViewController.m in Sources */,
 				9FEED8421BECEE570095A91B /* CAddWeatherFirstViewController.m in Sources */,
 				27D0F03F1C7C83BC00215FCC /* CSubscriableCropsModel.m in Sources */,
@@ -1937,6 +1948,7 @@
 				278491EE1C7056E8000F0D3E /* CCouponHomeViewController.m in Sources */,
 				B0748DF71C57738200513B4E /* NSString+Extension.m in Sources */,
 				27A8C9EF1C71BDF000441C27 /* CClaimCouponTableViewCell.m in Sources */,
+				2776450F1C8BBAB200E75491 /* CGetVarietyBaiKeByIdModel.m in Sources */,
 				278704C51C7B06DB007E45BF /* CCropStageSelectionViewController.m in Sources */,
 				27D0F0711C7D7D3D00215FCC /* CTaskListViewController.m in Sources */,
 				27D0F0741C7D876400215FCC /* CPetDisListViewController.m in Sources */,

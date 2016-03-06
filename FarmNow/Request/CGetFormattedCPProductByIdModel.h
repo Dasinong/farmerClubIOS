@@ -1,5 +1,5 @@
 //
-//  CGetFormattedCPProductById.h
+//  CGetFormattedCPProductByIdModel.h
 //  FarmNow
 //
 //  Created by 朱曦炽 on 16/3/6.

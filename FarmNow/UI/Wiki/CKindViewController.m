@@ -9,12 +9,12 @@
 #import "CKindViewController.h"
 #import "CSeedViewController.h"
 #import "CBrowseVarietyByCropIdModel.h"
-#import "CWebViewController.h"
 #import "CBrowseCPProductByModelModel.h"
 #import "CGetCpprductsByIngredientModel.h"
 #import "CBrowseCustomizedCPProductModel.h"
 #import "CIngredientDetailObject.h"
 #import "CCpproductDetailController.h"
+#import "CWebViewController.h"
 
 @interface CKindViewController ()
 @property (nonatomic, strong) NSArray *sections;
@@ -145,10 +145,11 @@
 {
     if (self.type == ePinZhong) {
         CVarietyBrowseObjectModel* object       = (CVarietyBrowseObjectModel*)data;
-        CWebViewController* webController       = [self.storyboard controllerWithID:@"CWebViewController"];
-        webController.address                       = [NSString stringWithFormat:@"%@/ploughHelper/baike?id=%ld&type=%@", kServer, (long)object.varietyId,@"variety"];
-        webController.title                     = object.varietyName;
-        [self.navigationController pushViewController:webController animated:YES];
+        
+        CCpproductDetailController *controller = [self.storyboard controllerWithID:@"CCpproductDetailController"];
+        controller.type = @"variety";
+        controller.id = object.varietyId;
+        [self.navigationController pushViewController:controller animated:YES];
     }
     else if (self.type == eIngredient)
     {

@@ -10,6 +10,7 @@
 #import "CWeatherSectionView.h"
 #import "SDCycleScrollView.h"
 #import "CPetDisSolutionViewController.h"
+#import "CGetPetDisSpecBaiKeByIdModel.h"
 
 @interface CPetDisListViewController () {
     NSInteger currentSegmentIndex;
@@ -24,7 +25,20 @@
     // Do any additional setup after loading the view.
     self.tableView.estimatedRowHeight = 200;
     
-    self.title = self.petDis.petDisSpecName;
+    if (self.petDis == nil) {
+        CGetPetDisSpecBaiKeByIdParams *param = [CGetPetDisSpecBaiKeByIdParams new];
+        param.id = self.id;
+        [CGetPetDisSpecBaiKeByIdModel requestWithParams:param completion:^(CGetPetDisSpecBaiKeByIdModel *model, JSONModelError *err) {
+            if (err == nil) {
+                self.petDis = model.data;
+                self.title = self.petDis.petDisSpecName;
+                [self.tableView reloadData];
+            }
+        }];
+    }
+    else {
+        self.title = self.petDis.petDisSpecName;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -10,6 +10,7 @@
 #import "CSeedViewController.h"
 #import "CBrowsePetDisSpecByCropIdAndTypeModel.h"
 #import "CWebViewController.h"
+#import "CPetDisListViewController.h"
 
 @interface CZaiHaiViewController ()
 @property (weak, nonatomic) IBOutlet HMSegmentedControl *segement;
@@ -77,10 +78,10 @@
 */
 - (void)didSelect:(NSIndexPath *)indexPath identifier:(NSString*)identifier data:(id)data
 {
-	CPetDisSpecBrowseObject* object = (CPetDisSpecBrowseObject*)data;
-	CWebViewController* webController = [self.storyboard controllerWithID:@"CWebViewController"];
-	webController.address = [NSString stringWithFormat:@"%@/ploughHelper/baike?id=%ld&type=%@",kServer,(long)object.petDisSpecId,@"pest"];
-	webController.title = self.seedItem.cropName;
-	[self.navigationController pushViewController:webController animated:YES];
+    CPetDisSpecBrowseObject* object = (CPetDisSpecBrowseObject*)data;
+    
+    CPetDisListViewController *controller = [self.storyboard controllerWithID:@"CPetDisListViewController"];
+    controller.id = object.petDisSpecId;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 @end

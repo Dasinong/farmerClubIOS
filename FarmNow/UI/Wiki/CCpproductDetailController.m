@@ -9,7 +9,8 @@
 #import "CCpproductDetailController.h"
 #import "SDCycleScrollView.h"
 #import "CGetFormattedCPProductByIdModel.h"
-
+#import "CGetVarietyBaiKeByIdModel.h"
+#import "CGetPetDisSpecBaiKeByIdModel.h"
 @interface CCpproductDetailController ()  <UITableViewDataSource, UITableViewDelegate>  {
     NSInteger currentSegmentIndex;
 }
@@ -26,19 +27,73 @@
     self.title = self.detailObject.name;
     
     if (self.detailObject == nil) {
-        NSLog(@"%@",self.type); // pesticide
         
-        CGetFormattedCPProductByIdParams *param = [CGetFormattedCPProductByIdParams new];
-        param.id = self.id;
+        NSLog(@"%@",self.type); // pesticide,variety, pest
         
-        [CGetFormattedCPProductByIdModel requestWithParams:param completion:^(CGetFormattedCPProductByIdModel *model, JSONModelError *err) {
-            if (err == nil) {
-                self.detailObject = model.data;
-                self.title = self.detailObject.name;
-                [self.tableView reloadData];
-            }
-        }];
+        if ([self.type isEqualToString:@"variety"]) {
+            CGetVarietyBaiKeByIdParams *param = [CGetVarietyBaiKeByIdParams new];
+            param.id = self.id;
+            [CGetVarietyBaiKeByIdModel requestWithParams:param completion:^(CGetVarietyBaiKeByIdModel *model, JSONModelError *err) {
+                if (err == nil) {
+                    NSDictionary *dict = model.data;
+                    self.detailObject = [self varietyToIngredientDetailObject:dict];
+                    self.title = self.detailObject.name;
+                    [self.tableView reloadData];
+                }
+            }];
+        }
+        else if ([self.type isEqualToString:@"pest"]) {
+            CGetPetDisSpecBaiKeByIdParams *param = [CGetPetDisSpecBaiKeByIdParams new];
+            param.id = self.id;
+            [CGetPetDisSpecBaiKeByIdModel requestWithParams:param completion:^(CGetPetDisSpecBaiKeByIdModel *model, JSONModelError *err) {
+                if (err == nil) {
+                    NSDictionary *dict = model.data;
+                    self.detailObject = [self pestToIngredientDetailObject:dict];
+                    self.title = self.detailObject.name;
+                    [self.tableView reloadData];
+                }
+            }];
+        }
+        else {
+            CGetFormattedCPProductByIdParams *param = [CGetFormattedCPProductByIdParams new];
+            param.id = self.id;
+            
+            [CGetFormattedCPProductByIdModel requestWithParams:param completion:^(CGetFormattedCPProductByIdModel *model, JSONModelError *err) {
+                if (err == nil) {
+                    self.detailObject = model.data;
+                    self.title = self.detailObject.name;
+                    [self.tableView reloadData];
+                }
+            }];
+
+        }
     }
+}
+
+// 这里不想建很多很类了，做个桥接
+- (CIngredientDetailObject *)varietyToIngredientDetailObject:(NSDictionary *)dict {
+    CIngredientDetailObject *detailObject= [[CIngredientDetailObject alloc] init];
+    
+    detailObject.id = [dict[@"id"] integerValue];
+    detailObject.activeIngredient = @[dict[@"registrationId"]];
+    detailObject.activeIngredientUsage = @[@""];
+    detailObject.type = dict[@"owner"];
+    detailObject.manufacturer = dict[@"suitableArea"];
+    detailObject.name = dict[@"varietyName"];
+    detailObject.desc = dict[@"yieldPerformance"];
+    detailObject.tip = dict[@"characteristics"];
+    
+    return detailObject;
+}
+- (CIngredientDetailObject *)pestToIngredientDetailObject:(NSDictionary *)dict {
+    CIngredientDetailObject *detailObject= [[CIngredientDetailObject alloc] init];
+    
+    detailObject.id = [dict[@"id"] integerValue];
+    detailObject.activeIngredient = @[dict[@"registrationId"]];
+    detailObject.activeIngredientUsage = @[@""];
+    detailObject.name = dict[@"varietyName"];
+    
+    return detailObject;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,6 +110,14 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (NSInteger)adjustSementedIndex {
+    if ([self.type isEqualToString:@"variety"]) {
+        return currentSegmentIndex+1;
+    }
+    
+    return currentSegmentIndex;
+}
 
 - (IBAction)segmentChanged:(id)sender {
     UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
@@ -143,11 +206,14 @@
         return 85;
     }
     else if (indexPath.section == 8) { // 长label
-        if (currentSegmentIndex == 0) {
+        
+        NSInteger adjustedIndex = [self adjustSementedIndex];
+        
+        if (adjustedIndex == 0) {
             return 0;
         }
         
-        if (currentSegmentIndex == 1) {
+        if (adjustedIndex == 1) {
             if (indexPath.row == 0) {
                 if (self.detailObject.desc.length > 0) {
                     return UITableViewAutomaticDimension;
@@ -176,7 +242,7 @@
         }
     }
     else if (indexPath.section >= 9) { // 表格
-        if (currentSegmentIndex != 0) {
+        if ([self adjustSementedIndex] != 0) {
             return 0;
         }
         
@@ -240,7 +306,16 @@
         UILabel *contentLabel = [cell.contentView viewWithTag:2];
         UIButton *button = [cell.contentView viewWithTag:3];
         button.hidden = YES;
-        titleLabel.text = @"有效成分";
+        
+        if ([self.type isEqualToString:@"variety"]) {
+            titleLabel.text = @"审核号";
+        }
+        else if ([self.type isEqualToString:@"pest"]) {
+            titleLabel.text = @"是";
+        }
+        else {
+            titleLabel.text = @"有效成分";
+        }
         
         NSString *content = @"";
         for (int i=0; i<self.detailObject.activeIngredient.count; i++) {
@@ -267,7 +342,17 @@
         UILabel *contentLabel = [cell.contentView viewWithTag:2];
         UIButton *button = [cell.contentView viewWithTag:3];
         button.hidden = YES;
-        titleLabel.text = @"剂型";
+        
+        if ([self.type isEqualToString:@"variety"]) {
+            titleLabel.text = @"育种单位";
+        }
+        else if ([self.type isEqualToString:@"pest"]) {
+            titleLabel.text = @"是";
+        }
+        else {
+            titleLabel.text = @"剂型";
+        }
+        
         contentLabel.hidden = NO;
         contentLabel.text = self.detailObject.type;
         
@@ -283,7 +368,17 @@
         UILabel *contentLabel = [cell.contentView viewWithTag:2];
         UIButton *button = [cell.contentView viewWithTag:3];
         button.hidden = YES;
-        titleLabel.text = @"生产厂家";
+        
+        if ([self.type isEqualToString:@"variety"]) {
+            titleLabel.text = @"适宜地区";
+        }
+        else if ([self.type isEqualToString:@"pest"]) {
+            titleLabel.text = @"是";
+        }
+        else {
+            titleLabel.text = @"生产厂家";
+        }
+        
         contentLabel.hidden = NO;
         contentLabel.text = self.detailObject.manufacturer;
         
@@ -329,12 +424,32 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SegementCell" forIndexPath:indexPath];
         
         UISegmentedControl *segmentedControl = (UISegmentedControl *)[cell.contentView viewWithTag:1];
-        if (self.detailObject.guideline.length > 0) {
-            [segmentedControl setTitle:@"用药指导" forSegmentAtIndex:1];
+        
+        if ([self.type isEqualToString:@"variety"]) {
+            [segmentedControl setTitle:@"产量表现" forSegmentAtIndex:0];
+            [segmentedControl setTitle:@"品种特性" forSegmentAtIndex:1];
+          
+            if (segmentedControl.numberOfSegments > 2) {
+                [segmentedControl removeSegmentAtIndex:2 animated:NO];
+            }
+        }
+        else if ([self.type isEqualToString:@"pest"]) {
+            if (self.detailObject.guideline.length > 0) {
+                [segmentedControl setTitle:@"用药指导" forSegmentAtIndex:1];
+            }
+            else {
+                [segmentedControl setTitle:@"产品特点" forSegmentAtIndex:1];
+            }
         }
         else {
-            [segmentedControl setTitle:@"产品特点" forSegmentAtIndex:1];
+            if (self.detailObject.guideline.length > 0) {
+                [segmentedControl setTitle:@"用药指导" forSegmentAtIndex:1];
+            }
+            else {
+                [segmentedControl setTitle:@"产品特点" forSegmentAtIndex:1];
+            }
         }
+        
         return cell;
     }
     else if (indexPath.section == 8) { // 长label
@@ -343,9 +458,19 @@
         UILabel *titleLabel = [cell.contentView viewWithTag:1];
         UILabel *contentLabel = [cell.contentView viewWithTag:2];
         
-        if (currentSegmentIndex == 1) {
+        NSInteger adjustedSegmentIndex = [self adjustSementedIndex];
+        
+        if (adjustedSegmentIndex == 1) {
             if (indexPath.row == 0) {
-                titleLabel.text = @"产品介绍";
+                if ([self.type isEqualToString:@"variety"]) {
+                    titleLabel.text = @"产量表现";
+                }
+                else if ([self.type isEqualToString:@"pest"]) {
+                    titleLabel.text = @"是";
+                }
+                else {
+                    titleLabel.text = @"产品介绍";
+                }
                 contentLabel.text = self.detailObject.desc;
             }
             else if (indexPath.row == 1) {
@@ -359,8 +484,16 @@
                 }
             }
         }
-        else if (currentSegmentIndex == 2) {
-            titleLabel.text = @"注意事项";
+        else if (adjustedSegmentIndex == 2) {
+            if ([self.type isEqualToString:@"variety"]) {
+                titleLabel.text = @"品种特性";
+            }
+            else if ([self.type isEqualToString:@"pest"]) {
+                titleLabel.text = @"是";
+            }
+            else {
+                titleLabel.text = @"注意事项";
+            }
             
             if (self.detailObject.tip.length > 0) {
                 contentLabel.text = self.detailObject.tip;
@@ -424,7 +557,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     
-    if (currentSegmentIndex == 0) {
+    if ([self adjustSementedIndex] == 0) {
         if (section >= 9) {
             return 20;
         }

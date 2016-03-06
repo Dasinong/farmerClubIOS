@@ -11,4 +11,5 @@
 
 @interface CPetDisListViewController : CDataRequestViewController
 @property (nonatomic, strong) CPetDisSpec *petDis;
+@property (nonatomic, assign) NSInteger id;
 @end
