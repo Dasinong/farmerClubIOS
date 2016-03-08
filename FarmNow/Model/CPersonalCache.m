@@ -166,7 +166,7 @@ static CPersonalCache * _defaultPersonalCache = nil;
 	return self.userObject;
 }
 
-- (void)saveCacheUserInfo:(CUserObject *)value
+- (void)saveCacheUserInfo:(CUserObject *)value sendNotification:(BOOL)sendNotification
 {
 	self.userObject = value;
 	
@@ -186,6 +186,8 @@ static CPersonalCache * _defaultPersonalCache = nil;
 	[_cacheValueDict writeToFile:[CPersonalCache cachePathForCacheKeyValue] atomically:YES];
     
     // 发送登录成功通知
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"notification_signin" object:nil];
+    if (sendNotification) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"notification_signin" object:nil];
+    }
 }
 @end

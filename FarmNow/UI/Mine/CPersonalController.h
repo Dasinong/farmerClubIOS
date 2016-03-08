@@ -9,5 +9,5 @@
 #import "CTableViewController_StoryBoard.h"
 
 @interface CPersonalController : CTableViewController_StoryBoard
-
+@property (nonatomic, assign) BOOL isRetail;
 @end

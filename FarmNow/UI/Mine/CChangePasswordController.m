@@ -62,7 +62,7 @@
 			CUserObject* userInfo = [[CPersonalCache defaultPersonalCache] cacheUserInfo];
 			if (userInfo.isPassSet == NO) {
 				userInfo.isPassSet = YES;
-				[[CPersonalCache defaultPersonalCache] saveCacheUserInfo:userInfo];
+				[[CPersonalCache defaultPersonalCache] saveCacheUserInfo:userInfo sendNotification:NO];
 			}
 			[self.navigationController popViewControllerAnimated:YES];
 		}

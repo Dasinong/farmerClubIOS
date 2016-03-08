@@ -17,6 +17,7 @@
 #import "CMyCouponContainerViewController.h"
 #import "CRedeemCouponModel.h"
 #import "CScannedCouponDetailViewController.h"
+#import "CUtil.h"
 
 @interface CMineViewController () <QRCodeReaderDelegate>
 @property (strong, nonatomic) QRCodeReaderViewController* reader;
@@ -275,55 +276,7 @@
 	[self dismissViewControllerAnimated:YES completion:^{
 		NSLog(@"%@", result);
         
-        if ([result containsString:@"couponId="] && [result containsString:@"userId="]) {
-            NSArray *urlComponents = [result componentsSeparatedByString:@"&"];
-            
-            NSInteger userId = 0;
-            NSInteger couponId = 0;
-            
-            for (NSString *keyValuePair in urlComponents)
-            {
-                NSArray *pairComponents = [keyValuePair componentsSeparatedByString:@"="];
-                NSString *key = [[pairComponents firstObject] stringByRemovingPercentEncoding];
-                NSString *value = [[pairComponents lastObject] stringByRemovingPercentEncoding];
-                
-                if ([key isEqualToString:@"couponId"]) {
-                    couponId = [value integerValue];
-                }
-                else if ([key isEqualToString:@"userId"]) {
-                    userId = [value integerValue];
-                }
-            }
-            
-            
-            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            CRedeemCouponParam *params = [CRedeemCouponParam new];
-            params.userId = userId;
-            params.couponId = couponId;
-            
-            [CRedeemCouponModel requestWithParams:POST params:params completion:^(CRedeemCouponModel *model, JSONModelError *err) {
-                [MBProgressHUD hideHUDForView:self.view animated:NO];
-                if (model) {
-                    CScannedCouponDetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CScannedCouponDetailViewController"];
-                    controller.hidesBottomBarWhenPushed = YES;
-                    CCouponCampaign *campaign = [[CCouponCampaign alloc] init];
-                    campaign.id = model.coupon.campaignId;
-                    controller.couponCampaign = campaign;
-                    [self.navigationController pushViewController:controller animated:YES];
-                }
-                else {
-                    //[MBProgressHUD alert:@"没有权限"];
-                }
-            }];
-        }
-        else {
-            CWebViewController* webController  = [self.storyboard controllerWithID:@"CWebViewController"];
-            //		webController.title                     = data;
-            webController.address = result;
-            webController.hideToolbar = NO;
-            webController.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:webController animated:YES];
-        }
+        [CUtil processQR:result inVC:self];
 	}];
 }
 

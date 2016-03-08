@@ -4296,7 +4296,7 @@ i) 不得为其他任何非法目的而使用服务。
         <!--Third-->
         <scene sceneID="x5O-eT-prA">
             <objects>
-                <viewController title="个人信息" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="ZWm-I4-bd5" userLabel="Third" customClass="CPersonalController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CPersonalController" title="个人信息" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="ZWm-I4-bd5" userLabel="Third" customClass="CPersonalController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZQY-Ca-MTd"/>
                         <viewControllerLayoutGuide type="bottom" id="0eC-Eg-Nmk"/>
@@ -6064,6 +6064,86 @@ i) 不得为其他任何非法目的而使用服务。
             </objects>
             <point key="canvasLocation" x="764" y="5857"/>
         </scene>
+        <!--店铺管理-->
+        <scene sceneID="vhJ-4B-OBF">
+            <objects>
+                <viewController storyboardIdentifier="CRetailerHomeViewController" id="nYC-SI-Lhy" customClass="CRetailerHomeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="U9I-cI-7F6"/>
+                        <viewControllerLayoutGuide type="bottom" id="vK0-ES-z9M"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VG2-p0-yv8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="53" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xWg-3v-yZG">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="90" id="80W-UQ-CJ4">
+                                        <rect key="frame" x="0.0" y="92" width="320" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="80W-UQ-CJ4" id="1Tf-oh-sPO">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="90"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="retailer_camera" translatesAutoresizingMaskIntoConstraints="NO" id="VIH-nB-TcK">
+                                                    <rect key="frame" x="20" y="25" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="QjQ-eh-tBJ"/>
+                                                        <constraint firstAttribute="width" constant="40" id="vyJ-m9-cS2"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfx-kx-ATq">
+                                                    <rect key="frame" x="75" y="34.5" width="192" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aki-8w-Ksy">
+                                                    <rect key="frame" x="0.0" y="89" width="487" height="1"/>
+                                                    <color key="backgroundColor" white="0.84605783045977001" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="pfR-nM-sbr"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="VIH-nB-TcK" firstAttribute="leading" secondItem="1Tf-oh-sPO" secondAttribute="leading" constant="20" id="Kdx-mK-DNt"/>
+                                                <constraint firstItem="pfx-kx-ATq" firstAttribute="leading" secondItem="VIH-nB-TcK" secondAttribute="trailing" constant="15" id="LFy-bU-M40"/>
+                                                <constraint firstAttribute="bottom" secondItem="aki-8w-Ksy" secondAttribute="bottom" id="MZv-P0-JZI"/>
+                                                <constraint firstAttribute="trailing" secondItem="aki-8w-Ksy" secondAttribute="trailing" constant="-200" id="WFj-hd-9k6"/>
+                                                <constraint firstItem="aki-8w-Ksy" firstAttribute="leading" secondItem="1Tf-oh-sPO" secondAttribute="leading" id="bS8-VE-DRM"/>
+                                                <constraint firstItem="VIH-nB-TcK" firstAttribute="centerY" secondItem="1Tf-oh-sPO" secondAttribute="centerY" id="hMj-Ea-dBj"/>
+                                                <constraint firstAttribute="trailing" secondItem="pfx-kx-ATq" secondAttribute="trailing" constant="20" id="lfB-Pr-646"/>
+                                                <constraint firstItem="pfx-kx-ATq" firstAttribute="centerY" secondItem="VIH-nB-TcK" secondAttribute="centerY" id="o6t-H4-583"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="nYC-SI-Lhy" id="4hC-qH-jy5"/>
+                                    <outlet property="delegate" destination="nYC-SI-Lhy" id="nU1-k6-Rtf"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="xWg-3v-yZG" secondAttribute="trailing" id="Khv-o3-PKc"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="xWg-3v-yZG" secondAttribute="bottom" id="rSo-KH-dF1"/>
+                            <constraint firstItem="xWg-3v-yZG" firstAttribute="top" secondItem="VG2-p0-yv8" secondAttribute="topMargin" id="vWS-0n-Smw"/>
+                            <constraint firstItem="xWg-3v-yZG" firstAttribute="leading" secondItem="VG2-p0-yv8" secondAttribute="leading" id="xYr-Wk-UK6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="店铺管理" id="E8g-nz-Huj"/>
+                    <connections>
+                        <outlet property="tableView" destination="xWg-3v-yZG" id="gEB-Dv-r6o"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FEW-Av-Dc2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1119" y="5857"/>
+        </scene>
         <!--活动-->
         <scene sceneID="yjJ-6n-h9T">
             <objects>
@@ -6703,7 +6783,7 @@ i) 不得为其他任何非法目的而使用服务。
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="dPC-da-GoU" kind="relationship" relationship="rootViewController" id="NyQ-DH-FUs"/>
+                        <segue destination="nYC-SI-Lhy" kind="relationship" relationship="rootViewController" id="F5O-HP-cRK"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F27-d6-vcu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -6745,6 +6825,7 @@ i) 不得为其他任何非法目的而使用服务。
         <image name="radiobutton_select" width="16" height="16"/>
         <image name="rain" width="14" height="18"/>
         <image name="relax" width="295" height="316"/>
+        <image name="retailer_camera" width="24" height="24"/>
         <image name="smirklook" width="548" height="628"/>
         <image name="weather" width="115" height="115"/>
         <image name="weather_selected" width="115" height="115"/>

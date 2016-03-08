@@ -156,7 +156,7 @@
 				[CQQAuthRegLogModel requestWithParams:POST params:params completion:^(CQQAuthRegLogModel* model, JSONModelError *err) {
 					if (model && err==nil) {
 						[MBProgressHUD alert:@"登录成功！" ];
-						[[CPersonalCache defaultPersonalCache] saveCacheUserInfo:model.data];
+						[[CPersonalCache defaultPersonalCache] saveCacheUserInfo:model.data sendNotification:YES];
 						if (model.data.userType == nil) {
 							CSelectIdentityController* controller = [self.storyboard controllerWithID:@"CSelectIdentityController"];
 							[self.navigationController pushViewController:controller animated:YES];
@@ -193,7 +193,7 @@
 			[CWeiXinAuthRegLogModel requestWithParams:POST params:params completion:^(CQQAuthRegLogModel* model, JSONModelError *err) {
 					if (model && err==nil && [model.respCode isEqualToString:@"200"]) {
 						[MBProgressHUD alert:@"登录成功！" ];
-						[[CPersonalCache defaultPersonalCache] saveCacheUserInfo:model.data];
+						[[CPersonalCache defaultPersonalCache] saveCacheUserInfo:model.data sendNotification:YES];
 						if (model.data.userType == nil) {
 							CSelectIdentityController* controller = [self.storyboard controllerWithID:@"CSelectIdentityController"];
 							[self.navigationController pushViewController:controller animated:YES];
