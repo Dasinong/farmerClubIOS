@@ -34,6 +34,13 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CCouponCampaignTableViewCell class]) bundle:nil] forCellReuseIdentifier:@"CCouponCampaignTableViewCell"];
 
+    
+    if ([USER isBASF]) {
+        self.title = @"巴斯夫活动";
+    }
+    else {
+        self.title = @"大户俱乐部活动";
+    }
 }
 
 - (void)didReceiveMemoryWarning {
