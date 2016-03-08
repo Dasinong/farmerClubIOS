@@ -8,10 +8,11 @@
 
 #import "CRecommendController2.h"
 #import "CSetRefModel.h"
+#import <QRCodeReaderViewController/QRCodeReaderViewController.h>
 
-@interface CRecommendController2 ()
+@interface CRecommendController2 () <QRCodeReaderDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *codeField;
-
+@property (strong, nonatomic) QRCodeReaderViewController* reader;
 @end
 
 @implementation CRecommendController2
@@ -46,8 +47,36 @@
 		if (model && err== nil) {
 			[MBProgressHUD alert:@"发送成功"];
 		}
-	}];
-
+    }];
 }
 
+- (IBAction)scan:(id)sender {
+    [self presentViewController:self.reader animated:YES completion:NULL];
+}
+
+- (QRCodeReaderViewController *)reader {
+    if (_reader == nil) {
+        NSArray *types = @[AVMetadataObjectTypeQRCode];
+        _reader = [QRCodeReaderViewController readerWithMetadataObjectTypes:types];
+        
+        // Using delegate methods
+        _reader.delegate = self;
+    }
+    
+    return _reader;
+}
+
+#pragma mark - QRCodeReader Delegate Methods
+
+- (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        self.codeField.text = result;
+    }];
+}
+
+- (void)readerDidCancel:(QRCodeReaderViewController *)reader
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
 @end

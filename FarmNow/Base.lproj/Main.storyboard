@@ -5107,7 +5107,7 @@ i) 不得为其他任何非法目的而使用服务。
             </objects>
             <point key="canvasLocation" x="1942" y="2654"/>
         </scene>
-        <!--Recommend Controller2-->
+        <!--请填写邀请人-->
         <scene sceneID="bkL-92-Gvr">
             <objects>
                 <viewController storyboardIdentifier="CRecommendController2" id="Jhd-lX-Aot" customClass="CRecommendController2" sceneMemberID="viewController">
@@ -5119,59 +5119,78 @@ i) 不得为其他任何非法目的而使用服务。
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入您推荐人的邀请码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0j-11-di8">
-                                <rect key="frame" x="66" y="40" width="187" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如果你有推荐人，请提供TA的邀请码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZD-XL-brS">
-                                <rect key="frame" x="20" y="118.5" width="280" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="或直接输入邀请码：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZD-XL-brS">
+                                <rect key="frame" x="20" y="124" width="280" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EOr-LR-laY">
-                                <rect key="frame" x="20" y="149.5" width="280" height="50"/>
+                                <rect key="frame" x="200" y="201" width="100" height="44"/>
                                 <color key="backgroundColor" red="0.17254901959999999" green="0.62352941179999999" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="7ft-nf-gqu"/>
+                                    <constraint firstAttribute="height" constant="44" id="Lb7-Rr-EDN"/>
+                                    <constraint firstAttribute="width" constant="100" id="nDc-kK-LNb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="确定">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="doneClick:" destination="Jhd-lX-Aot" eventType="touchUpInside" id="yYM-AT-PZ6"/>
+                                    <action selector="doneClick:" destination="Jhd-lX-Aot" eventType="touchUpInside" id="AEw-hc-2Pm"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="6位邀请码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kH9-Qy-Am7">
-                                <rect key="frame" x="20" y="70" width="280" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5N7-OU-uC6">
+                                <rect key="frame" x="19" y="50" width="280" height="44"/>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.62352941179999999" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Lbp-GA-JzA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="扫描邀请人二维码">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="scan:" destination="Jhd-lX-Aot" eventType="touchUpInside" id="X8y-pY-BJn"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kH9-Qy-Am7">
+                                <rect key="frame" x="20" y="150" width="280" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="5Uh-Dh-VNZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vn6-Hk-ffe">
+                                <rect key="frame" x="20" y="190" width="280" height="1"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="fOQ-aR-tuT"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="hZD-XL-brS" firstAttribute="centerX" secondItem="jvc-iL-RnF" secondAttribute="centerX" id="2DW-4n-1Fz"/>
                             <constraint firstItem="kH9-Qy-Am7" firstAttribute="leading" secondItem="jvc-iL-RnF" secondAttribute="leading" constant="20" id="96w-Vo-Avq"/>
-                            <constraint firstItem="kH9-Qy-Am7" firstAttribute="top" secondItem="r0j-11-di8" secondAttribute="bottom" constant="10" id="9vm-To-Usz"/>
-                            <constraint firstItem="hZD-XL-brS" firstAttribute="top" secondItem="kH9-Qy-Am7" secondAttribute="bottom" constant="8" id="B6B-ub-wl9"/>
                             <constraint firstItem="hZD-XL-brS" firstAttribute="trailing" secondItem="kH9-Qy-Am7" secondAttribute="trailing" id="Bot-AX-VAq"/>
-                            <constraint firstItem="EOr-LR-laY" firstAttribute="leading" secondItem="kH9-Qy-Am7" secondAttribute="leading" id="C65-Rq-bE4"/>
+                            <constraint firstItem="EOr-LR-laY" firstAttribute="trailing" secondItem="vn6-Hk-ffe" secondAttribute="trailing" id="CVc-Iv-KmL"/>
                             <constraint firstAttribute="trailing" secondItem="kH9-Qy-Am7" secondAttribute="trailing" constant="20" id="Shg-eK-dzM"/>
-                            <constraint firstItem="EOr-LR-laY" firstAttribute="trailing" secondItem="kH9-Qy-Am7" secondAttribute="trailing" id="UNq-NH-YHD"/>
-                            <constraint firstItem="r0j-11-di8" firstAttribute="centerX" secondItem="jvc-iL-RnF" secondAttribute="centerX" id="UYB-IX-SCZ"/>
+                            <constraint firstItem="vn6-Hk-ffe" firstAttribute="top" secondItem="kH9-Qy-Am7" secondAttribute="bottom" id="THr-PS-aMX"/>
+                            <constraint firstItem="hZD-XL-brS" firstAttribute="top" secondItem="5N7-OU-uC6" secondAttribute="bottom" constant="30" id="Z8V-cx-Igi"/>
                             <constraint firstItem="kH9-Qy-Am7" firstAttribute="centerX" secondItem="jvc-iL-RnF" secondAttribute="centerX" id="b3r-7O-Loi"/>
+                            <constraint firstItem="5N7-OU-uC6" firstAttribute="leading" secondItem="jvc-iL-RnF" secondAttribute="leading" constant="19" id="cx6-Kd-EOH"/>
                             <constraint firstItem="hZD-XL-brS" firstAttribute="leading" secondItem="kH9-Qy-Am7" secondAttribute="leading" id="iH7-KO-pnD"/>
-                            <constraint firstItem="r0j-11-di8" firstAttribute="top" secondItem="b9V-Qz-RJV" secondAttribute="bottom" constant="20" id="oFz-sK-SMo"/>
-                            <constraint firstItem="EOr-LR-laY" firstAttribute="top" secondItem="hZD-XL-brS" secondAttribute="bottom" constant="15" id="sZA-5b-4ty"/>
-                            <constraint firstItem="EOr-LR-laY" firstAttribute="centerX" secondItem="jvc-iL-RnF" secondAttribute="centerX" id="yOm-Fd-Fq7"/>
+                            <constraint firstItem="kH9-Qy-Am7" firstAttribute="top" secondItem="hZD-XL-brS" secondAttribute="bottom" constant="10" id="iL2-iI-meH"/>
+                            <constraint firstItem="vn6-Hk-ffe" firstAttribute="trailing" secondItem="kH9-Qy-Am7" secondAttribute="trailing" id="jPH-XN-rhg"/>
+                            <constraint firstItem="EOr-LR-laY" firstAttribute="top" secondItem="vn6-Hk-ffe" secondAttribute="bottom" constant="10" id="nUh-Lw-MSy"/>
+                            <constraint firstItem="5N7-OU-uC6" firstAttribute="top" secondItem="jvc-iL-RnF" secondAttribute="topMargin" constant="50" id="pK6-LJ-zKF"/>
+                            <constraint firstAttribute="trailing" secondItem="5N7-OU-uC6" secondAttribute="trailing" constant="21" id="psz-PQ-q2o"/>
+                            <constraint firstItem="vn6-Hk-ffe" firstAttribute="leading" secondItem="kH9-Qy-Am7" secondAttribute="leading" id="tBk-A0-MMz"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="请填写邀请人" id="qLu-lV-F4c"/>
                     <connections>
                         <outlet property="codeField" destination="kH9-Qy-Am7" id="6pQ-lN-TqP"/>
                     </connections>
