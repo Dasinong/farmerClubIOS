@@ -19,6 +19,7 @@
 
 @interface CCouponDetailViewController () <UITableViewDataSource, UITableViewDelegate, CClaimCouponViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *claimButton;
 @property (nonatomic, strong) NSMutableDictionary *downloadedPictures;
 @property (nonatomic, strong) NSMutableDictionary *storeDict;
 @end
@@ -40,6 +41,11 @@
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CStoreTableViewCell class]) bundle:nil] forCellReuseIdentifier:@"CStoreTableViewCell"];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CCampaignDetailHeaderTableViewCell class]) bundle:nil] forCellReuseIdentifier:@"CCampaignDetailHeaderTableViewCell"];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CPictureTableViewCell class]) bundle:nil] forCellReuseIdentifier:@"CPictureTableViewCell"];
+    
+    if (self.scanned) {
+        [self.claimButton setBackgroundColor:[UIColor lightGrayColor]];
+        self.claimButton.enabled = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -103,6 +109,13 @@
     [CCouponCampaignDetailModel requestWithParams:param completion:^(CCouponCampaignDetailModel *model, JSONModelError *err) {
         if (model && model.campaign) {
             self.couponCampaign = model.campaign;
+
+            if (self.couponCampaign.stores.count == 0) {
+                [self.claimButton setBackgroundColor:[UIColor lightGrayColor]];
+                [self.claimButton setTitle:@"本区域暂未开放" forState:UIControlStateDisabled];
+                self.claimButton.enabled = NO;
+            }
+            
             [self groupStoreWithProvince];
             [self.tableView.mj_header endRefreshing];
             [self.tableView reloadData];

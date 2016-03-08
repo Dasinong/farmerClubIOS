@@ -56,7 +56,7 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gJQ-r0-TxS" secondAttribute="bottom" constant="0.5" id="1Gp-aP-vcV"/>
+                    <constraint firstAttribute="bottom" secondItem="gJQ-r0-TxS" secondAttribute="bottom" priority="999" constant="0.5" id="1Gp-aP-vcV"/>
                     <constraint firstItem="ki4-V9-Nby" firstAttribute="top" secondItem="j2P-86-roh" secondAttribute="bottom" constant="7.5" id="1qK-UL-QeD"/>
                     <constraint firstItem="ki4-V9-Nby" firstAttribute="leading" secondItem="JEx-Wj-Ben" secondAttribute="leading" id="DCr-UR-Jjo"/>
                     <constraint firstAttribute="trailing" secondItem="JEx-Wj-Ben" secondAttribute="trailing" constant="12" id="GXz-wE-sgO"/>

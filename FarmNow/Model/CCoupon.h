@@ -16,7 +16,7 @@
 @property (assign, nonatomic) NSInteger id;
 @property (assign, nonatomic) float amount;
 @property (nonatomic, strong) NSString *type;
-@property (assign, nonatomic) NSInteger sannerId;
+@property (assign, nonatomic) NSInteger scannerId;
 @property (nonatomic, strong) NSString *displayStatus;
 @property (assign, nonatomic) NSTimeInterval redeemedAt;
 @property (assign, nonatomic) NSTimeInterval claimedAt;

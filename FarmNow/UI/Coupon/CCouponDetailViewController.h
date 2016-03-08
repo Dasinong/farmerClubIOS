@@ -15,4 +15,5 @@ extern CLLocationDegrees gLongitude;
 
 @interface CCouponDetailViewController : CBaseViewController
 @property (nonatomic,strong) CCouponCampaign *couponCampaign;
+@property (nonatomic, assign) BOOL scanned;
 @end

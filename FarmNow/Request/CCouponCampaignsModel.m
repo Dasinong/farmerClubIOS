@@ -19,6 +19,7 @@
 @implementation CCouponCampaignsModel
 + (JSONKeyMapper *)keyMapper
 {
-    return [[JSONKeyMapper alloc] initWithDictionary:@{@"data.campaigns":@"campaigns"}];
+    return [[JSONKeyMapper alloc] initWithDictionary:@{@"data.campaigns":@"campaigns",
+                                                       @"data.coupons":@"coupons"}];
 }
 @end

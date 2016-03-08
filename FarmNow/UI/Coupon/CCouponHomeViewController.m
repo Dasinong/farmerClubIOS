@@ -20,6 +20,7 @@
 @interface CCouponHomeViewController () <UITableViewDataSource, UITableViewDelegate, CCouponCampaignTableViewCellDelegate, CClaimCouponViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataArray;
+@property (nonatomic, strong) NSArray *couponArray;
 @end
 
 @implementation CCouponHomeViewController
@@ -81,6 +82,7 @@
         [self.tableView.mj_header endRefreshing];
         if (model && model.campaigns) {
             self.dataArray = model.campaigns;
+            self.couponArray = model.coupons;
             [self.tableView reloadData];
         }
     }];
@@ -117,10 +119,36 @@
     
     CCouponCampaign *couponCampaign = self.dataArray[indexPath.row];
     
-    CCouponDetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CCouponDetailViewController"];
-    controller.hidesBottomBarWhenPushed = YES;
-    controller.couponCampaign = couponCampaign;
-    [self.navigationController pushViewController:controller animated:YES];
+    BOOL claimed = NO;
+    BOOL scanned = NO;
+    CCoupon *selectedCoupon = nil;
+    for (CCoupon *coupon in self.couponArray) {
+        if (coupon.campaignId == couponCampaign.id) {
+            if (coupon.scannerId > 0) {
+                scanned = YES;
+            }
+            else {
+                claimed = YES;
+            }
+            selectedCoupon = coupon;
+            
+            break;
+        }
+    }
+    
+    if (claimed) {
+        CMyCouponDetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CMyCouponDetailViewController"];
+        controller.coupon = selectedCoupon;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    else {
+        CCouponDetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CCouponDetailViewController"];
+        controller.hidesBottomBarWhenPushed = YES;
+        controller.couponCampaign = couponCampaign;
+        controller.scanned = scanned;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    
 }
 
 #pragma mark - CCouponCampaignTableViewCellDelegate
