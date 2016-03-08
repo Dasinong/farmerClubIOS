@@ -9,6 +9,5 @@
 #import "CBaseViewController.h"
 
 @interface CRecommendController1 : CBaseViewController
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeight;
 
 @end

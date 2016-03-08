@@ -167,8 +167,6 @@
                 if (object.institutionId != nil || object.refuid != nil)
                 {
                     CRecommendController1* controller  = [self.storyboard controllerWithID:@"CRecommendController1"];
-                    controller.topViewHeight.constant = 0;
-                    controller.title = @"有奖推荐";
                     controller.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:controller animated:YES];
                 }
