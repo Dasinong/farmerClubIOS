@@ -17,5 +17,7 @@
 @property (nonatomic, assign) BOOL showWXLogin;
 
 - (BOOL)enableWelfare; // 是否要显示福利社
+
+@property (nonatomic, strong) NSString *jumpState; // BASF的导航跳转
 @end
 

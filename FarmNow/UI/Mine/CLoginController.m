@@ -18,6 +18,7 @@
 #import "CPasswordViewController.h"
 #import "CSelectIdentityController.h"
 #import "Global.h"
+#import "AppDelegate.h"
 
 @interface CLoginController ()
 @property (weak, nonatomic) IBOutlet UIButton *qqLoginBtn;
@@ -162,7 +163,12 @@
 						}
 						else
 						{
-							[self dismissViewControllerAnimated:YES completion:nil];
+                            if (USER.isBASF) {
+                                [self goToBASF];
+                            }
+                            else {
+                                [self dismissViewControllerAnimated:YES completion:nil];
+                            }
 						}
 					}
 
@@ -194,7 +200,12 @@
 						}
 						else
 						{
-							[self dismissViewControllerAnimated:YES completion:nil];
+                            if (USER.isBASF) {
+                                [self goToBASF];
+                            }
+                            else {
+                                [self dismissViewControllerAnimated:YES completion:nil];
+                            }
 						}
 
 					}
@@ -203,6 +214,13 @@
 		}
 		
 	}
+}
+
+- (void)goToBASF {
+    UIViewController *controller  = [self.storyboard instantiateViewControllerWithIdentifier:@"CBASFNaviViewController"];
+    
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    delegate.window.rootViewController = controller;
 }
 
 - (void)loginSuccessed

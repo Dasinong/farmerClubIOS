@@ -125,6 +125,21 @@
 	
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    
+    if ([delegate.jumpState isEqualToString:@"wiki"]) {
+        CCpproductController* controller = [self.storyboard controllerWithID:@"CCpproductController"];
+        controller.isBASF = YES;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    
+    delegate.jumpState = nil;
+}
+
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [MBProgressHUD hideHUDForView:self.view animated:NO];

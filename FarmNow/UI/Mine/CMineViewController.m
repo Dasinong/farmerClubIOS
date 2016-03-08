@@ -246,6 +246,18 @@
 	[self presentViewController:naviController animated:YES completion:nil];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    
+    if ([delegate.jumpState isEqualToString:@"qr"]) {
+        [self presentViewController:self.reader animated:YES completion:NULL];
+    }
+    
+    delegate.jumpState = nil;
+}
+
 - (QRCodeReaderViewController *)reader {
     if (_reader == nil) {
         NSArray *types = @[AVMetadataObjectTypeQRCode];

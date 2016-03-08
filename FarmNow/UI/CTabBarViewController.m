@@ -70,6 +70,26 @@
     [super viewWillAppear:animated];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    
+    if ([delegate.jumpState isEqualToString:@"wiki"]) {
+        self.selectedIndex = 3;
+        // 然后要跳转到巴斯夫产品页
+    }
+    else if ([delegate.jumpState isEqualToString:@"campaign"]) {
+        self.selectedIndex = 2;
+        
+        delegate.jumpState = nil;
+    }
+    else if ([delegate.jumpState isEqualToString:@"qr"]) {
+        self.selectedIndex = 4;
+        // 然后要跳转到扫一扫
+    }
+}
+
 - (void)signinNotification:(NSNotification *)notification {
     BOOL enableWelfare = NO;
     if ([USER_DEFAULTS objectForKey:@"clientConfig"]) {

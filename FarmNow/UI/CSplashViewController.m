@@ -33,8 +33,14 @@
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-        UIViewController* controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CWeatherDrawerController"];
-        delegate.window.rootViewController = controller;
+        if ([USER isBASF]) {
+            UIViewController *controller  = [self.storyboard instantiateViewControllerWithIdentifier:@"CBASFNaviViewController"];
+            delegate.window.rootViewController = controller;
+        }
+        else {
+            UIViewController* controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CWeatherDrawerController"];
+            delegate.window.rootViewController = controller;
+        }
     });
 }
 @end

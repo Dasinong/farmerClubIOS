@@ -64,7 +64,15 @@
 			}
 			else
 			{
-				[self dismissViewControllerAnimated:YES completion:nil];
+                if (USER.isBASF) {
+                    UIViewController *controller  = [self.storyboard instantiateViewControllerWithIdentifier:@"CBASFNaviViewController"];
+                    
+                    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                    delegate.window.rootViewController = controller;
+                }
+                else {
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }
 			}
 		}
 		else{
@@ -79,6 +87,8 @@
 		}
 	}];
 }
+
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
