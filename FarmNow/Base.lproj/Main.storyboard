@@ -5693,7 +5693,7 @@ i) 不得为其他任何非法目的而使用服务。
             </objects>
             <point key="canvasLocation" x="48" y="4545"/>
         </scene>
-        <!--福利社-->
+        <!--活动-->
         <scene sceneID="syU-cH-X6N">
             <objects>
                 <viewController storyboardIdentifier="CCouponHomeViewController" id="X64-Ns-E2P" customClass="CCouponHomeViewController" sceneMemberID="viewController">
@@ -5722,7 +5722,7 @@ i) 不得为其他任何非法目的而使用服务。
                             <constraint firstAttribute="bottomMargin" secondItem="1S4-8l-ANj" secondAttribute="bottom" id="zD9-IK-9Nv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="福利社" id="B1f-uD-dhy"/>
+                    <navigationItem key="navigationItem" title="活动" id="B1f-uD-dhy"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="1S4-8l-ANj" id="hcg-ag-EqP"/>
@@ -6089,7 +6089,7 @@ i) 不得为其他任何非法目的而使用服务。
             </objects>
             <point key="canvasLocation" x="764" y="5857"/>
         </scene>
-        <!--大户俱乐部福利-->
+        <!--活动-->
         <scene sceneID="yjJ-6n-h9T">
             <objects>
                 <viewController storyboardIdentifier="CCouponDetailViewController" id="zJ1-g6-ppv" customClass="CCouponDetailViewController" sceneMemberID="viewController">
@@ -6257,7 +6257,7 @@ i) 不得为其他任何非法目的而使用服务。
                             <constraint firstAttribute="trailing" secondItem="cyh-uK-X08" secondAttribute="trailing" id="wZA-bg-7LF"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="大户俱乐部福利" id="wgW-1Q-iMA"/>
+                    <navigationItem key="navigationItem" title="活动" id="wgW-1Q-iMA"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="tableView" destination="FVf-Wg-CaX" id="Zhg-s0-9gb"/>
@@ -6421,7 +6421,7 @@ i) 不得为其他任何非法目的而使用服务。
             </objects>
             <point key="canvasLocation" x="1119" y="5189"/>
         </scene>
-        <!--我的福利-->
+        <!--我的活动-->
         <scene sceneID="Q4l-Ki-Fjd">
             <objects>
                 <viewController storyboardIdentifier="CMyCouponContainerViewController" id="tV0-vB-bF1" customClass="CMyCouponContainerViewController" sceneMemberID="viewController">
@@ -6448,13 +6448,13 @@ i) 不得为其他任何非法目的而使用服务。
                             <constraint firstItem="KvZ-sU-BLc" firstAttribute="leading" secondItem="EU0-Kb-Ubd" secondAttribute="leading" id="rgR-sn-Shf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="我的福利" id="52q-QW-gSh"/>
+                    <navigationItem key="navigationItem" title="我的活动" id="52q-QW-gSh"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oNg-Od-iNf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1517" y="5189"/>
         </scene>
-        <!--我的福利-->
+        <!--我的活动-->
         <scene sceneID="D7E-fn-mih">
             <objects>
                 <viewController storyboardIdentifier="CMyCouponPagerViewController" id="Xdu-sD-Nv0" customClass="CMyCouponPagerViewController" sceneMemberID="viewController">
@@ -6509,7 +6509,7 @@ i) 不得为其他任何非法目的而使用服务。
                             <constraint firstItem="iV5-01-XQZ" firstAttribute="top" secondItem="aD0-W6-Yah" secondAttribute="topMargin" id="e7y-Ca-Fem"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="我的福利" id="Mex-tj-zNm"/>
+                    <navigationItem key="navigationItem" title="我的活动" id="Mex-tj-zNm"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZh-Tg-GKw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -6552,7 +6552,7 @@ i) 不得为其他任何非法目的而使用服务。
             </objects>
             <point key="canvasLocation" x="2265" y="5189"/>
         </scene>
-        <!--福利券详情-->
+        <!--活动详情-->
         <scene sceneID="8HW-7A-NWJ">
             <objects>
                 <viewController storyboardIdentifier="CMyCouponDetailViewController" id="zqb-kT-LzQ" customClass="CMyCouponDetailViewController" sceneMemberID="viewController">
@@ -6686,7 +6686,7 @@ i) 不得为其他任何非法目的而使用服务。
                             <constraint firstItem="NJH-o2-UPm" firstAttribute="top" secondItem="4uj-ZV-JaV" secondAttribute="topMargin" id="yh7-Zi-KaJ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="福利券详情" id="RdK-4F-ecs"/>
+                    <navigationItem key="navigationItem" title="活动详情" id="RdK-4F-ecs"/>
                     <connections>
                         <outlet property="tableView" destination="NJH-o2-UPm" id="Ck7-VW-urI"/>
                     </connections>
@@ -6695,11 +6695,11 @@ i) 不得为其他任何非法目的而使用服务。
             </objects>
             <point key="canvasLocation" x="2616" y="5189"/>
         </scene>
-        <!--福利社-->
+        <!--活动-->
         <scene sceneID="GcC-Gw-AaM">
             <objects>
                 <navigationController storyboardIdentifier="couponNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uny-XO-fmI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="福利社" image="icon_coupon_normal" selectedImage="icon_coupon_select" id="CD6-A2-UAw"/>
+                    <tabBarItem key="tabBarItem" title="活动" image="icon_coupon_normal" selectedImage="icon_coupon_select" id="CD6-A2-UAw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="u6J-J3-g7Q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
