@@ -51,12 +51,6 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="防治方案" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4O-AP-Z6t">
-                        <rect key="frame" x="15" y="189" width="60" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.090196078431372548" green="0.40784313725490196" blue="0.73725490196078436" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EZb-fI-6yB">
                         <rect key="frame" x="0.0" y="228.5" width="320" height="1"/>
                         <color key="backgroundColor" red="0.91764705879999997" green="0.95294117649999999" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -64,11 +58,19 @@
                             <constraint firstAttribute="height" constant="1" id="xdK-BW-mKy"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmh-n3-92D">
+                        <rect key="frame" x="15" y="183" width="60" height="30"/>
+                        <state key="normal" title="防治方案"/>
+                        <connections>
+                            <action selector="petDisClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="fN9-bZ-CkY"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="dmh-n3-92D" firstAttribute="top" secondItem="uRb-bt-A0A" secondAttribute="bottom" constant="2" id="5RG-LE-XoA"/>
                     <constraint firstItem="I50-8K-9fS" firstAttribute="leading" secondItem="NVM-e7-ieG" secondAttribute="leading" id="AkL-tM-tdy"/>
-                    <constraint firstItem="f4O-AP-Z6t" firstAttribute="top" secondItem="uRb-bt-A0A" secondAttribute="bottom" constant="8" id="CxN-sF-kEc"/>
                     <constraint firstAttribute="trailing" secondItem="SkH-Wz-ZSi" secondAttribute="trailing" constant="15" id="GO4-R7-4fN"/>
+                    <constraint firstItem="dmh-n3-92D" firstAttribute="leading" secondItem="uRb-bt-A0A" secondAttribute="leading" id="MVt-nq-C6H"/>
                     <constraint firstItem="NVM-e7-ieG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Uxp-RD-9dr"/>
                     <constraint firstItem="uRb-bt-A0A" firstAttribute="top" secondItem="I50-8K-9fS" secondAttribute="bottom" id="W7e-R2-CKH"/>
                     <constraint firstItem="uRb-bt-A0A" firstAttribute="leading" secondItem="I50-8K-9fS" secondAttribute="leading" id="Zfw-Dw-7Ko"/>
@@ -78,7 +80,6 @@
                     <constraint firstItem="uRb-bt-A0A" firstAttribute="trailing" secondItem="I50-8K-9fS" secondAttribute="trailing" id="hNd-yv-4Ku"/>
                     <constraint firstAttribute="trailing" secondItem="EZb-fI-6yB" secondAttribute="trailing" id="j7f-bG-6I9"/>
                     <constraint firstItem="NVM-e7-ieG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="ly8-fw-rUI"/>
-                    <constraint firstItem="f4O-AP-Z6t" firstAttribute="leading" secondItem="uRb-bt-A0A" secondAttribute="leading" id="ris-E4-ecW"/>
                     <constraint firstItem="EZb-fI-6yB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="sbV-k9-C0Q"/>
                     <constraint firstItem="SkH-Wz-ZSi" firstAttribute="top" secondItem="NVM-e7-ieG" secondAttribute="top" id="znB-C4-fYU"/>
                 </constraints>

@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CPetDisSpec.h"
+
+@protocol CPetDisCellDelegate <NSObject>
+- (void)petSolutionClicked:(CPetDisSpec*)petDisSpec;
+@end
 
 @interface CPetDisCell : UITableViewCell
+@property (nonatomic, weak) id<CPetDisCellDelegate> delegate;
 - (void)setupWithModel:(id)model;
 @end

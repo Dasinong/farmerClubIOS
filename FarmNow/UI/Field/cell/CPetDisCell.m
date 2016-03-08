@@ -7,13 +7,12 @@
 //
 
 #import "CPetDisCell.h"
-#import "CPetDisSpec.h"
 
 @interface CPetDisCell ()
 @property (weak, nonatomic) IBOutlet UILabel *petDisNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *petDisDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *indicator;
-
+@property (weak, nonatomic) CPetDisSpec *petDisSpec;
 @end
 
 @implementation CPetDisCell
@@ -26,8 +25,15 @@
 
 - (void)setupWithModel:(id)model {
     CPetDisSpec *petDis = (CPetDisSpec *)model;
+    self.petDisSpec = petDis;
     
     self.petDisNameLabel.text = petDis.petDisSpecName;
     self.petDisDescriptionLabel.text = petDis.sympton;
+}
+
+- (IBAction)petDisClicked:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(petSolutionClicked:)]) {
+        [self.delegate petSolutionClicked:self.petDisSpec];
+    }
 }
 @end

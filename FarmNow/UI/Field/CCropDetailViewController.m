@@ -23,7 +23,7 @@
 #import "CWikiViewController.h"
 #import "CSeedViewController.h"
 
-@interface CCropDetailViewController () <UITableViewDataSource, UITableViewDelegate> {
+@interface CCropDetailViewController () <UITableViewDataSource, UITableViewDelegate, CPetDisCellDelegate> {
     NSInteger currentFieldIndex;
     NSInteger currentStageID;
     NSInteger currentStageSelectionIndex;
@@ -333,7 +333,7 @@
     
     if (indexPath.section == 2) {
         CPetDisCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CPetDisCell" forIndexPath:indexPath];
-        
+        cell.delegate = self;
         CPetDisSpec *petDis;
         if (self.field) {
             petDis = self.field.petdisspecws[indexPath.row];
@@ -385,6 +385,13 @@
         controller.petDis = petDis;
         [self.navigationController pushViewController:controller animated:YES];
     }
-    
+}
+
+#pragma mark - CPetDisCellDelegate
+- (void)petSolutionClicked:(CPetDisSpec*)petDisSpec {
+    CPetDisListViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CPetDisListViewController"];
+    controller.petDis = petDisSpec;
+    controller.goToSolution = YES;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 @end

@@ -33,11 +33,29 @@
                 self.petDis = model.data;
                 self.title = self.petDis.petDisSpecName;
                 [self.tableView reloadData];
+                
+                if (self.goToSolution) {
+                    if ([self.tableView numberOfRowsInSection:2] > 0) {
+                        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:2] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+                        self.goToSolution = NO;
+                    }
+                }
             }
         }];
     }
     else {
         self.title = self.petDis.petDisSpecName;
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (self.goToSolution) {
+        if ([self.tableView numberOfRowsInSection:2] > 0) {
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:2] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            self.goToSolution = NO;
+        }
     }
 }
 
