@@ -5545,6 +5545,9 @@ i) 不得为其他任何非法目的而使用服务。
                             <constraint firstAttribute="trailing" secondItem="vQv-kL-8G6" secondAttribute="trailing" id="qrp-nF-Gpk"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="qrButton" destination="F7J-AW-Tix" id="mVR-od-cfj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Fw-5C-E8r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
