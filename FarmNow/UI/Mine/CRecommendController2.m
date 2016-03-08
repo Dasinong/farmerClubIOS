@@ -8,6 +8,7 @@
 
 #import "CRecommendController2.h"
 #import "CSetRefModel.h"
+#import "MBProgressHUD+Express.h"
 #import <QRCodeReaderViewController/QRCodeReaderViewController.h>
 
 @interface CRecommendController2 () <QRCodeReaderDelegate>
@@ -71,7 +72,40 @@
 - (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result
 {
     [self dismissViewControllerAnimated:YES completion:^{
-        self.codeField.text = result;
+        
+        NSInteger valid = 0; // function=refcode&code=123456都成立
+        NSArray *paramArray = [result componentsSeparatedByString:@"&"];
+        
+        NSString *code = nil;
+        if (paramArray.count >= 2) {
+            for (NSString *keyValue in paramArray) {
+                NSArray *keyValueArray = [keyValue componentsSeparatedByString:@"="];
+                if (keyValueArray.count == 2) {
+                    NSString *key = keyValueArray[0];
+                    NSString *value = keyValueArray[1];
+                    
+                    if ([[key lowercaseString] isEqualToString:@"function"] && [[value lowercaseString] isEqualToString:@"refcode"]) {
+                        valid++;
+                        continue;
+                    }
+                    
+                    if ([[key lowercaseString] isEqualToString:@"code"]) {
+                        if (value.length > 0) {
+                            code = value;
+                            valid++;
+                        }
+                        continue;
+                    }
+                }
+            }
+        }
+        
+        if (valid >= 2) {
+           self.codeField.text = code;
+        }
+        else {
+            [MBProgressHUD alert:@"非法的二维码"];
+        }
     }];
 }
 
