@@ -107,7 +107,7 @@
             [self.tableView.mj_header endRefreshing];
             [self.tableView reloadData];
             
-            for (int i=0; i<self.couponCampaign.pictureUrls.count; i++) {
+            for (int i=1; i<self.couponCampaign.pictureUrls.count; i++) {
                 __block NSString *pictureID = self.couponCampaign.pictureUrls[i];
                 NSString *imageUrl = [NSString stringWithFormat:@"%@/pic/couponCampaign/%@",kServer,pictureID];
                 
@@ -138,11 +138,11 @@
     else if(indexPath.row == 1) {
         return UITableViewAutomaticDimension;
     }
-    else if(indexPath.row < 2 + self.couponCampaign.pictureUrls.count) {
+    else if(indexPath.row < 2 + self.couponCampaign.pictureUrls.count - 1) { // 第一张图片不要在这里再显示了
         return UITableViewAutomaticDimension;
     }
     else {
-        NSInteger newRow = indexPath.row - (2 + self.couponCampaign.pictureUrls.count);
+        NSInteger newRow = indexPath.row - (2 + self.couponCampaign.pictureUrls.count - 1);
         
         if (newRow == 0) {
             return 45;
@@ -170,7 +170,7 @@
         storeRowCount += stores.count;
     }
     
-    return 3 + self.couponCampaign.pictureUrls.count + storeRowCount;
+    return 3 + self.couponCampaign.pictureUrls.count - 1 + storeRowCount; // 第一张图片不要在这里再显示了， 所以有个-1
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -185,10 +185,10 @@
         [cell setupWithModel:self.couponCampaign];
         return cell;
     }
-    else if(indexPath.row < 2 + self.couponCampaign.pictureUrls.count) {
+    else if(indexPath.row < 2 + self.couponCampaign.pictureUrls.count - 1) {
         CPictureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CPictureTableViewCell" forIndexPath:indexPath];
         
-        NSString *pictureID = [self.couponCampaign.pictureUrls objectAtIndex_s:indexPath.row - 2];
+        NSString *pictureID = [self.couponCampaign.pictureUrls objectAtIndex_s:indexPath.row - 2 + 1];
         
         if (self.downloadedPictures[pictureID]) {
             [cell setupWithImage:self.downloadedPictures[pictureID]];
@@ -197,7 +197,7 @@
         return cell;
     }
     else {
-        NSInteger newRow = indexPath.row - (2 + self.couponCampaign.pictureUrls.count);
+        NSInteger newRow = indexPath.row - (2 + self.couponCampaign.pictureUrls.count - 1);
         
         if (newRow == 0) {
             return [tableView dequeueReusableCellWithIdentifier:@"RedeemCell" forIndexPath:indexPath];
@@ -228,8 +228,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.row > 3 + self.couponCampaign.pictureUrls.count) {
-        NSInteger newRow = indexPath.row - (3 + self.couponCampaign.pictureUrls.count);
+    if (indexPath.row > 3 + self.couponCampaign.pictureUrls.count - 1) {
+        NSInteger newRow = indexPath.row - (3 + self.couponCampaign.pictureUrls.count - 1);
         
         id keyOrStore = [self getStoreOrKeyInRow:newRow];
         
