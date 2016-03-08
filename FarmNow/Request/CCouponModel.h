@@ -10,7 +10,8 @@
 #import "CCoupon.h"
 
 @interface CCouponParam : CRequestBaseParams
-
+@property (assign, nonatomic) double lat;
+@property (assign, nonatomic) double lon;
 @end
 
 @interface CCouponModel : CResponseModel

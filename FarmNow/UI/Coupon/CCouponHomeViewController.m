@@ -15,6 +15,7 @@
 #import "CPersonalCache.h"
 #import "MJRefresh.h"
 #import "CMyCouponDetailViewController.h"
+#import "CMyCouponContainerViewController.h"
 
 @interface CCouponHomeViewController () <UITableViewDataSource, UITableViewDelegate, CCouponCampaignTableViewCellDelegate, CClaimCouponViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -50,6 +51,11 @@
         self.dataArray = nil;
         [self.tableView reloadData];
     }
+}
+- (IBAction)goToMyCoupon:(id)sender {
+    CMyCouponContainerViewController *controller = [self.storyboard controllerWithID:@"CMyCouponContainerViewController"];
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 /*
 #pragma mark - Navigation

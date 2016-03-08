@@ -5722,7 +5722,13 @@ i) 不得为其他任何非法目的而使用服务。
                             <constraint firstAttribute="bottomMargin" secondItem="1S4-8l-ANj" secondAttribute="bottom" id="zD9-IK-9Nv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="活动" id="B1f-uD-dhy"/>
+                    <navigationItem key="navigationItem" title="活动" id="B1f-uD-dhy">
+                        <barButtonItem key="rightBarButtonItem" title="我的" id="8ta-GN-dPZ">
+                            <connections>
+                                <action selector="goToMyCoupon:" destination="X64-Ns-E2P" id="gEs-LK-lMq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="1S4-8l-ANj" id="hcg-ag-EqP"/>

@@ -12,6 +12,9 @@
 #import "CCouponModel.h"
 #import "CMyCouponDetailViewController.h"
 
+extern CLLocationDegrees gLatitude;
+extern CLLocationDegrees gLongitude;
+
 @interface CCouponListViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataArray;
@@ -38,6 +41,8 @@
 
 - (void)requestData {
     CCouponParam *params = [CCouponParam new];
+    params.lat = gLatitude;
+    params.lon = gLongitude;
     
     [CCouponModel requestWithParams:GET params:params completion:^(CCouponModel *model, JSONModelError *err) {
         if (model) {
