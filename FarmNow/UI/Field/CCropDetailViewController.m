@@ -50,6 +50,18 @@
     
     if (self.subscription.fields.allKeys.count > 0) {
         self.navigatoinTitleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        
+        NSLog(@"%@",self.navigatoinTitleButton.imageView);
+        [self.navigatoinTitleButton setImage:[UIImage image_s:@"arrow"] forState:UIControlStateNormal];
+        
+        self.navigatoinTitleButton.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+        self.navigatoinTitleButton.titleLabel.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+        self.navigatoinTitleButton.imageView.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+        
+        
+        self.navigatoinTitleButton.imageEdgeInsets = UIEdgeInsetsMake(0., self.navigatoinTitleButton.frame.size.width - 15, 0., 0.);
+        self.navigatoinTitleButton.titleEdgeInsets = UIEdgeInsetsMake(0., 0., 0., 5);
+      
         [self.navigatoinTitleButton addTarget:self
                    action:@selector(changeField:)
          forControlEvents:UIControlEventTouchUpInside];
