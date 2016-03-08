@@ -158,7 +158,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         CCouponCampaignTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CCouponCampaignTableViewCell" forIndexPath:indexPath];
-        cell.hideClaimButton = YES;
+        cell.isDetail = YES;
         [cell setupWithModel:self.coupon.campaign];
         
         [cell setNeedsLayout];

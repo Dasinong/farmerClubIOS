@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSString<Optional>   * address;//用户地址
 @property (assign, nonatomic) BOOL       isPassSet;//是否设置过密码
 @property (assign, nonatomic) BOOL       authenticated;//是否通过验证
+@property (assign, nonatomic) NSInteger  memberPoints; // 积分
 
 @property (strong, nonatomic) NSString<Optional>   * pictureId;//用户头像路径
 @property (strong, nonatomic) NSString<Optional>   * institutionId;//代表机 构码对应的机构

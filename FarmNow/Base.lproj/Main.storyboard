@@ -5584,6 +5584,101 @@ i) 不得为其他任何非法目的而使用服务。
             </objects>
             <point key="canvasLocation" x="-1094" y="588"/>
         </scene>
+        <!--Navi View Controller-->
+        <scene sceneID="C9E-sQ-r81">
+            <objects>
+                <viewController storyboardIdentifier="CBASFNaviViewController" id="Ywq-iI-UkM" customClass="CBASFNaviViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FdA-LD-Lc8"/>
+                        <viewControllerLayoutGuide type="bottom" id="kcr-zT-p7g"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ROx-Eh-edB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BASFNaviHeader" translatesAutoresizingMaskIntoConstraints="NO" id="vQv-kL-8G6">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="265"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="vQv-kL-8G6" secondAttribute="height" multiplier="70:58" id="yFA-VM-hSm"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EWX-Ur-zFC">
+                                <rect key="frame" x="0.0" y="265" width="320" height="303"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clK-H1-eK8">
+                                        <rect key="frame" x="50" y="41" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="1zR-cl-1V2"/>
+                                            <constraint firstAttribute="height" constant="100" id="gtQ-K4-mbd"/>
+                                        </constraints>
+                                        <state key="normal" image="BASFNaviButton1"/>
+                                        <connections>
+                                            <action selector="weather:" destination="Ywq-iI-UkM" eventType="touchUpInside" id="9hr-Ws-LKU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xdd-b1-BsH">
+                                        <rect key="frame" x="170" y="41" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="2Mn-5O-HdT"/>
+                                            <constraint firstAttribute="width" constant="100" id="hIW-PL-eAf"/>
+                                        </constraints>
+                                        <state key="normal" image="BASFNaviButton2"/>
+                                        <connections>
+                                            <action selector="wiki:" destination="Ywq-iI-UkM" eventType="touchUpInside" id="5P3-lv-loB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xhi-Ba-x1D">
+                                        <rect key="frame" x="50" y="161.5" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="eqg-rS-9ZN"/>
+                                            <constraint firstAttribute="width" constant="100" id="ngo-v7-Ega"/>
+                                        </constraints>
+                                        <state key="normal" image="BASFNaviButton3"/>
+                                        <connections>
+                                            <action selector="daren:" destination="Ywq-iI-UkM" eventType="touchUpInside" id="OKG-cV-xFc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7J-AW-Tix">
+                                        <rect key="frame" x="170" y="161" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="Ozl-Cw-ADD"/>
+                                            <constraint firstAttribute="width" constant="100" id="pcQ-vw-Oyv"/>
+                                        </constraints>
+                                        <state key="normal" image="BASFNaviButton4"/>
+                                        <connections>
+                                            <action selector="scanQR:" destination="Ywq-iI-UkM" eventType="touchUpInside" id="tIe-Qx-xge"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="xdd-b1-BsH" firstAttribute="centerY" secondItem="EWX-Ur-zFC" secondAttribute="centerY" constant="-60" id="93f-GG-Nsr"/>
+                                    <constraint firstItem="clK-H1-eK8" firstAttribute="centerY" secondItem="EWX-Ur-zFC" secondAttribute="centerY" constant="-60" id="NAh-W5-YL9"/>
+                                    <constraint firstItem="Xhi-Ba-x1D" firstAttribute="centerY" secondItem="EWX-Ur-zFC" secondAttribute="centerY" constant="60" id="bBP-1a-t43"/>
+                                    <constraint firstItem="F7J-AW-Tix" firstAttribute="centerY" secondItem="EWX-Ur-zFC" secondAttribute="centerY" constant="60" id="if3-au-e5o"/>
+                                    <constraint firstItem="clK-H1-eK8" firstAttribute="centerX" secondItem="EWX-Ur-zFC" secondAttribute="centerX" constant="-60" id="kpn-Df-gQy"/>
+                                    <constraint firstItem="xdd-b1-BsH" firstAttribute="centerX" secondItem="EWX-Ur-zFC" secondAttribute="centerX" constant="60" id="mWh-Br-T7E"/>
+                                    <constraint firstItem="Xhi-Ba-x1D" firstAttribute="centerX" secondItem="EWX-Ur-zFC" secondAttribute="centerX" constant="-60" id="tlH-Zt-5Yt"/>
+                                    <constraint firstItem="F7J-AW-Tix" firstAttribute="centerX" secondItem="EWX-Ur-zFC" secondAttribute="centerX" constant="60" id="tq9-oC-tKd"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="EWX-Ur-zFC" secondAttribute="bottom" id="BFn-eV-if8"/>
+                            <constraint firstAttribute="topMargin" secondItem="vQv-kL-8G6" secondAttribute="top" id="Grn-C6-KAb"/>
+                            <constraint firstItem="EWX-Ur-zFC" firstAttribute="leading" secondItem="ROx-Eh-edB" secondAttribute="leading" id="O1S-aj-YEj"/>
+                            <constraint firstItem="vQv-kL-8G6" firstAttribute="leading" secondItem="ROx-Eh-edB" secondAttribute="leading" id="a6D-kD-MQp"/>
+                            <constraint firstAttribute="trailing" secondItem="EWX-Ur-zFC" secondAttribute="trailing" id="jM7-NT-dGM"/>
+                            <constraint firstItem="EWX-Ur-zFC" firstAttribute="top" secondItem="vQv-kL-8G6" secondAttribute="bottom" id="nmu-Ld-qVJ"/>
+                            <constraint firstAttribute="trailing" secondItem="vQv-kL-8G6" secondAttribute="trailing" id="qrp-nF-Gpk"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Fw-5C-E8r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1094" y="1277"/>
+        </scene>
         <!--Item-->
         <scene sceneID="CoN-1D-pRZ">
             <objects>
@@ -6743,6 +6838,11 @@ i) 不得为其他任何非法目的而使用服务。
         </scene>
     </scenes>
     <resources>
+        <image name="BASFNaviButton1" width="97" height="95"/>
+        <image name="BASFNaviButton2" width="97" height="95"/>
+        <image name="BASFNaviButton3" width="97" height="95"/>
+        <image name="BASFNaviButton4" width="97" height="95"/>
+        <image name="BASFNaviHeader" width="360" height="290"/>
         <image name="DefaultSplash" width="375" height="667"/>
         <image name="arrow" width="16" height="8"/>
         <image name="checkbox_normal" width="14" height="14"/>

@@ -79,6 +79,7 @@
                 <outlet property="amountLabelHeightConstraint" destination="VAg-Q9-oGI" id="dQ8-dI-CeP"/>
                 <outlet property="campaignImageView" destination="7k2-MI-Zic" id="PUf-6d-974"/>
                 <outlet property="claimLabel" destination="ki4-V9-Nby" id="Foh-2d-I9V"/>
+                <outlet property="imageHeightConstraint" destination="zxl-7M-KGY" id="JWj-G8-Wjn"/>
                 <outlet property="titleLabel" destination="JEx-Wj-Ben" id="MdP-4B-tn6"/>
             </connections>
             <point key="canvasLocation" x="188" y="85"/>

@@ -30,11 +30,12 @@
     // Do any additional setup after loading the view.
 	UITableViewModel* tableModel = [UITableViewModel new];
 	
-	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"个人信息") forSection:0];
+    [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"个人信息") forSection:0];
+    [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"我的活动") forSection:0];
+    [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"我的达人积分") forSection:0];
 	
 	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"扫一扫") forSection:1];
-    [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"有奖推荐") forSection:1];
-    [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"我的活动") forSection:1];
+    [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"我的二维码") forSection:1];
 	//[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"免费短信订阅") forSection:1];
 	
 	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"帮助中心") forSection:2];
@@ -94,16 +95,59 @@
         return 0;
     }
     
+    if (indexPath.section == 0 && indexPath.row == 2) {
+        BOOL isDaren = NO;
+        if ([USER_DEFAULTS objectForKey:@"clientConfig"]) {
+            NSDictionary *clientConfig = [USER_DEFAULTS objectForKey:@"clientConfig"];
+            if (clientConfig[@"isDaren"]) {
+                if ([clientConfig[@"isDaren"] boolValue]) {
+                    isDaren = YES;
+                }
+            }
+        }
+        
+        if (!isDaren) {
+            return 0;
+        }
+    }
+    
     return 44;
 }
 - (void)didSelect:(NSIndexPath *)indexPath identifier:(NSString*)identifier data:(id)data
 {
 	if (indexPath.section == 0) {
-        if (USER) {
-            [self performSegueWithIdentifier:@"Personal" sender:self];
+        if (indexPath.row == 0) {
+            if (USER) {
+                [self performSegueWithIdentifier:@"Personal" sender:self];
+            }
+            else {
+                [self loginClick:nil];
+            }
         }
-        else {
-            [self loginClick:nil];
+        else if (indexPath.row == 1)
+        {
+            if (USER) {
+                CMyCouponContainerViewController *controller = [self.storyboard controllerWithID:@"CMyCouponContainerViewController"];
+                controller.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:controller animated:YES];
+            }
+            else {
+                [self loginClick:nil];
+            }
+        }
+        else if (indexPath.row == 2)
+        {
+            if (USER) {
+                CWebViewController* webController  = [self.storyboard controllerWithID:@"CWebViewController"];
+                webController.title = @"达人积分";
+                webController.address = [NSString stringWithFormat:@"%@/jifen/index.html?avatarUrl=%@&memberPoints=%d", kServer, USER.pictureId, (int)USER.memberPoints];
+                NSLog(@"%@",webController.address);
+                webController.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:webController animated:YES];
+            }
+            else {
+                [self loginClick:nil];
+            }
         }
 	}
 	else if (indexPath.section == 1)
@@ -139,18 +183,7 @@
                 [self loginClick:nil];
             }
 		}
-		else if (indexPath.row == 2)
-		{
-            if (USER) {
-                CMyCouponContainerViewController *controller = [self.storyboard controllerWithID:@"CMyCouponContainerViewController"];
-                controller.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:controller animated:YES];
-            }
-            else {
-                [self loginClick:nil];
-            }
-        }
-        else if (indexPath.row == 3)
+        else if (indexPath.row == 2)
         {
             if (USER) {
                 CSubScribeListController* controller = [self.storyboard controllerWithID:@"CSubScribeListController"];
