@@ -76,6 +76,13 @@
                     [talbeModel addRow:TABLEVIEW_ROW(@"titlecell", object) forSection:0];
                 }
                 [self updateModel:talbeModel];
+                
+                if (model.data.count == 1) {
+                    // 直接掉转到下一个页面
+                    CCpproductDetailController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CCpproductDetailController"];
+                    controller.detailObject = model.data[0];
+                    [self.navigationController pushViewController:controller animated:YES];
+                }
             }
         }];
     }

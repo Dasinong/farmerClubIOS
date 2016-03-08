@@ -10,6 +10,7 @@
 #import "CIngredientDetailObject.h"
 
 @interface CCpproductDetailController : CBaseViewController
+@property (nonatomic, weak) UIViewController *popToViewController;
 @property (nonatomic, strong) CIngredientDetailObject *detailObject;
 @property (nonatomic, assign) NSInteger id;
 @property (nonatomic, strong) NSString *type;
