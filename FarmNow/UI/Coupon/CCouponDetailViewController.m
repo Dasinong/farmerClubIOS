@@ -15,6 +15,7 @@
 #import "CStoreTableViewCell.h"
 #import "CPictureTableViewCell.h"
 #import "CStore.h"
+#import "CCouponCampaignTableViewCell.h"
 #import "CMyCouponDetailViewController.h"
 
 @interface CCouponDetailViewController () <UITableViewDataSource, UITableViewDelegate, CClaimCouponViewControllerDelegate>
@@ -40,6 +41,8 @@
         [self requestData];
     }];
     
+    
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CCouponCampaignTableViewCell class]) bundle:nil] forCellReuseIdentifier:@"CCouponCampaignTableViewCell"];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CStoreTableViewCell class]) bundle:nil] forCellReuseIdentifier:@"CStoreTableViewCell"];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CCampaignDetailHeaderTableViewCell class]) bundle:nil] forCellReuseIdentifier:@"CCampaignDetailHeaderTableViewCell"];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CPictureTableViewCell class]) bundle:nil] forCellReuseIdentifier:@"CPictureTableViewCell"];
@@ -191,7 +194,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == 0) {
-        CCouponCampaignTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+        CCouponCampaignTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CCouponCampaignTableViewCell" forIndexPath:indexPath];
+        cell.isDetail = YES;
         [cell setupWithModel:self.couponCampaign];
         return cell;
     }

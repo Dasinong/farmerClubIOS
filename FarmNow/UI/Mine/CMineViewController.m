@@ -96,6 +96,13 @@
         return 0;
     }
     
+    if (indexPath.section == 0 && indexPath.row == 1) {
+        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        if (![delegate enableWelfare]) {
+            return 0;
+        }
+    }
+    
     if (indexPath.section == 0 && indexPath.row == 2) {
         BOOL isDaren = NO;
         if ([USER_DEFAULTS objectForKey:@"clientConfig"]) {
