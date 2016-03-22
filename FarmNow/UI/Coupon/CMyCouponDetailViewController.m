@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CCouponCampaignTableViewCell class]) bundle:nil] forCellReuseIdentifier:@"CCouponCampaignTableViewCell"];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CStoreTableViewCell class]) bundle:nil] forCellReuseIdentifier:@"CStoreTableViewCell"];
@@ -116,7 +117,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return UITableViewAutomaticDimension;
+        return SCREEN_WIDTH / 640.0 * 480.0 + 46;
     }
     else if (indexPath.section == 1) {
         return 280;
@@ -159,7 +160,7 @@
     if (indexPath.section == 0) {
         CCouponCampaignTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CCouponCampaignTableViewCell" forIndexPath:indexPath];
         cell.isDetail = YES;
-        [cell setupWithModel:self.coupon.campaign];
+        [cell setupWithModel:self.coupon];
         
         [cell setNeedsLayout];
         [cell layoutIfNeeded];

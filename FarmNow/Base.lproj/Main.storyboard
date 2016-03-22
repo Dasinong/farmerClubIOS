@@ -4231,7 +4231,7 @@ i) 不得为其他任何非法目的而使用服务。
             </objects>
             <point key="canvasLocation" x="-711" y="-972"/>
         </scene>
-        <!--有奖推荐-->
+        <!--我的二维码-->
         <scene sceneID="k1O-fi-HC6">
             <objects>
                 <viewController storyboardIdentifier="CRecommendController1" id="MIP-eQ-yH2" customClass="CRecommendController1" sceneMemberID="viewController">
@@ -4283,7 +4283,7 @@ i) 不得为其他任何非法目的而使用服务。
                             <constraint firstItem="ke3-Af-vci" firstAttribute="leading" secondItem="vP9-l1-mq0" secondAttribute="leading" constant="20" id="zHR-Bv-Nmz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="有奖推荐" id="ruG-qh-RPa"/>
+                    <navigationItem key="navigationItem" title="我的二维码" id="ruG-qh-RPa"/>
                     <connections>
                         <outlet property="codeLabel" destination="ke3-Af-vci" id="bcU-R8-Cp1"/>
                         <outlet property="qrView" destination="he7-HY-RDh" id="ZMa-sr-GJw"/>

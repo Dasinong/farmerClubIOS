@@ -90,12 +90,12 @@
 
 #pragma mark - UITableViewDataSource && UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return UITableViewAutomaticDimension;
+    return SCREEN_WIDTH / 640.0 * 480.0 + 10;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 465;
-}
+//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return 640.0 / SCREEN_WIDTH * 480.0 + 10;
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.dataArray count];
@@ -136,9 +136,14 @@
         }
     }
     
+    if (selectedCoupon.campaign == nil) {
+        selectedCoupon.campaign = couponCampaign;
+    }
+    
     if (claimed) {
         CMyCouponDetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CMyCouponDetailViewController"];
         controller.coupon = selectedCoupon;
+        controller.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:controller animated:YES];
     }
     else {

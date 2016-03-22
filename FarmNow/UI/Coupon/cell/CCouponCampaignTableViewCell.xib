@@ -15,29 +15,8 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7k2-MI-Zic">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="120" id="zxl-7M-KGY"/>
-                        </constraints>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="165"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BASF百润代金券" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JEx-Wj-Ben">
-                        <rect key="frame" x="12" y="130" width="296" height="19.5"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="19.5" id="gOJ-TU-xP5"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                        <color key="textColor" white="0.29776400860000002" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥30.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2P-86-roh">
-                        <rect key="frame" x="9" y="153" width="299" height="19.5"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="19.5" id="VAg-Q9-oGI"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="申领时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ki4-V9-Nby">
                         <rect key="frame" x="12" y="180" width="296" height="16"/>
                         <constraints>
@@ -57,30 +36,25 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="gJQ-r0-TxS" secondAttribute="bottom" priority="999" constant="0.5" id="1Gp-aP-vcV"/>
-                    <constraint firstItem="ki4-V9-Nby" firstAttribute="top" secondItem="j2P-86-roh" secondAttribute="bottom" constant="7.5" id="1qK-UL-QeD"/>
-                    <constraint firstItem="ki4-V9-Nby" firstAttribute="leading" secondItem="JEx-Wj-Ben" secondAttribute="leading" id="DCr-UR-Jjo"/>
-                    <constraint firstAttribute="trailing" secondItem="JEx-Wj-Ben" secondAttribute="trailing" constant="12" id="GXz-wE-sgO"/>
+                    <constraint firstItem="ki4-V9-Nby" firstAttribute="leading" secondItem="HIK-rv-8pA" secondAttribute="leading" constant="12" id="CMt-Ym-V0n"/>
                     <constraint firstItem="gJQ-r0-TxS" firstAttribute="top" secondItem="ki4-V9-Nby" secondAttribute="bottom" constant="15" id="M2s-Fv-Wv8"/>
+                    <constraint firstAttribute="trailing" secondItem="ki4-V9-Nby" secondAttribute="trailing" constant="12" id="MDJ-nx-9Ht"/>
+                    <constraint firstItem="ki4-V9-Nby" firstAttribute="top" secondItem="7k2-MI-Zic" secondAttribute="bottom" constant="15" id="P8e-ia-nVs"/>
                     <constraint firstAttribute="trailing" secondItem="gJQ-r0-TxS" secondAttribute="trailing" id="SEA-wP-Vyt"/>
                     <constraint firstItem="gJQ-r0-TxS" firstAttribute="leading" secondItem="HIK-rv-8pA" secondAttribute="leading" id="WDt-aD-N94"/>
                     <constraint firstItem="7k2-MI-Zic" firstAttribute="leading" secondItem="HIK-rv-8pA" secondAttribute="leading" id="YXq-XL-fFO"/>
-                    <constraint firstItem="JEx-Wj-Ben" firstAttribute="top" secondItem="7k2-MI-Zic" secondAttribute="bottom" constant="10" id="aV3-BH-C5k"/>
                     <constraint firstItem="7k2-MI-Zic" firstAttribute="top" secondItem="HIK-rv-8pA" secondAttribute="top" id="cXZ-th-Zrs"/>
                     <constraint firstAttribute="trailing" secondItem="7k2-MI-Zic" secondAttribute="trailing" id="e00-au-9UJ"/>
-                    <constraint firstItem="j2P-86-roh" firstAttribute="top" secondItem="JEx-Wj-Ben" secondAttribute="bottom" constant="3.5" id="emU-cB-QWI"/>
-                    <constraint firstItem="j2P-86-roh" firstAttribute="leading" secondItem="JEx-Wj-Ben" secondAttribute="leading" constant="-3" id="mSd-6w-J6X"/>
-                    <constraint firstItem="j2P-86-roh" firstAttribute="trailing" secondItem="JEx-Wj-Ben" secondAttribute="trailing" id="pTb-Bs-Iq3"/>
-                    <constraint firstItem="JEx-Wj-Ben" firstAttribute="leading" secondItem="HIK-rv-8pA" secondAttribute="leading" constant="12" id="qfC-HA-RTb"/>
-                    <constraint firstItem="ki4-V9-Nby" firstAttribute="trailing" secondItem="JEx-Wj-Ben" secondAttribute="trailing" id="tNn-eW-Utd"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="amountLabel" destination="j2P-86-roh" id="Tgg-7F-qZF"/>
-                <outlet property="amountLabelHeightConstraint" destination="VAg-Q9-oGI" id="dQ8-dI-CeP"/>
                 <outlet property="campaignImageView" destination="7k2-MI-Zic" id="PUf-6d-974"/>
                 <outlet property="claimLabel" destination="ki4-V9-Nby" id="Foh-2d-I9V"/>
-                <outlet property="imageHeightConstraint" destination="zxl-7M-KGY" id="JWj-G8-Wjn"/>
-                <outlet property="titleLabel" destination="JEx-Wj-Ben" id="MdP-4B-tn6"/>
+                <outlet property="claimLabelBottomConstraint" destination="M2s-Fv-Wv8" id="Omu-IL-Uud"/>
+                <outlet property="claimLabelHeightConstraint" destination="QtN-oj-wPj" id="9DT-fr-RoD"/>
+                <outlet property="claimLabelTopConstraint" destination="P8e-ia-nVs" id="TQs-Yz-a8e"/>
+                <outlet property="seperatorView" destination="gJQ-r0-TxS" id="3gA-Sa-3gs"/>
+                <outlet property="seperatorViewHeightConstraint" destination="PwE-oh-Tqo" id="e29-Kg-kbw"/>
             </connections>
             <point key="canvasLocation" x="188" y="85"/>
         </tableViewCell>

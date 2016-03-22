@@ -25,7 +25,7 @@
 	CUserObject* userInfo = [[CPersonalCache defaultPersonalCache] cacheUserInfo];
 	if (userInfo) {
 		self.codeLabel.text = [NSString stringWithFormat:@"或直接输入：%@",userInfo.refcode];
-        [self.qrView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/pic/%@",kServer,userInfo.refcode]]];
+        [self.qrView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/pic/refCode/%d.png",kServer,(int)userInfo.userId]]];
 	}
 }
 

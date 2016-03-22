@@ -141,7 +141,7 @@
             if (USER) {
                 CWebViewController* webController  = [self.storyboard controllerWithID:@"CWebViewController"];
                 webController.title = @"达人积分";
-                webController.address = [NSString stringWithFormat:@"%@/jifen/index.html?avatarUrl=%@&memberPoints=%d", kServer, USER.pictureId, (int)USER.memberPoints];
+                webController.address = [NSString stringWithFormat:@"%@/daren?userId=%d", kServerAddress, (int)USER.userId];
                 NSLog(@"%@",webController.address);
                 webController.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:webController animated:YES];

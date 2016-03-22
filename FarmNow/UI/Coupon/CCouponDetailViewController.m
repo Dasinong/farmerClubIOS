@@ -33,6 +33,8 @@
     self.downloadedPictures = [NSMutableDictionary dictionary];
     self.title = self.couponCampaign.name;
     
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     [self requestData];
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self requestData];
@@ -146,7 +148,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == 0) {
-        return 375;
+        return SCREEN_WIDTH / 640.0 * 480.0 + 46;
     }
     else if(indexPath.row == 1) {
         return UITableViewAutomaticDimension;

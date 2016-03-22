@@ -37,6 +37,13 @@
     [self.passwdField becomeFirstResponder];
 }
 
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.passwdField resignFirstResponder];
+}
+
 /*
 #pragma mark - Navigation
 
@@ -51,6 +58,9 @@
 		[MBProgressHUD alert:@"请输入密码"];
 		return;
 	}
+    
+    [self.passwdField resignFirstResponder];
+    
 	CLoginParams* params = [CLoginParams new];
 	params.password = self.passwdField.text;
 	params.cellphone = self.cellphone;
