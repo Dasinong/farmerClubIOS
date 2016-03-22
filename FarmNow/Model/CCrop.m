@@ -13,4 +13,9 @@
 - (NSString *)iconUrl {
     return [NSString stringWithFormat:@"%@%@", kServer, _iconUrl];
 }
+
++ (BOOL)propertyIsOptional:(NSString *)propertyName
+{
+	return YES;
+}
 @end

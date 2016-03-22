@@ -4351,14 +4351,17 @@ i) 不得为其他任何非法目的而使用服务。
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="50.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Xy-in-Oka">
-                                                    <rect key="frame" x="15" y="15" width="33.5" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="店铺地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Xy-in-Oka">
+                                                    <rect key="frame" x="15" y="15" width="68" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="68" id="8yE-S3-UI6"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eS4-Tg-SfK">
-                                                    <rect key="frame" x="210.5" y="15.5" width="61.5" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eS4-Tg-SfK">
+                                                    <rect key="frame" x="93" y="15" width="178.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -4369,6 +4372,7 @@ i) 不得为其他任何非法目的而使用服务。
                                                 <constraint firstItem="5Xy-in-Oka" firstAttribute="leading" secondItem="5Cu-Q2-SxJ" secondAttribute="leading" constant="15" id="Fzg-4h-Co9"/>
                                                 <constraint firstItem="eS4-Tg-SfK" firstAttribute="centerY" secondItem="5Cu-Q2-SxJ" secondAttribute="centerY" id="Iea-oP-B8X"/>
                                                 <constraint firstAttribute="bottom" secondItem="5Xy-in-Oka" secondAttribute="bottom" constant="15" id="aRJ-8A-bAl"/>
+                                                <constraint firstItem="eS4-Tg-SfK" firstAttribute="leading" secondItem="5Xy-in-Oka" secondAttribute="trailing" constant="10" id="dqv-HL-XAi"/>
                                                 <constraint firstAttribute="trailing" secondItem="eS4-Tg-SfK" secondAttribute="trailing" constant="15" id="zvx-aR-02O"/>
                                             </constraints>
                                         </tableViewCellContentView>

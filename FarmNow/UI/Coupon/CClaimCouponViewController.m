@@ -200,9 +200,9 @@
         cell.fieldLabel.attributedText = attriString;
     }
     else if (indexPath.row == 2) {
-        NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:@"面积 *"];
-        [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#666666"] range:NSMakeRange(0, 3)];
-        [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#ff8400"] range:NSMakeRange(3, 1)];
+        NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:@"面积（亩） *"];
+        [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#666666"] range:NSMakeRange(0, 6)];
+        [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#ff8400"] range:NSMakeRange(6, 1)];
         cell.fieldLabel.attributedText = attriString;
         
         cell.valueTextField.keyboardType = UIKeyboardTypeDecimalPad;

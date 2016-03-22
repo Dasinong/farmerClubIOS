@@ -56,6 +56,17 @@
     return NO;
 }
 
+- (BOOL)isDaren {
+    NSUserDefaults *userDefaults = USER_DEFAULTS;
+    if ([userDefaults objectForKey:@"clientConfig"]) {
+        NSDictionary *clientConfig = [userDefaults objectForKey:@"clientConfig"];
+        
+        return [clientConfig[@"isDaren"] boolValue];
+    }
+    
+    return NO;
+}
+
 -(UINavigationController*) currentController
 {
 	UIViewController *selectViewCtrl = self.tabBarController.selectedViewController;

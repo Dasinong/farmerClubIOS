@@ -17,6 +17,7 @@
 #import "CStore.h"
 #import "CCouponCampaignTableViewCell.h"
 #import "CMyCouponDetailViewController.h"
+#import "CClaimCouponModel.h"
 
 @interface CCouponDetailViewController () <UITableViewDataSource, UITableViewDelegate, CClaimCouponViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -59,11 +60,37 @@
 }
 
 - (IBAction)claim:(id)sender {
-    CClaimCouponViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CClaimCouponViewController"];
-    controller.hidesBottomBarWhenPushed = YES;
-    controller.delegate = self;
-    controller.couponCampaign = self.couponCampaign;
-    [self.navigationController pushViewController:controller animated:YES];
+    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    
+    if ([delegate isDaren]) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        CClaimCouponParams *claimParams = [CClaimCouponParams new];
+        claimParams.campaignId = self.couponCampaign.id;
+        
+        [CClaimCouponModel requestWithParams:POST params:claimParams completion:^(CClaimCouponModel *claimModel, JSONModelError *err) {
+            
+            if (err == nil && claimModel) {
+                [MBProgressHUD hideHUDForView:self.view animated:NO];
+                
+                [self.claimButton setBackgroundColor:[UIColor lightGrayColor]];
+                self.claimButton.enabled = NO;
+                
+                // 跳转到我的优惠券页面
+                claimModel.coupon.campaign = self.couponCampaign;
+                [self couponGet:claimModel.coupon];
+            }
+            else {
+                [MBProgressHUD hideHUDForView:self.view animated:NO];
+            }
+        }];
+    }
+    else {
+        CClaimCouponViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CClaimCouponViewController"];
+        controller.hidesBottomBarWhenPushed = YES;
+        controller.delegate = self;
+        controller.couponCampaign = self.couponCampaign;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
 }
 
 - (void)groupStoreWithProvince {
