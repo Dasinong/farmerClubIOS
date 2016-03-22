@@ -11,6 +11,7 @@
 #import "MBProgressHUD+Express.h"
 #import "CRedeemCouponModel.h"
 #import "CScannedCouponDetailViewController.h"
+#import "CSetRefModel.h"
 
 @implementation CUtil
 + (void)processQR:(NSString *)result inVC:(UIViewController *)viewController {
@@ -34,7 +35,6 @@
             }
         }
         
-        
         [MBProgressHUD showHUDAddedTo:viewController.view animated:YES];
         CRedeemCouponParam *params = [CRedeemCouponParam new];
         params.userId = userId;
@@ -54,6 +54,35 @@
                 //[MBProgressHUD alert:@"没有权限"];
             }
         }];
+    }
+    else if ([result containsString:@"function=refcode"] && [result containsString:@"code="]) {
+        NSArray *urlComponents = [result componentsSeparatedByString:@"&"];
+        
+        NSString *code;
+        
+        for (NSString *keyValuePair in urlComponents)
+        {
+            NSArray *pairComponents = [keyValuePair componentsSeparatedByString:@"="];
+            NSString *key = [[pairComponents firstObject] stringByRemovingPercentEncoding];
+            NSString *value = [[pairComponents lastObject] stringByRemovingPercentEncoding];
+            
+            if ([key isEqualToString:@"code"]) {
+                code = value;
+            }
+        }
+        
+        if (code) {
+            CSetRefParams* params = [CSetRefParams new];
+            params.refcode = code;
+            [CSetRefModel requestWithParams:POST params:params completion:^(CSetRefModel *model, JSONModelError *err) {
+                if (model && err== nil) {
+                    [MBProgressHUD alert:model.message];
+                }
+            }];
+        }
+        else {
+             [MBProgressHUD alert:@"非法的二维码"];
+        }
     }
     else {
         CWebViewController* webController  = [viewController.storyboard controllerWithID:@"CWebViewController"];

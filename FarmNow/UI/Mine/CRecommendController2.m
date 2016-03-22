@@ -44,9 +44,9 @@
 	}
 	CSetRefParams* params = [CSetRefParams new];
 	params.refcode = self.codeField.text;
-	[CSetRefModel requestWithParams:POST params:params completion:^(id model, JSONModelError *err) {
+	[CSetRefModel requestWithParams:POST params:params completion:^(CSetRefModel *model, JSONModelError *err) {
 		if (model && err== nil) {
-			[MBProgressHUD alert:@"发送成功"];
+			[MBProgressHUD alert:model.message];
 		}
     }];
 }
