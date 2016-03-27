@@ -47,26 +47,30 @@
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self requestData];
     }];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     if (self.subscription.fields.allKeys.count > 0) {
         self.navigatoinTitleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         
-        NSLog(@"%@",self.navigatoinTitleButton.imageView);
-        [self.navigatoinTitleButton setImage:[UIImage image_s:@"arrow"] forState:UIControlStateNormal];
+        if (self.subscription.fields.allKeys.count > 1) {
+            [self.navigatoinTitleButton setImage:[UIImage image_s:@"arrow"] forState:UIControlStateNormal];
+        }
         
         self.navigatoinTitleButton.transform = CGAffineTransformMakeScale(-1.0, 1.0);
         self.navigatoinTitleButton.titleLabel.transform = CGAffineTransformMakeScale(-1.0, 1.0);
         self.navigatoinTitleButton.imageView.transform = CGAffineTransformMakeScale(-1.0, 1.0);
         
+        [self.navigatoinTitleButton addTarget:self
+                                       action:@selector(changeField:)
+                             forControlEvents:UIControlEventTouchUpInside];
         
         self.navigatoinTitleButton.imageEdgeInsets = UIEdgeInsetsMake(0., self.navigatoinTitleButton.frame.size.width - 15, 0., 0.);
         self.navigatoinTitleButton.titleEdgeInsets = UIEdgeInsetsMake(0., 0., 0., 5);
-      
-        [self.navigatoinTitleButton addTarget:self
-                   action:@selector(changeField:)
-         forControlEvents:UIControlEventTouchUpInside];
         
-        NSString *firstField = [self.subscription.fields allValues][0];
+        NSString *firstField = [self.subscription.fields allValues][currentFieldIndex];
         
         [self.navigatoinTitleButton setTitle:firstField forState:UIControlStateNormal];
         self.navigatoinTitleButton.frame = CGRectMake(0, 0, SCREEN_WIDTH - 90, 44.0);
@@ -79,14 +83,16 @@
 }
 
 - (void)changeField:(id)sender {
-    [ActionSheetStringPicker showPickerWithTitle:@"请选择田" rows:self.subscription.fields.allValues initialSelection:currentFieldIndex doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
-        currentFieldIndex = selectedIndex;
-        NSString *field = [self.subscription.fields allValues][currentFieldIndex];
-        [self.navigatoinTitleButton setTitle:field forState:UIControlStateNormal];
-        [self requestData];
-    } cancelBlock:^(ActionSheetStringPicker *picker) {
-        
-    } origin:sender];
+    if (self.subscription.fields.allKeys.count > 1) {
+        [ActionSheetStringPicker showPickerWithTitle:@"请选择田" rows:self.subscription.fields.allValues initialSelection:currentFieldIndex doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+            currentFieldIndex = selectedIndex;
+            NSString *field = [self.subscription.fields allValues][currentFieldIndex];
+            [self.navigatoinTitleButton setTitle:field forState:UIControlStateNormal];
+            [self requestData];
+        } cancelBlock:^(ActionSheetStringPicker *picker) {
+            
+        } origin:sender];
+    }
 }
 
 - (void)requestData {
