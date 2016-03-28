@@ -11,6 +11,7 @@
 #import "CUtil.h"
 #import "CMyStoreViewController.h"
 #import "CPersonalController.h"
+#import "CBASFStocksViewController.h"
 
 @interface CRetailerHomeViewController () <UITableViewDataSource, UITableViewDelegate, QRCodeReaderDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -22,11 +23,11 @@
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 4;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 90;
+    return 80;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -48,6 +49,10 @@
         case 2:
             [imageView setImage:[UIImage image_s:@"retailer_info"]];
             titleLabel.text = @"店铺基本信息";
+            break;
+        case 3:
+            [imageView setImage:[UIImage image_s:@"retailer_info"]];
+            titleLabel.text = @"入库管理";
             break;
             
         default:
@@ -77,6 +82,11 @@
             controller.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:controller animated:YES];
             break;
+        }
+        case 3: {
+            CBASFStocksViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CBASFStocksViewController"];
+            controller.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:controller animated:YES];
         }
             
         default:
