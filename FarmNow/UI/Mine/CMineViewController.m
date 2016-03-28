@@ -19,7 +19,7 @@
 #import "CScannedCouponDetailViewController.h"
 #import "CUtil.h"
 
-@interface CMineViewController () <QRCodeReaderDelegate>
+@interface CMineViewController () <QRCodeReaderDelegate, CStockViewControllerDelegate>
 @property (strong, nonatomic) QRCodeReaderViewController* reader;
 
 @end
@@ -290,5 +290,10 @@
 - (void)readerDidCancel:(QRCodeReaderViewController *)reader
 {
 	[self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+#pragma mark - CStockViewControllerDelegate
+- (void)continueScan {
+    [self presentViewController:self.reader animated:YES completion:NULL];
 }
 @end

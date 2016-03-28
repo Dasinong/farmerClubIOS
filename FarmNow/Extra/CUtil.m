@@ -14,7 +14,7 @@
 #import "CSetRefModel.h"
 
 @implementation CUtil
-+ (void)processQR:(NSString *)result inVC:(UIViewController *)viewController {
++ (void)processQR:(NSString *)result inVC:(UIViewController<CStockViewControllerDelegate> *)viewController {
     if ([result containsString:@"couponId="] && [result containsString:@"userId="]) {
         NSArray *urlComponents = [result componentsSeparatedByString:@"&"];
         
@@ -83,6 +83,22 @@
         else {
              [MBProgressHUD alert:@"非法的二维码"];
         }
+    }
+    else if ([result hasPrefix:@"http://winsafe.cn/?b="] || (result.length == 25 && [result containsString:@"##"])) {
+        
+        NSString *boxcode;
+        
+        if ([result hasPrefix:@"http://winsafe.cn/?b="]) {
+            boxcode = [result substringFromIndex:[@"http://winsafe.cn/?b=" length]];
+        }
+        else {
+            boxcode = result;
+        }
+        
+        CStockViewController *controller = [viewController.storyboard controllerWithID:@"CStockViewController"];
+        controller.delegate = viewController;
+        controller.boxcode = boxcode;
+        [viewController presentViewController:controller animated:YES completion:nil];
     }
     else {
         CWebViewController* webController  = [viewController.storyboard controllerWithID:@"CWebViewController"];

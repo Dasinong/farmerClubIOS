@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CStockViewController.h"
 
 @interface CUtil : NSObject
-+ (void)processQR:(NSString *)result inVC:(UIViewController *)viewController;
++ (void)processQR:(NSString *)result inVC:(UIViewController<CStockViewControllerDelegate> *)viewController;
 @end

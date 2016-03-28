@@ -54,6 +54,8 @@
 		27C397D51CA8C4CF00102B31 /* CGetBASFStockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C397D41CA8C4CF00102B31 /* CGetBASFStockModel.m */; };
 		27C397D81CA8C50300102B31 /* CWinSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C397D71CA8C50300102B31 /* CWinSafe.m */; };
 		27C397DB1CA8C88D00102B31 /* CWinSafeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C397DA1CA8C88D00102B31 /* CWinSafeDetailViewController.m */; };
+		27C397DE1CA8CEE500102B31 /* CGetWinsafeProductInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C397DD1CA8CEE500102B31 /* CGetWinsafeProductInfoModel.m */; };
+		27C397E11CA8D31000102B31 /* CStockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C397E01CA8D31000102B31 /* CStockViewController.m */; };
 		27CC91241C74920600696995 /* CMyStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CC91231C74920600696995 /* CMyStoreViewController.m */; };
 		27CC91271C74925B00696995 /* CTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CC91261C74925B00696995 /* CTabBarViewController.m */; };
 		27CC912A1C74999400696995 /* CScannableCampaignsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CC91291C74999400696995 /* CScannableCampaignsModel.m */; };
@@ -389,6 +391,10 @@
 		27C397D71CA8C50300102B31 /* CWinSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWinSafe.m; sourceTree = "<group>"; };
 		27C397D91CA8C88D00102B31 /* CWinSafeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWinSafeDetailViewController.h; sourceTree = "<group>"; };
 		27C397DA1CA8C88D00102B31 /* CWinSafeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWinSafeDetailViewController.m; sourceTree = "<group>"; };
+		27C397DC1CA8CEE500102B31 /* CGetWinsafeProductInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGetWinsafeProductInfoModel.h; sourceTree = "<group>"; };
+		27C397DD1CA8CEE500102B31 /* CGetWinsafeProductInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGetWinsafeProductInfoModel.m; sourceTree = "<group>"; };
+		27C397DF1CA8D31000102B31 /* CStockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CStockViewController.h; sourceTree = "<group>"; };
+		27C397E01CA8D31000102B31 /* CStockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CStockViewController.m; sourceTree = "<group>"; };
 		27CC91221C74920600696995 /* CMyStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMyStoreViewController.h; sourceTree = "<group>"; };
 		27CC91231C74920600696995 /* CMyStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMyStoreViewController.m; sourceTree = "<group>"; };
 		27CC91251C74925B00696995 /* CTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTabBarViewController.h; sourceTree = "<group>"; };
@@ -959,6 +965,8 @@
 			children = (
 				27C397D31CA8C4CF00102B31 /* CGetBASFStockModel.h */,
 				27C397D41CA8C4CF00102B31 /* CGetBASFStockModel.m */,
+				27C397DC1CA8CEE500102B31 /* CGetWinsafeProductInfoModel.h */,
+				27C397DD1CA8CEE500102B31 /* CGetWinsafeProductInfoModel.m */,
 			);
 			name = Retailer;
 			sourceTree = "<group>";
@@ -976,6 +984,8 @@
 				27C397D01CA8C36F00102B31 /* CBASFStocksViewController.m */,
 				27C397D91CA8C88D00102B31 /* CWinSafeDetailViewController.h */,
 				27C397DA1CA8C88D00102B31 /* CWinSafeDetailViewController.m */,
+				27C397DF1CA8D31000102B31 /* CStockViewController.h */,
+				27C397E01CA8D31000102B31 /* CStockViewController.m */,
 			);
 			name = Retail;
 			path = Coupon;
@@ -1967,6 +1977,7 @@
 				9FEED8581BEE1C8B0095A91B /* CRecommendController2.m in Sources */,
 				9F02DFC21BD931DD001C223F /* CTitleSubTItleCell.m in Sources */,
 				9FD213201BD128A60063147D /* CGRect+Extra.m in Sources */,
+				27C397E11CA8D31000102B31 /* CStockViewController.m in Sources */,
 				9FFF68251C08991100590604 /* CLoadSubScribeListModel.m in Sources */,
 				279A5E921C740CC500C3D697 /* CCouponListViewController.m in Sources */,
 				27D0F07A1C7DA8EB00215FCC /* CChangeFieldStageModel.m in Sources */,
@@ -2075,6 +2086,7 @@
 				9F92C2D81BDB36D80034DB3F /* CBrowseCPProductByModelModel.m in Sources */,
 				9FC4252E1BD535F800455A8C /* CMineContentCell.m in Sources */,
 				278704BC1C7AB4C0007E45BF /* CCrop.m in Sources */,
+				27C397DE1CA8CEE500102B31 /* CGetWinsafeProductInfoModel.m in Sources */,
 				279A5E961C7418B800C3D697 /* CCouponTableViewCell.m in Sources */,
 				9FD2133B1BD128A60063147D /* MBProgressHUD+Express.m in Sources */,
 				9FD2132E1BD128A60063147D /* NSString+UrlEncode.m in Sources */,

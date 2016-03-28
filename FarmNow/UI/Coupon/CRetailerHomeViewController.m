@@ -13,7 +13,7 @@
 #import "CPersonalController.h"
 #import "CBASFStocksViewController.h"
 
-@interface CRetailerHomeViewController () <UITableViewDataSource, UITableViewDelegate, QRCodeReaderDelegate>
+@interface CRetailerHomeViewController () <UITableViewDataSource, UITableViewDelegate, QRCodeReaderDelegate, CStockViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) QRCodeReaderViewController* reader;
 @end
@@ -120,5 +120,10 @@
 - (void)readerDidCancel:(QRCodeReaderViewController *)reader
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+#pragma mark - CStockViewControllerDelegate
+- (void)continueScan {
+    [self presentViewController:self.reader animated:YES completion:NULL];
 }
 @end
