@@ -7,6 +7,7 @@
 //
 
 #import "CPersonalCache.h"
+#import "AppDelegate.h"
 
 #define kCacheFileName @"cachekeyvalue"
 #define kUSER_INFO @"userInfo"
@@ -149,6 +150,9 @@ static CPersonalCache * _defaultPersonalCache = nil;
     
     // 发送注销成功通知
     [[NSNotificationCenter defaultCenter] postNotificationName:@"notification_signout" object:nil];
+    
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate uploadCachedStockArray:YES];
 }
 
 - (CUserObject *)cacheUserInfo

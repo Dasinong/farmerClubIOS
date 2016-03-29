@@ -24,13 +24,32 @@
     
     CGetWinsafeProductInfoParams *params = [CGetWinsafeProductInfoParams new];
     params.boxcode = self.boxcode;
-    params.stocking = YES;
+    params.stocking = @"true";
     
     [CGetWinsafeProductInfoModel requestWithParams:params completion:^(CGetWinsafeProductInfoModel *model, JSONModelError *err) {
         if (model) {
             self.nameLabel.text = model.data[@"proname"];
             self.proidLabel.text = model.data[@"proid"];
             self.prospecialLabel.text = model.data[@"prospecial"];
+            
+            //[MBProgressHUD alert:model.message];
+        }
+        else {
+            [MBProgressHUD alert:@"网络异常，二维码已经储存至本地"];
+            
+            
+            NSDictionary *record = @{
+                                     @"created_at":[NSDate date],
+                                     @"boxcode": self.boxcode
+                                     };
+            
+            NSArray *stockArray = [USER_DEFAULTS objectForKey:@"StockArray"];
+            if (stockArray == nil) {
+                stockArray = [NSArray array];
+            }
+            
+            [USER_DEFAULTS setObject:[stockArray arrayByAddingObject:record] forKey:@"StockArray"];
+            [USER_DEFAULTS synchronize];
         }
     }];
 }

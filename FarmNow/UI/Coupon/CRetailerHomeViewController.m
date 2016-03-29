@@ -51,7 +51,7 @@
             titleLabel.text = @"店铺基本信息";
             break;
         case 3:
-            [imageView setImage:[UIImage image_s:@"retailer_info"]];
+            [imageView setImage:[UIImage image_s:@"retailer_stock"]];
             titleLabel.text = @"入库管理";
             break;
             

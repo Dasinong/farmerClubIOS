@@ -81,7 +81,9 @@
             }];
         }
         else {
-             [MBProgressHUD alert:@"非法的二维码"];
+            [MBProgressHUD alert:@"非法的二维码"];
+            
+            
         }
     }
     else if ([result hasPrefix:@"http://winsafe.cn/?b="] || (result.length == 25 && [result containsString:@"##"])) {

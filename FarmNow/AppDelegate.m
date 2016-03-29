@@ -12,6 +12,7 @@
 #import <SMS_SDK/SMSSDK.h>
 #import "CPersonalCache.h"
 #import "CRemoteControModel.h"
+#import "CResponseBase.h"
 
 @interface AppDelegate ()<WXApiDelegate>
 
@@ -189,6 +190,71 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
 	// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    [self uploadCachedStockArray:NO];
+}
+
+- (void)uploadCachedStockArray:(BOOL)cleanIfFailed {
+    if ([USER_DEFAULTS objectForKey:@"StockArray"]) {
+        NSArray *stockArray = [USER_DEFAULTS objectForKey:@"StockArray"];
+        if ([stockArray count] > 0) {
+            NSString *dataString = @"";
+            
+            // 构建文件
+            NSString *recordDateString = nil;
+            NSString *recordTimeString = nil;
+            NSInteger recordCount = 0;
+            for (NSDictionary *stockRecord in stockArray) {
+                NSDate *created_at = stockRecord[@"created_at"];
+                NSString *boxcode = stockRecord[@"boxcode"];
+                
+                // 如果是下一天了，那么
+                NSDateFormatter *df = [[NSDateFormatter alloc] init];
+                [df setDateFormat:@"YYYYMMdd"];
+                NSString *dateString = [df stringFromDate:created_at];
+                
+                [df setDateFormat:@"HHmmss"];
+                NSString *timeString = [df stringFromDate:created_at];
+                
+                if (recordDateString == nil) {
+                    recordDateString = dateString;
+                    recordTimeString = timeString;
+                }
+                
+                if ([recordDateString isEqualToString:dateString]) {
+                    if (dataString.length > 0) {
+                        dataString = [dataString stringByAppendingString:@"\n"];
+                    }
+                    dataString = [dataString stringByAppendingString:[NSString stringWithFormat:@"*****%@%@%@7",dateString,timeString, boxcode]];
+                    recordCount++;
+                }
+                else {
+                    break;
+                }
+            }
+            
+            if (dataString.length > 0) {
+                NSData *data = [dataString dataUsingEncoding:NSUTF8StringEncoding];
+                NSString *filename = [NSString stringWithFormat:@"%@%@", recordDateString, recordTimeString];
+                
+                NSArray* contents =@[@{@"data":data, @"name":@"file", @"filename":[filename stringByAppendingString:@".txt"]}];
+                [CResponseModel postWithPath:@"stockScan" attachments:contents params:nil completion:^(CResponseModel *model, JSONModelError *err) {
+                    if (model && err == nil) {
+                        // 删除该删的东西，然后再次执行
+                        [USER_DEFAULTS setObject:[stockArray subarrayWithRange:NSMakeRange(recordCount, stockArray.count - recordCount)] forKey:@"StockArray"];
+                        [USER_DEFAULTS synchronize];
+                        [self uploadCachedStockArray:cleanIfFailed];
+                    }
+                    else {
+                        if(cleanIfFailed) {
+                            [USER_DEFAULTS removeObjectForKey:@"StockArray"];
+                            [USER_DEFAULTS synchronize];
+                        }
+                    }
+                }];
+            }
+        }
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

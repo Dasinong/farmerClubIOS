@@ -10,7 +10,7 @@
 
 @interface CGetWinsafeProductInfoParams : CRequestBaseParams
 @property (nonatomic, strong) NSString *boxcode;
-@property (nonatomic, assign) BOOL stocking;
+@property (nonatomic, strong) NSString *stocking;
 @end
 
 @interface CGetWinsafeProductInfoModel : CResponseModel

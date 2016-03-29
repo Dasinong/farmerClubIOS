@@ -386,7 +386,6 @@ const NSString*    kResponseSuccess = @"200";
         params = dict;
     }
     
-    
     /*AFHTTPRequestOperation *operation      =*/ [manager POST:URL parameters:params constructingBodyWithBlock: ^(id < AFMultipartFormData > formData) {
         for (NSDictionary * attachment in attachments)
         {
@@ -395,7 +394,14 @@ const NSString*    kResponseSuccess = @"200";
             NSString *filename = attachment[@"filename"];
 
             NSError *error = nil;
-            [formData appendPartWithFileData:imageData name:name fileName:filename mimeType:@"image/jpeg"];
+            
+            if ([filename hasSuffix:@".txt"]) {
+                [formData appendPartWithFileData:imageData name:name fileName:filename mimeType:@"multipart/form-data"];
+            }
+            else {
+                [formData appendPartWithFileData:imageData name:name fileName:filename mimeType:@"image/jpeg"];
+            }
+            
             if (error)
             {
                 Error(@"%@", error);
