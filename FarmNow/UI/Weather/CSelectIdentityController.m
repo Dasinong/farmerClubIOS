@@ -56,13 +56,38 @@
 }
 
 - (IBAction)retailerClick:(id)sender {
-	CStoresViewController* controller = [self.storyboard controllerWithID:@"CStoresViewController"];
-	[self.navigationController pushViewController:controller animated:YES];
+    CSetUserTypeParams* params = [CSetUserTypeParams new];
+    params.type = @"retailer";
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [CSetUserTypeModel requestWithParams:POST params:params completion:^(id model, JSONModelError *err) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if (model && err == nil) {
+            CStoresViewController* controller = [self.storyboard controllerWithID:@"CStoresViewController"];
+            [self.navigationController pushViewController:controller animated:YES];
+        }
+        else
+        {
+            [MBProgressHUD alert:@"设置关系失败"];
+            
+        }
+    }];
 }
 
 - (IBAction)salesClick:(id)sender {
-	CSalesViewController* controller = [self.storyboard controllerWithID:@"CSalesViewController"];
-	[self.navigationController pushViewController:controller animated:YES];
+    CSetUserTypeParams* params = [CSetUserTypeParams new];
+    params.type = @"sales";
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [CSetUserTypeModel requestWithParams:POST params:params completion:^(id model, JSONModelError *err) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if (model && err == nil) {
+            CSalesViewController* controller = [self.storyboard controllerWithID:@"CSalesViewController"];
+            [self.navigationController pushViewController:controller animated:YES];
+        }
+        else
+        {
+            [MBProgressHUD alert:@"设置关系失败"];
+        }
+    }];
 }
 
 @end

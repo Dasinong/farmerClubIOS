@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *resendBotton;
 
 @property (strong, nonatomic) MZTimerLabel *timer;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewWidthConstraint;
 @end
 
 @implementation CIdentifyingCodeController
@@ -37,6 +38,8 @@
         self.countDownLabel.hidden = YES;
         self.resendBotton.hidden = NO;
     }];
+    
+    self.scrollViewWidthConstraint.constant = SCREEN_WIDTH;
 }
 
 - (void)viewDidAppear:(BOOL)animated {

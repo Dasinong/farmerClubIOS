@@ -28,10 +28,14 @@
     
     [CGetWinsafeProductInfoModel requestWithParams:params completion:^(CGetWinsafeProductInfoModel *model, JSONModelError *err) {
         if (model) {
-            self.nameLabel.text = model.data[@"proname"];
-            self.proidLabel.text = model.data[@"proid"];
-            self.prospecialLabel.text = model.data[@"prospecial"];
-            
+            if(err) {
+                [MBProgressHUD alert:model.message];
+            }
+            else {
+                self.nameLabel.text = model.data[@"proname"];
+                self.proidLabel.text = model.data[@"proid"];
+                self.prospecialLabel.text = model.data[@"prospecial"];
+            } 
             //[MBProgressHUD alert:model.message];
         }
         else {

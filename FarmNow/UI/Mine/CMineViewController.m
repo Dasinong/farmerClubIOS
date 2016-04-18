@@ -10,7 +10,7 @@
 #import "CWebViewController.h"
 #import <QRCodeReaderViewController/QRCodeReaderViewController.h>
 #import <EAIntroView/EAIntroView.h>
-#import "CRecommendController.h"
+#import "CRecommendController2.h"
 #import "CPersonalCache.h"
 #import "CSubScribeListController.h"
 #import "CRecommendController1.h"
@@ -35,9 +35,9 @@
     [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"我的活动") forSection:0];
     [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"我的达人积分") forSection:0];
 	
-	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"扫一扫") forSection:1];
+    [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"扫一扫") forSection:1];
+    [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"机构用户绑定") forSection:1];
     [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"我的二维码") forSection:1];
-	//[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"免费短信订阅") forSection:1];
 	
 	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"帮助中心") forSection:2];
 	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"使用教程") forSection:2];
@@ -87,18 +87,18 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    //审核时隐藏有奖推荐
-    if (!SharedAPPDelegate.showWXLogin && indexPath.section == 1 && indexPath.row == 1) {
-        return 0;
-    }
     
-    if (![self showMyCoupons] && indexPath.section == 1 && indexPath.row == 2) {
+    if (([USER.refuid integerValue] != -1 && indexPath.section == 1 && indexPath.row == 1)) {
         return 0;
     }
     
     if (indexPath.section == 0 && indexPath.row == 1) {
         AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         if (![delegate enableWelfare]) {
+            return 0;
+        }
+        
+        if([[USER.userType lowercaseString] isEqualToString:@"retailer"]) {
             return 0;
         }
     }
@@ -171,30 +171,18 @@
 		else if (indexPath.row == 1)
 		{
             if (USER) {
-                CUserObject* object = [[CPersonalCache defaultPersonalCache] cacheUserInfo];
-                if (object.institutionId != nil || object.refuid != nil)
-                {
-                    CRecommendController1* controller  = [self.storyboard controllerWithID:@"CRecommendController1"];
-                    controller.hidesBottomBarWhenPushed = YES;
-                    [self.navigationController pushViewController:controller animated:YES];
-                }
-                else
-                {
-                    CRecommendController* controller  = [self.storyboard controllerWithID:@"CRecommendController"];
-                    controller.hidesBottomBarWhenPushed = YES;
-                    [self.navigationController pushViewController:controller animated:YES];
-                }
-            }
-            else {
-                [self loginClick:nil];
+                CRecommendController2* controller  = [self.storyboard controllerWithID:@"CRecommendController2"];
+                controller.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:controller animated:YES];
             }
 		}
         else if (indexPath.row == 2)
         {
             if (USER) {
-                CSubScribeListController* controller = [self.storyboard controllerWithID:@"CSubScribeListController"];
+                CRecommendController1* controller  = [self.storyboard controllerWithID:@"CRecommendController1"];
                 controller.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:controller animated:YES];
+                
             }
             else {
                 [self loginClick:nil];
