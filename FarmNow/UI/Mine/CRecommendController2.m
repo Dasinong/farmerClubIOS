@@ -8,6 +8,7 @@
 
 #import "CRecommendController2.h"
 #import "CSetRefModel.h"
+#import "CPersonalCache.h"
 #import "MBProgressHUD+Express.h"
 #import <QRCodeReaderViewController/QRCodeReaderViewController.h>
 
@@ -27,6 +28,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)closeKeyboard:(id)sender {
+    [self.codeField resignFirstResponder];
+}
 
 /*
 #pragma mark - Navigation
@@ -38,6 +42,8 @@
 }
 */
 - (IBAction)doneClick:(id)sender {
+    [self.codeField resignFirstResponder];
+    
 	if (self.codeField.text == nil || self.codeField.text.length == 0) {
 		[MBProgressHUD alert:@"请填写邀请码"];
 		return;
@@ -47,11 +53,16 @@
 	[CSetRefModel requestWithParams:POST params:params completion:^(CSetRefModel *model, JSONModelError *err) {
 		if (model && err== nil) {
 			[MBProgressHUD alert:model.message];
+            
+            // 设定refuid
+            USER.refuid = 1;
+            [[CPersonalCache defaultPersonalCache] saveCacheUserInfo:USER sendNotification:NO];
 		}
     }];
 }
 
 - (IBAction)scan:(id)sender {
+    [self.codeField resignFirstResponder];
     [self presentViewController:self.reader animated:YES completion:NULL];
 }
 

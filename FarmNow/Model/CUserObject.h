@@ -31,7 +31,7 @@
 @property (strong, nonatomic) NSString<Optional>   * weixintoken;//微信Token
 @property (strong, nonatomic) NSString<Optional>   * channel;//用户所属的渠道
 @property (strong, nonatomic) NSString<Optional>   * refcode;//推荐码
-@property (assign, nonatomic) NSNumber<Optional>*  refuid;//推荐人Id
+@property (assign, nonatomic) NSInteger refuid;//推荐人Id
 
 @property (strong, nonatomic) NSArray<NSNumber,Optional  > * fields;//加过的农田的ID
 

@@ -26,12 +26,15 @@
     //solution
     self.solutionTextView.text = self.solution.petSoluDes;
     self.solutionTextView.font = [UIFont systemFontOfSize:15.0f];
-//    CGetPetSoluParam *param = [CGetPetSoluParam new];
-//    param.petSoluId = self.solution.petSoluId;
-//    
-//    [CGetPetSoluModel requestWithParams:param completion:^(CGetPetSoluModel *model, JSONModelError *err) {
-//        
-//    }];
+   
+    CGetPetSoluParam *param = [CGetPetSoluParam new];
+    param.petSoluId = self.solution.petSoluId;
+    
+    [CGetPetSoluModel requestWithParams:param completion:^(CGetPetSoluModel *model, JSONModelError *err) {
+        if (!err) {
+            NSLog(@"%@",model);
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

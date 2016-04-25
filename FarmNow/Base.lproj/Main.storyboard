@@ -5170,6 +5170,12 @@ i) 不得为其他任何非法目的而使用服务。
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LCa-3H-j44">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <connections>
+                                    <action selector="closeKeyboard:" destination="Jhd-lX-Aot" eventType="touchUpInside" id="QYS-dM-p0y"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="或直接输入邀请码：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZD-XL-brS">
                                 <rect key="frame" x="20" y="124" width="280" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -5227,17 +5233,21 @@ i) 不得为其他任何非法目的而使用服务。
                             <constraint firstItem="kH9-Qy-Am7" firstAttribute="leading" secondItem="jvc-iL-RnF" secondAttribute="leading" constant="20" id="96w-Vo-Avq"/>
                             <constraint firstItem="hZD-XL-brS" firstAttribute="trailing" secondItem="kH9-Qy-Am7" secondAttribute="trailing" id="Bot-AX-VAq"/>
                             <constraint firstItem="EOr-LR-laY" firstAttribute="trailing" secondItem="vn6-Hk-ffe" secondAttribute="trailing" id="CVc-Iv-KmL"/>
+                            <constraint firstItem="LCa-3H-j44" firstAttribute="top" secondItem="jvc-iL-RnF" secondAttribute="topMargin" id="LQB-PK-94g"/>
                             <constraint firstAttribute="trailing" secondItem="kH9-Qy-Am7" secondAttribute="trailing" constant="20" id="Shg-eK-dzM"/>
                             <constraint firstItem="vn6-Hk-ffe" firstAttribute="top" secondItem="kH9-Qy-Am7" secondAttribute="bottom" id="THr-PS-aMX"/>
                             <constraint firstItem="hZD-XL-brS" firstAttribute="top" secondItem="5N7-OU-uC6" secondAttribute="bottom" constant="30" id="Z8V-cx-Igi"/>
                             <constraint firstItem="kH9-Qy-Am7" firstAttribute="centerX" secondItem="jvc-iL-RnF" secondAttribute="centerX" id="b3r-7O-Loi"/>
                             <constraint firstItem="5N7-OU-uC6" firstAttribute="leading" secondItem="jvc-iL-RnF" secondAttribute="leading" constant="19" id="cx6-Kd-EOH"/>
+                            <constraint firstAttribute="trailing" secondItem="LCa-3H-j44" secondAttribute="trailing" id="dvO-mS-tru"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="LCa-3H-j44" secondAttribute="bottom" id="hIy-G8-eyT"/>
                             <constraint firstItem="hZD-XL-brS" firstAttribute="leading" secondItem="kH9-Qy-Am7" secondAttribute="leading" id="iH7-KO-pnD"/>
                             <constraint firstItem="kH9-Qy-Am7" firstAttribute="top" secondItem="hZD-XL-brS" secondAttribute="bottom" constant="10" id="iL2-iI-meH"/>
                             <constraint firstItem="vn6-Hk-ffe" firstAttribute="trailing" secondItem="kH9-Qy-Am7" secondAttribute="trailing" id="jPH-XN-rhg"/>
                             <constraint firstItem="EOr-LR-laY" firstAttribute="top" secondItem="vn6-Hk-ffe" secondAttribute="bottom" constant="10" id="nUh-Lw-MSy"/>
                             <constraint firstItem="5N7-OU-uC6" firstAttribute="top" secondItem="jvc-iL-RnF" secondAttribute="topMargin" constant="50" id="pK6-LJ-zKF"/>
                             <constraint firstAttribute="trailing" secondItem="5N7-OU-uC6" secondAttribute="trailing" constant="21" id="psz-PQ-q2o"/>
+                            <constraint firstItem="LCa-3H-j44" firstAttribute="leading" secondItem="jvc-iL-RnF" secondAttribute="leading" id="pwr-Ke-so5"/>
                             <constraint firstItem="vn6-Hk-ffe" firstAttribute="leading" secondItem="kH9-Qy-Am7" secondAttribute="leading" id="tBk-A0-MMz"/>
                         </constraints>
                     </view>

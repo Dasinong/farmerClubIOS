@@ -13,6 +13,7 @@
 #import "CPersonalCache.h"
 #import "CRemoteControModel.h"
 #import "CResponseBase.h"
+#import "MobClick.h"
 
 @interface AppDelegate ()<WXApiDelegate>
 
@@ -43,6 +44,10 @@
 					self.showWXLogin = model.weixinLogin;
 		}
 	}];
+    
+    
+    [MobClick startWithAppkey:@"5718568967e58e449b0018db" reportPolicy:BATCH channelId:nil];
+    
 	return YES;
 }
 

@@ -88,7 +88,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (([USER.refuid integerValue] != -1 && indexPath.section == 1 && indexPath.row == 1)) {
+    if (USER.refuid > 0 && indexPath.section == 1 && indexPath.row == 1) {
         return 0;
     }
     
@@ -174,6 +174,9 @@
                 CRecommendController2* controller  = [self.storyboard controllerWithID:@"CRecommendController2"];
                 controller.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:controller animated:YES];
+            }
+            else {
+                [self loginClick:nil];
             }
 		}
         else if (indexPath.row == 2)

@@ -45,6 +45,23 @@
     }
     else {
         self.title = self.petDis.petDisSpecName;
+        
+        CGetPetDisSpecBaiKeByIdParams *param = [CGetPetDisSpecBaiKeByIdParams new];
+        param.id = self.petDis.id;
+        [CGetPetDisSpecBaiKeByIdModel requestWithParams:param completion:^(CGetPetDisSpecBaiKeByIdModel *model, JSONModelError *err) {
+            if (err == nil) {
+                self.petDis = model.data;
+                self.title = self.petDis.petDisSpecName;
+                [self.tableView reloadData];
+                
+                if (self.goToSolution) {
+                    if ([self.tableView numberOfRowsInSection:2] > 0) {
+                        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:2] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+                        self.goToSolution = NO;
+                    }
+                }
+            }
+        }];
     }
 }
 
