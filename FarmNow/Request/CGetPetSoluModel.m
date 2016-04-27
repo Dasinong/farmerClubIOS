@@ -11,10 +11,13 @@
 @implementation CGetPetSoluParam
 + (NSString *)path
 {
-    return @"getPetSolu";
+    return @"getFormattedPetSolu";
 }
 @end
 
 @implementation CGetPetSoluModel
-
++ (JSONKeyMapper *)keyMapper
+{
+    return [[JSONKeyMapper alloc] initWithDictionary:@{@"data.cPProducts":@"cPProducts"}];
+}
 @end

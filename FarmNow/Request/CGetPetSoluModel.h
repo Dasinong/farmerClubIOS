@@ -7,11 +7,12 @@
 //
 
 #import "CResponseBase.h"
+#import "CIngredientDetailObject.h"
 
 @interface CGetPetSoluParam : CRequestBaseParams
 @property (nonatomic, assign) NSInteger petSoluId;
 @end
 
 @interface CGetPetSoluModel : CResponseModel
-
+@property (nonatomic, strong) NSArray<CIngredientDetailObject> *cPProducts;
 @end

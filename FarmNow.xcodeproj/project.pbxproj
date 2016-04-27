@@ -50,6 +50,8 @@
 		27A8C9EF1C71BDF000441C27 /* CClaimCouponTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A8C9EE1C71BDF000441C27 /* CClaimCouponTableViewCell.m */; };
 		27A8C9F21C71CD4A00441C27 /* CRequestCouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A8C9F11C71CD4A00441C27 /* CRequestCouponModel.m */; };
 		27A8C9F51C71D12700441C27 /* CClaimCouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A8C9F41C71D12700441C27 /* CClaimCouponModel.m */; };
+		27A8D3821CCF3A90008D1DB1 /* CPetSolutionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A8D3811CCF3A90008D1DB1 /* CPetSolutionCell.m */; };
+		27A8D3851CCF4924008D1DB1 /* CPetDisSolutionViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A8D3841CCF4924008D1DB1 /* CPetDisSolutionViewController2.m */; };
 		27C397D11CA8C36F00102B31 /* CBASFStocksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C397D01CA8C36F00102B31 /* CBASFStocksViewController.m */; };
 		27C397D51CA8C4CF00102B31 /* CGetBASFStockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C397D41CA8C4CF00102B31 /* CGetBASFStockModel.m */; };
 		27C397D81CA8C50300102B31 /* CWinSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C397D71CA8C50300102B31 /* CWinSafe.m */; };
@@ -383,6 +385,10 @@
 		27A8C9F11C71CD4A00441C27 /* CRequestCouponModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRequestCouponModel.m; sourceTree = "<group>"; };
 		27A8C9F31C71D12700441C27 /* CClaimCouponModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CClaimCouponModel.h; sourceTree = "<group>"; };
 		27A8C9F41C71D12700441C27 /* CClaimCouponModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CClaimCouponModel.m; sourceTree = "<group>"; };
+		27A8D3801CCF3A90008D1DB1 /* CPetSolutionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPetSolutionCell.h; sourceTree = "<group>"; };
+		27A8D3811CCF3A90008D1DB1 /* CPetSolutionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPetSolutionCell.m; sourceTree = "<group>"; };
+		27A8D3831CCF4924008D1DB1 /* CPetDisSolutionViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPetDisSolutionViewController2.h; sourceTree = "<group>"; };
+		27A8D3841CCF4924008D1DB1 /* CPetDisSolutionViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPetDisSolutionViewController2.m; sourceTree = "<group>"; };
 		27C397CF1CA8C36E00102B31 /* CBASFStocksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBASFStocksViewController.h; sourceTree = "<group>"; };
 		27C397D01CA8C36F00102B31 /* CBASFStocksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBASFStocksViewController.m; sourceTree = "<group>"; };
 		27C397D31CA8C4CF00102B31 /* CGetBASFStockModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGetBASFStockModel.h; sourceTree = "<group>"; };
@@ -1002,6 +1008,8 @@
 				27D0F0671C7D74A300215FCC /* CPetDisCell.h */,
 				27D0F0681C7D74A300215FCC /* CPetDisCell.m */,
 				27D0F0691C7D74A300215FCC /* CPetDisCell.xib */,
+				27A8D3801CCF3A90008D1DB1 /* CPetSolutionCell.h */,
+				27A8D3811CCF3A90008D1DB1 /* CPetSolutionCell.m */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -1682,6 +1690,8 @@
 				27D0F0731C7D876400215FCC /* CPetDisListViewController.m */,
 				27D0F0751C7D96CD00215FCC /* CPetDisSolutionViewController.h */,
 				27D0F0761C7D96CD00215FCC /* CPetDisSolutionViewController.m */,
+				27A8D3831CCF4924008D1DB1 /* CPetDisSolutionViewController2.h */,
+				27A8D3841CCF4924008D1DB1 /* CPetDisSolutionViewController2.m */,
 			);
 			path = Field;
 			sourceTree = "<group>";
@@ -1949,6 +1959,7 @@
 				9FEED8551BEE1C610095A91B /* CRecommendController1.m in Sources */,
 				27D0F07D1C7DB42300215FCC /* CGetStagesModel.m in Sources */,
 				9F6C9F801C0010E3002FE17F /* CMineBtnCell.m in Sources */,
+				27A8D3821CCF3A90008D1DB1 /* CPetSolutionCell.m in Sources */,
 				9FA04E111BD93A16007E2951 /* CJSONModel.m in Sources */,
 				275C4B0A1C7070B8002475B6 /* CCouponCampaignTableViewCell.m in Sources */,
 				9FD2132A1BD128A60063147D /* NSString+Define.m in Sources */,
@@ -1977,6 +1988,7 @@
 				9FEED8581BEE1C8B0095A91B /* CRecommendController2.m in Sources */,
 				9F02DFC21BD931DD001C223F /* CTitleSubTItleCell.m in Sources */,
 				9FD213201BD128A60063147D /* CGRect+Extra.m in Sources */,
+				27A8D3851CCF4924008D1DB1 /* CPetDisSolutionViewController2.m in Sources */,
 				27C397E11CA8D31000102B31 /* CStockViewController.m in Sources */,
 				9FFF68251C08991100590604 /* CLoadSubScribeListModel.m in Sources */,
 				279A5E921C740CC500C3D697 /* CCouponListViewController.m in Sources */,
@@ -2383,7 +2395,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dasinong.FarmerClub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6ed19ec5-d587-481e-85e5-6f221ab23b3f";
 			};
 			name = Release;
 		};

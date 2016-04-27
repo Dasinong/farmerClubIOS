@@ -21,20 +21,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.solutionNameLabel.text = self.solutionName;
+    if (self.solution.isRemedy == 0) {
+        self.solutionNameLabel.text = [NSString stringWithFormat:@"预防方案%c", 'A' + (int)self.solutionIndex];
+        self.title = @"预防方案详情";
+    }
+    else {
+        self.solutionNameLabel.text = [NSString stringWithFormat:@"治疗方案%c", 'A' + (int)self.solutionIndex];
+        self.title = @"治疗方案详情";
+    }
     
     //solution
     self.solutionTextView.text = self.solution.petSoluDes;
     self.solutionTextView.font = [UIFont systemFontOfSize:15.0f];
-   
-    CGetPetSoluParam *param = [CGetPetSoluParam new];
-    param.petSoluId = self.solution.petSoluId;
-    
-    [CGetPetSoluModel requestWithParams:param completion:^(CGetPetSoluModel *model, JSONModelError *err) {
-        if (!err) {
-            NSLog(@"%@",model);
-        }
-    }];
 }
 
 - (void)didReceiveMemoryWarning {

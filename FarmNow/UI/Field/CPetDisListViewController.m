@@ -11,6 +11,8 @@
 #import "SDCycleScrollView.h"
 #import "CPetDisSolutionViewController.h"
 #import "CGetPetDisSpecBaiKeByIdModel.h"
+#import "CPetSolutionCell.h"
+#import "CPetDisSolutionViewController2.h"
 
 @interface CPetDisListViewController () {
     NSInteger currentSegmentIndex;
@@ -87,6 +89,30 @@
     [self.tableView reloadData];
 }
 
+- (NSArray *)remedyArray {
+    NSMutableArray *array = [NSMutableArray array];
+    
+    for (CPetSolution *solution in self.petDis.solutions) {
+        if(solution.isRemedy == 1) {
+            [array addObject:solution];
+        }
+    }
+    
+    return array;
+}
+
+- (NSArray *)precautionArray {
+    NSMutableArray *array = [NSMutableArray array];
+    
+    for (CPetSolution *solution in self.petDis.solutions) {
+        if(solution.isRemedy == 0) {
+            [array addObject:solution];
+        }
+    }
+    
+    return array;
+}
+
 /*
 #pragma mark - Navigation
 
@@ -105,6 +131,8 @@
             return UITableViewAutomaticDimension;
         case 2:
             return UITableViewAutomaticDimension;
+        case 3:
+            return UITableViewAutomaticDimension;
         default:
             break;
     }
@@ -112,12 +140,20 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 - (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     if (section == 2) {
+        NSArray *countNib = [[NSBundle mainBundle] loadNibNamed:@"CWeatherSectionView" owner:self options:nil];
+        CWeatherSectionView* sectionView = [countNib objectAtIndex:0];
+        [sectionView setTitle:@"预防方法"];
+        
+        return sectionView;
+    }
+    
+    if (section == 3) {
         NSArray *countNib = [[NSBundle mainBundle] loadNibNamed:@"CWeatherSectionView" owner:self options:nil];
         CWeatherSectionView* sectionView = [countNib objectAtIndex:0];
         [sectionView setTitle:@"治疗方法"];
@@ -138,7 +174,11 @@
     }
     
     if (section == 2) {
-        return self.petDis.solutions.count;
+        return [[self precautionArray] count];
+    }
+    
+    if (section == 3) {
+        return [[self remedyArray] count];
     }
     
     return 0;
@@ -146,6 +186,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 2) {
+        if([[self precautionArray] count] == 0) {
+            return CGFLOAT_MIN;
+        }
+        
+        return 36;
+    }
+    
+    if (section == 3) {
         return 36;
     }
     
@@ -156,6 +204,14 @@
     if (section == 1) {
         return 10;
     }
+    
+    if (section == 2) {
+        if([[self precautionArray] count] == 0) {
+            return CGFLOAT_MIN;
+        }
+        return 10;
+    }
+    
     return CGFLOAT_MIN;
 }
 
@@ -208,17 +264,19 @@
     }
     
     if (indexPath.section == 2) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SolutionCell" forIndexPath:indexPath];
+        CPetSolutionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SolutionCell" forIndexPath:indexPath];
         
-        UILabel *titleLabel = (UILabel *)[cell.contentView viewWithTag:1];
-        UILabel *textLabel = (UILabel *)[cell.contentView viewWithTag:2];
+        CPetSolution *solution = [self precautionArray][indexPath.row];
+        [cell setupWithModel:solution index:indexPath.row];
         
-        CPetSolution *solution = self.petDis.solutions[indexPath.row];
-        titleLabel.text = [NSString stringWithFormat:@"治疗方案%c", 'A' + (int)indexPath.row];
-        textLabel.text = solution.petSoluDes;
+        return cell;
+    }
+    
+    if (indexPath.section == 3) {
+        CPetSolutionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SolutionCell" forIndexPath:indexPath];
         
-        [cell setNeedsLayout];
-        [cell layoutIfNeeded];
+        CPetSolution *solution = [self remedyArray][indexPath.row];
+        [cell setupWithModel:solution index:indexPath.row];
         
         return cell;
     }
@@ -229,14 +287,28 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.section == 2) {
-        CPetSolution *solution = self.petDis.solutions[indexPath.row];
-        NSString *solutionName = [NSString stringWithFormat:@"治疗方案%c", 'A' + (int)indexPath.row];
+    if (indexPath.section == 2 || indexPath.section == 3) {
+        CPetSolution *solution;
         
-        CPetDisSolutionViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CPetDisSolutionViewController"];
-        controller.solution = solution;
-        controller.solutionName = solutionName;
-        [self.navigationController pushViewController: controller animated:YES];
+        if (indexPath.section == 2) {
+            solution = [self precautionArray][indexPath.row];
+        }
+        else {
+            solution = [self remedyArray][indexPath.row];
+        }
+        
+        if (solution.snapshotCP.length > 0) {
+            CPetDisSolutionViewController2 *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CPetDisSolutionViewController2"];
+            controller.solution = solution;
+            controller.solutionIndex = indexPath.row;
+            [self.navigationController pushViewController: controller animated:YES];
+        }
+        else {
+            CPetDisSolutionViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CPetDisSolutionViewController"];
+            controller.solution = solution;
+            controller.solutionIndex = indexPath.row;
+            [self.navigationController pushViewController: controller animated:YES];
+        }
     }
 }
 @end
