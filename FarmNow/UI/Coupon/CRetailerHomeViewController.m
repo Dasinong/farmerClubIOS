@@ -68,7 +68,10 @@
     
     switch (indexPath.row) {
         case 0:
-            [self presentViewController:self.reader animated:YES completion:NULL];
+            if (self.reader) {
+                [self presentViewController:self.reader animated:YES completion:NULL];
+            }
+            
             break;
         case 1: {
             CMyStoreViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CMyStoreViewController"];
@@ -97,10 +100,16 @@
 - (QRCodeReaderViewController *)reader {
     if (_reader == nil) {
         NSArray *types = @[AVMetadataObjectTypeQRCode];
-        _reader = [QRCodeReaderViewController readerWithMetadataObjectTypes:types];
-        
-        // Using delegate methods
-        _reader.delegate = self;
+        // check permission
+        AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+        if(authStatus == AVAuthorizationStatusAuthorized) {
+            _reader = [QRCodeReaderViewController readerWithMetadataObjectTypes:types];
+            
+            // Using delegate methods
+            _reader.delegate = self;
+        } else {
+            [MBProgressHUD alert:@"请打开摄像机权限"];
+        }
     }
     
     return _reader;
@@ -124,6 +133,8 @@
 
 #pragma mark - CStockViewControllerDelegate
 - (void)continueScan {
-    [self presentViewController:self.reader animated:YES completion:NULL];
+    if (self.reader) {
+        [self presentViewController:self.reader animated:YES completion:NULL];
+    }
 }
 @end

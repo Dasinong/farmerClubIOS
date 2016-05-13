@@ -63,16 +63,24 @@
 
 - (IBAction)scan:(id)sender {
     [self.codeField resignFirstResponder];
-    [self presentViewController:self.reader animated:YES completion:NULL];
+    if (self.reader) {
+        [self presentViewController:self.reader animated:YES completion:NULL];
+    }
 }
 
 - (QRCodeReaderViewController *)reader {
     if (_reader == nil) {
         NSArray *types = @[AVMetadataObjectTypeQRCode];
-        _reader = [QRCodeReaderViewController readerWithMetadataObjectTypes:types];
-        
-        // Using delegate methods
-        _reader.delegate = self;
+        // check permission
+        AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+        if(authStatus == AVAuthorizationStatusAuthorized) {
+            _reader = [QRCodeReaderViewController readerWithMetadataObjectTypes:types];
+            
+            // Using delegate methods
+            _reader.delegate = self;
+        } else {
+            [MBProgressHUD alert:@"请打开摄像机权限"];
+        }
     }
     
     return _reader;

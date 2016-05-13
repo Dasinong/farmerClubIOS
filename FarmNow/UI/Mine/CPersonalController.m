@@ -254,22 +254,12 @@
 {
 	CLogoutParams* params = [CLogoutParams new];
 	[CLogoutModel requestWithParams:POST params:params completion:^(CLogoutModel* model, JSONModelError *err) {
-		if (model && err ==nil) {
-			if ([model.respCode isEqualToString: @"200"]) {
-				[MBProgressHUD alert:@"退出成功"];
-				[[CPersonalCache defaultPersonalCache] clearUserInfo];
-				[self.navigationController popViewControllerAnimated:YES];
-			}
-			else if ([model.respCode isEqualToString: @"110"])
-			{
-				[MBProgressHUD alert:@"登录过期，请重新登录"];
-				
-				[[CPersonalCache defaultPersonalCache] clearUserInfo];
-				[self.navigationController popViewControllerAnimated:YES];
-			}
-		}
-	}];
 
+	}];
+    
+    [MBProgressHUD alert:@"退出成功"];
+    [[CPersonalCache defaultPersonalCache] clearUserInfo];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)clickAvatar:(id)sender
