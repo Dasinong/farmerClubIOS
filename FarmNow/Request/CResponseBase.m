@@ -147,8 +147,9 @@ const NSString*    kResponseSuccess = @"200";
 							topController = [currentNavController topViewController];
 						}
 						
-						
-						[topController presentViewController:naviController animated:YES completion:nil];
+                        if (![topController.restorationIdentifier isEqualToString:@"loginNavigationController"]) {
+                            [topController presentViewController:naviController animated:YES completion:nil];
+                        }
                         
                         completeBlock(model, nil);
                         return;
@@ -197,9 +198,9 @@ const NSString*    kResponseSuccess = @"200";
 							topController = [currentNavController topViewController];
 						}
 						
-						
-						[topController presentViewController:naviController animated:YES completion:nil];
-
+                        if (![topController.restorationIdentifier isEqualToString:@"loginNavigationController"]) {
+                            [topController presentViewController:naviController animated:YES completion:nil];
+                        }
 					}
 //					if (errorModel.message.length >0) {
 //						[MBProgressHUD alert:errorModel.message];
@@ -261,7 +262,7 @@ const NSString*    kResponseSuccess = @"200";
         [self success:operation object:responseObject completion:completeBlock];
     } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
         if (error) {
-            if (operation.response.statusCode == 403) {
+            if (operation.response.statusCode == 403 || operation.response.statusCode == 401) {
                 if (![URL containsString:@"/gatekeepers?"]) {
                     [[CPersonalCache defaultPersonalCache] clearUserInfo];
                     [MBProgressHUD alert:@"您登录已过期，请重新登录"];
@@ -276,8 +277,9 @@ const NSString*    kResponseSuccess = @"200";
                         topController = [currentNavController topViewController];
                     }
                     
-                    
-                    [topController presentViewController:naviController animated:YES completion:nil];
+                    if (![topController.restorationIdentifier isEqualToString:@"loginNavigationController"]) {
+                        [topController presentViewController:naviController animated:YES completion:nil];
+                    }
                 }
             }
             else {
