@@ -263,7 +263,7 @@
         
         // check permission
         AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-        if(authStatus == AVAuthorizationStatusAuthorized) {
+        if(authStatus == AVAuthorizationStatusNotDetermined || authStatus == AVAuthorizationStatusAuthorized) {
             _reader = [QRCodeReaderViewController readerWithMetadataObjectTypes:types];
             
             // Using delegate methods

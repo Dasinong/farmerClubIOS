@@ -2340,8 +2340,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: DASINONG AGROTECH CO., LTD. (FVCN5LQT5Z)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2395,7 +2394,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dasinong.FarmerClub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6ed19ec5-d587-481e-85e5-6f221ab23b3f";
+				PROVISIONING_PROFILE = "76564011-90b0-4dec-87ed-72b262ab4ed1";
 			};
 			name = Release;
 		};

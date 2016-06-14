@@ -56,7 +56,9 @@
             
             // 设定refuid
             USER.refuid = 1;
-            [[CPersonalCache defaultPersonalCache] saveCacheUserInfo:USER sendNotification:NO];
+            [[CPersonalCache defaultPersonalCache] saveCacheUserInfo:USER sendNotification:YES];
+            
+            [self.navigationController popViewControllerAnimated:YES];
 		}
     }];
 }
@@ -73,7 +75,7 @@
         NSArray *types = @[AVMetadataObjectTypeQRCode];
         // check permission
         AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-        if(authStatus == AVAuthorizationStatusAuthorized) {
+        if(authStatus == AVAuthorizationStatusNotDetermined || authStatus == AVAuthorizationStatusAuthorized) {
             _reader = [QRCodeReaderViewController readerWithMetadataObjectTypes:types];
             
             // Using delegate methods
