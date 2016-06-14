@@ -6040,7 +6040,7 @@ i) 不得为其他任何非法目的而使用服务。
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合计金额：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lLl-yH-sYp">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合计金额：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lLl-yH-sYp">
                                                     <rect key="frame" x="15" y="48" width="75" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="75" id="CvD-Qg-dRw"/>
@@ -7246,7 +7246,7 @@ i) 不得为其他任何非法目的而使用服务。
             </objects>
             <point key="canvasLocation" x="2265" y="5189"/>
         </scene>
-        <!--活动详情-->
+        <!--大户俱乐部活动-->
         <scene sceneID="8HW-7A-NWJ">
             <objects>
                 <viewController storyboardIdentifier="CMyCouponDetailViewController" id="zqb-kT-LzQ" customClass="CMyCouponDetailViewController" sceneMemberID="viewController">
@@ -7380,7 +7380,7 @@ i) 不得为其他任何非法目的而使用服务。
                             <constraint firstItem="NJH-o2-UPm" firstAttribute="top" secondItem="4uj-ZV-JaV" secondAttribute="topMargin" id="yh7-Zi-KaJ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="活动详情" id="RdK-4F-ecs"/>
+                    <navigationItem key="navigationItem" title="大户俱乐部活动" id="RdK-4F-ecs"/>
                     <connections>
                         <outlet property="tableView" destination="NJH-o2-UPm" id="Ck7-VW-urI"/>
                     </connections>

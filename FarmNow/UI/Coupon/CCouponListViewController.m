@@ -89,7 +89,7 @@ extern CLLocationDegrees gLongitude;
         case CouponTypeMyUnused:
             return @"未使用";
         case CouponTypeMyExpired:
-            return @"已失效";
+            return @"已完成";
             
         default:
             return @"";

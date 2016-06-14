@@ -32,12 +32,12 @@
 
 + (MBProgressHUD* )alertMessage:(NSString*)message inView:(UIView*)view
 {
-    return [MBProgressHUD alertMessage:message inView:view duration:1 finishedBlock:nil];
+    return [MBProgressHUD alertMessage:message inView:view duration:3 finishedBlock:nil];
 }
 
 + (MBProgressHUD* )alert:(NSString*)message
 {
-    return [MBProgressHUD alertMessage:message inView:nil duration:1  finishedBlock:nil];
+    return [MBProgressHUD alertMessage:message inView:nil duration:3  finishedBlock:nil];
 }
 
 + (MBProgressHUD* )info:(NSString*)message

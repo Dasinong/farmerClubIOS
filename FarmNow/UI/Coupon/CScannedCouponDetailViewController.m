@@ -10,6 +10,7 @@
 #import "CCouponTableViewCell.h"
 #import "CScannedCouponsModel.h"
 #import "MJRefresh.h"
+#import "CCouponCampaignDetailModel.h"
 
 @interface CScannedCouponDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSArray *dataArray;
@@ -28,6 +29,27 @@
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self requestData];
     }];
+    
+    if ([self.couponCampaign.name length] == 0) {
+        // 再去拿一次
+        CCouponCampaignDetailParam *param = [CCouponCampaignDetailParam shared_];
+        param.couponCampaignId = self.couponCampaign.id;
+        
+        [CCouponCampaignDetailModel requestWithParams:param completion:^(CCouponCampaignDetailModel *model, JSONModelError *err) {
+            self.couponCampaign = model.campaign;
+            [self updateInsurance];
+            [self.tableView reloadData];
+        }];
+    }
+    else {
+        [self updateInsurance];
+    }
+}
+
+- (void)updateInsurance {
+    if ([self.couponCampaign isInsurance]) {
+        self.title = @"申领记录";
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -93,11 +115,19 @@
         countLabel.text = [NSString stringWithFormat:@"%d", (int)self.dataArray.count];
         
         UILabel *amountLabel = (UILabel*)[cell.contentView viewWithTag:2];
-        float amount = 0;
-        for (CCoupon *coupon in self.dataArray) {
-            amount += coupon.amount;
+        UILabel *amountTitleLabel = (UILabel*)[cell.contentView viewWithTag:3];
+        
+        if ([self.couponCampaign isInsurance]) {
+            amountLabel.hidden = YES;
+            amountTitleLabel.hidden = YES;
         }
-        amountLabel.text = [NSString stringWithFormat:@"￥%.2f", amount];
+        else {
+            float amount = 0;
+            for (CCoupon *coupon in self.dataArray) {
+                amount += coupon.amount;
+            }
+            amountLabel.text = [NSString stringWithFormat:@"￥%.2f", amount];
+        }
         
         return cell;
     }
