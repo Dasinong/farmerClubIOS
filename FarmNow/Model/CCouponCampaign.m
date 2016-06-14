@@ -26,4 +26,8 @@
     
     return NO;
 }
+
+- (BOOL)isInsurance {
+    return [[self.type uppercaseString] isEqualToString:@"INSURANCE"];
+}
 @end

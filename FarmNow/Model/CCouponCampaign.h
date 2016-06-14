@@ -15,6 +15,7 @@
 @interface CCouponCampaign : CJSONModel
 @property (assign, nonatomic) NSInteger id;
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSString<Optional> *campaignDescription;
 @property (nonatomic) float amount;
 @property (nonatomic, strong) NSArray<Optional> *pictureUrls;
@@ -24,4 +25,6 @@
 @property (assign, nonatomic) NSTimeInterval redeemTimeEnd;
 @property (nonatomic, strong) NSDictionary<Optional> *institution;
 @property (nonatomic, strong) NSArray<Optional, CStore> *stores;
+
+- (BOOL)isInsurance;
 @end

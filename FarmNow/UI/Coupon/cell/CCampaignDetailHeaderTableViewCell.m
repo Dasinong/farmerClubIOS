@@ -31,7 +31,12 @@
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"MM月dd日"];
     
-    self.redeemLabel.text = [NSString stringWithFormat:@"兑换期限：%@ - %@", [df stringFromDate:redeemTimeStart], [df stringFromDate:redeemTimeEnd]];
+    if ([campaign isInsurance]) {
+        self.redeemLabel.text = @"";
+    }
+    else {
+        self.redeemLabel.text = [NSString stringWithFormat:@"兑换期限：%@ - %@", [df stringFromDate:redeemTimeStart], [df stringFromDate:redeemTimeEnd]];
+    }
     
     [self setNeedsUpdateConstraints];
     [self updateConstraintsIfNeeded];

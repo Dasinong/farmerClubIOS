@@ -31,6 +31,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    if ([self.couponCampaign isInsurance]) {
+        self.title = @"申请表";
+    }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -140,6 +140,10 @@
         selectedCoupon.campaign = couponCampaign;
     }
     
+    if ([[selectedCoupon.type uppercaseString] isEqualToString:@"INSURANCE"]) {
+        claimed = NO;
+    }
+    
     if (claimed) {
         CMyCouponDetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CMyCouponDetailViewController"];
         controller.coupon = selectedCoupon;

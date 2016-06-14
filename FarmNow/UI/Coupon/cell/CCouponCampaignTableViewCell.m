@@ -19,6 +19,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *claimLabelHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *claimLabelTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *claimLabelBottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *campaignTitleHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *campaignTitleTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *campaignTitleBottomConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *claimLabel;
 //@property (weak, nonatomic) IBOutlet NSLayoutConstraint *amountLabelHeightConstraint;
 //@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageHeightConstraint;
@@ -27,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *campaignImageView;
 @property (weak, nonatomic) IBOutlet UIView *seperatorView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *seperatorViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *campaignTitleLabel;
 @end
 
 @implementation CCouponCampaignTableViewCell
@@ -45,6 +49,7 @@
         self.couponCampaign = self.coupon.campaign;
     }
     
+    self.campaignTitleLabel.text = self.couponCampaign.name;
     
     
 //    if (self.couponCampaign.institution && self.couponCampaign.institution[@"name"]) {
@@ -76,6 +81,9 @@
         self.seperatorViewHeightConstraint.constant = 0.1;
     }
     else {
+        self.campaignTitleHeightConstraint.constant = 0;
+        self.campaignTitleTopConstraint.constant = 0;
+        self.campaignTitleBottomConstraint.constant = 0;
         self.claimLabelHeightConstraint.constant = 0;
         self.claimLabelBottomConstraint.constant = 0;
         self.claimLabelTopConstraint.constant = 0;
@@ -115,7 +123,13 @@
         
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         [df setDateFormat:@"MM月dd日"];
-        self.claimLabel.text = [NSString stringWithFormat:@"申领时间：%@ - %@", [df stringFromDate:claimTimeStart], [df stringFromDate:claimTimeEnd]];
+        
+        NSString *text = @"申领时间";
+        if ([self.couponCampaign isInsurance]) {
+            text = @"活动时间";
+        }
+        
+        self.claimLabel.text = [NSString stringWithFormat:@"%@：%@ - %@", text, [df stringFromDate:claimTimeStart], [df stringFromDate:claimTimeEnd]];
     }
 //
 //    if (self.isDetail) {

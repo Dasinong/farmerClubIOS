@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -15,8 +15,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7k2-MI-Zic">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="165"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="139"/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRV-JR-6ES">
+                        <rect key="frame" x="12" y="149" width="296" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="2sT-uL-H5X"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="申领时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ki4-V9-Nby">
                         <rect key="frame" x="12" y="180" width="296" height="16"/>
                         <constraints>
@@ -35,24 +44,30 @@
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="sRV-JR-6ES" firstAttribute="trailing" secondItem="ki4-V9-Nby" secondAttribute="trailing" id="00L-Ng-1IY"/>
                     <constraint firstAttribute="bottom" secondItem="gJQ-r0-TxS" secondAttribute="bottom" priority="999" constant="0.5" id="1Gp-aP-vcV"/>
                     <constraint firstItem="ki4-V9-Nby" firstAttribute="leading" secondItem="HIK-rv-8pA" secondAttribute="leading" constant="12" id="CMt-Ym-V0n"/>
+                    <constraint firstItem="ki4-V9-Nby" firstAttribute="top" secondItem="sRV-JR-6ES" secondAttribute="bottom" constant="10" id="LJw-nh-93A"/>
                     <constraint firstItem="gJQ-r0-TxS" firstAttribute="top" secondItem="ki4-V9-Nby" secondAttribute="bottom" constant="15" id="M2s-Fv-Wv8"/>
                     <constraint firstAttribute="trailing" secondItem="ki4-V9-Nby" secondAttribute="trailing" constant="12" id="MDJ-nx-9Ht"/>
-                    <constraint firstItem="ki4-V9-Nby" firstAttribute="top" secondItem="7k2-MI-Zic" secondAttribute="bottom" constant="15" id="P8e-ia-nVs"/>
                     <constraint firstAttribute="trailing" secondItem="gJQ-r0-TxS" secondAttribute="trailing" id="SEA-wP-Vyt"/>
                     <constraint firstItem="gJQ-r0-TxS" firstAttribute="leading" secondItem="HIK-rv-8pA" secondAttribute="leading" id="WDt-aD-N94"/>
                     <constraint firstItem="7k2-MI-Zic" firstAttribute="leading" secondItem="HIK-rv-8pA" secondAttribute="leading" id="YXq-XL-fFO"/>
                     <constraint firstItem="7k2-MI-Zic" firstAttribute="top" secondItem="HIK-rv-8pA" secondAttribute="top" id="cXZ-th-Zrs"/>
                     <constraint firstAttribute="trailing" secondItem="7k2-MI-Zic" secondAttribute="trailing" id="e00-au-9UJ"/>
+                    <constraint firstItem="sRV-JR-6ES" firstAttribute="top" secondItem="7k2-MI-Zic" secondAttribute="bottom" constant="10" id="eal-43-Ee3"/>
+                    <constraint firstItem="sRV-JR-6ES" firstAttribute="leading" secondItem="ki4-V9-Nby" secondAttribute="leading" id="xUd-UW-ahb"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="campaignImageView" destination="7k2-MI-Zic" id="PUf-6d-974"/>
+                <outlet property="campaignTitleBottomConstraint" destination="LJw-nh-93A" id="Qz0-52-hRV"/>
+                <outlet property="campaignTitleHeightConstraint" destination="2sT-uL-H5X" id="gMe-uq-yQe"/>
+                <outlet property="campaignTitleLabel" destination="sRV-JR-6ES" id="Lf4-Zu-mVM"/>
+                <outlet property="campaignTitleTopConstraint" destination="eal-43-Ee3" id="Okn-Pe-ffg"/>
                 <outlet property="claimLabel" destination="ki4-V9-Nby" id="Foh-2d-I9V"/>
                 <outlet property="claimLabelBottomConstraint" destination="M2s-Fv-Wv8" id="Omu-IL-Uud"/>
                 <outlet property="claimLabelHeightConstraint" destination="QtN-oj-wPj" id="9DT-fr-RoD"/>
-                <outlet property="claimLabelTopConstraint" destination="P8e-ia-nVs" id="TQs-Yz-a8e"/>
                 <outlet property="seperatorView" destination="gJQ-r0-TxS" id="3gA-Sa-3gs"/>
                 <outlet property="seperatorViewHeightConstraint" destination="PwE-oh-Tqo" id="e29-Kg-kbw"/>
             </connections>

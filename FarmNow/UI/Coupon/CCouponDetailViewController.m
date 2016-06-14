@@ -35,6 +35,11 @@
     self.downloadedPictures = [NSMutableDictionary dictionary];
     self.title = self.couponCampaign.name;
     
+    if ([self.couponCampaign isInsurance]) {
+        [self.claimButton setTitle:@"立即申请" forState:UIControlStateNormal];
+        [self.claimButton setTitle:@"立即申请" forState:UIControlStateDisabled];
+    }
+    
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self requestData];
@@ -178,7 +183,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == 0) {
-        return SCREEN_WIDTH / 640.0 * 480.0 + 46;
+        return SCREEN_WIDTH / 640.0 * 480.0 + 46 + 45;
     }
     else if(indexPath.row == 1) {
         return UITableViewAutomaticDimension;
@@ -213,6 +218,10 @@
         
         NSArray *stores = self.storeDict[key];
         storeRowCount += stores.count;
+    }
+    
+    if ([self.couponCampaign isInsurance]) {
+        return 3 + self.couponCampaign.pictureUrls.count - 2;
     }
     
     return 3 + self.couponCampaign.pictureUrls.count - 1 + storeRowCount; // 第一张图片不要在这里再显示了， 所以有个-1
