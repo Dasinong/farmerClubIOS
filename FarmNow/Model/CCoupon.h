@@ -16,6 +16,7 @@
 @property (assign, nonatomic) NSInteger id;
 @property (assign, nonatomic) float amount;
 @property (nonatomic, strong) NSString *type;
+@property (nonatomic, strong) NSString *comment;
 @property (assign, nonatomic) NSInteger scannerId;
 @property (nonatomic, strong) NSString *displayStatus;
 @property (assign, nonatomic) NSTimeInterval redeemedAt;
@@ -26,4 +27,5 @@
 @property (nonatomic, strong) NSString<Optional> *claimerCell;
 
 - (BOOL)expired;
+- (BOOL)isInsurance;
 @end

@@ -19,7 +19,12 @@
     if ([propertyName isEqualToString: @"claimedAt"]) return YES;
     if ([propertyName isEqualToString: @"redeemedAt"]) return YES;
     if ([propertyName isEqualToString: @"campaignId"]) return YES;
+    if ([propertyName isEqualToString: @"comment"]) return YES;
     
     return NO;
+}
+
+- (BOOL)isInsurance {
+    return [[self.type uppercaseString] isEqualToString:@"INSURANCE"];
 }
 @end

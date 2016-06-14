@@ -112,6 +112,10 @@
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    if ([self.coupon isInsurance]) {
+        return 2;
+    }
     return 4;
 }
 

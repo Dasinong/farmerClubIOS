@@ -115,7 +115,13 @@
         
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         [df setDateFormat:@"MM月dd日"];
-        self.claimLabel.text = [NSString stringWithFormat:@"兑换日期：%@ - %@", [df stringFromDate:timeStart], [df stringFromDate:timeEnd]];
+        
+        if ([self.coupon isInsurance]) {
+            self.claimLabel.text = [NSString stringWithFormat:@"你购买了：%@", self.coupon.comment];
+        }
+        else {
+            self.claimLabel.text = [NSString stringWithFormat:@"兑换日期：%@ - %@", [df stringFromDate:timeStart], [df stringFromDate:timeEnd]];
+        }
     }
     else {
         NSDate* claimTimeStart = [NSDate dateWithTimeIntervalSince1970:self.couponCampaign.claimTimeStart / 1000];

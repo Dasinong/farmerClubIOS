@@ -23,6 +23,9 @@
 @property (nonatomic, strong) NSString *yield;
 @property (nonatomic, strong) NSString *experience;
 @property (nonatomic, strong) NSString *contactNumber;
+@property (nonatomic, strong) NSString *jiandaAmount;
+@property (nonatomic, strong) NSString *kairunAmount;
+@property (weak, nonatomic) IBOutlet UILabel *tipsLabel;
 
 @end
 
@@ -34,6 +37,13 @@
     
     if ([self.couponCampaign isInsurance]) {
         self.title = @"申请表";
+    }
+    
+    if (self.couponCampaign.id != 15) {
+        self.tipsLabel.text = @"* 为必填内容";
+    }
+    else {
+        self.crop = @"香蕉";
     }
 }
 
@@ -48,6 +58,8 @@
     NSString *cleanCompany = [self.company stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     NSString *cleanCrop = [self.crop stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     NSString *cleanArea = [self.area stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString *cleanJiandaAmount = [self.jiandaAmount stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString *cleanKairunAmount = [self.kairunAmount stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     //NSString *cleanYield = [self.yield stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     //NSString *cleanContact = [self.contactNumber stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     
@@ -73,6 +85,10 @@
 //        return;
 //    }
     
+    if ([self.couponCampaign isInsurance]) {
+        self.experience = @"无";
+    }
+    
     if (self.experience.length == 0) {
         [MBProgressHUD alert:@"请选择种植经验"];
         return;
@@ -91,6 +107,27 @@
         [MBProgressHUD alert:@"面积格式不正确"];
         return;
     }
+    
+    if ([self.couponCampaign isInsurance]) {
+        if (![cleanJiandaAmount validateNumeric]) {
+            [MBProgressHUD alert:@"健达购买数量格式不正确"];
+            return;
+        }
+        if (![cleanKairunAmount validateNumeric]) {
+            [MBProgressHUD alert:@"凯润购买数量格式不正确"];
+            return;
+        }
+        
+        if ([cleanJiandaAmount integerValue] < 1) {
+            [MBProgressHUD alert:@"健达购买数量必须超过一升"];
+            return;
+        }
+        if ([cleanKairunAmount integerValue] < 3) {
+            [MBProgressHUD alert:@"凯润购买数量必须超过三升"];
+            return;
+        }
+    }
+    
     
 //    if (![cleanYield validateNumeric]) {
 //        [MBProgressHUD alert:@"去年产量格式不正确"];
@@ -111,6 +148,7 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     CClaimCouponParams *claimParams = [CClaimCouponParams new];
     claimParams.campaignId = self.couponCampaign.id;
+    claimParams.comment = [NSString stringWithFormat:@"凯润:%@;健达:%@", cleanKairunAmount, cleanJiandaAmount];
     
     [CClaimCouponModel requestWithParams:POST params:claimParams completion:^(CClaimCouponModel *claimModel, JSONModelError *err) {
         
@@ -153,20 +191,39 @@
 */
 - (IBAction)openPicker:(id)sender {
     [self.view endEditing:NO];
-    NSArray *exps = [NSArray arrayWithObjects:@"第一年的新手", @"2-3年有些经验", @"3-5年的老手", @"5-10年的专家", @"10年以上资深专家", nil];
     
-    [ActionSheetStringPicker showPickerWithTitle:@"选择种植经验"
-                                            rows:exps
-                                initialSelection:0
-                                       doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
-                                           self.experience = selectedValue;
-                                           [self.tableView reloadData];
-                                       }
-                                     cancelBlock:^(ActionSheetStringPicker *picker) {
-                                         
-                                     }
-                                          origin:sender];
+    if ([self.couponCampaign isInsurance]) {
+        NSArray *exps = [NSArray arrayWithObjects:@"香蕉", @"芒果", @"其他", nil];
+        
+        [ActionSheetStringPicker showPickerWithTitle:@"选择作物"
+                                                rows:exps
+                                    initialSelection:0
+                                           doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+                                               self.crop = selectedValue;
+                                               [self.tableView reloadData];
+                                           }
+                                         cancelBlock:^(ActionSheetStringPicker *picker) {
+                                             
+                                         }
+                                              origin:sender];
+    }
+    else {
+        NSArray *exps = [NSArray arrayWithObjects:@"第一年的新手", @"2-3年有些经验", @"3-5年的老手", @"5-10年的专家", @"10年以上资深专家", nil];
+        
+        [ActionSheetStringPicker showPickerWithTitle:@"选择种植经验"
+                                                rows:exps
+                                    initialSelection:0
+                                           doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+                                               self.experience = selectedValue;
+                                               [self.tableView reloadData];
+                                           }
+                                         cancelBlock:^(ActionSheetStringPicker *picker) {
+                                             
+                                         }
+                                              origin:sender];
+    }
 }
+
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -174,7 +231,13 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CClaimCouponTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    
+    NSString *identifier = @"Cell";
+    if ([self.couponCampaign isInsurance] && indexPath.row == 3) {
+        identifier = @"Cell2";
+    }
+    
+    CClaimCouponTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
     cell.separator.hidden = NO;
     cell.fieldLabel.hidden = NO;
@@ -183,6 +246,10 @@
     cell.pickerButton.hidden = YES;
     cell.delegate = self;
     cell.valueTextField.tag = indexPath.row;
+    
+    if (cell.valueTextField2) {
+        cell.valueTextField2.tag = indexPath.row + 1;
+    }
     
     if (indexPath.row == 0) {
         static BOOL firstTime = YES;
@@ -202,6 +269,15 @@
         [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#666666"] range:NSMakeRange(0, 3)];
         [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#ff8400"] range:NSMakeRange(3, 1)];
         cell.fieldLabel.attributedText = attriString;
+        
+        if ([self.couponCampaign isInsurance]) {
+            cell.valueTextField.hidden = YES;
+            cell.pickerButton.hidden = NO;
+            
+            if (self.crop) {
+                [cell.pickerButton setTitle:self.crop forState:UIControlStateNormal];
+            }
+        }
     }
     else if (indexPath.row == 2) {
         NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:@"面积（亩） *"];
@@ -212,16 +288,26 @@
         cell.valueTextField.keyboardType = UIKeyboardTypeDecimalPad;
     }
     else if (indexPath.row == 3) {
-        NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:@"种植经验 *"];
-        [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#666666"] range:NSMakeRange(0, 5)];
-        [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#ff8400"] range:NSMakeRange(5, 1)];
-        cell.fieldLabel.attributedText = attriString;
         
-        cell.valueTextField.hidden = YES;
-        cell.pickerButton.hidden = NO;
-        
-        if (self.experience) {
-            [cell.pickerButton setTitle:self.experience forState:UIControlStateNormal];
+        if ([self.couponCampaign isInsurance]) {
+            NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:@"数量（升） *"];
+            [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#666666"] range:NSMakeRange(0, 6)];
+            [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#ff8400"] range:NSMakeRange(6, 1)];
+            cell.fieldLabel.attributedText = attriString;
+            
+        }
+        else {
+            NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:@"种植经验 *"];
+            [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#666666"] range:NSMakeRange(0, 5)];
+            [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#ff8400"] range:NSMakeRange(5, 1)];
+            cell.fieldLabel.attributedText = attriString;
+            
+            cell.valueTextField.hidden = YES;
+            cell.pickerButton.hidden = NO;
+            
+            if (self.experience) {
+                [cell.pickerButton setTitle:self.experience forState:UIControlStateNormal];
+            }
         }
     }
     else {
@@ -236,6 +322,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if ([self.couponCampaign isInsurance] && indexPath.row == 3) {
+        return 100;
+    }
+    
     return 50;
 }
 
@@ -249,6 +340,12 @@
     }
     else if (textField.tag == 2) {
         self.area = textField.text;
+    }
+    else if (textField.tag == 3) {
+        self.jiandaAmount = textField.text;
+    }
+    else if (textField.tag == 4) {
+        self.kairunAmount = textField.text;
     }
 }
 @end

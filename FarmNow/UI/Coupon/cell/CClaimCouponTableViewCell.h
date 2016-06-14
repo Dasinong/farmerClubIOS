@@ -15,6 +15,7 @@
 @interface CClaimCouponTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *fieldLabel;
 @property (weak, nonatomic) IBOutlet UITextField *valueTextField;
+@property (weak, nonatomic) IBOutlet UITextField *valueTextField2;
 @property (weak, nonatomic) IBOutlet UIButton *pickerButton;
 @property (weak, nonatomic) IBOutlet UIView *separator;
 

@@ -11,6 +11,7 @@
 
 @interface CClaimCouponParams : CRequestBaseParams
 @property (assign, nonatomic) NSInteger campaignId;
+@property (strong, nonatomic) NSString *comment;
 @end
 
 @interface CClaimCouponModel : CResponseModel
