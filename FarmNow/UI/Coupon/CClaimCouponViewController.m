@@ -118,12 +118,8 @@
             return;
         }
         
-        if ([cleanJiandaAmount integerValue] < 1) {
-            [MBProgressHUD alert:@"健达购买数量必须超过一升"];
-            return;
-        }
-        if ([cleanKairunAmount integerValue] < 3) {
-            [MBProgressHUD alert:@"凯润购买数量必须超过三升"];
+        if ([cleanJiandaAmount doubleValue] < 1 && [cleanKairunAmount doubleValue] < 3) {
+            [MBProgressHUD alert:@"购买数量太少"];
             return;
         }
     }
@@ -294,7 +290,8 @@
             [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#666666"] range:NSMakeRange(0, 6)];
             [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#ff8400"] range:NSMakeRange(6, 1)];
             cell.fieldLabel.attributedText = attriString;
-            
+            cell.valueTextField.keyboardType = UIKeyboardTypeDecimalPad;
+            cell.valueTextField2.keyboardType = UIKeyboardTypeDecimalPad;
         }
         else {
             NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:@"种植经验 *"];

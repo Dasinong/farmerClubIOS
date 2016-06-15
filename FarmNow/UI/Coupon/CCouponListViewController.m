@@ -110,7 +110,7 @@ extern CLLocationDegrees gLongitude;
     CCouponTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CCouponTableViewCell" forIndexPath:indexPath];
     
     CCoupon *coupon = self.dataArray[indexPath.row];
-    [cell setupWithModel:coupon.campaign];
+    [cell setupWithCoupon:coupon];
     
     return cell;
 }

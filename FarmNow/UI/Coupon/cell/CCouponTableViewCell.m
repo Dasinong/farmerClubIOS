@@ -53,4 +53,14 @@
         }
     }
 }
+
+- (void)setupWithCoupon:(CCoupon *)coupon {
+    [self setupWithModel:coupon.campaign];
+    if ([coupon isInsurance] && coupon.redeemedAt > 0) { //已完成
+        NSDate* redeemedAt = [NSDate dateWithTimeIntervalSince1970:coupon.redeemedAt / 1000];
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        [df setDateFormat:@"MM月dd日"];
+        self.redeemTimeLabel.text = [NSString stringWithFormat:@"扫描日期：%@", [df stringFromDate:redeemedAt]];
+    }
+}
 @end
