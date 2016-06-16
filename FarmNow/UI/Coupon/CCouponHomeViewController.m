@@ -37,7 +37,7 @@
 
     
     if ([USER isBASF]) {
-        self.title = @"巴斯夫活动";
+        self.title = @"活动";
     }
     else {
         self.title = @"大户俱乐部活动";

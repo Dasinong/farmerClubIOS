@@ -43,6 +43,7 @@
         [CRedeemCouponModel requestWithParams:POST params:params completion:^(CRedeemCouponModel *model, JSONModelError *err) {
             [MBProgressHUD hideHUDForView:viewController.view animated:NO];
             if (model) {
+                [MBProgressHUD alert:model.message];
                 CScannedCouponDetailViewController *controller = [viewController.storyboard instantiateViewControllerWithIdentifier:@"CScannedCouponDetailViewController"];
                 controller.hidesBottomBarWhenPushed = YES;
                 CCouponCampaign *campaign = [[CCouponCampaign alloc] init];

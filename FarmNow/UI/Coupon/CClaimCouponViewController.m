@@ -109,11 +109,11 @@
     }
     
     if ([self.couponCampaign isInsurance]) {
-        if (![cleanJiandaAmount validateNumeric]) {
+        if ([cleanJiandaAmount doubleValue] == 0) {
             [MBProgressHUD alert:@"健达购买数量格式不正确"];
             return;
         }
-        if (![cleanKairunAmount validateNumeric]) {
+        if ([cleanKairunAmount doubleValue] == 0) {
             [MBProgressHUD alert:@"凯润购买数量格式不正确"];
             return;
         }
