@@ -12,14 +12,26 @@
 #import "CMyStoreViewController.h"
 #import "CPersonalController.h"
 #import "CBASFStocksViewController.h"
+#import "ScannerViewController.h"
 
-@interface CRetailerHomeViewController () <UITableViewDataSource, UITableViewDelegate, QRCodeReaderDelegate, CStockViewControllerDelegate>
+@interface CRetailerHomeViewController () <UITableViewDataSource, UITableViewDelegate, CStockViewControllerDelegate, ScannerViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) QRCodeReaderViewController* reader;
 @end
 
 
 @implementation CRetailerHomeViewController
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    
+    if ([delegate.jumpState isEqualToString:@"qr"]) {
+        [self openScanner];
+    }
+    
+    delegate.jumpState = nil;
+}
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -68,10 +80,7 @@
     
     switch (indexPath.row) {
         case 0:
-            if (self.reader) {
-                [self presentViewController:self.reader animated:YES completion:NULL];
-            }
-            
+            [self openScanner];
             break;
         case 1: {
             CMyStoreViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CMyStoreViewController"];
@@ -97,44 +106,27 @@
     }
 }
 
-- (QRCodeReaderViewController *)reader {
-    if (_reader == nil) {
-        NSArray *types = @[AVMetadataObjectTypeQRCode];
-        // check permission
-        AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-        if(authStatus == AVAuthorizationStatusNotDetermined || authStatus == AVAuthorizationStatusAuthorized) {
-            _reader = [QRCodeReaderViewController readerWithMetadataObjectTypes:types];
-            
-            // Using delegate methods
-            _reader.delegate = self;
-        } else {
-            [MBProgressHUD alert:@"请打开摄像机权限"];
-        }
+- (void)openScanner {
+    // check permission
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if(authStatus == AVAuthorizationStatusNotDetermined || authStatus == AVAuthorizationStatusAuthorized) {
+        ScannerViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScannerViewController"];
+        vc.delegate = self;
+        [self presentViewController:vc animated:YES completion:NULL];
+    } else {
+        [MBProgressHUD alert:@"请打开摄像机权限"];
     }
-    
-    return _reader;
 }
+
 
 #pragma mark - QRCodeReader Delegate Methods
-
-- (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result
-{
-    [self dismissViewControllerAnimated:YES completion:^{
-        NSLog(@"%@", result);
-        
-        [CUtil processQR:result inVC:self];
-    }];
+- (void)scanned:(NSString *)scanned {
+    [CUtil processQR:scanned inVC:self];
 }
 
-- (void)readerDidCancel:(QRCodeReaderViewController *)reader
-{
-    [self dismissViewControllerAnimated:YES completion:NULL];
-}
 
 #pragma mark - CStockViewControllerDelegate
 - (void)continueScan {
-    if (self.reader) {
-        [self presentViewController:self.reader animated:YES completion:NULL];
-    }
+    [self openScanner];
 }
 @end

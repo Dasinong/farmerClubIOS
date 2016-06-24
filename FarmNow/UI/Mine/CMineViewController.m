@@ -88,7 +88,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (USER.institutionId > 0 && indexPath.section == 1 && indexPath.row == 1) {
+    if ([USER.institutionId integerValue] > 0 && indexPath.section == 1 && indexPath.row == 1) {
         return 0;
     }
     

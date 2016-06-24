@@ -108,12 +108,15 @@
         return;
     }
     
+    NSMutableCharacterSet *characterSet = [NSMutableCharacterSet decimalDigitCharacterSet];
+    [characterSet addCharactersInString:@"."];
+
     if ([self.couponCampaign isInsurance]) {
-        if ([cleanJiandaAmount doubleValue] == 0) {
+        if (![cleanJiandaAmount validateInCharacterSet:characterSet]) {
             [MBProgressHUD alert:@"健达购买数量格式不正确"];
             return;
         }
-        if ([cleanKairunAmount doubleValue] == 0) {
+        if (![cleanKairunAmount validateInCharacterSet:characterSet]) {
             [MBProgressHUD alert:@"凯润购买数量格式不正确"];
             return;
         }

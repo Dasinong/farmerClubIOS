@@ -87,6 +87,10 @@
 		27D0F07A1C7DA8EB00215FCC /* CChangeFieldStageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F0791C7DA8EB00215FCC /* CChangeFieldStageModel.m */; };
 		27D0F07D1C7DB42300215FCC /* CGetStagesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0F07C1C7DB42300215FCC /* CGetStagesModel.m */; };
 		27D2489D1C814022002D4CAF /* CGetPetSoluModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D2489C1C814022002D4CAF /* CGetPetSoluModel.m */; };
+		27EF4CED1D1D088400C15BE0 /* Barcode.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EF4CEA1D1D088400C15BE0 /* Barcode.m */; };
+		27EF4CEE1D1D088400C15BE0 /* ScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EF4CEC1D1D088400C15BE0 /* ScannerViewController.m */; };
+		27EF4CF01D1D0C0400C15BE0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EF4CEF1D1D0C0400C15BE0 /* UIKit.framework */; };
+		27EF4CF21D1D0C0900C15BE0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EF4CF11D1D0C0900C15BE0 /* Foundation.framework */; };
 		27EF629A1C7E9B3600BB5266 /* CCreateFieldModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EF62991C7E9B3600BB5266 /* CCreateFieldModel.m */; };
 		27EF629D1C7FE5DF00BB5266 /* CSearchNearUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EF629C1C7FE5DF00BB5266 /* CSearchNearUserModel.m */; };
 		9F00C53E1C0DEE3400198FD1 /* CSelectIdentityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F00C53D1C0DEE3400198FD1 /* CSelectIdentityController.m */; };
@@ -457,6 +461,12 @@
 		27D0F07C1C7DB42300215FCC /* CGetStagesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGetStagesModel.m; sourceTree = "<group>"; };
 		27D2489B1C814022002D4CAF /* CGetPetSoluModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGetPetSoluModel.h; sourceTree = "<group>"; };
 		27D2489C1C814022002D4CAF /* CGetPetSoluModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGetPetSoluModel.m; sourceTree = "<group>"; };
+		27EF4CE91D1D088400C15BE0 /* Barcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Barcode.h; sourceTree = "<group>"; };
+		27EF4CEA1D1D088400C15BE0 /* Barcode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Barcode.m; sourceTree = "<group>"; };
+		27EF4CEB1D1D088400C15BE0 /* ScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerViewController.h; sourceTree = "<group>"; };
+		27EF4CEC1D1D088400C15BE0 /* ScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannerViewController.m; sourceTree = "<group>"; };
+		27EF4CEF1D1D0C0400C15BE0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		27EF4CF11D1D0C0900C15BE0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		27EF62981C7E9B3600BB5266 /* CCreateFieldModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCreateFieldModel.h; sourceTree = "<group>"; };
 		27EF62991C7E9B3600BB5266 /* CCreateFieldModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCreateFieldModel.m; sourceTree = "<group>"; };
 		27EF629B1C7FE5DF00BB5266 /* CSearchNearUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSearchNearUserModel.h; sourceTree = "<group>"; };
@@ -842,6 +852,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27EF4CF21D1D0C0900C15BE0 /* Foundation.framework in Frameworks */,
+				27EF4CF01D1D0C0400C15BE0 /* UIKit.framework in Frameworks */,
 				9F8D8F401BE4ED49004253FD /* CoreLocation.framework in Frameworks */,
 				9F375FBB1BDD2B0000000ACD /* libz.tbd in Frameworks */,
 				9F375FB91BDD2AF700000ACD /* libstdc++.tbd in Frameworks */,
@@ -1012,6 +1024,25 @@
 				27A8D3811CCF3A90008D1DB1 /* CPetSolutionCell.m */,
 			);
 			path = cell;
+			sourceTree = "<group>";
+		};
+		27EF4CE71D1D088400C15BE0 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				27EF4CE81D1D088400C15BE0 /* Model */,
+				27EF4CEB1D1D088400C15BE0 /* ScannerViewController.h */,
+				27EF4CEC1D1D088400C15BE0 /* ScannerViewController.m */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		27EF4CE81D1D088400C15BE0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				27EF4CE91D1D088400C15BE0 /* Barcode.h */,
+				27EF4CEA1D1D088400C15BE0 /* Barcode.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		9F02DFC61BD9380B001C223F /* Model */ = {
@@ -1636,6 +1667,7 @@
 				9F8873901BEBA97B00B267D2 /* CPersonalCache.h */,
 				9F8873911BEBA97B00B267D2 /* CPersonalCache.m */,
 				9F92C2DC1BDB4BC70034DB3F /* Global.h */,
+				27EF4CE71D1D088400C15BE0 /* Vendor */,
 				9FEACDBE1BCFD5E1000722D8 /* Images.xcassets */,
 				9FEACDAE1BCFD5E1000722D8 /* Supporting Files */,
 				9FD213411BD12A630063147D /* Config.h */,
@@ -1708,6 +1740,8 @@
 		FA02BB861C37CD1B2485084F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				27EF4CF11D1D0C0900C15BE0 /* Foundation.framework */,
+				27EF4CEF1D1D0C0400C15BE0 /* UIKit.framework */,
 				9F8D8F3F1BE4ED49004253FD /* CoreLocation.framework */,
 				9F375FBA1BDD2B0000000ACD /* libz.tbd */,
 				9F375FB81BDD2AF700000ACD /* libstdc++.tbd */,
@@ -2039,6 +2073,7 @@
 				9F43365E1BE0F1ED003C3B5D /* UILabel+Extra.m in Sources */,
 				9FFF68341C089B6900590604 /* CSubScribeDetailController.m in Sources */,
 				9F8FB7A01BEF8C23003A7469 /* CUpdatePasswordModel.m in Sources */,
+				27EF4CED1D1D088400C15BE0 /* Barcode.m in Sources */,
 				9F09FA951C04A00A00D973A5 /* CInstitutionEmployeeApplicationsModel.m in Sources */,
 				9F375F7F1BDD103300000ACD /* CUserObject.m in Sources */,
 				9FD213271BD128A60063147D /* NSObject+DEBUG_METHOD.m in Sources */,
@@ -2128,6 +2163,7 @@
 				9FFBF4B91C01C1F1007C6D24 /* CStoresViewController.m in Sources */,
 				27D2489D1C814022002D4CAF /* CGetPetSoluModel.m in Sources */,
 				275C4B101C7075FE002475B6 /* CCouponCampaign.m in Sources */,
+				27EF4CEE1D1D088400C15BE0 /* ScannerViewController.m in Sources */,
 				9FD213341BD128A60063147D /* UIImage+Extra.m in Sources */,
 				27C397DB1CA8C88D00102B31 /* CWinSafeDetailViewController.m in Sources */,
 				27D0F0551C7CA0E000215FCC /* CCropDetailHeaderCell.m in Sources */,

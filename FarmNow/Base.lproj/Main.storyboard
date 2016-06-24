@@ -6737,6 +6737,54 @@ i) 不得为其他任何非法目的而使用服务。
             </objects>
             <point key="canvasLocation" x="2265" y="5857"/>
         </scene>
+        <!--Scanner View Controller-->
+        <scene sceneID="M9Q-FA-1Fc">
+            <objects>
+                <viewController storyboardIdentifier="ScannerViewController" id="hsu-GZ-KzT" customClass="ScannerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aVx-Ci-QLK"/>
+                        <viewControllerLayoutGuide type="bottom" id="bLS-yo-LFS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="E7H-3g-oeH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6l1-vt-2UZ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V0w-hx-ka9">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Db6-aQ-V8J"/>
+                                </constraints>
+                                <state key="normal" title="取消">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismiss:" destination="hsu-GZ-KzT" eventType="touchUpInside" id="aiJ-e3-6WW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="6l1-vt-2UZ" secondAttribute="bottom" id="2c0-az-tI8"/>
+                            <constraint firstItem="6l1-vt-2UZ" firstAttribute="top" secondItem="E7H-3g-oeH" secondAttribute="topMargin" id="4wI-7C-o5E"/>
+                            <constraint firstAttribute="trailing" secondItem="6l1-vt-2UZ" secondAttribute="trailing" id="Bkn-jz-ioD"/>
+                            <constraint firstItem="V0w-hx-ka9" firstAttribute="leading" secondItem="E7H-3g-oeH" secondAttribute="leading" id="QGb-C4-GMX"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="V0w-hx-ka9" secondAttribute="bottom" id="gYi-Uw-vnT"/>
+                            <constraint firstItem="6l1-vt-2UZ" firstAttribute="leading" secondItem="E7H-3g-oeH" secondAttribute="leading" id="ltM-DZ-o7A"/>
+                            <constraint firstAttribute="trailing" secondItem="V0w-hx-ka9" secondAttribute="trailing" id="qB5-pq-BJT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="previewView" destination="6l1-vt-2UZ" id="SPR-Zt-DFy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ate-Ss-8yO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2616" y="5857"/>
+        </scene>
         <!--活动-->
         <scene sceneID="yjJ-6n-h9T">
             <objects>

@@ -85,7 +85,13 @@
         delegate.jumpState = nil;
     }
     else if ([delegate.jumpState isEqualToString:@"qr"]) {
-        self.selectedIndex = 4;
+        if ([[USER.userType lowercaseString] isEqualToString:@"retailer"]) {
+            self.selectedIndex = 2;
+        }
+        else {
+            self.selectedIndex = 4;
+        }
+        
         // 然后要跳转到扫一扫
     }
 }
