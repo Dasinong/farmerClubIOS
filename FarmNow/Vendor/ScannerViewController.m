@@ -9,11 +9,15 @@
 
 #import "ScannerViewController.h"
 #import "Barcode.h"
+#import "QRCodeReaderView.h"
+
 @import AVFoundation;   // iOS7 only import style
 
 @interface ScannerViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *previewView;
+@property (weak, nonatomic) IBOutlet UIView *cancelButton;
+@property (strong, nonatomic) QRCodeReaderView *cameraView;
 
 @end
 
@@ -70,6 +74,13 @@
     [self.allowedBarcodeTypes addObject:@"org.gs1.EAN-8"];
     [self.allowedBarcodeTypes addObject:@"com.intermec.Code93"];
     [self.allowedBarcodeTypes addObject:@"org.iso.Code128"];
+    
+    self.cameraView = [[QRCodeReaderView alloc] init];
+    _cameraView.translatesAutoresizingMaskIntoConstraints = NO;
+    _cameraView.clipsToBounds                             = YES;
+    self.cameraView.frame = self.view.bounds;
+    [self.view insertSubview:_cameraView belowSubview:self.cancelButton];
+    [_cameraView startScanning];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

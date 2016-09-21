@@ -6778,6 +6778,7 @@ i) 不得为其他任何非法目的而使用服务。
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="V0w-hx-ka9" id="tSF-WZ-7c4"/>
                         <outlet property="previewView" destination="6l1-vt-2UZ" id="SPR-Zt-DFy"/>
                     </connections>
                 </viewController>
