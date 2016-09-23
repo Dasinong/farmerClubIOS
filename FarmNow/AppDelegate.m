@@ -12,6 +12,8 @@
 #import <SMS_SDK/SMSSDK.h>
 #import "CPersonalCache.h"
 #import "CRemoteControModel.h"
+#import "CResponseBase.h"
+#import "MobClick.h"
 
 @interface AppDelegate ()<WXApiDelegate>
 
@@ -22,10 +24,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorwithHexString:@"#2C9F27"]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
 	self.showQQLogin = YES;
 	self.showWXLogin = YES;
 	[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-	[[CPersonalCache defaultPersonalCache] reloadCookie];
 	[WXApi registerApp:kWXAPP_ID withDescription:@"weixin"];
 	[SMSSDK registerApp:kMOBSMSAPP_ID withSecret:kMOBSMSAPP_SECRET];
 	
@@ -39,8 +44,35 @@
 					self.showWXLogin = model.weixinLogin;
 		}
 	}];
+    
+    
+    [MobClick startWithAppkey:@"5718568967e58e449b0018db" reportPolicy:BATCH channelId:nil];
+    
 	return YES;
 }
+
+- (BOOL)enableWelfare {
+    NSUserDefaults *userDefaults = USER_DEFAULTS;
+    if ([userDefaults objectForKey:@"clientConfig"]) {
+        NSDictionary *clientConfig = [userDefaults objectForKey:@"clientConfig"];
+        
+        return [clientConfig[@"enableWelfare"] boolValue];
+    }
+    
+    return NO;
+}
+
+- (BOOL)isDaren {
+    NSUserDefaults *userDefaults = USER_DEFAULTS;
+    if ([userDefaults objectForKey:@"clientConfig"]) {
+        NSDictionary *clientConfig = [userDefaults objectForKey:@"clientConfig"];
+        
+        return [clientConfig[@"isDaren"] boolValue];
+    }
+    
+    return NO;
+}
+
 -(UINavigationController*) currentController
 {
 	UIViewController *selectViewCtrl = self.tabBarController.selectedViewController;
@@ -163,6 +195,71 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
 	// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    [self uploadCachedStockArray:NO];
+}
+
+- (void)uploadCachedStockArray:(BOOL)cleanIfFailed {
+    if ([USER_DEFAULTS objectForKey:@"StockArray"]) {
+        NSArray *stockArray = [USER_DEFAULTS objectForKey:@"StockArray"];
+        if ([stockArray count] > 0) {
+            NSString *dataString = @"";
+            
+            // 构建文件
+            NSString *recordDateString = nil;
+            NSString *recordTimeString = nil;
+            NSInteger recordCount = 0;
+            for (NSDictionary *stockRecord in stockArray) {
+                NSDate *created_at = stockRecord[@"created_at"];
+                NSString *boxcode = stockRecord[@"boxcode"];
+                
+                // 如果是下一天了，那么
+                NSDateFormatter *df = [[NSDateFormatter alloc] init];
+                [df setDateFormat:@"YYYYMMdd"];
+                NSString *dateString = [df stringFromDate:created_at];
+                
+                [df setDateFormat:@"HHmmss"];
+                NSString *timeString = [df stringFromDate:created_at];
+                
+                if (recordDateString == nil) {
+                    recordDateString = dateString;
+                    recordTimeString = timeString;
+                }
+                
+                if ([recordDateString isEqualToString:dateString]) {
+                    if (dataString.length > 0) {
+                        dataString = [dataString stringByAppendingString:@"\n"];
+                    }
+                    dataString = [dataString stringByAppendingString:[NSString stringWithFormat:@"*****%@%@%@7",dateString,timeString, boxcode]];
+                    recordCount++;
+                }
+                else {
+                    break;
+                }
+            }
+            
+            if (dataString.length > 0) {
+                NSData *data = [dataString dataUsingEncoding:NSUTF8StringEncoding];
+                NSString *filename = [NSString stringWithFormat:@"%@%@", recordDateString, recordTimeString];
+                
+                NSArray* contents =@[@{@"data":data, @"name":@"file", @"filename":[filename stringByAppendingString:@".txt"]}];
+                [CResponseModel postWithPath:@"stockScan" attachments:contents params:nil completion:^(CResponseModel *model, JSONModelError *err) {
+                    if (model && err == nil) {
+                        // 删除该删的东西，然后再次执行
+                        [USER_DEFAULTS setObject:[stockArray subarrayWithRange:NSMakeRange(recordCount, stockArray.count - recordCount)] forKey:@"StockArray"];
+                        [USER_DEFAULTS synchronize];
+                        [self uploadCachedStockArray:cleanIfFailed];
+                    }
+                    else {
+                        if(cleanIfFailed) {
+                            [USER_DEFAULTS removeObjectForKey:@"StockArray"];
+                            [USER_DEFAULTS synchronize];
+                        }
+                    }
+                }];
+            }
+        }
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

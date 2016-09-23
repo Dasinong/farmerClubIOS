@@ -10,12 +10,16 @@
 #import "CWebViewController.h"
 #import <QRCodeReaderViewController/QRCodeReaderViewController.h>
 #import <EAIntroView/EAIntroView.h>
-#import "CRecommendController.h"
+#import "CRecommendController2.h"
 #import "CPersonalCache.h"
 #import "CSubScribeListController.h"
 #import "CRecommendController1.h"
+#import "CMyCouponContainerViewController.h"
+#import "CRedeemCouponModel.h"
+#import "CScannedCouponDetailViewController.h"
+#import "CUtil.h"
 
-@interface CMineViewController () <QRCodeReaderDelegate>
+@interface CMineViewController () <QRCodeReaderDelegate, CStockViewControllerDelegate>
 @property (strong, nonatomic) QRCodeReaderViewController* reader;
 
 @end
@@ -27,34 +31,20 @@
     // Do any additional setup after loading the view.
 	UITableViewModel* tableModel = [UITableViewModel new];
 	
-	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"个人信息") forSection:0];
+    [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"个人信息") forSection:0];
+    [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"我的活动") forSection:0];
+    [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"我的达人积分") forSection:0];
 	
-	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"扫一扫") forSection:1];
-	//审核时隐藏有奖推荐
-	if (SharedAPPDelegate.showWXLogin) {
-
-	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"有奖推荐") forSection:1];
-	}
-	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"免费短信订阅") forSection:1];
+    [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"扫一扫") forSection:1];
+    [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"机构用户绑定") forSection:1];
+    [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"我的二维码") forSection:1];
 	
 	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"帮助中心") forSection:2];
 	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"使用教程") forSection:2];
 
-	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"联系我们") forSection:3];
-
-	
+	//[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @"联系我们") forSection:3];
+    
 	[self updateModel:tableModel];
-	
-	NSArray *types = @[AVMetadataObjectTypeQRCode];
-	self.reader        = [QRCodeReaderViewController readerWithMetadataObjectTypes:types];
-
-	// Using delegate methods
-		self.reader.delegate = self;
-	
-//	// Or use blocks
-//	[self.reader setCompletionWithBlock:^(NSString *resultAsString) {
-//		NSLog(@"%@", resultAsString);
-//	}];
 }
 
 
@@ -69,6 +59,8 @@
 	{
 		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"登录" style:UIBarButtonItemStylePlain target:self action:@selector(loginClick:)];
 	}
+    
+    [self.tableView reloadData];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -84,75 +76,148 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (BOOL)showMyCoupons {
+    if (USER != nil) {
+        if ([[USER.userType lowercaseString] isEqualToString:@"retailer"]) {
+            return NO;
+        }
+    }
+    
+    return YES;
+}
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if ([USER.institutionId integerValue] > 0 && indexPath.section == 1 && indexPath.row == 1) {
+        return 0;
+    }
+    
+    if (indexPath.section == 0 && indexPath.row == 1) {
+        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        if (![delegate enableWelfare]) {
+            return 0;
+        }
+        
+        if([[USER.userType lowercaseString] isEqualToString:@"retailer"]) {
+            return 0;
+        }
+    }
+    
+    if (indexPath.section == 0 && indexPath.row == 2) {
+        BOOL isDaren = NO;
+        if ([USER_DEFAULTS objectForKey:@"clientConfig"]) {
+            NSDictionary *clientConfig = [USER_DEFAULTS objectForKey:@"clientConfig"];
+            if (clientConfig[@"isDaren"]) {
+                if ([clientConfig[@"isDaren"] boolValue]) {
+                    isDaren = YES;
+                }
+            }
+        }
+        
+        if (!isDaren) {
+            return 0;
+        }
+    }
+    
+    return 44;
+}
 - (void)didSelect:(NSIndexPath *)indexPath identifier:(NSString*)identifier data:(id)data
 {
 	if (indexPath.section == 0) {
-		[self performSegueWithIdentifier:@"Personal" sender:self];
+        if (indexPath.row == 0) {
+            if (USER) {
+                [self performSegueWithIdentifier:@"Personal" sender:self];
+            }
+            else {
+                [self loginClick:nil];
+            }
+        }
+        else if (indexPath.row == 1)
+        {
+            if (USER) {
+                CMyCouponContainerViewController *controller = [self.storyboard controllerWithID:@"CMyCouponContainerViewController"];
+                controller.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:controller animated:YES];
+            }
+            else {
+                [self loginClick:nil];
+            }
+        }
+        else if (indexPath.row == 2)
+        {
+            if (USER) {
+                CWebViewController* webController  = [self.storyboard controllerWithID:@"CWebViewController"];
+                webController.title = @"达人积分";
+                webController.address = [NSString stringWithFormat:@"%@/daren?userId=%d", kServerAddress, (int)USER.userId];
+                NSLog(@"%@",webController.address);
+                webController.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:webController animated:YES];
+            }
+            else {
+                [self loginClick:nil];
+            }
+        }
 	}
 	else if (indexPath.section == 1)
 	{
 		if (indexPath.row == 0) {
-			// Create the reader object
-
-
-			
-			[self presentViewController:_reader animated:YES completion:NULL];
+            if (USER) {
+                if (self.reader) {
+                    [self presentViewController:self.reader animated:YES completion:NULL];
+                }
+            }
+            else {
+                [self loginClick:nil];
+            }
 		}
 		else if (indexPath.row == 1)
 		{
-			if (SharedAPPDelegate.showWXLogin) {
-				CUserObject* object = [[CPersonalCache defaultPersonalCache] cacheUserInfo];
-				if (object.institutionId != nil || object.refuid != nil)
-				{
-					CRecommendController1* controller  = [self.storyboard controllerWithID:@"CRecommendController1"];
-					controller.topViewHeight.constant = 0;
-					controller.title = @"有奖推荐";
-					
-					[self.navigationController pushViewController:controller animated:YES];
-				}
-				else
-				{
-					CRecommendController* controller  = [self.storyboard controllerWithID:@"CRecommendController"];
-					[self.navigationController pushViewController:controller animated:YES];
-				}
-			}
-			else{
-				CSubScribeListController* controller = [self.storyboard controllerWithID:@"CSubScribeListController"];
-				[self.navigationController pushViewController:controller animated:YES];
-			}
-			
-
+            if (USER) {
+                CRecommendController2* controller  = [self.storyboard controllerWithID:@"CRecommendController2"];
+                controller.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:controller animated:YES];
+            }
+            else {
+                [self loginClick:nil];
+            }
 		}
-		else if (indexPath.row == 2)
-		{
-			CSubScribeListController* controller = [self.storyboard controllerWithID:@"CSubScribeListController"];
-			[self.navigationController pushViewController:controller animated:YES];
-		}
+        else if (indexPath.row == 2)
+        {
+            if (USER) {
+                CRecommendController1* controller  = [self.storyboard controllerWithID:@"CRecommendController1"];
+                controller.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:controller animated:YES];
+                
+            }
+            else {
+                [self loginClick:nil];
+            }
+        }
 	}
 	else if (indexPath.section == 2){
 		if (indexPath.row == 0) {
 			CWebViewController* webController  = [self.storyboard controllerWithID:@"CWebViewController"];
 			webController.title                     = data;
-			webController.address = [NSString stringWithFormat:@"%@html/HelpCenter.html", kAPIServer];
+            webController.address = [NSString stringWithFormat:@"%@html/HelpCenter.html", kAPIServer];
+            webController.hidesBottomBarWhenPushed = YES;
 			[self.navigationController pushViewController:webController animated:YES];
 		}
 		else if (indexPath.row == 1){
 			EAIntroPage *page1 = [EAIntroPage page];
 			page1.bgImage = IMAGE(@"app001");
 			EAIntroPage *page2 = [EAIntroPage page];
-			page2.bgImage = IMAGE(@"app005");
+			page2.bgImage = IMAGE(@"app002");
 			
 			EAIntroPage *page3 = [EAIntroPage page];
 			page3.bgImage = IMAGE(@"app003");
 			EAIntroPage *page4 = [EAIntroPage page];
-			page4.bgImage = IMAGE(@"app006");
+			page4.bgImage = IMAGE(@"app004");
 			EAIntroPage *page5 = [EAIntroPage page];
-			page5.bgImage = IMAGE(@"app003");
+			page5.bgImage = IMAGE(@"app005");
 			EAIntroPage *page6 = [EAIntroPage page];
-			page6.bgImage = IMAGE(@"app007");
+			page6.bgImage = IMAGE(@"app006");
 			EAIntroPage *page7 = [EAIntroPage page];
-			page7.bgImage = IMAGE(@"app004");
+			page7.bgImage = IMAGE(@"app007");
 			
 			EAIntroView *intro = [[EAIntroView alloc] initWithFrame:CGRectMake(0, 0, HSScreenBounds().size.width, HSScreenBounds().size.height) andPages:@[page1,page2,page3,page4]];
 			[intro setDelegate:self];
@@ -180,22 +245,55 @@
 	[self presentViewController:naviController animated:YES completion:nil];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    
+    if ([delegate.jumpState isEqualToString:@"qr"]) {
+        [self presentViewController:self.reader animated:YES completion:NULL];
+    }
+    
+    delegate.jumpState = nil;
+}
+
+- (QRCodeReaderViewController *)reader {
+    if (_reader == nil) {
+        NSArray *types = @[AVMetadataObjectTypeQRCode];
+        
+        // check permission
+        AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+        if(authStatus == AVAuthorizationStatusNotDetermined || authStatus == AVAuthorizationStatusAuthorized) {
+            _reader = [QRCodeReaderViewController readerWithMetadataObjectTypes:types];
+            
+            // Using delegate methods
+            _reader.delegate = self;
+        } else {
+            [MBProgressHUD alert:@"请打开摄像机权限"];
+        }
+    }
+    
+    return _reader;
+}
+
 #pragma mark - QRCodeReader Delegate Methods
 
 - (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result
 {
 	[self dismissViewControllerAnimated:YES completion:^{
 		NSLog(@"%@", result);
-		CWebViewController* webController  = [self.storyboard controllerWithID:@"CWebViewController"];
-//		webController.title                     = data;
-		webController.address = result;
-		webController.hideToolbar = NO;
-		[self.navigationController pushViewController:webController animated:YES];
+        
+        [CUtil processQR:result inVC:self];
 	}];
 }
 
 - (void)readerDidCancel:(QRCodeReaderViewController *)reader
 {
 	[self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+#pragma mark - CStockViewControllerDelegate
+- (void)continueScan {
+    [self presentViewController:self.reader animated:YES completion:NULL];
 }
 @end

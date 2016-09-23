@@ -37,6 +37,7 @@ PODS:
     - ARChromeActivity (= 1.0.4)
     - TUSafariActivity (= 1.0.4)
   - MBProgressHUD (0.9.1)
+  - MJRefresh (3.1.0)
   - MMDrawerController (0.6.0):
     - MMDrawerController/Core (= 0.6.0)
     - MMDrawerController/MMDrawerBarButtonItem (= 0.6.0)
@@ -49,16 +50,24 @@ PODS:
     - MMDrawerController/Core
   - MMDrawerController/Subclass (0.6.0):
     - MMDrawerController/Core
+  - MZTimerLabel (0.5.4)
   - OpenUDID (1.0.0)
   - PEPhotoCropEditor (1.3.1)
   - QBImagePickerController (3.2.0)
   - QRCodeReaderViewController (3.5.2)
   - SCLAlertView-Objective-C (0.7.9)
+  - SDCycleScrollView (1.61):
+    - SDWebImage (~> 3.7)
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
   - TPKeyboardAvoiding (1.2.10)
   - TUSafariActivity (1.0.4)
+  - UMengAnalytics-NO-IDFA (3.6.7)
+  - XLPagerTabStrip (3.0.0)
+  - ZXingObjC (3.1.0):
+    - ZXingObjC/All (= 3.1.0)
+  - ZXingObjC/All (3.1.0)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0
@@ -70,14 +79,20 @@ DEPENDENCIES:
   - JSONModel
   - KINWebBrowser
   - MBProgressHUD
+  - MJRefresh
   - MMDrawerController
+  - MZTimerLabel
   - OpenUDID
   - PEPhotoCropEditor
   - QBImagePickerController
   - QRCodeReaderViewController (from `https://github.com/zhengjinghua/MQRCodeReaderViewController.git`)
   - SCLAlertView-Objective-C
+  - SDCycleScrollView
   - SDWebImage
   - TPKeyboardAvoiding
+  - UMengAnalytics-NO-IDFA
+  - XLPagerTabStrip (~> 3.0.0)
+  - ZXingObjC
 
 EXTERNAL SOURCES:
   QRCodeReaderViewController:
@@ -100,14 +115,20 @@ SPEC CHECKSUMS:
   JSONModel: ec77e9865236a7a09d9cf7668df6b4b328d9ec1d
   KINWebBrowser: 5d519cb0f46f6bc79d3e35021f15466c0adaceb0
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
+  MZTimerLabel: cd9bfb9304540ef2a9e163384fca9c978f0dbf83
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
   PEPhotoCropEditor: 613292fce009efd085e7aed975f1ebb3fec8bb7b
   QBImagePickerController: 75b3857b1307a3c01ce486559bc294f802ddec6c
   QRCodeReaderViewController: 557e3291d8fe8adf20d62b7f6bd79a3941f8ec31
   SCLAlertView-Objective-C: e36ab12dc1ec4ff6f932888083b21d71a3a1ad23
+  SDCycleScrollView: a002d85b30cfa9d0ac74069cd3973ca19ff4f22f
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   TPKeyboardAvoiding: 614ebec846ec28b83d548769297fa5fb56468904
   TUSafariActivity: afc55a00965377939107ce4fdc7f951f62454546
+  UMengAnalytics-NO-IDFA: 6d02561a00579b2e37718f204eb81347df5d7b8b
+  XLPagerTabStrip: 0f9f94246c84e7cb60a06ca435da68ac75c8b56e
+  ZXingObjC: bf15b3814f7a105b6d99f47da2333c93a063650a
 
 COCOAPODS: 0.39.0

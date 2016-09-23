@@ -11,6 +11,8 @@
 #import "FirstViewController.h"
 #import "CWeatherSubscriptionModel.h"
 #import "CSearchLocationByLatAndLonModel.h"
+#import "CCropStageSelectionViewController.h"
+#import "CFieldInfoViewController.h"
 
 @interface CAddWeatherFirstViewController () <CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet HorizontalProgressView *progress;
@@ -83,29 +85,35 @@
 		if (model && err == nil) {
 			CSearchLocationByLatAndLonObject* data = model.data;
 			if (data) {
-				gLocationId = data.locationId;
-				CWeatherSubscriptionParams* params = [CWeatherSubscriptionParams new];
-				params.locationId = gLocationId;
-				[CWeatherSubscriptionModel requestWithParams:POST params:params completion:^(CWeatherSubscriptionModel* model, JSONModelError *err) {
-					if (model) {
-
-						
-						if ( err == nil) {
-							[MBProgressHUD alert:@"成功"];
-							NSDictionary* info = @{@"name":model.data.locationName,
-												   @"monitorLocationId":[NSNumber numberWithInteger:model.data.monitorLocationId]};
-							nc_post(ChangeLocation, info);
-							[self dismissViewControllerAnimated:YES completion:nil];
-						}
-					}
-					
-				}];
+                if ([CCropStageSelectionViewController shared_].cropId > 0) {
+                    [CCropStageSelectionViewController shared_].locationId = data.locationId;
+                    [CCropStageSelectionViewController shared_].cunName = data.district;
+                    
+                    CFieldInfoViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CFieldInfoViewController"];
+                    [self.navigationController pushViewController:controller animated:YES];
+                }
+                else {
+                    gLocationId = data.locationId;
+                    CWeatherSubscriptionParams* params = [CWeatherSubscriptionParams new];
+                    params.locationId = gLocationId;
+                    [CWeatherSubscriptionModel requestWithParams:POST params:params completion:^(CWeatherSubscriptionModel* model, JSONModelError *err) {
+                        if (model) {
+                            
+                            
+                            if ( err == nil) {
+                                [MBProgressHUD alert:@"成功"];
+                                NSDictionary* info = @{@"name":model.data.locationName,
+                                                       @"monitorLocationId":[NSNumber numberWithInteger:model.data.monitorLocationId]};
+                                nc_post(ChangeLocation, info);
+                                [self dismissViewControllerAnimated:YES completion:nil];
+                            }
+                        }
+                        
+                    }];
+                }
 			}
 		}
-		
 	}];
-	
-	
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -116,7 +124,13 @@
 	
 }
 - (IBAction)cancle:(id)sender {
-	[self dismissViewControllerAnimated:YES completion:nil];
+    if (self.presentingViewController) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+	
 }
 
 @end

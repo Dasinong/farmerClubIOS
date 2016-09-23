@@ -11,8 +11,6 @@
 
 @interface CPersonalCache : NSObject
 + (CPersonalCache *)defaultPersonalCache;
-- (void)cacheCookie;
-- (void)reloadCookie;
 
 - (void)reloadCacheValueFromCacheFile;
 
@@ -25,5 +23,5 @@
 //用来保存简单的字符串数据
 - (void)clearUserInfo;
 - (CUserObject *)cacheUserInfo;
-- (void)saveCacheUserInfo:(CUserObject *)value;
+- (void)saveCacheUserInfo:(CUserObject *)value sendNotification:(BOOL)sendNotification;
 @end

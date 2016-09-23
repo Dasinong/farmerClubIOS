@@ -11,6 +11,8 @@
 #import <FMDatabase.h>
 #import "CGetLocationModel.h"
 #import "CWeatherSubscriptionModel.h"
+#import "CFieldInfoViewController.h"
+#import "CCropStageSelectionViewController.h"
 
 @interface CSelectAddressViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *shengBtn;
@@ -183,9 +185,15 @@
 }
 
 - (IBAction)commit:(id)sender {
-	if (self.cun) {
+    if ([CCropStageSelectionViewController shared_].cropId > 0) {
+        [CCropStageSelectionViewController shared_].locationId = self.cunDic[self.cun];
+        [CCropStageSelectionViewController shared_].cunName = self.zhen;
+        CFieldInfoViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CFieldInfoViewController"];
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+	else if (self.cun) {
 		CWeatherSubscriptionParams* params = [CWeatherSubscriptionParams new];
-		params.locationId =self.cunDic[self.cun];;//[self.cun integerValue];
+		params.locationId =self.cunDic[self.cun];//[self.cun integerValue];
 		[CWeatherSubscriptionModel requestWithParams:POST params:params completion:^(CWeatherSubscriptionModel* model, JSONModelError *err) {
 			if (model && err == nil) {
 				NSDictionary* info = @{@"name":model.data.locationName,

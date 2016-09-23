@@ -14,6 +14,9 @@
 #import "CSearchSectionView.h"
 #import "CWebViewController.h"
 #import "CZaiHaiViewController.h"
+#import "CUserObject.h"
+#import "CPersonalCache.h"
+#import "CCpproductDetailController.h"
 
 #define TYPE_DIC @{@"variety":@"品种",\
 					@"disease":@"病害",\
@@ -73,21 +76,44 @@
 	}
 	else{
 		self.searchBar.placeholder = @"搜索种子、病虫草害、药物信息";
-		contents = @[@{@"icon":@"pinzhong",
-					   @"title":@"品种大全",
-					   @"sub":@"找到最适合您的优良品种"},
-					 @{@"icon":@"nongyao",
-					   @"title":@"农药大全",
-					   @"sub":@"上万种农药和使用方法"},
-					 @{@"icon":@"chonghai",
-					   @"title":@"病虫草害大全",
-					   @"sub":@"植物保护的必备大全"},
-					 @{@"icon":@"zhishi",
-					   @"title":@"农业气象小常识",
-					   @"sub":@"更好利用气象数据指导种植"},
-					 @{@"icon":@"cetu",
-					   @"title":@"测土配方必读",
-					   @"sub":@"了解土地才能科学施肥"},];
+        
+        if ([USER isBASF]) {
+            contents = @[@{@"icon":@"pinzhong",
+                           @"title":@"品种大全",
+                           @"sub":@"找到最适合您的优良品种"},
+                         @{@"icon":@"nongyao",
+                           @"title":@"农药大全",
+                           @"sub":@"上万种农药和使用方法"},
+                         @{@"icon":@"chonghai",
+                           @"title":@"病虫草害大全",
+                           @"sub":@"植物保护的必备大全"},
+                         @{@"icon":@"basf",
+                           @"title":@"巴斯夫产品介绍",
+                           @"sub":@"巴斯夫产品介绍"},
+                         @{@"icon":@"zhishi",
+                           @"title":@"农业气象小常识",
+                           @"sub":@"更好利用气象数据指导种植"},
+                         @{@"icon":@"cetu",
+                           @"title":@"测土配方必读",
+                           @"sub":@"了解土地才能科学施肥"},];
+        }
+        else {
+            contents = @[@{@"icon":@"pinzhong",
+                           @"title":@"品种大全",
+                           @"sub":@"找到最适合您的优良品种"},
+                         @{@"icon":@"nongyao",
+                           @"title":@"农药大全",
+                           @"sub":@"上万种农药和使用方法"},
+                         @{@"icon":@"chonghai",
+                           @"title":@"病虫草害大全",
+                           @"sub":@"植物保护的必备大全"},
+                         @{@"icon":@"zhishi",
+                           @"title":@"农业气象小常识",
+                           @"sub":@"更好利用气象数据指导种植"},
+                         @{@"icon":@"cetu",
+                           @"title":@"测土配方必读",
+                           @"sub":@"了解土地才能科学施肥"},];
+        }
 
 	}
 	UITableViewModel* tableModel = [UITableViewModel new];
@@ -97,6 +123,26 @@
 	
 	[self updateModel:tableModel];
 	
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    
+    if ([delegate.jumpState isEqualToString:@"wiki"]) {
+        CCpproductController* controller = [self.storyboard controllerWithID:@"CCpproductController"];
+        controller.isBASF = YES;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    
+    delegate.jumpState = nil;
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [MBProgressHUD hideHUDForView:self.view animated:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -132,18 +178,30 @@
 			controller.type = eChongHai;
 			[self.navigationController pushViewController:controller animated:YES];
 		}
-		else if (indexPath.row == 3){
-			CKindViewController* controller = [self.storyboard controllerWithID:@"CKindViewController"];
-			controller.title = @"农业气象小常识";
-			controller.type = eXiaoChangShi;
-			[self.navigationController pushViewController:controller animated:YES];
-		}
-		else if (indexPath.row == 4){
-			CKindViewController* controller = [self.storyboard controllerWithID:@"CKindViewController"];
-			controller.title = @"测土配方必读";
-			controller.type = eSoil;
-			[self.navigationController pushViewController:controller animated:YES];
-		}
+        else {
+            NSInteger row = indexPath.row;
+            if (![USER isBASF]) {
+                row++;
+            }
+            
+            if (row == 3){
+                CCpproductController* controller = [self.storyboard controllerWithID:@"CCpproductController"];
+                controller.isBASF = YES;
+                [self.navigationController pushViewController:controller animated:YES];
+            }
+            else if (row == 4){
+                CKindViewController* controller = [self.storyboard controllerWithID:@"CKindViewController"];
+                controller.title = @"农业气象小常识";
+                controller.type = eXiaoChangShi;
+                [self.navigationController pushViewController:controller animated:YES];
+            }
+            else if (row == 5){
+                CKindViewController* controller = [self.storyboard controllerWithID:@"CKindViewController"];
+                controller.title = @"测土配方必读";
+                controller.type = eSoil;
+                [self.navigationController pushViewController:controller animated:YES];
+            }
+        }
 	}
 	else{
 		switch (indexPath.row) {
@@ -203,7 +261,7 @@
 		[MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
 		[CSearchAllWordModel requestWithParams:params completion:^(CSearchAllWordModel* model, JSONModelError *err) {
-			[MBProgressHUD hideHUDForView:self.view animated:YES];
+			[MBProgressHUD hideHUDForView:self.view animated:NO];
 
 			if (err == nil && model) {
 				NSMutableDictionary* dic = [[NSMutableDictionary alloc] initWithCapacity:0x1];
@@ -221,6 +279,14 @@
 				}
 				self.searchResult = dic;
 				[self.searchDisplayController.searchResultsTableView reloadData];
+                
+                // 搜不到，去百度
+                if (model.variety.count + model.disease.count + model.pest.count + model.cpproduct.count == 0) {
+                    CWebViewController* webController = [self.storyboard controllerWithID:@"CWebViewController"];
+                    webController.address = [NSString stringWithFormat:@"https://www.baidu.com/s?wd=%@", [key URLEncodedString]];
+                    webController.title = @"百度搜索";
+                    [self.navigationController pushViewController:webController animated:YES];
+                }
 			}
 		}];
 
@@ -234,7 +300,7 @@
 		params.type = @"petdisspec";
 		
 		[CSearchSingleWordModel requestWithParams:params completion:^(CSearchSingleWordModel* model, JSONModelError *err) {
-			[MBProgressHUD hideHUDForView:self.view animated:YES];
+			[MBProgressHUD hideHUDForView:self.view animated:NO];
 
 			if (err == nil && model) {
 				
@@ -358,10 +424,14 @@
 	else{
 		NSArray* values = [self.searchResult.allValues objectAtIndex_s:indexPath.section];
 		CSearchEntry* entry = [values objectAtIndex_s:indexPath.row];
-		CWebViewController* webController       = [self.storyboard controllerWithID:@"CWebViewController"];
-		webController.address                       = [NSString stringWithFormat:@"%@baike?id=%ld&type=%@",kServerAddress, (long)entry.id,entry.type];
-		webController.title                     = entry.name;
-		[self.navigationController pushViewController:webController animated:YES];
+        
+        //NSLog(@"%@",entry.type);
+        
+        CCpproductDetailController *controller = [self.storyboard controllerWithID:@"CCpproductDetailController"];
+        controller.type = entry.type;
+        controller.id = entry.id;
+        controller.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:controller animated:YES];
 	}
 }
 @end

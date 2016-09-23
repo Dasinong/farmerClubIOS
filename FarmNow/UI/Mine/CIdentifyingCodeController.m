@@ -11,12 +11,16 @@
 #import "CAuthRegLogModel.h"
 #import "CPersonalCache.h"
 #import "CSelectIdentityController.h"
-
+#import "MZTimerLabel.h"
 
 @interface CIdentifyingCodeController ()
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
 @property (weak, nonatomic) IBOutlet UITextField *identifyingCodeField;
+@property (weak, nonatomic) IBOutlet UILabel *countDownLabel;
+@property (weak, nonatomic) IBOutlet UIButton *resendBotton;
 
+@property (strong, nonatomic) MZTimerLabel *timer;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewWidthConstraint;
 @end
 
 @implementation CIdentifyingCodeController
@@ -25,11 +29,34 @@
 {
 	[super viewDidLoad];
 	self.phoneLabel.text = self.phoneNumber;
-	[self getVerificationCodeBySMS];
+    [self getVerificationCodeBySMS:nil];
+    
+    self.timer = [[MZTimerLabel alloc] initWithLabel:self.countDownLabel andTimerType:MZTimerLabelTypeTimer];
+    [self.timer setCountDownTime:60];
+    [self.timer setTimeFormat:@"接收短信大约需要ss秒"];
+    [self.timer startWithEndingBlock:^(NSTimeInterval countTime) {
+        self.countDownLabel.hidden = YES;
+        self.resendBotton.hidden = NO;
+    }];
+    
+    self.scrollViewWidthConstraint.constant = SCREEN_WIDTH;
 }
 
-- (void)getVerificationCodeBySMS
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.identifyingCodeField becomeFirstResponder];
+}
+
+- (IBAction)getVerificationCodeBySMS:(id)sender
 {
+    if (sender) {
+        self.countDownLabel.hidden = NO;
+        self.resendBotton.hidden = YES;
+        [self.timer reset];
+        [self.timer start];
+    }
+    
 	[SMSSDK getVerificationCodeByMethod:SMSGetCodeMethodSMS phoneNumber:self.phoneNumber
 								   zone:@"+86"
 					   customIdentifier:nil
@@ -43,10 +70,10 @@
 		 }
 		 else
 		 {
-			 UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"codesenderrtitle", nil)
-															 message:[NSString stringWithFormat:@"错误描述：%@",[error.userInfo objectForKey:@"getVerificationCode"]]
+			 UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"出错啦"
+															 message:[error.userInfo objectForKey:@"getVerificationCode"]
 															delegate:self
-												   cancelButtonTitle:NSLocalizedString(@"sure", nil)
+												   cancelButtonTitle:@"确定"
 												   otherButtonTitles:nil, nil];
 			 [alert show];
 		 }
@@ -64,9 +91,8 @@
 			[CAuthRegLogModel requestWithParams:POST params:params completion:^(CAuthRegLogModel* model, JSONModelError *err) {
 				if (model && err== nil) {
 					[MBProgressHUD alert:@"登录成功！" ];
-					[[CPersonalCache defaultPersonalCache] cacheCookie];
-
-					[[CPersonalCache defaultPersonalCache] saveCacheUserInfo:model.data];
+					
+					[[CPersonalCache defaultPersonalCache] saveCacheUserInfo:model.data sendNotification:YES];
 					if (model.data.userType == nil) {
 						CSelectIdentityController* controller = [self.storyboard controllerWithID:@"CSelectIdentityController"];
 						[self.navigationController pushViewController:controller animated:YES];

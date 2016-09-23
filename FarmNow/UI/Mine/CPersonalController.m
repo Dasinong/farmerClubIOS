@@ -30,9 +30,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -87,180 +84,182 @@
 	CUserObject* object = [[CPersonalCache defaultPersonalCache] cacheUserInfo];
 	// Do any additional setup after loading the view.
 	UITableViewModel* tableModel = [UITableViewModel new];
-	[tableModel addRow:TABLEVIEW_ROW(@"headcell", object.pictureId?object.pictureId:@"") forSection:0];
-	
-	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @{@"手机号":object.cellPhone?object.cellPhone:@""}) forSection:1];
-	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @{@"修改密码":@""}) forSection:1];
-	
-	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @{@"姓名":object.userName?object.userName:@""}) forSection:2];
-	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @{@"我的住址":object.address?object.address:@""}) forSection:2];
-	[tableModel addRow:TABLEVIEW_ROW(@"contentcell", @{@"住宅电话":object.telephone?object.telephone:@""}) forSection:2];
-	
-	if (object) {
-//		UIColor* btnColor = ;
-		if (object.userType == nil) {
-			NSDictionary* content =  @{@"title":@"农资商户认证",@"color":COLOR(0xF5964F)};
-			[tableModel addRow:TABLEVIEW_ROW(@"btncell",content) forSection:3];
-			
-			content =  @{@"title":@"合作机构员工认证",@"color":COLOR(0x1EB1ED)};
-			[tableModel addRow:TABLEVIEW_ROW(@"btncell", content) forSection:3];
-		}
-
-		NSDictionary* content  =  @{@"title":@"退出登录",@"color":COLOR(0x329A2A)};
-
-		[tableModel addRow:TABLEVIEW_ROW(@"btncell", content) forSection:3];
-
-	}
+    
+    if (self.isRetail) { //店铺基本信息这里面进来的
+        [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @{@"店铺名称":object.userName?object.userName:@""}) forSection:0];
+        [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @{@"店铺地址":object.address?object.address:@""}) forSection:0];
+        [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @{@"联系电话":object.telephone?object.telephone:@""}) forSection:0];
+    }
+    else {
+        [tableModel addRow:TABLEVIEW_ROW(@"headcell", object.pictureId?object.pictureId:@"") forSection:0];
+        
+        [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @{@"手机号":object.cellPhone?object.cellPhone:@""}) forSection:1];
+        [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @{@"修改密码":@""}) forSection:1];
+        
+        [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @{@"姓名":object.userName?object.userName:@""}) forSection:2];
+        [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @{@"我的住址":object.address?object.address:@""}) forSection:2];
+        [tableModel addRow:TABLEVIEW_ROW(@"contentcell", @{@"住宅电话":object.telephone?object.telephone:@""}) forSection:2];
+        
+        if (object) {
+            //		UIColor* btnColor = ;
+            if (object.userType == nil) {
+                NSDictionary* content =  @{@"title":@"农资商户认证",@"color":COLOR(0xF5964F)};
+                [tableModel addRow:TABLEVIEW_ROW(@"btncell",content) forSection:3];
+                
+                content =  @{@"title":@"合作机构员工认证",@"color":COLOR(0x1EB1ED)};
+                [tableModel addRow:TABLEVIEW_ROW(@"btncell", content) forSection:3];
+            }
+            
+            NSDictionary* content  =  @{@"title":@"退出登录",@"color":COLOR(0x329A2A)};
+            
+            [tableModel addRow:TABLEVIEW_ROW(@"btncell", content) forSection:3];
+            
+        }
+    }
 	
 	[self updateModel:tableModel];
 }
 
 - (void)didSelect:(NSIndexPath *)indexPath identifier:(NSString*)identifier data:(id)data
 {
-	if (indexPath.section == 0) {
-		CUserObject* object = [[CPersonalCache defaultPersonalCache] cacheUserInfo];
-		if (object == nil) {
-			[MBProgressHUD alert:@"请先登录"];
-			return;
-		}
-		[self clickAvatar:nil];
-	}
-	else if (indexPath.section == 1) {
-		if (indexPath.row == 0) {
-			SCLAlertView *alert = [[SCLAlertView alloc] init];
-
-			UITextField *textField = [alert addTextField:@"请输入手机号"];
-			[alert addButton:@"确定" actionBlock:^(void) {
-				
-				CUpdateProfileParams* params = [CUpdateProfileParams new];
-				params.cellphone = textField.text;
-				[CUpdateProfileModel requestWithParams:params completion:^(CUpdateProfileModel* model, JSONModelError *err) {
-					if (model && err == nil) {
-						if ([model isKindOfClass:[CUpdateProfileModel class]]) {
-							[[CPersonalCache defaultPersonalCache] saveCacheUserInfo:model.data];
-							[self reloadData];
-						}
-						[MBProgressHUD alert:@"更新成功"];
-					}
-				}];
-				
-			}];
-
-			
-			[alert showEdit:self title:@"手机号" subTitle:@"请输入手机号" closeButtonTitle:@"取消" duration:0.0f];
-		}
-		if (indexPath.row == 1) {
-			CChangePasswordController* controller = [self.storyboard controllerWithID:@"CChangePasswordController"];
-			[self.navigationController pushViewController:controller animated:YES];
-		}
-	}
-	else if (indexPath.section == 2) {
-		if (indexPath.row == 0) {
-			SCLAlertView *alert = [[SCLAlertView alloc] init];
-			
-			UITextField *textField = [alert addTextField:@"请输入姓名"];
-			
-			[alert addButton:@"确定" actionBlock:^(void) {
-				
-				CUpdateProfileParams* params = [CUpdateProfileParams new];
-				params.username = textField.text;
-				[CUpdateProfileModel requestWithParams:params completion:^(CUpdateProfileModel* model, JSONModelError *err) {
-					if (model && err == nil) {
-						if ([model isKindOfClass:[CUpdateProfileModel class]]) {
-							[[CPersonalCache defaultPersonalCache] saveCacheUserInfo:model.data];
-							[self reloadData];
-						}
-						[MBProgressHUD alert:@"更新成功"];
-					}
-				}];
-				
-			}];
-			
-			[alert showEdit:self title:@"姓名" subTitle:@"请输入姓名" closeButtonTitle:@"取消" duration:0.0f];
-
-		}
-		else if (indexPath.row == 1) {
-			CMyAddressController* webController  = [self.storyboard controllerWithID:@"CMyAddressController"];
-			webController.delegate = self;
-			[self.navigationController pushViewController:webController animated:YES];
-		}
-		else if (indexPath.row == 2)
-		{
-			SCLAlertView *alert = [[SCLAlertView alloc] init];
-			
-			UITextField *textField = [alert addTextField:@"请输入住宅电话"];
-			
-			[alert addButton:@"确定" actionBlock:^(void) {
-				
-				CUpdateProfileParams* params = [CUpdateProfileParams new];
-				params.telephone = textField.text;
-				[CUpdateProfileModel requestWithParams:params completion:^(CUpdateProfileModel* model, JSONModelError *err) {
-					if (model && err == nil) {
-						if ([model isKindOfClass:[CUpdateProfileModel class]]) {
-							[[CPersonalCache defaultPersonalCache] saveCacheUserInfo:model.data];
-							[self reloadData];
-						}
-						[MBProgressHUD alert:@"更新成功"];
-					}
-				}];
-				
-			}];
-			
-			[alert showEdit:self title:@"住宅电话" subTitle:@"请输入住宅电话" closeButtonTitle:@"取消" duration:0.0f];
-		}
-	}
-	else if (indexPath.section == 3)
-	{
-		if (indexPath.row == 0) {
-			
-			if (data) {
-				NSString* title = data[@"title"];
-				if ([title isEqualToString:@"退出登录"]) {
-					[self logout];
-
-				}
-				else
-				{
-					CStoresViewController* controller = [self.storyboard controllerWithID:@"CStoresViewController"];
-					[self.navigationController pushViewController:controller animated:YES];
-				}
-
-			}
-
-
-			
-		}
-		else if (indexPath.row == 1){
-		CSalesViewController* controller = [self.storyboard controllerWithID:@"CSalesViewController"];
-		[self.navigationController pushViewController:controller animated:YES];		
-			
-		}
-		else if (indexPath.row == 2) {
-			[self logout];
-		}
-			}
+    if (self.isRetail) { //店铺基本信息这里面进来的
+        indexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:2];
+    }
+    
+    if (indexPath.section == 0) {
+        CUserObject* object = [[CPersonalCache defaultPersonalCache] cacheUserInfo];
+        if (object == nil) {
+            [MBProgressHUD alert:@"请先登录"];
+            return;
+        }
+        [self clickAvatar:nil];
+    }
+    else if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            SCLAlertView *alert = [[SCLAlertView alloc] init];
+            
+            UITextField *textField = [alert addTextField:@"请输入手机号"];
+            [alert addButton:@"确定" actionBlock:^(void) {
+                
+                CUpdateProfileParams* params = [CUpdateProfileParams new];
+                params.cellphone = textField.text;
+                [CUpdateProfileModel requestWithParams:params completion:^(CUpdateProfileModel* model, JSONModelError *err) {
+                    if (model && err == nil) {
+                        if ([model isKindOfClass:[CUpdateProfileModel class]]) {
+                            [[CPersonalCache defaultPersonalCache] saveCacheUserInfo:model.data sendNotification:NO];
+                            [self reloadData];
+                        }
+                        [MBProgressHUD alert:@"更新成功"];
+                    }
+                }];
+                
+            }];
+            
+            
+            [alert showEdit:self title:@"手机号" subTitle:@"请输入手机号" closeButtonTitle:@"取消" duration:0.0f];
+        }
+        if (indexPath.row == 1) {
+            CChangePasswordController* controller = [self.storyboard controllerWithID:@"CChangePasswordController"];
+            [self.navigationController pushViewController:controller animated:YES];
+        }
+    }
+    else if (indexPath.section == 2) {
+        if (indexPath.row == 0) {
+            SCLAlertView *alert = [[SCLAlertView alloc] init];
+            
+            UITextField *textField = [alert addTextField:@"请输入姓名"];
+            
+            [alert addButton:@"确定" actionBlock:^(void) {
+                
+                CUpdateProfileParams* params = [CUpdateProfileParams new];
+                params.username = textField.text;
+                [CUpdateProfileModel requestWithParams:params completion:^(CUpdateProfileModel* model, JSONModelError *err) {
+                    if (model && err == nil) {
+                        if ([model isKindOfClass:[CUpdateProfileModel class]]) {
+                            [[CPersonalCache defaultPersonalCache] saveCacheUserInfo:model.data sendNotification:NO];
+                            [self reloadData];
+                        }
+                        [MBProgressHUD alert:@"更新成功"];
+                    }
+                }];
+                
+            }];
+            
+            [alert showEdit:self title:@"姓名" subTitle:@"请输入姓名" closeButtonTitle:@"取消" duration:0.0f];
+            
+        }
+        else if (indexPath.row == 1) {
+            CMyAddressController* webController  = [self.storyboard controllerWithID:@"CMyAddressController"];
+            webController.delegate = self;
+            [self.navigationController pushViewController:webController animated:YES];
+        }
+        else if (indexPath.row == 2)
+        {
+            SCLAlertView *alert = [[SCLAlertView alloc] init];
+            
+            UITextField *textField = [alert addTextField:@"请输入住宅电话"];
+            
+            [alert addButton:@"确定" actionBlock:^(void) {
+                
+                CUpdateProfileParams* params = [CUpdateProfileParams new];
+                params.telephone = textField.text;
+                [CUpdateProfileModel requestWithParams:params completion:^(CUpdateProfileModel* model, JSONModelError *err) {
+                    if (model && err == nil) {
+                        if ([model isKindOfClass:[CUpdateProfileModel class]]) {
+                            [[CPersonalCache defaultPersonalCache] saveCacheUserInfo:model.data sendNotification:NO];
+                            [self reloadData];
+                        }
+                        [MBProgressHUD alert:@"更新成功"];
+                    }
+                }];
+                
+            }];
+            
+            [alert showEdit:self title:@"住宅电话" subTitle:@"请输入住宅电话" closeButtonTitle:@"取消" duration:0.0f];
+        }
+    }
+    else if (indexPath.section == 3)
+    {
+        if (indexPath.row == 0) {
+            
+            if (data) {
+                NSString* title = data[@"title"];
+                if ([title isEqualToString:@"退出登录"]) {
+                    [self logout];
+                    
+                }
+                else
+                {
+                    CStoresViewController* controller = [self.storyboard controllerWithID:@"CStoresViewController"];
+                    [self.navigationController pushViewController:controller animated:YES];
+                }
+                
+            }
+            
+            
+            
+        }
+        else if (indexPath.row == 1){
+            CSalesViewController* controller = [self.storyboard controllerWithID:@"CSalesViewController"];
+            [self.navigationController pushViewController:controller animated:YES];
+            
+        }
+        else if (indexPath.row == 2) {
+            [self logout];
+        }
+    }
 }
 
 - (void)logout
 {
 	CLogoutParams* params = [CLogoutParams new];
 	[CLogoutModel requestWithParams:POST params:params completion:^(CLogoutModel* model, JSONModelError *err) {
-		if (model && err ==nil) {
-			if ([model.respCode isEqualToString: @"200"]) {
-				[MBProgressHUD alert:@"退出成功"];
-				[[CPersonalCache defaultPersonalCache] clearUserInfo];
-				[self.navigationController popViewControllerAnimated:YES];
-			}
-			else if ([model.respCode isEqualToString: @"110"])
-			{
-				[MBProgressHUD alert:@"登录过期，请重新登录"];
-				
-				[[CPersonalCache defaultPersonalCache] clearUserInfo];
-				[self.navigationController popViewControllerAnimated:YES];
-			}
-		}
-	}];
 
+	}];
+    
+    [MBProgressHUD alert:@"退出成功"];
+    [[CPersonalCache defaultPersonalCache] clearUserInfo];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)clickAvatar:(id)sender
@@ -375,36 +374,28 @@
 	
 	cropController.delegate = self;
 	cropController.image    = original_image;
-	
-	UIImage *image  = original_image;
-	CGFloat  width  = image.size.width;
-	CGFloat  height = image.size.height;
-	CGFloat  length = 166;
-	cropController.imageCropRect          = CGRectMake( (width - length) / 2,
-													   (height - length) / 2,
-													   length,
-													   length );
+    
 	cropController.keepingCropAspectRatio = YES;
 	cropController.toolbarHidden          = YES;
-	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:cropController];
-	//
-	// if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-	// {
-	// navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
-	// }
-	cropController.cropAspectRatio = 1.0;
-	
-	[controller presentViewController:navigationController animated:YES completion:NULL];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:cropController];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
+    cropController.cropAspectRatio = 1.0;
+    
+    [controller presentViewController:navigationController animated:YES completion:NULL];
 } /* cropImage */
 
 - (void)saveAvatar:(UIImage*)avatar
 {
 	// 缩放图片
-//	avatar = [avatar scaleToSize:kDefaultAvatarSize];
+    avatar = [avatar scaleToSize:kDefaultAvatarSize];
 //	[self.avatarView setBackgroundImage:avatar forState:UIControlStateNormal];
 //	
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-		NSData *data = UIImageJPEGRepresentation(avatar, 70);
+		NSData *data = UIImageJPEGRepresentation(avatar, 0.7);
 		NSString* path = [NSString stringWithFormat:@"%@//avatar.jpg",[CPersonalController cacheDir]];
 		
 		[data writeToFile:path atomically:YES];
@@ -415,8 +406,16 @@
 		[self performSelectorOnMainThread:@selector(updateModel:) withObject:self.tableViewModel waitUntilDone:NO];
 //		CUploadAvaterParams* params = [CUploadAvaterParams new];
 		NSArray* contents =@[@{@"data":data, @"name":@"file" , @"filename":@"avatar.jpg"}];
-		[CUploadAvaterModel postWithPath:@"uploadAvater" attachments:contents params:nil completion:^(id model, JSONModelError *err) {
-			if (model && err == nil) {
+		[CUploadAvaterModel postWithPath:@"uploadAvater" attachments:contents params:nil completion:^(CUploadAvaterModel *uploadAvaterModel, JSONModelError *err) {
+			if (uploadAvaterModel && err == nil) {
+                
+                CUserObject* object = [[CPersonalCache defaultPersonalCache] cacheUserInfo];
+                object.pictureId = uploadAvaterModel.data;
+                
+                UITableViewRowModel* model = [self.tableViewModel modelForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+                model.data = uploadAvaterModel.data;
+                [self performSelectorOnMainThread:@selector(updateModel:) withObject:self.tableViewModel waitUntilDone:NO];
+                [[CPersonalCache defaultPersonalCache] saveCacheUserInfo:object sendNotification:NO];
 				[MBProgressHUD alert:@"上传成功"];
 			}
 		}];
@@ -436,16 +435,9 @@
 		controller.delegate = self;
 		controller.image = original_image;
 		
-		UIImage *image = original_image;
-		CGFloat width = image.size.width;
-		CGFloat height = image.size.height;
-		CGFloat length = 166;
-		
-		controller.imageCropRect = CGRectMake( (width - length) / 2,
-											  (height - length) / 2,
-											  length,
-											  length );
+        
 		controller.keepingCropAspectRatio = YES;
+        controller.cropAspectRatio = 1.0;
 		controller.toolbarHidden = YES;
 		UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
 		
@@ -503,7 +495,7 @@
 	[CUpdateProfileModel requestWithParams:params completion:^(CUpdateProfileModel* model, JSONModelError *err) {
 		if (model && err == nil) {
 			if ([model isKindOfClass:[CUpdateProfileModel class]]) {
-				[[CPersonalCache defaultPersonalCache] saveCacheUserInfo:model.data];
+				[[CPersonalCache defaultPersonalCache] saveCacheUserInfo:model.data sendNotification:NO];
 				[self reloadData];
 			}
 			[MBProgressHUD alert:@"更新成功"];

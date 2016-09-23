@@ -58,13 +58,11 @@
 	params.nPassword = self.passwordField.text;
 	[CUpdatePasswordModel requestWithParams:POST params:params completion:^(CUpdatePasswordModel* model, JSONModelError *err) {
 		if (model && err == nil) {
-			[[CPersonalCache defaultPersonalCache] cacheCookie];
-
 			[MBProgressHUD alert:@"修改成功"];
 			CUserObject* userInfo = [[CPersonalCache defaultPersonalCache] cacheUserInfo];
 			if (userInfo.isPassSet == NO) {
 				userInfo.isPassSet = YES;
-				[[CPersonalCache defaultPersonalCache] saveCacheUserInfo:userInfo];
+				[[CPersonalCache defaultPersonalCache] saveCacheUserInfo:userInfo sendNotification:NO];
 			}
 			[self.navigationController popViewControllerAnimated:YES];
 		}

@@ -9,5 +9,14 @@
 #import "CUserObject.h"
 
 @implementation CUserObject
+- (BOOL)isBASF {
+    return [self.institutionId integerValue] == 3;
+}
 
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    if ([propertyName isEqualToString: @"memberPoints"]) return YES;
+    
+    return NO;
+}
 @end

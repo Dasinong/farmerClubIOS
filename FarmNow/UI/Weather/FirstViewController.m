@@ -17,6 +17,7 @@
 #import "CPersonalCache.h"
 #import "CUserObject.h"
 #import "CLaonongsModel.h"
+#import "MJRefresh.h"
 
 #define SuitableColor COLOR(0XFFFFFF)
 #define SuitableTextColor COLOR(0X007AFF)
@@ -30,6 +31,7 @@ NSNumber*				gLocationId = nil;
 NSString*				gLocationName = nil;
 
 @interface FirstViewController () <CLLocationManagerDelegate>
+@property (nonatomic, strong) NSNumber *monitorLocationId;
 
 @property (nonatomic, assign) BOOL bexpand;
 @property (nonatomic, assign) BOOL locationUpdated;
@@ -54,21 +56,22 @@ NSString*				gLocationName = nil;
 	self.locationUpdated = NO;
 	if (![[[CPersonalCache defaultPersonalCache] cacheValueForKey:@"first"] isEqualToString:@"NO"]) {
 		[[CPersonalCache defaultPersonalCache] saveCacheValue:@"NO" forKey:@"first"];
-		EAIntroPage *page1 = [EAIntroPage page];
-		page1.bgImage = IMAGE(@"app001");
-		EAIntroPage *page2 = [EAIntroPage page];
-		page2.bgImage = IMAGE(@"app005");
-		
-		EAIntroPage *page3 = [EAIntroPage page];
-		page3.bgImage = IMAGE(@"app003");
-		EAIntroPage *page4 = [EAIntroPage page];
-		page4.bgImage = IMAGE(@"app006");
-		EAIntroPage *page5 = [EAIntroPage page];
-		page5.bgImage = IMAGE(@"app003");
-		EAIntroPage *page6 = [EAIntroPage page];
-		page6.bgImage = IMAGE(@"app007");
-		EAIntroPage *page7 = [EAIntroPage page];
-		page7.bgImage = IMAGE(@"app004");
+        EAIntroPage *page1 = [EAIntroPage page];
+        page1.bgImage = IMAGE(@"app001");
+        EAIntroPage *page2 = [EAIntroPage page];
+        page2.bgImage = IMAGE(@"app002");
+        
+        EAIntroPage *page3 = [EAIntroPage page];
+        page3.bgImage = IMAGE(@"app003");
+        EAIntroPage *page4 = [EAIntroPage page];
+        page4.bgImage = IMAGE(@"app004");
+        EAIntroPage *page5 = [EAIntroPage page];
+        page5.bgImage = IMAGE(@"app005");
+        EAIntroPage *page6 = [EAIntroPage page];
+        page6.bgImage = IMAGE(@"app006");
+        EAIntroPage *page7 = [EAIntroPage page];
+        page7.bgImage = IMAGE(@"app007");
+        
 		EAIntroView *intro = [[EAIntroView alloc] initWithFrame:CGRectMake(0, 0, HSScreenBounds().size.width, HSScreenBounds().size.height) andPages:@[page1,page2,page3,page4]];
 		//	[intro setDelegate:self];
 		intro.skipButton = nil;
@@ -99,6 +102,9 @@ NSString*				gLocationName = nil;
 	self.yidayaoBtn.layer.masksToBounds = YES;
 	
 
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self getWeatherData:self.monitorLocationId lat:gLatitude lon:gLongitude];
+    }];
 }
 
 - (void)notifyChangeLocation:(id)sender
@@ -108,13 +114,12 @@ NSString*				gLocationName = nil;
 	if (userInfo) {
 		self.navigationItem.title = userInfo[@"name"];
 		[self getWeatherData:userInfo[@"monitorLocationId"] lat:0 lon:0];
-
+        self.monitorLocationId = userInfo[@"monitorLocationId"];
 	}
 	else
 	{
 		self.navigationItem.title = gLocationName;
 		[self getWeatherData:nil lat:gLatitude lon:gLongitude];
-
 	}
 }
 
@@ -128,8 +133,6 @@ NSString*				gLocationName = nil;
 	[super viewDidAppear:animated];
 	[self.mm_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
 	[self.mm_drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-
-
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -137,9 +140,8 @@ NSString*				gLocationName = nil;
 	[super viewDidDisappear:animated];
 	[self.mm_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
 	[self.mm_drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeNone];
-
-
 }
+
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
 	// Dispose of any resources that can be recreated.
@@ -147,8 +149,6 @@ NSString*				gLocationName = nil;
 - (IBAction)leftClick:(id)sender {
 	[self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:
 	 nil];
-
-
 }
 
 - (void) openGPS
@@ -241,15 +241,14 @@ NSString*				gLocationName = nil;
 			CSearchLocationByLatAndLonObject* data = model.data;
 			if (data) {
 				gLocationId = data.locationId;
-				if ([data.province isEqualToString:data.city]) {
-					gLocationName = [NSString stringWithFormat:@"%@%@%@%@", data.city, data.country, data.district, data.community];
-
-				}
-				else
-				{
-					gLocationName = [NSString stringWithFormat:@"%@%@%@%@%@",data.province, data.city, data.country, data.district, data.community];
-			
-				}
+//				if ([data.province isEqualToString:data.city]) {
+//					gLocationName = [NSString stringWithFormat:@"%@%@%@%@", data.city, data.country, data.district, data.community];
+//				}
+//				else
+//				{
+//					gLocationName = [NSString stringWithFormat:@"%@%@%@%@%@",data.province, data.city, data.country, data.district, data.community];
+//				}
+                gLocationName = [NSString stringWithFormat:@"%@%@", data.district, data.community];
 
 				self.navigationItem.title = gLocationName;
 			}
@@ -266,7 +265,9 @@ NSString*				gLocationName = nil;
 
 - (void)getWeatherData:(NSNumber*)monitorLocationId lat:(double)lat lon:(double)lon
 {
-	[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    if (![self.tableView.mj_header isRefreshing]) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    }
 
 	CRequestBaseParams* params = nil;
 	if (monitorLocationId) {
@@ -286,8 +287,9 @@ NSString*				gLocationName = nil;
 
 	
 	[CLoadWeatherModel requestWithParams:params completion:^(CLoadWeatherModel* model, JSONModelError *err) {
-		[MBProgressHUD hideHUDForView:self.view animated:YES];
-		
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+		[self.tableView.mj_header endRefreshing];
+        
 		if (model && err == nil) {
 			//适宜下地
 			if (model.workable) {
@@ -330,9 +332,9 @@ NSString*				gLocationName = nil;
 			[talbeModel addRow:TABLEVIEW_ROW(@"hourcell", model) forSection:2];
 			[talbeModel setTitle:@"24小时天气" forSection:2];
 			
-			//未来七天天气
+			//未来一周天气
 			if (model.n7d.count > 0) {
-				[talbeModel setTitle:@"未来七天天气" forSection:3];
+				[talbeModel setTitle:@"未来一周天气" forSection:3];
 				
 				NSMutableArray* showDayWeathers = [[NSMutableArray alloc] initWithCapacity:0x1];
 				
@@ -354,7 +356,6 @@ NSString*				gLocationName = nil;
 			
 			CLaonongsParams* paramLaonongs = [CLaonongsParams new];
 			if (monitorLocationId) {
-				
 				paramLaonongs.monitorLocationId = monitorLocationId;
 			}
 			else
@@ -412,4 +413,11 @@ NSString*				gLocationName = nil;
 	}
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (section == [self.tableView numberOfSections] - 1) {
+        return CGFLOAT_MIN;
+    }
+    
+    return 10;
+}
 @end

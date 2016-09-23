@@ -31,6 +31,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.passwdField becomeFirstResponder];
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.passwdField resignFirstResponder];
+}
+
 /*
 #pragma mark - Navigation
 
@@ -45,21 +58,31 @@
 		[MBProgressHUD alert:@"请输入密码"];
 		return;
 	}
+    
+    [self.passwdField resignFirstResponder];
+    
 	CLoginParams* params = [CLoginParams new];
 	params.password = self.passwdField.text;
 	params.cellphone = self.cellphone;
 	[CLoginModel requestWithParams:POST params:params completion:^(CLoginModel* model, JSONModelError *err) {
 		if (model && err == nil) {
 			[MBProgressHUD alert:@"登录成功" ];
-			[[CPersonalCache defaultPersonalCache] cacheCookie];
-			[[CPersonalCache defaultPersonalCache] saveCacheUserInfo:model.data];
+			[[CPersonalCache defaultPersonalCache] saveCacheUserInfo:model.data sendNotification:YES];
 			if (model.data.userType == nil) {
 				CSelectIdentityController* controller = [self.storyboard controllerWithID:@"CSelectIdentityController"];
 				[self.navigationController pushViewController:controller animated:YES];
 			}
 			else
 			{
-				[self dismissViewControllerAnimated:YES completion:nil];
+                if (USER.isBASF) {
+                    UIViewController *controller  = [self.storyboard instantiateViewControllerWithIdentifier:@"CBASFNaviViewController"];
+                    
+                    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                    delegate.window.rootViewController = controller;
+                }
+                else {
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }
 			}
 		}
 		else{
@@ -74,6 +97,8 @@
 		}
 	}];
 }
+
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

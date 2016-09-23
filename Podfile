@@ -19,6 +19,12 @@ pod 'HorizontalProgress'
 pod 'TPKeyboardAvoiding'
 pod 'QBImagePickerController'
 pod 'PEPhotoCropEditor'
+pod 'MJRefresh'
+pod 'MZTimerLabel'
+pod 'ZXingObjC’
+pod 'XLPagerTabStrip', '~> 3.0.0'
+pod 'SDCycleScrollView'
+pod 'UMengAnalytics-NO-IDFA'
 end
 
 target 'FarmNowTests' do

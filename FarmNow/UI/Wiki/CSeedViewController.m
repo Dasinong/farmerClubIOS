@@ -15,6 +15,7 @@
 #import "CWebViewController.h"
 #import "RGIndexView.h"
 #import "CSortItemByFirstLetter.h"
+#import "CCpproductDetailController.h"
 
 @implementation CSeedContentItem
 - (NSString*)getSortString
@@ -93,6 +94,12 @@
 - (void)viewDidUnload {
 	[super viewDidUnload];
 }
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [MBProgressHUD hideHUDForView:self.view animated:NO];
+}
+
 //- (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 //{
 //	return [_dataModel numberOfSections ];
@@ -176,7 +183,12 @@
 		return 0;
 	}
 	
-	return self.searchResult.count;
+    if (self.searchResult.count == 0) {
+        return 0;
+    }
+    else {
+        return [self.searchResult[self.searchResult.allKeys[0]] count];
+    }
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
@@ -238,10 +250,12 @@
 	if (tableView ==  self.righttable) {
 		return  55.f;
 	}
-	else
+	else if (tableView == self.leftTable)
 	{
 		return UITableViewAutomaticDimension;
 	}
+    
+    return 75;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -287,10 +301,12 @@
 	{
 		NSArray* values = [self.searchResult.allValues objectAtIndex_s:indexPath.section];
 		CSearchEntry* entry = [values objectAtIndex_s:indexPath.row];
-		CWebViewController* webController       = [self.storyboard controllerWithID:@"CWebViewController"];
-		webController.address                       = [NSString stringWithFormat:@"%@baike?id=%ld&type=%@",kServerAddress, (long)entry.id,entry.type];
-		webController.title                     = entry.name;
-		[self.navigationController pushViewController:webController animated:YES];
+        
+        CCpproductDetailController *controller = [self.storyboard controllerWithID:@"CCpproductDetailController"];
+        controller.type = entry.type;
+        controller.id = entry.id;
+        controller.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:controller animated:YES];
 	}
 }
 
@@ -328,11 +344,19 @@
 		[MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
 		[CSearchSingleWordModel requestWithParams:params completion:^(CSearchSingleWordModel* model, JSONModelError *err) {
-			[MBProgressHUD hideHUDForView:self.view animated:YES];
+			[MBProgressHUD hideHUDForView:self.view animated:NO];
 
 			if (err == nil && model) {
 				self.searchResult = @{params.type:model.data};
 				[self.searchDispalyController.searchResultsTableView reloadData];
+                
+                // 搜不到，去百度
+                if (model.data.count == 0) {
+                    CWebViewController* webController = [self.storyboard controllerWithID:@"CWebViewController"];
+                    webController.address = [NSString stringWithFormat:@"https://www.baidu.com/s?wd=%@", [key URLEncodedString]];
+                    webController.title = @"百度搜索";
+                    [self.navigationController pushViewController:webController animated:YES];
+                }
 			}
 		}];
 		
@@ -346,7 +370,7 @@
 		[MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
 		[CSearchSingleWordModel requestWithParams:params completion:^(CSearchSingleWordModel* model, JSONModelError *err) {
-			[MBProgressHUD hideHUDForView:self.view animated:YES];
+			[MBProgressHUD hideHUDForView:self.view animated:NO];
 
 			if (err == nil && model) {
 				

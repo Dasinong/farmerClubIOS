@@ -18,6 +18,11 @@
 {
 	return @"ios";
 }
+
+- (NSString *)appId
+{
+    return @"2";
+}
 @end
 
 @implementation CAuthRegLogModel

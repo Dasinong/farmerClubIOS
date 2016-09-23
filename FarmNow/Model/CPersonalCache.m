@@ -7,10 +7,10 @@
 //
 
 #import "CPersonalCache.h"
+#import "AppDelegate.h"
 
 #define kCacheFileName @"cachekeyvalue"
 #define kUSER_INFO @"userInfo"
-#define kCOOKIE_INFO @"cookie"
 
 @interface CPersonalCache ()
 {
@@ -32,29 +32,8 @@ static CPersonalCache * _defaultPersonalCache = nil;
 	return _defaultPersonalCache;
 }
 
-- (void)cacheCookie
-{
-	NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL: [NSURL URLWithString:kServerAddress]];
-	NSData *data = [NSKeyedArchiver archivedDataWithRootObject:cookies];
-	[_cacheValueDict setValue:data forKey:kCOOKIE_INFO];
-	[_cacheValueDict writeToFile:[CPersonalCache cachePathForCacheKeyValue] atomically:YES];
-}
-
-- (void)reloadCookie
-{
-	NSData *cookiesdata = [_cacheValueDict valueForKey:kCOOKIE_INFO];;
-	if([cookiesdata length]) {
-		NSArray *cookies = [NSKeyedUnarchiver unarchiveObjectWithData:cookiesdata];
-		NSHTTPCookie *cookie;
-		for (cookie in cookies) {
-			[[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
-		}
-	}
-}
-
 + (NSString *)cacheDirForPersonal
 {
-	
 	NSString * dir = [CPersonalCache getAppDocPath];
 	if(NO == [[NSFileManager defaultManager] fileExistsAtPath:dir])
 	{
@@ -154,9 +133,26 @@ static CPersonalCache * _defaultPersonalCache = nil;
 
 - (void)clearUserInfo
 {
+    NSUserDefaults *userDefaults = USER_DEFAULTS;
+    [userDefaults removeObjectForKey:@"accessToken"];
+    [userDefaults removeObjectForKey:@"clientConfig"];
+    [userDefaults synchronize];
+    
 	self.userObject = nil;
 	[_cacheValueDict removeObjectForKey:kUSER_INFO];
 	[_cacheValueDict writeToFile:[CPersonalCache cachePathForCacheKeyValue] atomically:YES];
+    
+    NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:kServerAddress]];
+    for (NSHTTPCookie *cookie in cookies)
+    {
+        [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+    }
+    
+    // 发送注销成功通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"notification_signout" object:nil];
+    
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate uploadCachedStockArray:YES];
 }
 
 - (CUserObject *)cacheUserInfo
@@ -174,7 +170,7 @@ static CPersonalCache * _defaultPersonalCache = nil;
 	return self.userObject;
 }
 
-- (void)saveCacheUserInfo:(CUserObject *)value
+- (void)saveCacheUserInfo:(CUserObject *)value sendNotification:(BOOL)sendNotification
 {
 	self.userObject = value;
 	
@@ -182,9 +178,20 @@ static CPersonalCache * _defaultPersonalCache = nil;
 	{
 		return;
 	}
-	
-	
+    
+    if ([value.weixintoken isKindOfClass:[NSNull class]]) {
+        value.weixintoken = nil;
+    }
+    if ([value.qqtoken isKindOfClass:[NSNull class]]) {
+        value.qqtoken = nil;
+    }
+    
 	[_cacheValueDict setValue:[value toJSONData] forKey:kUSER_INFO];
 	[_cacheValueDict writeToFile:[CPersonalCache cachePathForCacheKeyValue] atomically:YES];
+    
+    // 发送登录成功通知
+    if (sendNotification) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"notification_signin" object:nil];
+    }
 }
 @end

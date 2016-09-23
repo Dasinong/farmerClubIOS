@@ -10,6 +10,7 @@
 #import "CKindViewController.h"
 #import "CSearchWordModel.h"
 #import "CWebViewController.h"
+#import "CCpproductDetailController.h"
 
 @interface CCpproductController ()
 @property (strong, nonatomic) NSArray* items;
@@ -24,16 +25,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-	self.items = @[@{@"title":@"杀菌剂",
-					 @"sub":@"治疗细菌、真菌等菌类疾病"},
-				   @{@"title":@"杀虫剂",
-					 @"sub":@"治疗害虫的药物"},
-				   @{@"title":@"除草剂",
-					 @"sub":@"消除杂草的药物"},
-				   @{@"title":@"植物生长调节剂",
-					 @"sub":@"抑制剂等药物"},
-				   @{@"title":@"杀螨剂",
-					 @"sub":@"治疗螨虫类疾病的药物"}];
+    
+    if (self.isBASF) {
+        self.title = @"巴斯夫产品介绍";
+        self.searchbar.placeholder = @"搜索巴斯夫产品";
+        self.items = @[@{@"title":@"杀菌剂",
+                         @"sub":@"治疗细菌、真菌等菌类疾病"},
+                       @{@"title":@"杀虫剂",
+                         @"sub":@"防治害虫的药物"},
+                       @{@"title":@"除草剂",
+                         @"sub":@"消除或抑制杂草的药物"},
+                       @{@"title":@"种衣剂",
+                         @"sub":@"对种子形成包膜保护的农药制品"},
+                       @{@"title":@"公共卫生",
+                         @"sub":@"防治城市害虫的药物"}];
+    }
+    else {
+        self.items = @[@{@"title":@"杀菌剂",
+                         @"sub":@"治疗细菌、真菌等菌类疾病"},
+                       @{@"title":@"杀虫剂",
+                         @"sub":@"防治害虫的药物"},
+                       @{@"title":@"除草剂",
+                         @"sub":@"消除或抑制杂草的药物"},
+                       @{@"title":@"植物生长调节剂",
+                         @"sub":@"抑制剂等药物"},
+                       @{@"title":@"杀螨剂",
+                         @"sub":@"治疗螨虫类疾病的药物"}];
+    }
+	
 	UITableViewModel* model = [UITableViewModel new];
 	for (NSDictionary* dict in self.items) {
 		[model addRow:TABLEVIEW_ROW(@"kindcell", dict) forSection:0];
@@ -46,7 +65,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [MBProgressHUD hideHUDForView:self.view animated:NO];
+}
+
 /*
+ 
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -60,7 +85,14 @@
 {
 	CKindViewController* controller = [self.storyboard controllerWithID:@"CKindViewController"];
 	NSString* title = [[self.items objectAtIndex_s:indexPath.row] valueForKey:@"title"];
-	controller.type = eIngredient;
+    
+    if (self.isBASF) {
+        controller.type = eBASF;
+    }
+    else {
+        controller.type = eIngredient;
+    }
+	
 	controller.title = title;
 	[self.navigationController pushViewController:controller animated:YES];
 }
@@ -86,20 +118,26 @@
 }
 - (void)search:(NSString*)key
 {
-	
-		
 		CSearchSingleWordParams* params = [CSearchSingleWordParams new];
 		params.key = key;
-		params.type = @"petdisspec";
-	[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+		params.type = @"cpproduct";
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
 		[CSearchSingleWordModel requestWithParams:params completion:^(CSearchSingleWordModel* model, JSONModelError *err) {
-			[MBProgressHUD hideHUDForView:self.view animated:YES];
+			[MBProgressHUD hideHUDForView:self.view animated:NO];
 
 			if (err == nil && model) {
 				
 				self.searchResult = @{params.type:model.data};
 				[self.searchDisplayController.searchResultsTableView reloadData];
+                
+                // 搜不到，去百度
+                if (model.data.count == 0) {
+                    CWebViewController* webController = [self.storyboard controllerWithID:@"CWebViewController"];
+                    webController.address = [NSString stringWithFormat:@"https://www.baidu.com/s?wd=%@", [key URLEncodedString]];
+                    webController.title = @"百度搜索";
+                    [self.navigationController pushViewController:webController animated:YES];
+                }
 			}
 		}];
 }
@@ -111,8 +149,7 @@
 		return [super tableView:tableView heightForRowAtIndexPath:indexPath];
 	}
 	else{
-		return UITableViewAutomaticDimension;
-		
+		return 75;
 	}
 }
 
@@ -177,12 +214,13 @@
 		return [super tableView:tableView didSelectRowAtIndexPath:indexPath];
 	}
 	else{
-		NSArray* values = [self.searchResult.allValues objectAtIndex_s:indexPath.section];
-		CSearchEntry* entry = [values objectAtIndex_s:indexPath.row];
-		CWebViewController* webController       = [self.storyboard controllerWithID:@"CWebViewController"];
-		webController.address                       = [NSString stringWithFormat:@"%@baike?id=%ld&type=%@",kServerAddress, (long)entry.id,entry.type];
-		webController.title                     = entry.name;
-		[self.navigationController pushViewController:webController animated:YES];
+        NSArray* values = [self.searchResult.allValues objectAtIndex_s:indexPath.section];
+        CSearchEntry* entry = [values objectAtIndex_s:indexPath.row];
+        
+        CCpproductDetailController *controller = [self.storyboard controllerWithID:@"CCpproductDetailController"];
+        controller.type = entry.type;
+        controller.id = entry.id;
+        [self.navigationController pushViewController:controller animated:YES];
 	}
 }
 

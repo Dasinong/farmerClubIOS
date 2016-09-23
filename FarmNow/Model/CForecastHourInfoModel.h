@@ -21,6 +21,6 @@
 @property (assign, nonatomic) double accumSnowTotal;				//积雪
 @property (assign, nonatomic) double accumIceTotal;					//积冰
 @property (strong, nonatomic) NSString* POP;						//降水概率(单位%)
-@property (assign, nonatomic) NSInteger icon;						//天气气象编码
+@property (strong, nonatomic) NSString* icon;						//天气气象编码
 
 @end

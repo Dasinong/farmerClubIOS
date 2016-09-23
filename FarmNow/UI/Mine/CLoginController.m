@@ -18,6 +18,7 @@
 #import "CPasswordViewController.h"
 #import "CSelectIdentityController.h"
 #import "Global.h"
+#import "AppDelegate.h"
 
 @interface CLoginController ()
 @property (weak, nonatomic) IBOutlet UIButton *qqLoginBtn;
@@ -64,6 +65,9 @@
 
 }
 - (IBAction)nextBtnClick:(id)sender {
+    UIButton *nextButton = (UIButton *)sender;
+    nextButton.enabled = NO;
+    
 	if (self.phoneField.text.length > 0) {
 		
 		__weak CLoginController* weakSelf = self;
@@ -76,6 +80,7 @@
 					CIsPassSetParams* param = [CIsPassSetParams new];
 					param.cellphone = weakSelf.phoneField.text;
 					[CIsPassSetModel requestWithParams:param completion:^(CIsPassSetModel* model, JSONModelError *err) {
+                        nextButton.enabled = YES;
 						if (model && err == nil) {
 							//设置了密码
 							if (model.data) {
@@ -93,12 +98,16 @@
 				//用户注册了
 				else
 				{
+                    nextButton.enabled = YES;
 					[weakSelf gotoIdentifyingController];
 				}
 			}
 		}];
-
 	}
+    else {
+        nextButton.enabled = YES;
+        [MBProgressHUD alert:@"请输入手机号！" ];
+    }
 }
 
 - (void)gotoIdentifyingController
@@ -147,14 +156,19 @@
 				[CQQAuthRegLogModel requestWithParams:POST params:params completion:^(CQQAuthRegLogModel* model, JSONModelError *err) {
 					if (model && err==nil) {
 						[MBProgressHUD alert:@"登录成功！" ];
-						[[CPersonalCache defaultPersonalCache] saveCacheUserInfo:model.data];
+						[[CPersonalCache defaultPersonalCache] saveCacheUserInfo:model.data sendNotification:YES];
 						if (model.data.userType == nil) {
 							CSelectIdentityController* controller = [self.storyboard controllerWithID:@"CSelectIdentityController"];
 							[self.navigationController pushViewController:controller animated:YES];
 						}
 						else
 						{
-							[self dismissViewControllerAnimated:YES completion:nil];
+                            if (USER.isBASF) {
+                                [self goToBASF];
+                            }
+                            else {
+                                [self dismissViewControllerAnimated:YES completion:nil];
+                            }
 						}
 					}
 
@@ -168,7 +182,6 @@
 
 - (void)getWxUserInfo:(NSNotification*)sender
 {
-	[[CPersonalCache defaultPersonalCache] cacheCookie];
 	if (sender && [sender isKindOfClass:[NSNotification class]] && sender.object == nil) {
 		NSDictionary* userInfo = sender.userInfo;
 		if (userInfo && [userInfo isKindOfClass:[NSDictionary class]]) {
@@ -180,14 +193,19 @@
 			[CWeiXinAuthRegLogModel requestWithParams:POST params:params completion:^(CQQAuthRegLogModel* model, JSONModelError *err) {
 					if (model && err==nil && [model.respCode isEqualToString:@"200"]) {
 						[MBProgressHUD alert:@"登录成功！" ];
-						[[CPersonalCache defaultPersonalCache] saveCacheUserInfo:model.data];
+						[[CPersonalCache defaultPersonalCache] saveCacheUserInfo:model.data sendNotification:YES];
 						if (model.data.userType == nil) {
 							CSelectIdentityController* controller = [self.storyboard controllerWithID:@"CSelectIdentityController"];
 							[self.navigationController pushViewController:controller animated:YES];
 						}
 						else
 						{
-							[self dismissViewControllerAnimated:YES completion:nil];
+                            if (USER.isBASF) {
+                                [self goToBASF];
+                            }
+                            else {
+                                [self dismissViewControllerAnimated:YES completion:nil];
+                            }
 						}
 
 					}
@@ -198,9 +216,15 @@
 	}
 }
 
+- (void)goToBASF {
+    UIViewController *controller  = [self.storyboard instantiateViewControllerWithIdentifier:@"CBASFNaviViewController"];
+    
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    delegate.window.rootViewController = controller;
+}
+
 - (void)loginSuccessed
 {
-	[[CPersonalCache defaultPersonalCache] cacheCookie];
 	[[[sdkCall getinstance] oauth] getUserInfo];
 //	if (NO == _isLogined)
 //	{

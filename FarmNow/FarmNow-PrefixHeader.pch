@@ -16,6 +16,7 @@
 #import "Config.h"
 #import "Global.h"
 #import "Extra.h"
+#import "UIColor+hexColor.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SCLAlertView-Objective-C/SCLAlertView.h>
 #endif /* FarmNow_PrefixHeader_pch */

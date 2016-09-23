@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) NSString* cellphone;
 @property (strong, nonatomic) NSString* channel;	//渠道号
+@property (strong, nonatomic) NSString* appId;	// appId
 
 @end
 

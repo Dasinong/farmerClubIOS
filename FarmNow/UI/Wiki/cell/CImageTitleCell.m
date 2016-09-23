@@ -30,7 +30,7 @@
 {
 	if (data && [data isKindOfClass:[CPetDisSpecBrowseObject class]]) {
 		CPetDisSpecBrowseObject* object = data;
-		[self.iconImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kImageServerAddress,object.thumbnailId]]];
+		[self.iconImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kImageServerAddress,object.thumbnailId]] placeholderImage:IMAGE(@"worm_default")];
 		self.titleLabel.text = object.petDisSpecName;
 		self.descLabel.text = object.sympthon;
 	}

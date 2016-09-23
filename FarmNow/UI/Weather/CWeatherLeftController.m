@@ -13,6 +13,7 @@
 #import "CDeleteWeatherSubscriptionModel.h"
 #import "CSearchLocationByLatAndLonModel.h"
 #import "FirstViewController.h"
+#import "CPersonalCache.h"
 
 @interface CWeatherLeftController () <CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *leftItem;
@@ -46,6 +47,13 @@
 	[super viewWillAppear:animated];
 	self.localWeatherLabel.text = gLocationName;
 	[self getWeatherSubscription];
+    
+    if ([[CPersonalCache defaultPersonalCache] cacheUserInfo] == nil) {
+        // 登出
+        [self.orderContens removeAllObjects];
+        UITableViewModel* tableModel = [UITableViewModel new];
+        [self updateModel:tableModel];
+    }
 }
 
 /*
@@ -59,7 +67,6 @@
 */
 - (IBAction)reLocation:(id)sender {
 	[self openGPS];
-
 }
 - (IBAction)clickLocal:(id)sender {
 

@@ -10,6 +10,7 @@
 #import "CSeedViewController.h"
 #import "CBrowsePetDisSpecByCropIdAndTypeModel.h"
 #import "CWebViewController.h"
+#import "CPetDisListViewController.h"
 
 @interface CZaiHaiViewController ()
 @property (weak, nonatomic) IBOutlet HMSegmentedControl *segement;
@@ -30,6 +31,7 @@
 	self.segement.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
 	self.segement.segmentWidthStyle = HMSegmentedControlSegmentWidthStyleFixed;
 	self.segement.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
+    self.segement.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
 //	self.segement.delegate = self;
 	self.segement.selectedSegmentIndex = self.selectedIndex;
 	[self selectedSegment:self.segement];
@@ -54,12 +56,12 @@
 	[CBrowsePetDisSpecByCropIdAndTypeModel requestWithParams:params completion:^(CBrowsePetDisSpecByCropIdAndTypeModel* model, JSONModelError *err) {
 		[MBProgressHUD hideHUDForView:self.view animated:YES];
 
-		if (err == nil && model ) {
-			UITableViewModel* talbeModel = [UITableViewModel new];
-			for (CPetDisSpecBrowseObject* object in model.data) {
-				[talbeModel addRow:TABLEVIEW_ROW(@"imagecell", object) forSection:0];
-			}
-			[self updateModel:talbeModel];
+		if (err == nil) {
+            UITableViewModel* talbeModel = [UITableViewModel new];
+            for (CPetDisSpecBrowseObject* object in model.data) {
+                [talbeModel addRow:TABLEVIEW_ROW(@"imagecell", object) forSection:0];
+            }
+            [self updateModel:talbeModel];
 		}
 	}];
 	
@@ -76,10 +78,10 @@
 */
 - (void)didSelect:(NSIndexPath *)indexPath identifier:(NSString*)identifier data:(id)data
 {
-	CPetDisSpecBrowseObject* object = (CPetDisSpecBrowseObject*)data;
-	CWebViewController* webController = [self.storyboard controllerWithID:@"CWebViewController"];
-	webController.address = [NSString stringWithFormat:@"http://120.26.208.198:8080/ploughHelper/baike?id=%ld&type=%@",(long)object.petDisSpecId,@"pest"];
-	webController.title = self.seedItem.cropName;
-	[self.navigationController pushViewController:webController animated:YES];
+    CPetDisSpecBrowseObject* object = (CPetDisSpecBrowseObject*)data;
+    
+    CPetDisListViewController *controller = [self.storyboard controllerWithID:@"CPetDisListViewController"];
+    controller.id = object.petDisSpecId;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 @end

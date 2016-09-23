@@ -28,7 +28,14 @@
 //	NSData* da
 	NSDate* date = [NSDate dateWithTimeIntervalSince1970:model.time / 1000];
 	self.time.text = [date stringWithFormat:@"HH:mm"];
-	self.icon.image = IMAGE(WEATHER_IMAGE_DICT[@(model.icon)]);
+    
+    if (model.icon == nil || model.icon.length == 0) {
+        //Warning(@"Icon is nil");
+    }
+    else {
+        self.icon.image = IMAGE(WEATHER_IMAGE_DICT[model.icon]);
+    }
+	
 	self.tempLabel.text = [NSString stringWithFormat:@"%ld℃",(long)model.temperature];
 	
 }

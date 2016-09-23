@@ -9,6 +9,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import <objc/runtime.h>
 #import "CPersonalCache.h"
+#import "MBProgressHUD+Express.h"
 
 const NSString*    kResponseSuccess = @"200";
 
@@ -97,6 +98,21 @@ const NSString*    kResponseSuccess = @"200";
         return;
     }
 	Info(@"result=%@",responseObject);
+    
+    if (responseObject[@"accessToken"]) {
+        // 在这里把AccessToken存入
+        NSUserDefaults *userDefaults = USER_DEFAULTS;
+        [userDefaults setObject:responseObject[@"accessToken"] forKey:@"accessToken"];
+        [userDefaults synchronize];
+    }
+    
+    if (responseObject[@"clientConfig"]) {
+        // 客户端配置
+        NSUserDefaults *userDefaults = USER_DEFAULTS;
+        [userDefaults setObject:responseObject[@"clientConfig"] forKey:@"clientConfig"];
+        [userDefaults synchronize];
+    }
+    
     if (responseObject && [responseObject isKindOfClass:[NSDictionary class]])
     {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -131,19 +147,27 @@ const NSString*    kResponseSuccess = @"200";
 							topController = [currentNavController topViewController];
 						}
 						
-						
-						[topController presentViewController:naviController animated:YES completion:nil];
-						
+                        if (![topController.restorationIdentifier isEqualToString:@"loginNavigationController"]) {
+                            [topController presentViewController:naviController animated:YES completion:nil];
+                        }
+                        
+                        completeBlock(model, nil);
+                        return;
 					}
+                    
 					if (retModel.respCode == nil) {
 						completeBlock(model, nil);
 						return ;
 					}
+                    
 					if (![retModel.respCode isEqualToString:@"200"])
 					{
 						completeBlock(nil, nil);
+                        [MBProgressHUD alert:[model errorMessage]];
+
 						return ;
 					}
+                    
                     completeBlock(model, nil);
                 });
             }
@@ -152,6 +176,10 @@ const NSString*    kResponseSuccess = @"200";
                 // 解析失败,构建HSResponseModel对象获取信息
                 NSError *baseError = nil;
                 CResponseModel *errorModel = [[CResponseModel alloc] initWithDictionary:responseObject error:&baseError ];
+                
+                if (baseError) {
+                    Error(@"%@",[baseError localizedDescription]);
+                }
 
                 dispatch_async( dispatch_get_main_queue(), ^{
 					CResponseModel* retModel = (CResponseModel*)errorModel;
@@ -170,9 +198,9 @@ const NSString*    kResponseSuccess = @"200";
 							topController = [currentNavController topViewController];
 						}
 						
-						
-						[topController presentViewController:naviController animated:YES completion:nil];
-
+                        if (![topController.restorationIdentifier isEqualToString:@"loginNavigationController"]) {
+                            [topController presentViewController:naviController animated:YES completion:nil];
+                        }
 					}
 //					if (errorModel.message.length >0) {
 //						[MBProgressHUD alert:errorModel.message];
@@ -182,6 +210,11 @@ const NSString*    kResponseSuccess = @"200";
 //                        nc_post(SessionExpired, nil);
 //                        return;
 //                    }
+                    
+                    if (error) {
+                        Error(@"%@",[error localizedDescription]);
+                    }
+                    
                     completeBlock(errorModel, [self jsonModelError:error]);
                 });
             }
@@ -209,11 +242,51 @@ const NSString*    kResponseSuccess = @"200";
     AFHTTPRequestOperationManager   *manager = [[self class] manager];
 //	manager
     NSString                        *URL     = [CRequest generatorGetRequestURLWithParams:params];
+    
+    
+    NSUserDefaults *userDefaults = USER_DEFAULTS;
+    if ([userDefaults objectForKey:@"accessToken"]) {
+        NSString *accessToken = [[userDefaults objectForKey:@"accessToken"] urlencode];
+        if ([URL containsString:@"?"]) {
+            URL = [NSString stringWithFormat:@"%@&accessToken=%@", URL, accessToken];
+        }
+        else {
+            URL = [NSString stringWithFormat:@"%@?accessToken=%@", URL, accessToken];
+        }
+    }
+    
 	manager.requestSerializer = [AFJSONRequestSerializer serializer];
 	manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    /* AFHTTPRequestOperation *operation      =*/ [manager GET:URL parameters:nil success: ^(AFHTTPRequestOperation *operation, id responseObject) {
+    /* AFHTTPRequestOperation *operation      =*/
+    [manager GET:URL parameters:nil success: ^(AFHTTPRequestOperation *operation, id responseObject) {
         [self success:operation object:responseObject completion:completeBlock];
     } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (error) {
+            if (operation.response.statusCode == 403 || operation.response.statusCode == 401) {
+                if (![URL containsString:@"/gatekeepers?"]) {
+                    [[CPersonalCache defaultPersonalCache] clearUserInfo];
+                    [MBProgressHUD alert:@"您登录已过期，请重新登录"];
+                    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    UINavigationController* naviController = [storyboard controllerWithID:@"loginNavigationController"];
+                    UINavigationController* currentNavController = SharedAPPDelegate.currentController;
+                    UIViewController* topController = currentNavController;
+                    if (currentNavController.presentedViewController) {
+                        topController = currentNavController.presentedViewController;
+                    }
+                    else if ([currentNavController isKindOfClass:[UINavigationController class]]) {
+                        topController = [currentNavController topViewController];
+                    }
+                    
+                    if (![topController.restorationIdentifier isEqualToString:@"loginNavigationController"]) {
+                        [topController presentViewController:naviController animated:YES completion:nil];
+                    }
+                }
+            }
+            else {
+                // 网络系统的error
+                [MBProgressHUD alert:[error localizedDescription]];
+            }
+        }
         [self failed:operation error:error completion:completeBlock];
     }];
 
@@ -225,12 +298,26 @@ const NSString*    kResponseSuccess = @"200";
 	AFHTTPRequestOperationManager   *manager = [[self class] manager];
 	//	manager
 	NSString                        *URL     =  [NSString stringWithFormat:@"%@/%@",[CRequest generatorRequestURL:params],pathParams];
+    
+    NSUserDefaults *userDefaults = USER_DEFAULTS;
+    if ([userDefaults objectForKey:@"accessToken"]) {
+        NSString *accessToken = [[userDefaults objectForKey:@"accessToken"] urlencode];
+        if ([URL containsString:@"?"]) {
+            URL = [NSString stringWithFormat:@"%@&accessToken=%@&appId=2", URL, accessToken];
+        }
+        else {
+            URL = [NSString stringWithFormat:@"%@?accessToken=%@&appId=2", URL, accessToken];
+        }
+    }
+    
 	Info(@"URL:%@", URL);
+    
 	
 //	Info(@"parameters:%@", parameters);
 	manager.requestSerializer = [AFJSONRequestSerializer serializer];
 	manager.responseSerializer = [AFJSONResponseSerializer serializer];
-	/* AFHTTPRequestOperation *operation      =*/ [manager DELETE:URL parameters:nil success: ^(AFHTTPRequestOperation *operation, id responseObject) {
+	/* AFHTTPRequestOperation *operation      =*/
+    [manager DELETE:URL parameters:nil success: ^(AFHTTPRequestOperation *operation, id responseObject) {
 		[self success:operation object:responseObject completion:completeBlock];
 	} failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
 		[self failed:operation error:error completion:completeBlock];
@@ -247,10 +334,20 @@ const NSString*    kResponseSuccess = @"200";
 	NSDictionary* parameters = [params paramDictionary];
 	Info(@"URL:%@", URL);
 
+    NSUserDefaults *userDefaults = USER_DEFAULTS;
+    if ([userDefaults objectForKey:@"accessToken"]) {
+        NSString *accessToken = [userDefaults objectForKey:@"accessToken"];
+        NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:parameters];
+        [dict setObject:accessToken forKey:@"accessToken"];
+        [dict setObject:@(2) forKey:@"appId"];
+        parameters = dict;
+    }
+    
 	Info(@"parameters:%@", parameters);
 
 	
-	/*AFHTTPRequestOperation *operation      =*/ [manager POST:URL parameters:parameters constructingBodyWithBlock: ^(id < AFMultipartFormData > formData) {
+	/*AFHTTPRequestOperation *operation      =*/
+    [manager POST:URL parameters:parameters constructingBodyWithBlock: ^(id < AFMultipartFormData > formData) {
         for (NSDictionary * attachment in attachments)
         {
             NSURL *fileURL = [NSURL fileURLWithPath:attachment[@"path"]];
@@ -280,6 +377,17 @@ const NSString*    kResponseSuccess = @"200";
 {
     AFHTTPRequestOperationManager   *manager = [[self class] manager];
     NSString                        *URL     = [NSString stringWithFormat:@"%@%@", kAPIServer, path];
+    
+    
+    NSUserDefaults *userDefaults = USER_DEFAULTS;
+    if ([userDefaults objectForKey:@"accessToken"]) {
+        NSString *accessToken = [userDefaults objectForKey:@"accessToken"];
+        NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:params];
+        [dict setObject:accessToken forKey:@"accessToken"];
+        [dict setObject:@(2) forKey:@"appId"];
+        params = dict;
+    }
+    
     /*AFHTTPRequestOperation *operation      =*/ [manager POST:URL parameters:params constructingBodyWithBlock: ^(id < AFMultipartFormData > formData) {
         for (NSDictionary * attachment in attachments)
         {
@@ -288,7 +396,14 @@ const NSString*    kResponseSuccess = @"200";
             NSString *filename = attachment[@"filename"];
 
             NSError *error = nil;
-            [formData appendPartWithFileData:imageData name:name fileName:filename mimeType:@"image/jpeg"];
+            
+            if ([filename hasSuffix:@".txt"]) {
+                [formData appendPartWithFileData:imageData name:name fileName:filename mimeType:@"multipart/form-data"];
+            }
+            else {
+                [formData appendPartWithFileData:imageData name:name fileName:filename mimeType:@"image/jpeg"];
+            }
+            
             if (error)
             {
                 Error(@"%@", error);
