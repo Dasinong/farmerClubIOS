@@ -112,6 +112,11 @@
             timeStart = claimedAt;
         }
         timeEnd = [claimedAt dateByAddingDays:30];
+        if (self.coupon.campaignId == 38 || self.coupon.campaignId == 40)
+        {
+            timeEnd =[NSDate dateWithTimeIntervalSince1970:self.coupon.campaign.redeemTimeEnd / 1000];
+        }
+        
         
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         [df setDateFormat:@"MM月dd日"];

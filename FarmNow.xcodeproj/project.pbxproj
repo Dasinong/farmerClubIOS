@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0177CD178F0DCB1E9BB2AEFC /* libPods-FarmNow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F11418256BAE66852A87D6AC /* libPods-FarmNow.a */; };
 		2730657B1C87DC9C00D8ECD8 /* CCouponCampaignTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2730657A1C87DC9C00D8ECD8 /* CCouponCampaignTableViewCell.xib */; };
 		2753264B1C8EA8CB0070E10A /* CBASFNaviViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2753264A1C8EA8CB0070E10A /* CBASFNaviViewController.m */; };
 		275C4AFA1C706274002475B6 /* CCouponCampaignsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 275C4AF91C706274002475B6 /* CCouponCampaignsModel.m */; };
@@ -294,7 +295,7 @@
 		B0748DF91C57738200513B4E /* UIBarButtonItem+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = B0748DF01C57738200513B4E /* UIBarButtonItem+Badge.m */; };
 		B0748DFA1C57738200513B4E /* UIColor+hexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = B0748DF21C57738200513B4E /* UIColor+hexColor.m */; };
 		B0748DFB1C57738200513B4E /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B0748DF41C57738200513B4E /* UIImage+Extension.m */; };
-		ED0A5513AC00B0E68FBC82F4 /* libPods-FarmNow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A484BAABB7BB41D7B618FB78 /* libPods-FarmNow.a */; };
+		FEC36A1E4FB86B877487B0EF /* libPods-FarmNowTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDD54DB98346A7865151A54 /* libPods-FarmNowTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -308,6 +309,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		204F433F46E023A7E7F6F454 /* Pods-FarmNow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarmNow.release.xcconfig"; path = "Pods/Target Support Files/Pods-FarmNow/Pods-FarmNow.release.xcconfig"; sourceTree = "<group>"; };
 		2730657A1C87DC9C00D8ECD8 /* CCouponCampaignTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCouponCampaignTableViewCell.xib; sourceTree = "<group>"; };
 		275326491C8EA8CB0070E10A /* CBASFNaviViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBASFNaviViewController.h; sourceTree = "<group>"; };
 		2753264A1C8EA8CB0070E10A /* CBASFNaviViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBASFNaviViewController.m; sourceTree = "<group>"; };
@@ -471,8 +473,8 @@
 		27EF62991C7E9B3600BB5266 /* CCreateFieldModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCreateFieldModel.m; sourceTree = "<group>"; };
 		27EF629B1C7FE5DF00BB5266 /* CSearchNearUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSearchNearUserModel.h; sourceTree = "<group>"; };
 		27EF629C1C7FE5DF00BB5266 /* CSearchNearUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSearchNearUserModel.m; sourceTree = "<group>"; };
-		58D6C33779B2D6D120434B6D /* Pods-FarmNow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarmNow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FarmNow/Pods-FarmNow.debug.xcconfig"; sourceTree = "<group>"; };
-		892B13CBF05E214972F8EFDB /* Pods-FarmNow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarmNow.release.xcconfig"; path = "Pods/Target Support Files/Pods-FarmNow/Pods-FarmNow.release.xcconfig"; sourceTree = "<group>"; };
+		8CA66B86B090E3CC2D692EE3 /* Pods-FarmNowTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarmNowTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FarmNowTests/Pods-FarmNowTests.debug.xcconfig"; sourceTree = "<group>"; };
+		967E616EDBC95B2833F586EA /* Pods-FarmNow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarmNow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FarmNow/Pods-FarmNow.debug.xcconfig"; sourceTree = "<group>"; };
 		9F00C53C1C0DEE3400198FD1 /* CSelectIdentityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSelectIdentityController.h; sourceTree = "<group>"; };
 		9F00C53D1C0DEE3400198FD1 /* CSelectIdentityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSelectIdentityController.m; sourceTree = "<group>"; };
 		9F010CAA1BE8E89C00358FD6 /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
@@ -828,7 +830,6 @@
 		9FFF68331C089B6900590604 /* CSubScribeDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSubScribeDetailController.m; sourceTree = "<group>"; };
 		9FFF68351C089CF900590604 /* CSubScribeListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSubScribeListCell.h; sourceTree = "<group>"; };
 		9FFF68361C089CF900590604 /* CSubScribeListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSubScribeListCell.m; sourceTree = "<group>"; };
-		A484BAABB7BB41D7B618FB78 /* libPods-FarmNow.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FarmNow.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0748DE41C5772A700513B4E /* CFieldHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFieldHomeViewController.h; sourceTree = "<group>"; };
 		B0748DE51C5772A700513B4E /* CFieldHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFieldHomeViewController.m; sourceTree = "<group>"; };
 		B0748DE71C57738200513B4E /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
@@ -845,6 +846,9 @@
 		B0748DF21C57738200513B4E /* UIColor+hexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+hexColor.m"; sourceTree = "<group>"; };
 		B0748DF31C57738200513B4E /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
 		B0748DF41C57738200513B4E /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
+		C745F60893D4CBE8E88B1DE7 /* Pods-FarmNowTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarmNowTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FarmNowTests/Pods-FarmNowTests.release.xcconfig"; sourceTree = "<group>"; };
+		EDDD54DB98346A7865151A54 /* libPods-FarmNowTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FarmNowTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F11418256BAE66852A87D6AC /* libPods-FarmNow.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FarmNow.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -868,7 +872,7 @@
 				9F875FCD1BDCE8F400FA2549 /* MOBFoundation.framework in Frameworks */,
 				9F875FCE1BDCE8F400FA2549 /* SMS_SDK.framework in Frameworks */,
 				9F875FD21BDCE90600FA2549 /* libUMessage_Sdk_1.2.0.a in Frameworks */,
-				ED0A5513AC00B0E68FBC82F4 /* libPods-FarmNow.a in Frameworks */,
+				0177CD178F0DCB1E9BB2AEFC /* libPods-FarmNow.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -876,6 +880,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEC36A1E4FB86B877487B0EF /* libPods-FarmNowTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1638,8 +1643,8 @@
 				9FEACDAD1BCFD5E1000722D8 /* FarmNow */,
 				9FEACDCA1BCFD5E1000722D8 /* FarmNowTests */,
 				9FEACDAC1BCFD5E1000722D8 /* Products */,
-				BA4E673B17A3F30B9B616FE2 /* Pods */,
 				FA02BB861C37CD1B2485084F /* Frameworks */,
+				BDBD8269852994C1A2E22E59 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1728,11 +1733,13 @@
 			path = Field;
 			sourceTree = "<group>";
 		};
-		BA4E673B17A3F30B9B616FE2 /* Pods */ = {
+		BDBD8269852994C1A2E22E59 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				58D6C33779B2D6D120434B6D /* Pods-FarmNow.debug.xcconfig */,
-				892B13CBF05E214972F8EFDB /* Pods-FarmNow.release.xcconfig */,
+				967E616EDBC95B2833F586EA /* Pods-FarmNow.debug.xcconfig */,
+				204F433F46E023A7E7F6F454 /* Pods-FarmNow.release.xcconfig */,
+				8CA66B86B090E3CC2D692EE3 /* Pods-FarmNowTests.debug.xcconfig */,
+				C745F60893D4CBE8E88B1DE7 /* Pods-FarmNowTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1756,7 +1763,8 @@
 				9F875FC61BDCE8F400FA2549 /* SMS_SDK */,
 				9F1860E61BDBD19D003F9A8C /* libz.1.2.5.tbd */,
 				9F1860E41BDBD143003F9A8C /* CoreTelephony.framework */,
-				A484BAABB7BB41D7B618FB78 /* libPods-FarmNow.a */,
+				F11418256BAE66852A87D6AC /* libPods-FarmNow.a */,
+				EDDD54DB98346A7865151A54 /* libPods-FarmNowTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1768,12 +1776,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FEACDD11BCFD5E1000722D8 /* Build configuration list for PBXNativeTarget "FarmNow" */;
 			buildPhases = (
-				78196F577519D9B61D76E562 /* Check Pods Manifest.lock */,
+				6469CFD68D4535E4CDC00C1E /* [CP] Check Pods Manifest.lock */,
 				9FEACDA71BCFD5E1000722D8 /* Sources */,
 				9FEACDA81BCFD5E1000722D8 /* Frameworks */,
 				9FEACDA91BCFD5E1000722D8 /* Resources */,
-				7B58CABA7C256546ACDFCFE6 /* Copy Pods Resources */,
-				01640A53DE3CB1B0DC9A266C /* Embed Pods Frameworks */,
+				D90772D6A81E7E49F2055A07 /* [CP] Embed Pods Frameworks */,
+				ACF7157501CF20600C5154F8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1788,9 +1796,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FEACDD41BCFD5E1000722D8 /* Build configuration list for PBXNativeTarget "FarmNowTests" */;
 			buildPhases = (
+				730F67053DF9D48253F17350 /* [CP] Check Pods Manifest.lock */,
 				9FEACDC31BCFD5E1000722D8 /* Sources */,
 				9FEACDC41BCFD5E1000722D8 /* Frameworks */,
 				9FEACDC51BCFD5E1000722D8 /* Resources */,
+				637383F56E2D9E7A61CF3092 /* [CP] Embed Pods Frameworks */,
+				4670B4CC270B3BF74230BE74 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1809,7 +1820,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = C;
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = zheliang;
 				TargetAttributes = {
 					9FEACDAA1BCFD5E1000722D8 = {
@@ -1897,29 +1908,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		01640A53DE3CB1B0DC9A266C /* Embed Pods Frameworks */ = {
+		4670B4CC270B3BF74230BE74 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FarmNow/Pods-FarmNow-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FarmNowTests/Pods-FarmNowTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		78196F577519D9B61D76E562 /* Check Pods Manifest.lock */ = {
+		637383F56E2D9E7A61CF3092 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FarmNowTests/Pods-FarmNowTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6469CFD68D4535E4CDC00C1E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1927,19 +1953,49 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		7B58CABA7C256546ACDFCFE6 /* Copy Pods Resources */ = {
+		730F67053DF9D48253F17350 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		ACF7157501CF20600C5154F8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FarmNow/Pods-FarmNow-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D90772D6A81E7E49F2055A07 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FarmNow/Pods-FarmNow-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2246,6 +2302,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -2307,12 +2364,12 @@
 		};
 		9FEACDD21BCFD5E1000722D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 58D6C33779B2D6D120434B6D /* Pods-FarmNow.debug.xcconfig */;
+			baseConfigurationReference = 967E616EDBC95B2833F586EA /* Pods-FarmNow.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiahong Gao (VWVKDZ69EX)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2372,11 +2429,12 @@
 		};
 		9FEACDD31BCFD5E1000722D8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 892B13CBF05E214972F8EFDB /* Pods-FarmNow.release.xcconfig */;
+			baseConfigurationReference = 204F433F46E023A7E7F6F454 /* Pods-FarmNow.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: DASINONG AGROTECH CO., LTD. (FVCN5LQT5Z)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiahong Gao (VWVKDZ69EX)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2430,12 +2488,13 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dasinong.FarmerClub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "76564011-90b0-4dec-87ed-72b262ab4ed1";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
 		9FEACDD51BCFD5E1000722D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CA66B86B090E3CC2D692EE3 /* Pods-FarmNowTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2448,6 +2507,7 @@
 				);
 				INFOPLIST_FILE = FarmNowTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tencent.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FarmNow.app/FarmNow";
 			};
@@ -2455,6 +2515,7 @@
 		};
 		9FEACDD61BCFD5E1000722D8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C745F60893D4CBE8E88B1DE7 /* Pods-FarmNowTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2463,6 +2524,7 @@
 				);
 				INFOPLIST_FILE = FarmNowTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tencent.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FarmNow.app/FarmNow";
 			};
