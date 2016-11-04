@@ -99,7 +99,6 @@
 
 - (void)groupStoreWithProvince {
     self.storeDict = [NSMutableDictionary dictionary];
-    
     for (CStore *store in self.couponCampaign.stores) {
         if(self.storeDict[store.province]) {
             NSMutableArray *stores = self.storeDict[store.province];
@@ -146,11 +145,20 @@
         if (model && model.campaign) {
             self.couponCampaign = model.campaign;
 
+            if ((self.couponCampaign.id==38 || self.couponCampaign.id==40)&& self.claimed)
+            {
+                [self.claimButton setBackgroundColor:[UIColor lightGrayColor]];
+                [self.claimButton setTitle:@"已领取" forState:UIControlStateDisabled];
+                self.claimButton.enabled = NO;
+
+            }
+
             if (self.couponCampaign.stores.count == 0) {
                 [self.claimButton setBackgroundColor:[UIColor lightGrayColor]];
                 [self.claimButton setTitle:@"本区域暂未开放" forState:UIControlStateDisabled];
                 self.claimButton.enabled = NO;
             }
+            
             
             [self groupStoreWithProvince];
             [self.tableView.mj_header endRefreshing];
@@ -223,6 +231,10 @@
         return 3 + self.couponCampaign.pictureUrls.count - 2;
     }
     
+    if (self.couponCampaign.id == 38 || self.couponCampaign.id==40) {
+        return 3 + self.couponCampaign.pictureUrls.count - 2;
+    }
+    
     return 3 + self.couponCampaign.pictureUrls.count - 1 + storeRowCount; // 第一张图片不要在这里再显示了， 所以有个-1
 }
 
@@ -257,9 +269,10 @@
             return [tableView dequeueReusableCellWithIdentifier:@"RedeemCell" forIndexPath:indexPath];
         }
         
+        if (self.couponCampaign.id !=38 && self.couponCampaign.id!=40){
         id keyOrStore = [self getStoreOrKeyInRow:newRow-1];
         if ([keyOrStore isKindOfClass:[NSString class]]) {
-            UITableViewCell *locationCell = [tableView dequeueReusableCellWithIdentifier:@"LocationCell" forIndexPath:indexPath];
+        UITableViewCell *locationCell = [tableView dequeueReusableCellWithIdentifier:@"LocationCell" forIndexPath:indexPath];
             
             UILabel *locationLabel = (UILabel *)[locationCell.contentView viewWithTag:1];
             locationLabel.text = (NSString*)keyOrStore;
@@ -269,6 +282,13 @@
             CStoreTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CStoreTableViewCell" forIndexPath:indexPath];
             [cell setupWithModel:keyOrStore];
             return cell;
+        }
+        }else {
+            UITableViewCell *locationCell = [tableView dequeueReusableCellWithIdentifier:@"LocationCell" forIndexPath:indexPath];
+            
+            UILabel *locationLabel = (UILabel *)[locationCell.contentView viewWithTag:1];
+            locationLabel.text = @"直接寄送";
+            return locationCell;
         }
     }
     

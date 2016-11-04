@@ -144,7 +144,7 @@
         claimed = NO;
     }
     
-    if (claimed) {
+    if (claimed && selectedCoupon.campaignId!=38 && selectedCoupon.campaignId!=40) {
         CMyCouponDetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CMyCouponDetailViewController"];
         controller.coupon = selectedCoupon;
         controller.hidesBottomBarWhenPushed = YES;
@@ -154,6 +154,7 @@
         CCouponDetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CCouponDetailViewController"];
         controller.hidesBottomBarWhenPushed = YES;
         controller.couponCampaign = couponCampaign;
+        controller.claimed = claimed;
         controller.scanned = scanned;
         [self.navigationController pushViewController:controller animated:YES];
     }

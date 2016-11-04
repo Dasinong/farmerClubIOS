@@ -17,6 +17,10 @@
 @property (strong, nonatomic) NSString* productUseHistory;
 @property (assign, nonatomic) double area;
 @property (assign, nonatomic) double yield;
+@property (strong, nonatomic) NSString* address;
+@property (nonatomic, assign) NSInteger userid;
+@property (strong, nonatomic) NSString* postcode;
+
 @end
 
 @interface CRequestCouponModel : CResponseModel

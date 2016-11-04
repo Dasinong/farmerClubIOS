@@ -116,6 +116,9 @@
     if ([self.coupon isInsurance]) {
         return 2;
     }
+    if (self.coupon.campaignId == 38 || self.coupon.campaignId ==40) {
+        return 2;
+    }
     return 4;
 }
 

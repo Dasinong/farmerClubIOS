@@ -23,8 +23,13 @@
 @property (nonatomic, strong) NSString *yield;
 @property (nonatomic, strong) NSString *experience;
 @property (nonatomic, strong) NSString *contactNumber;
+@property (nonatomic, strong) NSString *address;
+@property (nonatomic, assign) NSInteger userid;
+@property (nonatomic, strong) NSString *postcode;
+
 @property (nonatomic, strong) NSString *jiandaAmount;
 @property (nonatomic, strong) NSString *kairunAmount;
+
 @property (weak, nonatomic) IBOutlet UILabel *tipsLabel;
 
 @end
@@ -62,7 +67,7 @@
     NSString *cleanKairunAmount = [self.kairunAmount stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     //NSString *cleanYield = [self.yield stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     //NSString *cleanContact = [self.contactNumber stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    
+
     
     if (cleanName.length == 0) {
         [MBProgressHUD alert:@"请填写姓名"];
@@ -88,6 +93,9 @@
     if ([self.couponCampaign isInsurance]) {
         self.experience = @"无";
     }
+    if (self.couponCampaign.id==38 || self.couponCampaign.id==40){
+         self.experience = @"无";
+    }
     
     if (self.experience.length == 0) {
         [MBProgressHUD alert:@"请选择种植经验"];
@@ -102,10 +110,13 @@
 //        [MBProgressHUD alert:@"联系电话格式不正确"];
 //        return;
 //    }
-    
-    if (![cleanArea validateNumeric]) {
-        [MBProgressHUD alert:@"面积格式不正确"];
-        return;
+    if (self.couponCampaign.id==38 || self.couponCampaign.id==40){
+        self.area = @"0.0";
+    }else{
+        if (![cleanArea validateNumeric]) {
+            [MBProgressHUD alert:@"面积格式不正确"];
+            return;
+        }
     }
     
     NSMutableCharacterSet *characterSet = [NSMutableCharacterSet decimalDigitCharacterSet];
@@ -161,6 +172,8 @@
             params.experience = self.experience;
             params.contactNumber = @"";
             params.productUseHistory = @"";
+            params.address = self.address;
+            params.postcode = self.postcode;
             
             [CRequestCouponModel requestWithParams:POST params:params completion:^(CRequestCouponModel *model, JSONModelError *err) {
                 [MBProgressHUD hideHUDForView:self.view animated:NO];
@@ -206,7 +219,9 @@
                                          }
                                               origin:sender];
     }
-    else {
+    else if (self.couponCampaign.id == 38 || self.couponCampaign.id==40){
+
+    }else{
         NSArray *exps = [NSArray arrayWithObjects:@"第一年的新手", @"2-3年有些经验", @"3-5年的老手", @"5-10年的专家", @"10年以上资深专家", nil];
         
         [ActionSheetStringPicker showPickerWithTitle:@"选择种植经验"
@@ -226,6 +241,7 @@
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (self.couponCampaign.id == 38 || self.couponCampaign.id==40) return 3;
     return 5; //多一个为keyboard空出位子
 }
 
@@ -264,29 +280,50 @@
         cell.fieldLabel.attributedText = attriString;
     }
     else if (indexPath.row == 1) {
-        NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:@"作物 *"];
-        [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#666666"] range:NSMakeRange(0, 3)];
-        [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#ff8400"] range:NSMakeRange(3, 1)];
-        cell.fieldLabel.attributedText = attriString;
+        if (self.couponCampaign.id ==38 || self.couponCampaign.id==40){
+            NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:@"地址 *"];
+            [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#666666"] range:NSMakeRange(0, 3)];
+            [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#ff8400"] range:NSMakeRange(3, 1)];
+            cell.fieldLabel.attributedText = attriString;
+        }else{
+            NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:@"作物 *"];
+            [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#666666"] range:NSMakeRange(0, 3)];
+            [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#ff8400"] range:NSMakeRange(3, 1)];
+            cell.fieldLabel.attributedText = attriString;
         
-        if ([self.couponCampaign isInsurance]) {
-            cell.valueTextField.hidden = YES;
-            cell.pickerButton.hidden = NO;
+            if ([self.couponCampaign isInsurance]) {
+                cell.valueTextField.hidden = YES;
+                cell.pickerButton.hidden = NO;
             
-            if (self.crop) {
-                [cell.pickerButton setTitle:self.crop forState:UIControlStateNormal];
+                if (self.crop) {
+                    [cell.pickerButton setTitle:self.crop forState:UIControlStateNormal];
+                }
             }
         }
     }
     else if (indexPath.row == 2) {
-        NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:@"面积（亩） *"];
-        [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#666666"] range:NSMakeRange(0, 6)];
-        [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#ff8400"] range:NSMakeRange(6, 1)];
-        cell.fieldLabel.attributedText = attriString;
+        if (self.couponCampaign.id ==38 || self.couponCampaign.id==40){
+            NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:@"邮编 *"];
+            [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#666666"] range:NSMakeRange(0, 3)];
+            [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#ff8400"] range:NSMakeRange(3, 1)];
+            cell.fieldLabel.attributedText = attriString;
+            cell.valueTextField.keyboardType = UIKeyboardTypeDecimalPad;
+        }else{
+            NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:@"面积（亩） *"];
+            [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#666666"]  range:NSMakeRange(0, 6)];
+            [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#ff8400"] range:NSMakeRange(6, 1)];
+            cell.fieldLabel.attributedText = attriString;
         
-        cell.valueTextField.keyboardType = UIKeyboardTypeDecimalPad;
+            cell.valueTextField.keyboardType = UIKeyboardTypeDecimalPad;
+        }
     }
     else if (indexPath.row == 3) {
+        if (self.couponCampaign.id==38 || self.couponCampaign.id==40){
+            cell.fieldLabel.hidden = YES;
+            cell.valueTextField.hidden = YES;
+            cell.pickerButton.hidden = YES;
+
+        }else{
         
         if ([self.couponCampaign isInsurance]) {
             NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:@"数量（升） *"];
@@ -308,6 +345,7 @@
             if (self.experience) {
                 [cell.pickerButton setTitle:self.experience forState:UIControlStateNormal];
             }
+        }
         }
     }
     else {
@@ -346,6 +384,17 @@
     }
     else if (textField.tag == 4) {
         self.kairunAmount = textField.text;
+    }
+    if (self.couponCampaign.id ==38 || self.couponCampaign.id==40){
+        if (textField.tag == 0) {
+            self.name = textField.text;
+        }
+        else if (textField.tag == 1) {
+            self.address = textField.text;
+        }
+        else if (textField.tag == 2) {
+            self.postcode = textField.text;
+        }
     }
 }
 @end
