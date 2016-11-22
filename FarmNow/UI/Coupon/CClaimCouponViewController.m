@@ -13,6 +13,8 @@
 #import "NSString+Validation.h"
 #import "CRequestCouponModel.h"
 #import "CClaimCouponModel.h"
+#import "CCouponDetailViewController.h"
+#import "CCouponHomeViewController.h"
 
 @interface CClaimCouponViewController () <UITableViewDelegate, UITableViewDataSource, CClaimCouponTableViewCellDelegate>
 @property (weak, nonatomic) IBOutlet TPKeyboardAvoidingTableView *tableView;
@@ -170,19 +172,30 @@
             params.area = [cleanArea doubleValue];
             params.yield = 0;
             params.experience = self.experience;
-            params.contactNumber = @"";
+            params.contactNumber = self.contactNumber;
             params.productUseHistory = @"";
             params.address = self.address;
             params.postcode = self.postcode;
             
             [CRequestCouponModel requestWithParams:POST params:params completion:^(CRequestCouponModel *model, JSONModelError *err) {
                 [MBProgressHUD hideHUDForView:self.view animated:NO];
-                
+              
                 // 跳转到我的优惠券页面
                 claimModel.coupon.campaign = self.couponCampaign;
-                [self.navigationController popViewControllerAnimated:NO];
-                if ([self.delegate respondsToSelector:@selector(couponGet:)]) {
-                    [self.delegate couponGet:claimModel.coupon];
+                if (self.couponCampaign.id==38 || self.couponCampaign.id==40){
+                    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"提交成功"
+                                                                    message:@"成功参与活动！请等待短信通知中奖"                                                               delegate:self
+                                                          cancelButtonTitle:@"确定"
+                                                          otherButtonTitles:nil, nil];
+                    [alert show];
+
+                    [self.navigationController popViewControllerAnimated:NO];
+
+                }else{
+                    [self.navigationController popViewControllerAnimated:NO];
+                    if ([self.delegate respondsToSelector:@selector(couponGet:)]) {
+                        [self.delegate couponGet:claimModel.coupon];
+                    }
                 }
             }];
         }
@@ -241,7 +254,7 @@
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.couponCampaign.id == 38 || self.couponCampaign.id==40) return 3;
+    if (self.couponCampaign.id == 38 || self.couponCampaign.id==40) return 4;
     return 5; //多一个为keyboard空出位子
 }
 
@@ -319,10 +332,11 @@
     }
     else if (indexPath.row == 3) {
         if (self.couponCampaign.id==38 || self.couponCampaign.id==40){
-            cell.fieldLabel.hidden = YES;
-            cell.valueTextField.hidden = YES;
-            cell.pickerButton.hidden = YES;
-
+            NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:@"联系电话 *"];
+            [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#666666"] range:NSMakeRange(0, 5)];
+            [attriString addAttribute:NSForegroundColorAttributeName value:[UIColor colorwithHexString:@"#ff8400"] range:NSMakeRange(5, 1)];
+            cell.fieldLabel.attributedText = attriString;
+            cell.valueTextField.keyboardType = UIKeyboardTypeDecimalPad;
         }else{
         
         if ([self.couponCampaign isInsurance]) {
@@ -394,6 +408,9 @@
         }
         else if (textField.tag == 2) {
             self.postcode = textField.text;
+        }
+        else if (textField.tag == 3) {
+            self.contactNumber = textField.text;
         }
     }
 }

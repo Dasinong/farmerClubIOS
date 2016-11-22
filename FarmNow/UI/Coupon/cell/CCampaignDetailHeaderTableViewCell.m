@@ -31,7 +31,7 @@
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"MM月dd日"];
     
-    if ([campaign isInsurance]) {
+    if ([campaign isInsurance] || campaign.id==38 || campaign.id==40) {
         self.redeemLabel.text = @"";
     }
     else {
