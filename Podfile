@@ -2,7 +2,7 @@
 platform :ios, '8.0'
 
 target 'FarmNow' do
-pod 'AFNetworking'
+pod 'AFNetworking','2.6.3'
 pod 'SDWebImage'
 pod 'JSONModel'
 pod 'MBProgressHUD'

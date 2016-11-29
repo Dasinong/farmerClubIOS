@@ -127,6 +127,9 @@
         else {
             self.claimLabel.text = [NSString stringWithFormat:@"兑换日期：%@ - %@", [df stringFromDate:timeStart], [df stringFromDate:timeEnd]];
         }
+        if (self.coupon.campaignId == 38 || self.coupon.campaignId == 40){
+            self.claimLabel.text= [NSString stringWithFormat:@"活动时间：12月1日-8日、12月12日-16日"];
+        }
     }
     else {
         NSDate* claimTimeStart = [NSDate dateWithTimeIntervalSince1970:self.couponCampaign.claimTimeStart / 1000];
@@ -141,6 +144,9 @@
         }
         
         self.claimLabel.text = [NSString stringWithFormat:@"%@：%@ - %@", text, [df stringFromDate:claimTimeStart], [df stringFromDate:claimTimeEnd]];
+        if (self.couponCampaign.id == 38 || self.couponCampaign.id == 40){
+            self.claimLabel.text= [NSString stringWithFormat:@"活动时间：12月1日-8日、12月12日-16日"];
+        }
     }
 //
 //    if (self.isDetail) {
