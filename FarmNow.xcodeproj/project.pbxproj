@@ -94,6 +94,7 @@
 		27EF4CF21D1D0C0900C15BE0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EF4CF11D1D0C0900C15BE0 /* Foundation.framework */; };
 		27EF629A1C7E9B3600BB5266 /* CCreateFieldModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EF62991C7E9B3600BB5266 /* CCreateFieldModel.m */; };
 		27EF629D1C7FE5DF00BB5266 /* CSearchNearUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EF629C1C7FE5DF00BB5266 /* CSearchNearUserModel.m */; };
+		6EF61CCB1DF2999200004488 /* CClaimCouponTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EF61CCA1DF2999200004488 /* CClaimCouponTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		9F00C53E1C0DEE3400198FD1 /* CSelectIdentityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F00C53D1C0DEE3400198FD1 /* CSelectIdentityController.m */; };
 		9F010CAC1BE8E89C00358FD6 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F010CAB1BE8E89C00358FD6 /* NSDate+Utilities.m */; };
 		9F010CAF1BE9028400358FD6 /* CWeatherHourItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F010CAE1BE9028400358FD6 /* CWeatherHourItemView.m */; };
@@ -473,6 +474,7 @@
 		27EF62991C7E9B3600BB5266 /* CCreateFieldModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCreateFieldModel.m; sourceTree = "<group>"; };
 		27EF629B1C7FE5DF00BB5266 /* CSearchNearUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSearchNearUserModel.h; sourceTree = "<group>"; };
 		27EF629C1C7FE5DF00BB5266 /* CSearchNearUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSearchNearUserModel.m; sourceTree = "<group>"; };
+		6EF61CCA1DF2999200004488 /* CClaimCouponTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CClaimCouponTableViewCell.xib; sourceTree = "<group>"; };
 		8CA66B86B090E3CC2D692EE3 /* Pods-FarmNowTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarmNowTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FarmNowTests/Pods-FarmNowTests.debug.xcconfig"; sourceTree = "<group>"; };
 		967E616EDBC95B2833F586EA /* Pods-FarmNow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FarmNow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FarmNow/Pods-FarmNow.debug.xcconfig"; sourceTree = "<group>"; };
 		9F00C53C1C0DEE3400198FD1 /* CSelectIdentityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSelectIdentityController.h; sourceTree = "<group>"; };
@@ -904,6 +906,7 @@
 				27A8C9EA1C71AD1900441C27 /* CStoreTableViewCell.xib */,
 				27A8C9ED1C71BDF000441C27 /* CClaimCouponTableViewCell.h */,
 				27A8C9EE1C71BDF000441C27 /* CClaimCouponTableViewCell.m */,
+				6EF61CCA1DF2999200004488 /* CClaimCouponTableViewCell.xib */,
 				279A5E931C7418B800C3D697 /* CCouponTableViewCell.h */,
 				279A5E941C7418B800C3D697 /* CCouponTableViewCell.m */,
 				279A5E951C7418B800C3D697 /* CCouponTableViewCell.xib */,
@@ -1825,7 +1828,7 @@
 				TargetAttributes = {
 					9FEACDAA1BCFD5E1000722D8 = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = FVCN5LQT5Z;
+						DevelopmentTeam = UW37BC6Q53;
 					};
 					9FEACDC61BCFD5E1000722D8 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -1878,6 +1881,7 @@
 				9FE6E9571BD69327003A9D79 /* DisasterLevel.html in Resources */,
 				9FE6E9561BD69327003A9D79 /* dns.db in Resources */,
 				27A8C9EC1C71AD1900441C27 /* CStoreTableViewCell.xib in Resources */,
+				6EF61CCB1DF2999200004488 /* CClaimCouponTableViewCell.xib in Resources */,
 				9F010CB11BE902AC00358FD6 /* CWeatherHourItemView.xib in Resources */,
 				9FE6E9501BD69327003A9D79 /* levelthree.png in Resources */,
 				27D0F0661C7D5E7500215FCC /* CTaskCell.xib in Resources */,
@@ -1950,7 +1954,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		730F67053DF9D48253F17350 /* [CP] Check Pods Manifest.lock */ = {
@@ -1965,7 +1969,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		ACF7157501CF20600C5154F8 /* [CP] Copy Pods Resources */ = {
@@ -2298,6 +2302,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -2318,7 +2323,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2342,6 +2347,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -2355,7 +2361,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -2369,7 +2375,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiahong Gao (VWVKDZ69EX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: DASINONG AGROTECH CO., LTD. (FVCN5LQT5Z)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2423,7 +2429,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dasinong.FarmerClub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1c804be9-ee92-4fe3-8df6-bf7e318aa398";
 			};
 			name = Debug;
 		};
@@ -2434,7 +2440,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiahong Gao (VWVKDZ69EX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: DASINONG AGROTECH CO., LTD. (FVCN5LQT5Z)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2488,7 +2494,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dasinong.FarmerClub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1c804be9-ee92-4fe3-8df6-bf7e318aa398";
 			};
 			name = Release;
 		};
@@ -2540,7 +2546,7 @@
 				9FEACDD01BCFD5E1000722D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		9FEACDD11BCFD5E1000722D8 /* Build configuration list for PBXNativeTarget "FarmNow" */ = {
 			isa = XCConfigurationList;
@@ -2549,7 +2555,7 @@
 				9FEACDD31BCFD5E1000722D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		9FEACDD41BCFD5E1000722D8 /* Build configuration list for PBXNativeTarget "FarmNowTests" */ = {
 			isa = XCConfigurationList;
@@ -2558,7 +2564,7 @@
 				9FEACDD61BCFD5E1000722D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

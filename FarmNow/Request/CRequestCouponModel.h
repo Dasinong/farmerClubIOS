@@ -21,6 +21,15 @@
 @property (nonatomic, assign) NSInteger userid;
 @property (strong, nonatomic) NSString* postcode;
 
+
+@property (nonatomic, strong) NSString *sex;
+@property (nonatomic, strong) NSString *educationLevel;
+@property (nonatomic, strong) NSString *useTimes;
+@property (nonatomic, strong) NSString *bestFeature;
+@property (nonatomic, strong) NSString *badFeature;
+@property (nonatomic, strong) NSString *hopeFeature;
+@property (nonatomic, strong) NSString *bestValue;
+@property (nonatomic, strong) NSString *othersApp;
 @end
 
 @interface CRequestCouponModel : CResponseModel

@@ -46,7 +46,10 @@
         [df setDateFormat:@"MM月dd日"];
         
         if ([couponCampaign isInsurance] || couponCampaign.id==38 || couponCampaign.id == 40) {
-            self.redeemTimeLabel.text = @"";
+//            self.redeemTimeLabel.text = @"";
+            self.redeemTimeLabel.text = [NSString stringWithFormat:@"兑换时间：12月7日-13日、12月14日-20日"];
+
+            
         }
         else {
             self.redeemTimeLabel.text = [NSString stringWithFormat:@"使用时间：%@ - %@", [df stringFromDate:redeemTimeStart], [df stringFromDate:redeemTimeEnd]];

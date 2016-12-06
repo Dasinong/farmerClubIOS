@@ -16,6 +16,8 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
+    
 }
 
 - (IBAction)editingDidEnd:(id)sender {
